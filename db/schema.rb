@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210051306) do
+ActiveRecord::Schema.define(version: 20140210051440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,6 +162,29 @@ ActiveRecord::Schema.define(version: 20140210051306) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "requirements", force: true do |t|
+    t.integer  "certificate_id"
+    t.integer  "for_person"
+    t.integer  "for_company"
+    t.integer  "for_provider"
+    t.string   "description"
+    t.integer  "person_id"
+    t.string   "person_type"
+    t.integer  "company_id"
+    t.string   "company_type"
+    t.integer  "provider_id"
+    t.string   "provider_type"
+    t.integer  "agency_id"
+    t.string   "agency_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "requirements", ["agency_id", "agency_type"], name: "index_requirements_on_agency_id_and_agency_type", using: :btree
+  add_index "requirements", ["company_id", "company_type"], name: "index_requirements_on_company_id_and_company_type", using: :btree
+  add_index "requirements", ["person_id", "person_type"], name: "index_requirements_on_person_id_and_person_type", using: :btree
+  add_index "requirements", ["provider_id", "provider_type"], name: "index_requirements_on_provider_id_and_provider_type", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

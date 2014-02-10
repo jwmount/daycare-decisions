@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  certificate_id: 1
+  for_person: 1
+  for_company: 1
+  for_provider: 1
+  for_person: 1
+  description: MyString
+  person_id: 
+  person_type: Person
+  company_id: 
+  company_type: Company
+  provider_id: 
+  provider_type: Provider
+  agency_id: 
+  agency_type: Agency
+
+two:
+  certificate_id: 1
+  for_person: 1
+  for_company: 1
+  for_provider: 1
+  for_person: 1
+  description: MyString
+  person_id: 
+  person_type: Person
+  company_id: 
+  company_type: Company
+  provider_id: 
+  provider_type: Provider
+  agency_id: 
+  agency_type: Agency
