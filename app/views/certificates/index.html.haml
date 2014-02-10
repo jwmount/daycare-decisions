@@ -1,0 +1,29 @@
+%h1 Listing certificates
+
+%table
+  %tr
+    %th Name
+    %th Active
+    %th Description
+    %th For person
+    %th For company
+    %th For provider
+    %th
+    %th
+    %th
+
+  - @certificates.each do |certificate|
+    %tr
+      %td= certificate.name
+      %td= certificate.active
+      %td= certificate.description
+      %td= certificate.for_person
+      %td= certificate.for_company
+      %td= certificate.for_provider
+      %td= link_to 'Show', certificate
+      %td= link_to 'Edit', edit_certificate_path(certificate)
+      %td= link_to 'Destroy', certificate, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Certificate', new_certificate_path
