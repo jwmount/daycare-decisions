@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210051153) do
+ActiveRecord::Schema.define(version: 20140210051306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,19 @@ ActiveRecord::Schema.define(version: 20140210051153) do
   add_index "certs", ["company_id", "company_type"], name: "index_certs_on_company_id_and_company_type", using: :btree
   add_index "certs", ["person_id", "person_type"], name: "index_certs_on_person_id_and_person_type", using: :btree
   add_index "certs", ["provider_id", "provider_type"], name: "index_certs_on_provider_id_and_provider_type", using: :btree
+
+  create_table "children", force: true do |t|
+    t.string   "surname"
+    t.string   "fist_name"
+    t.string   "nick_name"
+    t.datetime "born_on"
+    t.integer  "family_id"
+    t.string   "family_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "children", ["family_id", "family_type"], name: "index_children_on_family_id_and_family_type", using: :btree
 
   create_table "companies", force: true do |t|
     t.string   "name"

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  surname: MyString
+  fist_name: MyString
+  nick_name: MyString
+  born_on: 2014-02-09 21:13:06
+  family_id: 
+  family_type: Family
+
+two:
+  surname: MyString
+  fist_name: MyString
+  nick_name: MyString
+  born_on: 2014-02-09 21:13:06
+  family_id: 
+  family_type: Family
