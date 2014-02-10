@@ -1,4 +1,8 @@
 DaycareDecisions::Application.routes.draw do
+  resources :agencies
+
+  resources :services
+
   resources :roles
 
   resources :providers

@@ -1,0 +1,25 @@
+%h1 Listing agencies
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Governing body
+    %th Jurisdiction
+    %th
+    %th
+    %th
+
+  - @agencies.each do |agency|
+    %tr
+      %td= agency.name
+      %td= agency.description
+      %td= agency.governing_body
+      %td= agency.jurisdiction
+      %td= link_to 'Show', agency
+      %td= link_to 'Edit', edit_agency_path(agency)
+      %td= link_to 'Destroy', agency, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Agency', new_agency_path

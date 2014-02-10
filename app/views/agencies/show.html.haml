@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @agency.name
+%p
+  %b Description:
+  = @agency.description
+%p
+  %b Governing body:
+  = @agency.governing_body
+%p
+  %b Jurisdiction:
+  = @agency.jurisdiction
+
+= link_to 'Edit', edit_agency_path(@agency)
+\|
+= link_to 'Back', agencies_path
