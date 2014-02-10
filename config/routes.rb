@@ -1,4 +1,6 @@
 DaycareDecisions::Application.routes.draw do
+  resources :families
+
   resources :companies
 
   resources :certificates
