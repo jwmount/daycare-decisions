@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Company:
+  = @person.company_id
+%p
+  %b First name:
+  = @person.first_name
+%p
+  %b Last name:
+  = @person.last_name
+%p
+  %b Title:
+  = @person.title
+%p
+  %b Provider:
+  = @person.provider_id
+%p
+  %b Available:
+  = @person.available
+%p
+  %b Available on:
+  = @person.available_on
+%p
+  %b Ok to contact:
+  = @person.OK_to_contact
+%p
+  %b Active:
+  = @person.active
+
+= link_to 'Edit', edit_person_path(@person)
+\|
+= link_to 'Back', people_path
