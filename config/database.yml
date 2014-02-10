@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  username: postgres
+  password: 180lbs
+
+development:
+  <<: *common
+  database: daycare-decisions_development
+
+test:
+  <<: *common
+  database: daycare-decisions_test
+
+production:
+  <<: *common
+  database: daycare-decisions_production
