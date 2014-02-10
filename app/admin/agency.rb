@@ -13,5 +13,6 @@ ActiveAdmin.register Agency do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  
+  permit_params :name, :description, :type
+
 end

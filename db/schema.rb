@@ -91,24 +91,15 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   create_table "certs", force: true do |t|
+    t.integer  "certifiable_id"
+    t.string   "certifiable_type"
     t.datetime "expires_on"
     t.boolean  "active"
-    t.integer  "person_id"
-    t.string   "person_type"
-    t.integer  "company_id"
-    t.string   "company_type"
-    t.integer  "provider_id"
-    t.string   "provider_type"
-    t.integer  "agency_id"
-    t.string   "agency_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "certs", ["agency_id", "agency_type"], name: "index_certs_on_agency_id_and_agency_type", using: :btree
-  add_index "certs", ["company_id", "company_type"], name: "index_certs_on_company_id_and_company_type", using: :btree
-  add_index "certs", ["person_id", "person_type"], name: "index_certs_on_person_id_and_person_type", using: :btree
-  add_index "certs", ["provider_id", "provider_type"], name: "index_certs_on_provider_id_and_provider_type", using: :btree
+  add_index "certs", ["certifiable_id", "certifiable_type"], name: "index_certs_on_certifiable_id_and_certifiable_type", using: :btree
 
   create_table "children", force: true do |t|
     t.string   "surname"
