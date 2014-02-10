@@ -1,4 +1,6 @@
 DaycareDecisions::Application.routes.draw do
+  resources :roles
+
   resources :providers
 
   devise_for :admin_users, ActiveAdmin::Devise.config
