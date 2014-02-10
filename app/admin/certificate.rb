@@ -13,5 +13,5 @@ ActiveAdmin.register Certificate do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  
+    permit_params :name, :active, :description, :for_person, :for_company, :for_provider
 end
