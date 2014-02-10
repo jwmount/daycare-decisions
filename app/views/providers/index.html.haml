@@ -1,0 +1,29 @@
+%h1 Listing providers
+
+%table
+  %tr
+    %th Company
+    %th Name
+    %th Type of care
+    %th Nqs rating
+    %th Languages
+    %th Url
+    %th
+    %th
+    %th
+
+  - @providers.each do |provider|
+    %tr
+      %td= provider.company_id
+      %td= provider.name
+      %td= provider.type_of_care
+      %td= provider.NQS_rating
+      %td= provider.languages
+      %td= provider.url
+      %td= link_to 'Show', provider
+      %td= link_to 'Edit', edit_provider_path(provider)
+      %td= link_to 'Destroy', provider, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Provider', new_provider_path

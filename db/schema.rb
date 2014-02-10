@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210032835) do
+ActiveRecord::Schema.define(version: 20140210045123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,55 +49,6 @@ ActiveRecord::Schema.define(version: 20140210032835) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "agencies", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "governing_body"
-    t.string   "jurisdiction"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "certificates", force: true do |t|
-    t.string   "name"
-    t.boolean  "active"
-    t.string   "description"
-    t.boolean  "for_person"
-    t.boolean  "for_company"
-    t.boolean  "for_provider"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "companies", force: true do |t|
-    t.string   "name"
-    t.boolean  "active"
-    t.string   "url"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "families", force: true do |t|
-    t.string   "surname"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "people", force: true do |t|
-    t.integer  "company_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "title"
-    t.integer  "provider_id"
-    t.boolean  "available"
-    t.datetime "available_on"
-    t.boolean  "OK_to_contact"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "providers", force: true do |t|
     t.integer  "company_id"
     t.string   "name"
@@ -105,19 +56,6 @@ ActiveRecord::Schema.define(version: 20140210032835) do
     t.string   "NQS_rating"
     t.string   "languages"
     t.string   "url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "services", force: true do |t|
-    t.string   "name"
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

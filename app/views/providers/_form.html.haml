@@ -1,0 +1,28 @@
+= form_for @provider do |f|
+  - if @provider.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@provider.errors.count, "error")} prohibited this provider from being saved:"
+      %ul
+        - @provider.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :company_id
+    = f.number_field :company_id
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :type_of_care
+    = f.text_field :type_of_care
+  .field
+    = f.label :NQS_rating
+    = f.text_field :NQS_rating
+  .field
+    = f.label :languages
+    = f.text_field :languages
+  .field
+    = f.label :url
+    = f.text_field :url
+  .actions
+    = f.submit 'Save'

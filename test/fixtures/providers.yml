@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  name: MyString
+  type_of_care: MyString
+  NQS_rating: MyString
+  languages: MyString
+  url: MyString
+
+two:
+  company_id: 1
+  name: MyString
+  type_of_care: MyString
+  NQS_rating: MyString
+  languages: MyString
+  url: MyString
