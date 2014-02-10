@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street: MyString
+  suburb: MyString
+  state: MyString
+  post_code: MyString
+  lat: MyString
+  long: MyString
+  provider_id: 
+  provider_type: Provider
+  person_id: 
+  person_type: Person
+  company_id: 
+  company_type: Company
+
+two:
+  street: MyString
+  suburb: MyString
+  state: MyString
+  post_code: MyString
+  lat: MyString
+  long: MyString
+  provider_id: 
+  provider_type: Provider
+  person_id: 
+  person_type: Person
+  company_id: 
+  company_type: Company

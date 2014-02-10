@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210050731) do
+ActiveRecord::Schema.define(version: 20140210051027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20140210050731) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "addresses", force: true do |t|
+    t.string   "street"
+    t.string   "suburb"
+    t.string   "state"
+    t.string   "post_code"
+    t.string   "lat"
+    t.string   "long"
+    t.integer  "provider_id"
+    t.string   "provider_type"
+    t.integer  "person_id"
+    t.string   "person_type"
+    t.integer  "company_id"
+    t.string   "company_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["company_id", "company_type"], name: "index_addresses_on_company_id_and_company_type", using: :btree
+  add_index "addresses", ["person_id", "person_type"], name: "index_addresses_on_person_id_and_person_type", using: :btree
+  add_index "addresses", ["provider_id", "provider_type"], name: "index_addresses_on_provider_id_and_provider_type", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
