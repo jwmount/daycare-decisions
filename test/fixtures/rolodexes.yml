@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number_or_email: MyString
+  kind: MyString
+  when_to_use: MyString
+  description: MyString
+  person_id: 
+  person_type: Person
+  company_id: 
+  company_type: Company
+  provider_id: 
+  provider_type: Provider
+  agency_id: 
+  agency_type: Agency
+
+two:
+  number_or_email: MyString
+  kind: MyString
+  when_to_use: MyString
+  description: MyString
+  person_id: 
+  person_type: Person
+  company_id: 
+  company_type: Company
+  provider_id: 
+  provider_type: Provider
+  agency_id: 
+  agency_type: Agency
