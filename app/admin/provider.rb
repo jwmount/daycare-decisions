@@ -52,6 +52,16 @@ ActiveAdmin.register Provider do
           a.input :long
       end
     end
+
+    f.inputs "Rolodexes" do
+      f.has_many :rolodexes do|r|
+        r.input :number_or_email
+        r.input :kind
+        r.input :when_to_use
+        r.input :description
+      end
+    end
+
     f.actions
   end #form
 
@@ -71,6 +81,7 @@ ActiveAdmin.register Provider do
 #
 
   permit_params :name, :type_of_care, :NQS_rating, :languages, :url,
-    addresses_attributes: [:street, :city, :state, :post_code, :lat, :long, :_destroy]
+    addresses_attributes: [:street, :city, :state, :post_code, :lat, :long, :_destroy],
+    rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description]
 
 end

@@ -1,6 +1,7 @@
 -if rolodex.kind == "Email"
   = rolodex.kind
-  = mail_to roldex.phone_or_email
+  = mail_to roldex.number_or_email
 -else
-  = rolodex.phone_or_email + ':' +  rolodex.kind
+  = rolodex.number_or_email + ':' +  rolodex.kind
+= rolodex.description
 %p
