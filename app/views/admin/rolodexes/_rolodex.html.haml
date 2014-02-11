@@ -1,0 +1,6 @@
+-if rolodex.kind == "Email"
+  = rolodex.kind
+  = mail_to roldex.phone_or_email
+-else
+  = rolodex.phone_or_email + ':' +  rolodex.kind
+%p

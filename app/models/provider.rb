@@ -12,13 +12,13 @@ class Provider < ActiveRecord::Base
            :autosave => true, 
            :dependent => :destroy
 
-  has_many :identifiers, 
-           :as => :identifiable, 
+  has_many :rolodexes, 
+           :as => :rolodexable, 
            :autosave => true, 
            :dependent => :destroy
 
   accepts_nested_attributes_for :addresses
   accepts_nested_attributes_for :certs
-  accepts_nested_attributes_for :identifiers
+  accepts_nested_attributes_for :rolodexes
 
 end

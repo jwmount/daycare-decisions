@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
-
+=begin
   create_table "addresses", force: true do |t|
     t.string   "street"
     t.string   "suburb"
@@ -47,12 +47,26 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
   add_index "addresses", ["company_id", "company_type"], name: "index_addresses_on_company_id_and_company_type", using: :btree
   add_index "addresses", ["person_id", "person_type"], name: "index_addresses_on_person_id_and_person_type", using: :btree
   add_index "addresses", ["provider_id", "provider_type"], name: "index_addresses_on_provider_id_and_provider_type", using: :btree
 
+=end
+ create_table "addresses", force: true do |t|
+    t.integer  "addressable_id",                                             null: false
+    t.string   "addressable_type",                                           null: false
+    t.string   "street",                     default: "",                    null: false
+    t.string   "city",                       default: "",                    null: false
+    t.string   "state",            limit: 2, default: "",                    null: false
+    t.string   "post_code",                  default: "",                    null: false
+    t.integer  "lat",                        default: "",                    null: false
+    t.integer  "long",                       default: "",                    null: false
+    t.datetime "created_at",                 default: '2013-10-08 00:00:00', null: false
+    t.datetime "updated_at",                 default: '2013-10-08 00:00:00', null: false
+  end
+
   create_table "admin_users", force: true do |t|
+    t.integer  "role_id",                             null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -184,26 +198,16 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   create_table "rolodexes", force: true do |t|
+    t.integer  "rolodexable_id"
+    t.string   "rolodexable_type"
     t.string   "number_or_email"
     t.string   "kind"
     t.string   "when_to_use"
     t.string   "description"
-    t.integer  "person_id"
-    t.string   "person_type"
-    t.integer  "company_id"
-    t.string   "company_type"
-    t.integer  "provider_id"
-    t.string   "provider_type"
-    t.integer  "agency_id"
-    t.string   "agency_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rolodexes", ["agency_id", "agency_type"], name: "index_rolodexes_on_agency_id_and_agency_type", using: :btree
-  add_index "rolodexes", ["company_id", "company_type"], name: "index_rolodexes_on_company_id_and_company_type", using: :btree
-  add_index "rolodexes", ["person_id", "person_type"], name: "index_rolodexes_on_person_id_and_person_type", using: :btree
-  add_index "rolodexes", ["provider_id", "provider_type"], name: "index_rolodexes_on_provider_id_and_provider_type", using: :btree
 
   create_table "services", force: true do |t|
     t.string   "name"
