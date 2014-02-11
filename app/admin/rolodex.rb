@@ -13,5 +13,6 @@ ActiveAdmin.register Rolodex do
   #  permitted << :other if resource.something?
   #  permitted
   # end
+  permit_params :number_or_email, :kind,  :when_to_use,  :description
   
 end
