@@ -94,19 +94,17 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
   add_index "certs", ["certifiable_id", "certifiable_type"], name: "index_certs_on_certifiable_id_and_certifiable_type", using: :btree
 
+=begin
   create_table "children", force: true do |t|
+    t.integer  "family_id"
     t.string   "surname"
     t.string   "fist_name"
     t.string   "nick_name"
     t.datetime "born_on"
-    t.integer  "family_id"
-    t.string   "family_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "children", ["family_id", "family_type"], name: "index_children_on_family_id_and_family_type", using: :btree
-
+=end
   create_table "companies", force: true do |t|
     t.string   "name"
     t.boolean  "active"
@@ -116,11 +114,13 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 
+=begin
   create_table "families", force: true do |t|
     t.string   "surname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+=end
 
   create_table "people", force: true do |t|
     t.integer  "company_id"
@@ -128,9 +128,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "last_name"
     t.string   "title"
     t.integer  "provider_id"
-    t.boolean  "available"
-    t.datetime "available_on"
-    t.boolean  "OK_to_contact"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"

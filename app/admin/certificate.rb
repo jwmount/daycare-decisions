@@ -1,6 +1,5 @@
 ActiveAdmin.register Certificate do
 
-
   menu parent: "Compliance"
 
   scope :all, :default => true 

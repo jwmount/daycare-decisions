@@ -9,6 +9,7 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
     inflect.irregular 'rolodex', 'rolodexes'
+    inflect.irregular 'child', 'children'
  end
 
 # These inflection rules are supported but not enabled by default:

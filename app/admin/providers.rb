@@ -1,5 +1,6 @@
 ActiveAdmin.register Provider do
 
+  menu parent: "Companies"
 
  index do
 
