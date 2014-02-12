@@ -40,6 +40,9 @@ ActiveAdmin.register Provider do
       f.input :languages
       f.input :url
       f.input :food_provided
+      f.input :air_conditioned
+      f.input :bus_service
+
     end
 
 
@@ -72,6 +75,8 @@ ActiveAdmin.register Provider do
       row ("Rollodex") {render provider.rolodexes}
       row ("Web Site") { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
       row("Food Provided") { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
+      row("Air Conditioned") { status_tag (provider.air_conditioned ? "YES" : "No"), (provider.air_conditioned ? :ok : :error) }
+      row("Bus Service") { status_tag (provider.bus_service ? "YES" : "No"), (provider.bus_service ? :ok : :error) }
 
       row ("Address") { render provider.addresses}
       row ("Certifications") { render provider.certs}
@@ -83,7 +88,8 @@ ActiveAdmin.register Provider do
 # P E R M I T  P A R A M S
 #
 
-  permit_params :name, :type_of_care, :NQS_rating, :languages, :url, :food_provided,
+  permit_params :name, :type_of_care, :NQS_rating, :languages, :url, :food_provided, :air_conditioned,
+    :bus_service,
     addresses_attributes: [:street, :city, :state, :post_code, :lat, :long, :_destroy],
     rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description]
 
