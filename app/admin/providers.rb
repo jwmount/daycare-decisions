@@ -39,7 +39,7 @@ ActiveAdmin.register Provider do
       f.input :NQS_rating
       f.input :languages
       f.input :url
-
+      f.input :food_provided
     end
 
 
@@ -71,6 +71,8 @@ ActiveAdmin.register Provider do
       row :name
       row ("Rollodex") {render provider.rolodexes}
       row ("Web Site") { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
+      row("Food Provided") { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
+
       row ("Address") { render provider.addresses}
       row ("Certifications") { render provider.certs}
       end
@@ -81,7 +83,7 @@ ActiveAdmin.register Provider do
 # P E R M I T  P A R A M S
 #
 
-  permit_params :name, :type_of_care, :NQS_rating, :languages, :url,
+  permit_params :name, :type_of_care, :NQS_rating, :languages, :url, :food_provided,
     addresses_attributes: [:street, :city, :state, :post_code, :lat, :long, :_destroy],
     rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description]
 

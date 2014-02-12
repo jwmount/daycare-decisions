@@ -14,6 +14,28 @@ def care_categories
   ]
   end
 
+def languages
+  [ 
+    'Arabic',
+    'Cantonese',
+    'French',
+    'German',
+    'Hebrew',
+    'Italian',
+    'Mandarin',
+    'Spanish',
+    'Other'
+  ]
+end
+
+def nappies_provided
+  [
+    'disposable',
+    'cotton',
+    'none'
+  ]
+end
+
 
   # see if this is unused in R365 as well?
   def Xaddress

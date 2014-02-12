@@ -5,16 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-roles_list = %w[ admin guest management parent sales superadmin ]
+roles_list = %w[ admin management parent superadmin ]
 roles_list.each do |role|
   Role.create!(name: role)
 end
 
 # Create users (roles not implemented yet, MUST be chosen from roles_list)
 user_list = [
-  ['john@venuesoftware.com', 'password', 6],
+  ['john@venuesoftware.com', 'password', 4],
   ['rebecca@daycaredecisions.com', 'password', 1],
-  ['mom@parents.com', 'password', 4]
+  ['parent@parents.com', 'password', 3]
   ]
 
 user_list.each do |email, password, role|  

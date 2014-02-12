@@ -140,6 +140,22 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "NQS_rating"
     t.string   "languages"
     t.string   "url"
+
+    t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
+    t.boolean  "air_conditioned"
+    t.boolean  "bus_service"
+    t.boolean  "extended_hours_for_kindys"
+    t.boolean  "online_waitlist"
+    t.boolean  "online_enrollment"
+    t.boolean  "security_access"
+    t.boolean  "additional_activities_included" # Drop down menu: Music, Language, sports program, dance program, learning programs 
+    t.boolean  "excursions"
+    t.boolean  "guest_speakers"
+    t.boolean  "outdoor_play_area"  #Amount of Land        Amount or drop down menu?
+    t.boolean  "real_grass"
+    t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
+    t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+
     t.datetime "created_at"
     t.datetime "updated_at"
   end
