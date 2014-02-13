@@ -85,6 +85,21 @@ ActiveAdmin.register Provider do
       end
     end
 
+    f.inputs "Certs (Certificates)" do
+      f.has_many :certs do |f|
+
+        f.input :certificate,
+                :collection => Certificate.where({:for_provider => true}),
+                :include_blank => false
+
+        f.input :active
+
+        f.input :expires_on, 
+                :as => :date_picker,
+                :hint => AdminConstants::ADMIN_CERT_EXPIRES_ON_HINT
+      end
+    end
+
     f.actions
   end #form
 
@@ -125,7 +140,8 @@ ActiveAdmin.register Provider do
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :vacancies,
-    addresses_attributes: [:street, :city, :state, :post_code, :lat, :long, :_destroy],
-    rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description]
+      addresses_attributes: [:street, :city, :state, :post_code, :lat, :long, :_destroy],
+      rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description],
+      certs_attributes: [ :certificate_id, :serial_number, :expires_on, :active ]
 
 end

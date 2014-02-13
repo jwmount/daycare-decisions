@@ -69,7 +69,7 @@ ActiveAdmin.register Certificate do
 # P A R A M E T E R  L I S T
 #  
     permit_params :name, :active, :description, :for_person, :for_company, :for_provider,
-      certs_attributes: [:expires_on, :active]
+      certs_attributes: [:certificate_id, :expires_on, :serial_number, :active]
 
 end
 

@@ -1,4 +1,5 @@
 class Certificate < ActiveRecord::Base
+
   has_many :certs, dependent: :destroy
 
   scope :alphabetically, order("name ASC")
