@@ -16,13 +16,10 @@ ActiveAdmin.register Provider do
 =end
     end
 
-    column "Address" do |provider|
-      @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Provider').limit(1)
-      render @address 
-    end
-    column :type_of_care
+    column :description
+    column :care
     column :NQS_rating
-    column :languages
+    column :language
     column :url
   end
 
@@ -33,11 +30,22 @@ ActiveAdmin.register Provider do
     f.inputs "Provider Details" do
 
       f.input :name, 
-              :hint         => AdminConstants::ADMIN_COMPANY_NAME_HINT,
-              :placeholder  => AdminConstants::ADMIN_COMPANY_NAME_PLACEHOLDER
-      f.input :type_of_care
-      f.input :NQS_rating
-      f.input :languages
+              :hint         => AdminConstants::ADMIN_PROVIDER_NAME_HINT,
+              :placeholder  => AdminConstants::ADMIN_PROVIDER_NAME_PLACEHOLDER
+
+      f.input :NQS_rating,
+              :hint         => AdminConstants::ADMIN_PROVIDER_NQS_RATING_HINT,
+              :placeholder  => AdminConstants::ADMIN_PROVIDER_NQS_RATING_PLACEHOLDER
+      
+      f.input :care,
+              :hint          => AdminConstants::ADMIN_PROVIDER_CARE_HINT,
+              :placeholder   => AdminConstants::ADMIN_PROVIDER_CARE_PLACEHOLDER
+
+      f.input :language,
+              :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
+              :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
+              :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
+
       f.input :url
       f.input :food_provided
       f.input :air_conditioned
@@ -53,6 +61,7 @@ ActiveAdmin.register Provider do
       f.input :real_grass
       f.input :technology
       f.input :vacancies
+      f.input :description
     end
 
 
@@ -82,8 +91,11 @@ ActiveAdmin.register Provider do
   show :title => :name do
     attributes_table do
       row :name
+      row ("Address") { render provider.addresses}
+      row ("Certifications") { render provider.certs}
       row ("Rollodex") {render provider.rolodexes}
       row ("Web Site") { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
+      row :description
       row("Food Provided") { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
       row("Air Conditioned") { status_tag (provider.air_conditioned ? "YES" : "No"), (provider.air_conditioned ? :ok : :error) }
       row("Bus Service") { status_tag (provider.bus_service ? "YES" : "No"), (provider.bus_service ? :ok : :error) }
@@ -101,9 +113,6 @@ ActiveAdmin.register Provider do
       row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
       row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
       row("Vacancies") { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
-
-      row ("Address") { render provider.addresses}
-      row ("Certifications") { render provider.certs}
       end
     #active_admin_comments
   end #show
@@ -112,7 +121,7 @@ ActiveAdmin.register Provider do
 # P E R M I T  P A R A M S
 #
 
-  permit_params :name, :type_of_care, :NQS_rating, :languages, :url, :food_provided, :air_conditioned,
+  permit_params :name, :care, :description, :NQS_rating, :language, :url, :food_provided, :air_conditioned,
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :vacancies,

@@ -5,12 +5,12 @@ common: &common
 
 development:
   <<: *common
-  database: daycare-decisions_development
+  database: daycare_decisions_development
 
 test:
   <<: *common
-  database: daycare-decisions_test
+  database: daycare_decisions_test
 
 production:
   <<: *common
-  database: daycare-decisions_production
+  database: daycare_decisions_production

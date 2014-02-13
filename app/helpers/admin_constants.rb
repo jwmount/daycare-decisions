@@ -16,6 +16,7 @@ module AdminConstants
 #
   ADMIN_COMPANY_ACTIVE                   = "Company is active."
   ADMIN_COMPANY_INACTIVE                 = "Company is not active.  Projects cannot be defined."
+
   ADMIN_COMPANY_NAME_HINT                = "Company name.  Must be unique."
   ADMIN_COMPANY_NAME_PLACEHOLDER         = "Company name"
 
@@ -66,15 +67,16 @@ module AdminConstants
   ADMIN_PROVIDER_NAME_HINT               = "Provider name"
   ADMIN_PROVIDER_NAME_PLACEHOLDER        = "ABC Child Care"
 
-  ADMIN_PROVIDER_TYPE_OF_CARE_HINT       = "long day"
+  ADMIN_PROVIDER_CARE_HINT               = "Type of care provided."
+  ADMIN_PROVIDER_CARE_PLACEHOLDER        = "Long Day"
 
   ADMIN_PROVIDER_NQS_RATING_LABEL        = "NQS rating"
   ADMIN_PROVIDER_NQS_RATING_PLACEHOLDER  = "1...3"
   ADMIN_PROVIDER_NQS_RATING_HINT         = "describe what an NQS rating means"
 
-  ADMIN_PROVIDER_LANGUAGES_LABEL         = "Languages Available"
-  ADMIN_PROVIDER_LANGUAGES_PLACEHOLDER   = "English"
-  ADMIN_PROVIDER_LANGUAGES_HINT          = "Language options offered"
+  ADMIN_PROVIDER_LANGUAGE_LABEL          = "Languages Available"
+  ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER   = "English"
+  ADMIN_PROVIDER_LANGUAGE_HINT          = "Language options offered"
 
 # 
 # Requirements

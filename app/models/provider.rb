@@ -21,4 +21,29 @@ class Provider < ActiveRecord::Base
   accepts_nested_attributes_for :certs
   accepts_nested_attributes_for :rolodexes
 
+def languages
+  [ 
+    'Arabic',
+    'Cantonese',
+    'French',
+    'German',
+    'Hebrew',
+    'Italian',
+    'Mandarin',
+    'Spanish',
+    'Other'
+  ]
+end
+
+
+# Care Categories
+  # current child care enquiry may find they need to provide a rebate to nannies and aupairs, 
+  # we need to scope the flexibility in the major build to include this)
+def HOLDcare #_categories
+ [
+  "Long Day Care",
+  "Occasional Care"
+  ]
+  end
+
 end

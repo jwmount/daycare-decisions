@@ -136,11 +136,11 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   create_table "providers", force: true do |t|
     t.integer  "company_id"
     t.string   "name"
-    t.string   "type_of_care"
+    t.string   "care"
     t.string   "NQS_rating"
-    t.string   "languages"
+    t.string   "description"
     t.string   "url"
-
+    t.string   "language"
     t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
     t.boolean  "air_conditioned"
     t.boolean  "bus_service"
@@ -155,7 +155,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "real_grass"
     t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
     t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
-
     t.datetime "created_at"
     t.datetime "updated_at"
   end
