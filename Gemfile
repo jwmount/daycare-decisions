@@ -5,11 +5,11 @@ gem 'rails', '>=4.0.1'
 gem 'rake', '10.1.0'
 
 gem 'sass-rails'
-gem 'cancan'
 gem 'haml-rails'
 gem 'carrierwave'
 
 gem 'devise'
+gem 'cancan'
 gem 'pg'
 # Allows the use of foreign keys used to protect data integrity (per Xavier Shay)
 gem 'foreigner'
