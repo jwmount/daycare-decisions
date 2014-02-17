@@ -1,6 +1,5 @@
 class Provider < ActiveRecord::Base
 
-
   # polymorphs
   has_many  :addresses, 
             :as => :addressable, 

@@ -2,25 +2,26 @@ ActiveAdmin.register Provider do
 
   menu parent: "Companies"
 
- index do
+  index do
 
     selectable_column
 
     column "Name (click for details)", :sortable => 'name' do |provider|
       render provider
-=begin
-      if company.certs.count > 0
-        @certs = company.certs
+      if provider.rolodexes.count > 0
+        @rolodexes = provider.rolodexes
+        render @rolodexes
+      end
+      if provider.certs.count > 0
+        @certs = provider.certs
         render @certs
       end
-=end
     end
 
     column :description
     column :care
     column :NQS_rating
     column :language
-    column :url
   end
 
   form do |f|
@@ -79,7 +80,7 @@ ActiveAdmin.register Provider do
     end
 
     f.inputs "Rolodexes" do
-      f.has_many :rolodexes do|r|
+      f.has_many :rolodexes do |r|
         r.input :number_or_email
         r.input :kind
         r.input :when_to_use

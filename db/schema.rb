@@ -84,12 +84,12 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   create_table "certs", force: true do |t|
-    t.integer  "certifiable_id"
-    t.string   "certifiable_type"
-    t.integer  "certificate_id"
-    t.string   "serial_number"
+    t.integer  "certifiable_id",                                            null: false
+    t.string   "certifiable_type",                                          null: false
+    t.integer  "certificate_id",                                            null: false
+    t.string   "serial_number",                     default: ""
     t.datetime "expires_on"
-    t.boolean  "active"
+    t.boolean  "active",                            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -141,8 +141,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "care"
     t.string   "NQS_rating"
     t.string   "description"
-    t.string   "disposable_nappies"
-    t.string   "cloth_nappies"
+    t.boolean  "disposable_nappies"
+    t.boolean  "cloth_nappies"
     t.string   "url"
     t.string   "language"
     t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
@@ -182,12 +182,12 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   create_table "rolodexes", force: true do |t|
-    t.integer  "rolodexable_id"
-    t.string   "rolodexable_type"
-    t.string   "number_or_email"
-    t.string   "kind"
-    t.string   "when_to_use"
-    t.string   "description"
+    t.integer  "rolodexable_id",                                            null: false
+    t.string   "rolodexable_type",                                          null: false
+    t.string   "number_or_email",                    default: ""
+    t.string   "kind",                               default: ""
+    t.string   "when_to_use",                        default: ""
+    t.string   "description",                        default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end
