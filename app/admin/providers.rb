@@ -34,6 +34,8 @@ ActiveAdmin.register Provider do
               :hint         => AdminConstants::ADMIN_PROVIDER_NAME_HINT,
               :placeholder  => AdminConstants::ADMIN_PROVIDER_NAME_PLACEHOLDER
 
+      f.input :description
+
       f.input :NQS_rating,
               :hint         => AdminConstants::ADMIN_PROVIDER_NQS_RATING_HINT,
               :placeholder  => AdminConstants::ADMIN_PROVIDER_NQS_RATING_PLACEHOLDER
@@ -64,7 +66,6 @@ ActiveAdmin.register Provider do
       f.input :real_grass
       f.input :technology
       f.input :vacancies
-      f.input :description
     end
 
 
