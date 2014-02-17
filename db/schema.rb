@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.integer  "addressable_id",                                             null: false
     t.string   "addressable_type",                                           null: false
     t.string   "street",                     default: "",                    null: false
-    t.string   "city",                       default: "",                    null: false
-    t.string   "state",            limit: 2, default: "",                    null: false
-    t.string   "post_code",                  default: "",                    null: false
-    t.integer  "lat",                        default: "",                    null: false
-    t.integer  "long",                       default: "",                    null: false
+    t.string   "suburb",                     default: "",                    null: false
+    t.string   "state",            limit: 3, default: "",                    null: false
+    t.string   "post_code",                  default: ""
+    t.integer  "lat",                        default: ""
+    t.integer  "long",                       default: ""
     t.datetime "created_at",                 default: '2013-10-08 00:00:00', null: false
     t.datetime "updated_at",                 default: '2013-10-08 00:00:00', null: false
   end
@@ -141,10 +141,12 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "care"
     t.string   "NQS_rating"
     t.string   "description"
+    t.string   "disposable_nappies"
+    t.string   "cloth_nappies"
     t.string   "url"
     t.string   "language"
     t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
-    t.boolean  "air_conditioned"
+    t.boolean  "air_conditioning"
     t.boolean  "bus_service"
     t.boolean  "extended_hours_for_kindys"
     t.boolean  "online_waitlist"

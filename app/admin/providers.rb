@@ -48,7 +48,9 @@ ActiveAdmin.register Provider do
 
       f.input :url
       f.input :food_provided
-      f.input :air_conditioned
+      f.input :disposable_nappies
+      f.input :cloth_nappies
+      f.input :air_conditioning
       f.input :bus_service
       f.input :extended_hours_for_kindys
       f.input :online_waitlist
@@ -68,7 +70,7 @@ ActiveAdmin.register Provider do
     f.inputs "Addresses" do
       f.has_many :addresses do |a|
           a.input :street
-          a.input :city
+          a.input :suburb
           a.input :state
           a.input :post_code
           a.input :lat
@@ -108,11 +110,13 @@ ActiveAdmin.register Provider do
       row :name
       row ("Address") { render provider.addresses}
       row ("Certifications") { render provider.certs}
-      row ("Rollodex") {render provider.rolodexes}
+      row ("Rolodex") {render provider.rolodexes}
       row ("Web Site") { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
       row :description
       row("Food Provided") { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
-      row("Air Conditioned") { status_tag (provider.air_conditioned ? "YES" : "No"), (provider.air_conditioned ? :ok : :error) }
+      row("Disposable Nappies") { status_tag (provider.disposable_nappies ? "YES" : "No"), (provider.disposable_nappies ? :ok : :error) }
+      row("Cloth Nappies") { status_tag (provider.cloth_nappies ? "YES" : "No"), (provider.cloth_nappies ? :ok : :error) }
+      row("Air Conditioning") { status_tag (provider.air_conditioning ? "YES" : "No"), (provider.air_conditioning ? :ok : :error) }
       row("Bus Service") { status_tag (provider.bus_service ? "YES" : "No"), (provider.bus_service ? :ok : :error) }
       row("Extended Hours for Kindys") { status_tag (provider.extended_hours_for_kindys ? "YES" : "No"), 
         (provider.extended_hours_for_kindys ? :ok : :error) }
@@ -125,8 +129,6 @@ ActiveAdmin.register Provider do
       row("outdoor_play_area") { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
       row("Real Grass") { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
       row("Technology") { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
-      row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
-      row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
       row("Vacancies") { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
       end
     #active_admin_comments
@@ -140,7 +142,7 @@ ActiveAdmin.register Provider do
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :vacancies,
-      addresses_attributes: [:street, :city, :state, :post_code, :lat, :long, :_destroy],
+      addresses_attributes: [:street, :suburn, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description],
       certs_attributes: [ :certificate_id, :serial_number, :expires_on, :active ]
 
