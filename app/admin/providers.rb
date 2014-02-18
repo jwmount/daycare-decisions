@@ -2,6 +2,30 @@ ActiveAdmin.register Provider do
 
   menu parent: "Companies"
 
+  filter :company
+  filter :name
+  filter :care
+  filter :NQS_rating
+  filter :description
+  filter :disposable_nappies
+  filter :cloth_nappies
+  filter :url
+  filter :language
+  filter :food_provided   # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
+  filter :air_conditioning
+  filter :bus_service
+  filter :extended_hours_for_kindys
+  filter :online_waitlist
+  filter :online_enrollment
+  filter :security_access
+  filter :additional_activities_included # Drop down menu: Music, Language, sports program, dance program, learning programs 
+  filter :excursions
+  filter :guest_speakers
+  filter :outdoor_play_area  # Amount of Land        Amount or drop down menu?
+  filter :real_grass
+  filter :technology         # Technology        Drop down ipad, smart screens (36mths +)
+  filter :vacancies          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+
   index do
 
     selectable_column
@@ -88,8 +112,8 @@ ActiveAdmin.register Provider do
         r.input :number_or_email
         r.input :kind
         r.input :when_to_use
-        r.input :description
       end
+      f.actions
     end
 
     f.inputs "Certs (Certificates)" do
@@ -144,12 +168,13 @@ ActiveAdmin.register Provider do
 # P E R M I T  P A R A M S
 #
 
-  permit_params :company_id, :name, :care, :description, :NQS_rating, :language, :url, :food_provided, :air_conditioned,
+  permit_params :id, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
+    :NQS_rating, :language, :url, :food_provided, :air_conditioning,
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :vacancies,
-      addresses_attributes: [:street, :suburn, :state, :post_code, :lat, :long, :_destroy],
-      rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description, :_destroy],
-      certs_attributes: [ :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
+      addresses_attributes: [:id, :street, :suburb, :state, :post_code, :lat, :long, :_destroy],
+      rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
+      certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
 
 end

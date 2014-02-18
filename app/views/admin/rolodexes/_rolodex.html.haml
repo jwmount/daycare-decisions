@@ -1,4 +1,4 @@
--if rolodex.kind == "Email"
+-if rolodex.kind == "Email" or "email"
   = rolodex.kind + ': '
   = mail_to rolodex.number_or_email
 -else

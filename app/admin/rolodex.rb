@@ -7,7 +7,6 @@ ActiveAdmin.register Rolodex do
   # filter :number_or_email
   filter :kind
   filter :when_to_use
-  filter :description
 
   index do
 
@@ -19,8 +18,8 @@ ActiveAdmin.register Rolodex do
     end
 
     column :kind
+    column :number_or_email
     column :when_to_use
-    column :description
     column :created_at
     column :updated_at
 
@@ -29,6 +28,6 @@ ActiveAdmin.register Rolodex do
 # 
 # P A R A M S
 #
-  permit_params :number_or_email, :kind,  :when_to_use,  :description
+  permit_params :number_or_email, :kind,  :when_to_use
   
 end

@@ -187,7 +187,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "number_or_email",                    default: ""
     t.string   "kind",                               default: ""
     t.string   "when_to_use",                        default: ""
-    t.string   "description",                        default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end
