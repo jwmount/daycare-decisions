@@ -18,6 +18,7 @@ ActiveAdmin.register Provider do
       end
     end
 
+    column :company
     column :description
     column :care
     column :NQS_rating
@@ -34,6 +35,8 @@ ActiveAdmin.register Provider do
               :hint         => AdminConstants::ADMIN_PROVIDER_NAME_HINT,
               :placeholder  => AdminConstants::ADMIN_PROVIDER_NAME_PLACEHOLDER
 
+      f.input :company
+      
       f.input :description
 
       f.input :NQS_rating,
@@ -110,6 +113,7 @@ ActiveAdmin.register Provider do
   show :title => :name do
     attributes_table do
       row :name
+      row :company
       row ("Address") { render provider.addresses}
       row ("Certifications") { render provider.certs}
       row ("Rolodex") {render provider.rolodexes}
@@ -140,7 +144,7 @@ ActiveAdmin.register Provider do
 # P E R M I T  P A R A M S
 #
 
-  permit_params :name, :care, :description, :NQS_rating, :language, :url, :food_provided, :air_conditioned,
+  permit_params :company_id, :name, :care, :description, :NQS_rating, :language, :url, :food_provided, :air_conditioned,
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :vacancies,

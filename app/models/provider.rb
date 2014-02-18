@@ -1,5 +1,7 @@
 class Provider < ActiveRecord::Base
 
+  belongs_to :company
+
   # polymorphs
   has_many  :addresses, 
             :as => :addressable, 

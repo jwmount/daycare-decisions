@@ -70,7 +70,7 @@ csv.each do |row|
       number_or_email: email, kind: 'Email', when_to_use: 'Anytime' )
 
   end
-  puts
+  puts p_new.name
 end
 #
 # W R A P U P
