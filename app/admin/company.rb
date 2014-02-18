@@ -7,6 +7,7 @@ ActiveAdmin.register Company do
     companies.where ({active: true})
   end
 
+  filter :company
   filter :name
   filter :description
 
@@ -54,6 +55,10 @@ end
 # P A R A M S
 # 
 
-  permit_params :name, :active, :url, :description
+  permit_params :name, :active, :url, :description,
+      addresses_attributes: [:street, :suburn, :state, :post_code, :lat, :long, :_destroy],
+      rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description, :_destroy],
+      certs_attributes: [ :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
+
 
 end

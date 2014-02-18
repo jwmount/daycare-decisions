@@ -149,7 +149,7 @@ ActiveAdmin.register Provider do
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :vacancies,
       addresses_attributes: [:street, :suburn, :state, :post_code, :lat, :long, :_destroy],
-      rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description],
-      certs_attributes: [ :certificate_id, :serial_number, :expires_on, :active ]
+      rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description, :_destroy],
+      certs_attributes: [ :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
 
 end

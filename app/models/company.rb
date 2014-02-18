@@ -1,5 +1,8 @@
 class Company < ActiveRecord::Base
 
+  has_many :people, 
+           :dependent => :destroy
+
   has_many :providers, 
            :dependent => :destroy
 

@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "title"
-    t.integer  "provider_id"
     t.boolean  "active"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -192,12 +192,12 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 
-
+=begin  No need now
   create_table "services", force: true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
+=end
 end
