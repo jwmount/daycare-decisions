@@ -1,6 +1,5 @@
 ActiveAdmin.register Company do
 
-  menu parent: "Companies"
 
   scope :all, :default => true 
   scope :active do |companies|

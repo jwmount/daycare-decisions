@@ -1,29 +1,67 @@
 ActiveAdmin.register Provider do
 
-  menu parent: "Companies"
+  scope :all, :default => true 
+  scope :disposable_nappies do |providers|
+    providers.where ({disposable_nappies: true})
+  end
+  scope :cloth_nappies do |providers|
+    providers.where ({cloth_nappies: true})
+  end
+  # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
+  scope :food_provided do |providers|
+    providers.where ({food_provided: true})
+  end
+  scope :air_conditioning do |providers|
+    providers.where ({air_conditioning: true})
+  end
+  scope :bus_service do |providers|
+    providers.where ({bus_service: true})
+  end
+  scope :extended_hours_for_kindys do |providers|
+    providers.where ({extended_hours_for_kindys: true})
+  end
+  scope :online_waitlist do |providers|
+    providers.where ({online_waitlist: true})
+  end
+  scope :online_enrollment do |providers|
+    providers.where ({online_enrollment: true})
+  end
+  scope :security_access do |providers|
+    providers.where ({online_enrollment: true})
+  end
+  scope :online_enrollment do |providers|
+    providers.where ({security_access: true})
+  end
+  scope :additional_activities_included do |providers|
+    providers.where ({additional_activities_included: true})
+  end
+  scope :excursions do |providers|
+    providers.where ({excursions: true})
+  end
+  scope :guest_speakers do |providers|
+    providers.where ({guest_speakers: true})
+  end
+  scope :outdoor_play_area do |providers|
+    providers.where ({outdoor_play_area: true})
+  end
+  scope :real_grass do |providers|
+    providers.where ({real_grass: true})
+  end
+  scope :technology do |providers|
+    providers.where ({technology: true})
+  end
+  scope :vacancies do |providers|
+    providers.where ({vacancies: true})
+  end
+
 
   filter :company
   filter :name
   filter :care
   filter :NQS_rating
   filter :description
-  filter :disposable_nappies
-  filter :cloth_nappies
   filter :url
   filter :language
-  filter :food_provided   # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
-  filter :air_conditioning
-  filter :bus_service
-  filter :extended_hours_for_kindys
-  filter :online_waitlist
-  filter :online_enrollment
-  filter :security_access
-  filter :additional_activities_included # Drop down menu: Music, Language, sports program, dance program, learning programs 
-  filter :excursions
-  filter :guest_speakers
-  filter :outdoor_play_area  # Amount of Land        Amount or drop down menu?
-  filter :real_grass
-  filter :technology         # Technology        Drop down ipad, smart screens (36mths +)
   filter :vacancies          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
 
   index do
@@ -113,7 +151,6 @@ ActiveAdmin.register Provider do
         r.input :kind
         r.input :when_to_use
       end
-      f.actions
     end
 
     f.inputs "Certs (Certificates)" do

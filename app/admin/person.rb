@@ -1,6 +1,5 @@
 ActiveAdmin.register Person do
 
-  menu parent: 'People'
 
   filter :first_name
   filter :last_name

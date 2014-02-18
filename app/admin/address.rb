@@ -1,7 +1,5 @@
 ActiveAdmin.register Address do
 
-  menu parent: "Admin"
-
   actions :all, :except => :new
 
   index do

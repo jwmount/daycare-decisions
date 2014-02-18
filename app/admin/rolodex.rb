@@ -1,7 +1,5 @@
 ActiveAdmin.register Rolodex do
 
-  menu parent: "Admin"
-
   actions :all, :except => :new
 
   # filter :number_or_email
