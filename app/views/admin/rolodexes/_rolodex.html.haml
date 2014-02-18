@@ -1,6 +1,2 @@
--if rolodex.kind == "Email" or "email"
-  = rolodex.kind + ': '
-  = mail_to rolodex.number_or_email
--else
-  = [rolodex.kind, rolodex.number_or_email,  rolodex.description].join(': ')
+= [rolodex.kind, rolodex.number_or_email].join(': ')
 %p

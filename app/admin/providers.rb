@@ -57,11 +57,11 @@ ActiveAdmin.register Provider do
 
   filter :company
   filter :name
-  filter :care
+  filter :care, :label => "Care Options"
   filter :NQS_rating
   filter :description
   filter :url
-  filter :language
+  filter :language, :label => "Language Skills Training"
   filter :vacancies          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
 
   index do
@@ -106,10 +106,12 @@ ActiveAdmin.register Provider do
               :placeholder  => AdminConstants::ADMIN_PROVIDER_NQS_RATING_PLACEHOLDER
       
       f.input :care,
+              :collection    => care_options,
               :hint          => AdminConstants::ADMIN_PROVIDER_CARE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_CARE_PLACEHOLDER
 
       f.input :language,
+              :collection    => language_options,
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
@@ -175,6 +177,8 @@ ActiveAdmin.register Provider do
     attributes_table do
       row :name
       row :company
+      row :care
+      row :NQS_rating
       row ("Address") { render provider.addresses}
       row ("Certifications") { render provider.certs}
       row ("Rolodex") {render provider.rolodexes}

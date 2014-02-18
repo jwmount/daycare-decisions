@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.integer  "company_id"
     t.string   "name"
     t.string   "care"
-    t.string   "NQS_rating"
+    t.integer   "NQS_rating"
     t.string   "description"
     t.boolean  "disposable_nappies"
     t.boolean  "cloth_nappies"
