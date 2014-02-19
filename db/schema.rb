@@ -138,11 +138,14 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   create_table "providers", force: true do |t|
     t.integer  "company_id"
     t.string   "name"
-    t.string   "care"
-    t.integer   "NQS_rating"
+    t.string   "care",            :default => 't.b.d.'
+    t.decimal  "fee",             :default => 0.00
+    t.integer  "NQS_rating",      :default => 0
     t.string   "description"
     t.boolean  "disposable_nappies"
     t.boolean  "cloth_nappies"
+    t.string   "hours"
+    t.string   "age"
     t.string   "url"
     t.string   "language"
     t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some

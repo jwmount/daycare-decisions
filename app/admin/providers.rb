@@ -59,6 +59,7 @@ ActiveAdmin.register Provider do
   filter :name
   filter :care, :label => "Care Options"
   filter :NQS_rating
+  filter :fee
   filter :description
   filter :url
   filter :language, :label => "Language Skills Training"
@@ -84,6 +85,9 @@ ActiveAdmin.register Provider do
     column :description
     column :care
     column :NQS_rating
+    column :age
+    column :fee
+    column :hours
     column :language
   end
 
@@ -109,6 +113,11 @@ ActiveAdmin.register Provider do
               :collection    => care_options,
               :hint          => AdminConstants::ADMIN_PROVIDER_CARE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_CARE_PLACEHOLDER
+
+      f.input :age
+      f.input :fee
+
+      f.input :hours
 
       f.input :language,
               :collection    => language_options,
@@ -179,6 +188,9 @@ ActiveAdmin.register Provider do
       row :company
       row :care
       row :NQS_rating
+      row :age
+      row :fee
+      row :hours
       row ("Address") { render provider.addresses}
       row ("Certifications") { render provider.certs}
       row ("Rolodex") {render provider.rolodexes}

@@ -1,4 +1,5 @@
 require 'csv'    
+require 'debugger'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -37,13 +38,13 @@ csv.each do |row|
   provider           = row.to_hash
   name               = provider['Name']
   fee                = provider['Fees']
-  disposable_nappies = provider['Disposable Nappies']
-  cloth_nappies      = provider['Cloth Nappies']
-  food               = provider['Food']
+  disposable_nappies = provider['Disposable Nappies'] == 'Y' ? true : false
+  cloth_nappies      = provider['Cloth Nappies']      == 'Y' ? true : false
+  food               = provider['Food']               == 'Y' ? true : false
   hours              = provider['Hours']
   age                = provider['Age']
-  bus                = provider['Bus']
-  air_conditioning   = provider['Air conditioning']
+  bus                = provider['Bus']                == 'Y' ? true : false
+  air_conditioning   = provider['Air conditioning']   == 'Y' ? true : false
   url                = provider['Web Address'].to_s.gsub("http://", "")
 
   street             = provider['Address']
@@ -54,11 +55,20 @@ csv.each do |row|
   phone_number       = provider['Phone Number']
   email              = provider['Email']
 
+  
   p_new = Provider.where( name: name )
   if p_new[0] == nil
-  	p_new = Provider.create( name: name, disposable_nappies: disposable_nappies, cloth_nappies: cloth_nappies,
-      	                    food_provided: food, bus_service: bus, air_conditioning: air_conditioning, url: url )
-    
+  	p_new = Provider.create!( name: name, 
+                              fee: fee,
+                              disposable_nappies: disposable_nappies, 
+                              cloth_nappies: cloth_nappies,
+      	                      food_provided: food, 
+                              hours: hours,
+                              bus_service: bus, 
+                              air_conditioning: air_conditioning, 
+                              url: url
+                            )
+
     Address.create( addressable_id: p_new[:id], addressable_type: 'Provider',
     	street: street, suburb: suburb, state: state, post_code: post_code )
 
