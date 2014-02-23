@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   create_table "agencies", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "governing_body"
     t.string   "jurisdiction"
     t.string   "url"
     t.datetime "created_at"

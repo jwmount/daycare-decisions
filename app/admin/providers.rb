@@ -73,6 +73,9 @@ ActiveAdmin.register Provider do
 
     column "Name (click for details)", :sortable => 'name' do |provider|
       render provider
+      render provider.rolodexes unless provider.rolodexes.empty?
+      render provider.addresses unless provider.addresses.empty?
+=begin
       if provider.rolodexes.count > 0
         @rolodexes = provider.rolodexes
         render @rolodexes
@@ -81,6 +84,7 @@ ActiveAdmin.register Provider do
         @certs = provider.certs
         render @certs
       end
+=end
     end
 
     column :company
