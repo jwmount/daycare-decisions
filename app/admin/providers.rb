@@ -1,5 +1,6 @@
 ActiveAdmin.register Provider do
 
+
   scope :all, :default => true 
   scope :disposable_nappies do |providers|
     providers.where ({disposable_nappies: true})
@@ -23,7 +24,7 @@ ActiveAdmin.register Provider do
   scope :online_waitlist do |providers|
     providers.where ({online_waitlist: true})
   end
-  scope :online_enrollment do |providers|
+  scope :online_waitlist do |providers|
     providers.where ({online_enrollment: true})
   end
   scope :security_access do |providers|
@@ -60,6 +61,7 @@ ActiveAdmin.register Provider do
   filter :care, :label => "Care Options"
   filter :NQS_rating
   filter :fee
+  filter :waitlist_fee
   filter :description
   filter :url
   filter :language, :label => "Language Skills Training"
@@ -86,10 +88,12 @@ ActiveAdmin.register Provider do
     column :care
     column :NQS_rating
     column :age
-    column :fee
+    column "Fee" do |provider| number_to_currency(provider.fee) end
+    column :waitlist_fee
     column :hours
     column :language
-  end
+
+  end # indexø
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -115,7 +119,8 @@ ActiveAdmin.register Provider do
               :placeholder   => AdminConstants::ADMIN_PROVIDER_CARE_PLACEHOLDER
 
       f.input :age
-      f.input :fee
+
+      f.input ('fee') { number_to_currency(provider.fee)}
 
       f.input :hours
 
@@ -134,6 +139,7 @@ ActiveAdmin.register Provider do
       f.input :extended_hours_for_kindys
       f.input :online_waitlist
       f.input :online_enrollment
+      f.input :waitlist_fee
       f.input :security_access
       f.input :additional_activities_included
       f.input :excursions
@@ -188,8 +194,8 @@ ActiveAdmin.register Provider do
       row :company
       row :care
       row :NQS_rating
-      row :age
-      row :fee
+      row ("Age Range") { provider.age }
+      row ( 'fee' ) {number_to_currency(provider.fee)}
       row :hours
       row ("Address") { render provider.addresses}
       row ("Certifications") { render provider.certs}
@@ -204,12 +210,13 @@ ActiveAdmin.register Provider do
       row("Extended Hours for Kindys") { status_tag (provider.extended_hours_for_kindys ? "YES" : "No"), 
         (provider.extended_hours_for_kindys ? :ok : :error) }
       row("On-line Waitlist") { status_tag (provider.online_waitlist ? "YES" : "No"), (provider.online_waitlist ? :ok : :error) }
-      row("On-line enrollment") { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
+      row("On-line Enrollment") { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
+      row :waitlist_fee
       row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
       row("additional_activities_included") { status_tag (provider.additional_activities_included ? "YES" : "No"), (provider.additional_activities_included ? :ok : :error) }
       row("Excursions") { status_tag (provider.excursions ? "YES" : "No"), (provider.excursions ? :ok : :error) }
       row("Guest Speakers") { status_tag (provider.guest_speakers ? "YES" : "No"), (provider.guest_speakers ? :ok : :error) }
-      row("outdoor_play_area") { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
+      row("Outdoor Play Area") { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
       row("Real Grass") { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
       row("Technology") { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
       row("Vacancies") { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
@@ -217,7 +224,11 @@ ActiveAdmin.register Provider do
     #active_admin_comments
   end #show
 
-#
+ batch_action :join_waitlist, confirm: "Are you sure you want to sign-up for the waitlists you've selected?" do |selection|
+      Provider.find(selection).each do |provider|
+        provider.join_waitlist! :hot
+      end
+    end
 # P E R M I T  P A R A M S
 #
 

@@ -6,7 +6,7 @@ require 'csv'
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-roles_list = %w[ admin management parent superadmin ]
+roles_list = %w[ admin management guardian superadmin ]
 roles_list.each do |role|
   Role.create!(name: role)
 end
@@ -16,7 +16,7 @@ user_list = [
   ['john@venuesoftware.com', 'password', 4],
   ['rebecca@daycaredecisions.com', 'password', 1],
   ['rebecca@daycaredecisions.com.au', 'password', 1],
-  ['parent@parents.com', 'password', 3]
+  ['guardian@iLab.com.au', 'password', 3]
   ]
 
 user_list.each do |email, password, role|  
@@ -63,6 +63,7 @@ csv.each do |row|
                               cloth_nappies: cloth_nappies,
       	                      food_provided: food, 
                               hours: hours,
+                              age: age,
                               bus_service: bus, 
                               air_conditioning: air_conditioning, 
                               url: url
@@ -80,14 +81,48 @@ csv.each do |row|
   end
   puts p_new.name
 end
+
+#
+# Agencies
+#
+csv_text = File.read('public/agencies.csv')
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+# Name,Address,Suburb,State,Post Code,Phone Number,Email,Web Address
+  agency             = row.to_hash
+  name               = agency['Name']
+  jurisdiction       = agency['Jurisdiction']
+  url                = agency['Web Address'].to_s.gsub("http://", "")
+
+  street             = agency['Address']
+  suburb             = agency['Suburb']
+  state              = agency['State']
+  post_code          = agency['Post Code']
+
+  phone_number       = agency['Phone Number']
+  email              = agency['Email']
+  
+  a_new = Agency.where( name: name )
+  if a_new[0] == nil
+    a_new = Agency.create!( name: name, 
+                            jurisdiction: jurisdiction,
+                            url: url
+                            )
+  end
+  puts a_new.name
+end
+
 #
 # W R A P U P
 #
 #puts "\n\nLICENSEE: \t#{@licensee}"
 puts "Addresses:    \t#{Address.count.to_s}"
+puts "Agencies:     \t#{Agency.count.to_s}"
+puts "Applications: \t#{Application.count.to_s}"
 puts "Certificates: \t#{Certificate.count.to_s}"
 puts "Cert:         \t#{Cert.count.to_s}"
 puts "Companies:    \t#{Company.count.to_s}"
+puts "Guardians:    \t#{Guardian.count.to_s}"
 puts "Rolodexes:    \t#{Rolodex.count.to_s}"
 puts "People:       \t#{Person.count.to_s}"
 puts "Providers:    \t#{Provider.count.to_s}"

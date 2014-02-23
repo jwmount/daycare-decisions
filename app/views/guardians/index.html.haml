@@ -1,0 +1,23 @@
+%h1 Listing guardians
+
+%table
+  %tr
+    %th Provider
+    %th First name
+    %th Surname
+    %th
+    %th
+    %th
+
+  - @guardians.each do |guardian|
+    %tr
+      %td= guardian.provider_id
+      %td= guardian.first_name
+      %td= guardian.surname
+      %td= link_to 'Show', guardian
+      %td= link_to 'Edit', edit_guardian_path(guardian)
+      %td= link_to 'Destroy', guardian, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Guardian', new_guardian_path

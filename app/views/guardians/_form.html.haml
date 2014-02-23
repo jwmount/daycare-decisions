@@ -1,0 +1,19 @@
+= form_for @guardian do |f|
+  - if @guardian.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@guardian.errors.count, "error")} prohibited this guardian from being saved:"
+      %ul
+        - @guardian.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :provider_id
+    = f.number_field :provider_id
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :surname
+    = f.text_field :surname
+  .actions
+    = f.submit 'Save'

@@ -68,8 +68,16 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "description"
     t.string   "governing_body"
     t.string   "jurisdiction"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "applications", force: true do |t|
+  	t.integer  "guardian_id"
+  	t.string   "form"
+  	t.datetime "created_at"
+  	t.datetime "updated_at"
   end
 
   create_table "certificates", force: true do |t|
@@ -124,6 +132,14 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 =end
 
+  create_table "guardians", force: true do |t|
+    t.integer  "provider_id"
+    t.string   "first_name"
+    t.string   "family_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", force: true do |t|
     t.integer  "company_id"
     t.string   "first_name"
@@ -137,6 +153,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
   create_table "providers", force: true do |t|
     t.integer  "company_id"
+    t.integer  "guardian_id"
     t.string   "name"
     t.string   "care",            :default => 't.b.d.'
     t.decimal  "fee",             :default => 0.00
@@ -154,6 +171,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "extended_hours_for_kindys"
     t.boolean  "online_waitlist"
     t.boolean  "online_enrollment"
+    t.decimal  "waitlist_fee"
     t.boolean  "security_access"
     t.boolean  "additional_activities_included" # Drop down menu: Music, Language, sports program, dance program, learning programs 
     t.boolean  "excursions"

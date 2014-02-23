@@ -44,6 +44,11 @@ module AdminConstants
   ADMIN_CERT_EXPIRES_ON_HINT             = "Expriation date."
   ADMIN_CERT_SERIAL_NUMBER_HINT          = "Value that makes the certificate unique.  For example, License Number, Rego, etc."
 
+#
+# Guardians
+#
+  ADMIN_GUARDIAN_SURNAME_HINT            = "Surname"
+  ADMIN_GUARDIAN_SURNAME_PLACEHOLDER     = "Surname"
   
 #
 # Person
