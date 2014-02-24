@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
   create_table "certificates", force: true do |t|
     t.string   "name"
-    t.boolean  "active"
     t.string   "description"
     t.boolean  "for_person"
     t.boolean  "for_company"

@@ -1,2 +1,8 @@
-= #{cert.certificate.name}: #{cert.serial_number},  Expires: #{cert.expires_on.strftime("%d %b, %Y")}
-%p cert - no certificate
+- unless cert.nil?   
+
+  = "#{cert.certificate.name}: #{cert.serial_number}, " + " Expires: #{cert.expires_on.strftime('%d %b, %Y')}"
+  %br
+- else
+  
+  %h4= "No certifications."
+

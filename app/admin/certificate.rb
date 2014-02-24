@@ -3,12 +3,6 @@ ActiveAdmin.register Certificate do
   menu parent: "Compliance"
 
   scope :all, :default => true 
-  scope :active do |certificates|
-    certificates.where ({active: true})
-  end
-  scope :inactive do |certificates|
-    certificates.where ({active: false})
-  end
   scope :people do |certificates|
     certificates.where ({for_person: true})
   end
@@ -28,9 +22,6 @@ ActiveAdmin.register Certificate do
       status_tag (certificate.for_provider ? 'YES' : 'No'), (certificate.for_provider ? :ok : :error)
     end    
 
-    column :active do |certificate|
-      status_tag (certificate.active ? "YES" : "No"), (certificate.active ? :ok : :error)      
-    end    
   end
   
   form do |f|
@@ -42,8 +33,6 @@ ActiveAdmin.register Certificate do
               :placeholder => "Name"
       f.input :description, 
               :placeholder => "Description"
-      f.input :active, 
-              :as => :radio
       f.input :for_provider
       f.input :for_person
 
@@ -56,7 +45,6 @@ ActiveAdmin.register Certificate do
     panel "Certificate Details" do
       attributes_table_for certificate do
         row("Name") { certificate.name }
-        row("Active") { status_tag (certificate.active ? "YES" : "No"), (certificate.active ? :ok : :error) }
         row("Description") {certificate.description}
         row("For Person") { status_tag (certificate.for_person ? "YES" : "No"), (certificate.for_person ? :ok : :error) }
         row("For Provider") { status_tag (certificate.for_company ? "YES" : "No"), (certificate.for_company ? :ok : :error) }

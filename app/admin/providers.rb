@@ -75,16 +75,6 @@ ActiveAdmin.register Provider do
       render provider
       render provider.rolodexes unless provider.rolodexes.empty?
       render provider.addresses unless provider.addresses.empty?
-=begin
-      if provider.rolodexes.count > 0
-        @rolodexes = provider.rolodexes
-        render @rolodexes
-      end
-      if provider.certs.count > 0
-        @certs = provider.certs
-        render @certs
-      end
-=end
     end
 
     column :company

@@ -113,6 +113,21 @@ csv.each do |row|
 end
 
 #
+# CERTIFICATES
+#
+# http://www.acecqa.gov.au/Qualifications.aspx
+#
+personal_certificates_list = [
+    'Supervisor Certificate',
+    'First Aid Certificate',
+    'Blue Card',
+    'Certificate 4 in Out of School Hours Care'
+  ]
+
+personal_certificates_list.each do |name|
+  Certificate.create!(name: name, for_person: true)
+end
+#
 # W R A P U P
 #
 #puts "\n\nLICENSEE: \t#{@licensee}"

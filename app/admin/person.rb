@@ -12,12 +12,26 @@ ActiveAdmin.register Person do
     people.where ({active: true})
   end
 
+ index do
+
+    selectable_column
+
+    column "Name (click for details)", :sortable => 'name' do |person|
+      render person
+      render person.rolodexes
+      render person.addresses
+      render person.certs
+    end
+    column :title
+    column :company
+    column :description
+
+  end # index
+
+
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    #error_panel f
-
-    f.inputs "Person Details" do
-
+    
       f.input :first_name, 
               :hint         => AdminConstants::ADMIN_PERSON_FIRST_NAME_HINT,
               :placeholder  => AdminConstants::ADMIN_PERSON_FIRST_NAME_PLACEHOLDER
@@ -26,8 +40,7 @@ ActiveAdmin.register Person do
       f.input :title
       f.input :company
       f.input :description
-    end
-
+  
     f.inputs "Addresses" do
       f.has_many :addresses do |a|
           a.input :street
@@ -44,7 +57,6 @@ ActiveAdmin.register Person do
         r.input :number_or_email
         r.input :kind
         r.input :when_to_use
-        r.input :description
       end
     end
 
@@ -54,9 +66,8 @@ ActiveAdmin.register Person do
         f.input :certificate,
                 :collection => Certificate.where({:for_person => true}),
                 :include_blank => false
-
         f.input :active
-
+        f.input :serial_number
         f.input :expires_on, 
                 :as => :date_picker,
                 :hint => AdminConstants::ADMIN_CERT_EXPIRES_ON_HINT
@@ -65,7 +76,13 @@ ActiveAdmin.register Person do
     f.actions
   end #form
 
+  show :title => 'Personal Details' do
+    h3 person.full_name
+    render person.addresses
+    render person.rolodexes
+    render person.certs
 
+  end
 #
 # P A R A M S
 #
