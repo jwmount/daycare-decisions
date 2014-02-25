@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Guardian:
+  = @waitlist_application.guardian_id
+
+= link_to 'Edit', edit_waitlist_application_path(@waitlist_application)
+\|
+= link_to 'Back', waitlist_applications_path

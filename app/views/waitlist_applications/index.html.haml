@@ -1,0 +1,19 @@
+%h1 Listing waitlist_applications
+
+%table
+  %tr
+    %th Guardian
+    %th
+    %th
+    %th
+
+  - @waitlist_applications.each do |waitlist_application|
+    %tr
+      %td= waitlist_application.guardian_id
+      %td= link_to 'Show', waitlist_application
+      %td= link_to 'Edit', edit_waitlist_application_path(waitlist_application)
+      %td= link_to 'Destroy', waitlist_application, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Waitlist application', new_waitlist_application_path

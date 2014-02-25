@@ -1,4 +1,6 @@
 DaycareDecisions::Application.routes.draw do
+  resources :waitlist_applications
+
   resources :guardians
 
   resources :applications

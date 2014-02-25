@@ -76,20 +76,22 @@ ActiveAdmin.register Person do
     f.actions
   end #form
 
-  show :title => 'Personal Details' do
-    h3 person.full_name
-    render person.addresses
-    render person.rolodexes
-    render person.certs
-
+  show :title => :full_name do
+    attributes_table do
+      row("Active") { status_tag (person.active ? "YES" : "No"), (person.active ? :ok : :error) }
+      row :company
+      row ("Rolodex") {render person.rolodexes}
+      row ("Address") { render person.addresses}
+      row ("Certifications") { render person.certs}
+    end
   end
 #
 # P A R A M S
 #
 
   permit_params :company_id, :first_name, :last_name, :title, :active,
-      addresses_attributes: [:street, :suburn, :state, :post_code, :lat, :long, :_destroy ],
-      rolodexes_attributes: [:number_or_email, :kind, :when_to_use, :description, :_destroy ],
-      certs_attributes: [ :certificate_id, :serial_number, :expires_on, :active, :_destroy ]  
+      addresses_attributes: [:id, :street, :suburn, :state, :post_code, :lat, :long, :_destroy ],
+      rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy ],
+      certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ]  
 
 end

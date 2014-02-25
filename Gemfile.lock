@@ -71,6 +71,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     columnize (0.3.6)
+    country-select (1.1.1)
     debug_inspector (0.0.2)
     debugger (1.6.5)
       columnize (>= 0.3.1)
@@ -216,6 +217,7 @@ DEPENDENCIES
   binding_of_caller
   cancan
   carrierwave
+  country-select
   debugger
   devise
   foreigner

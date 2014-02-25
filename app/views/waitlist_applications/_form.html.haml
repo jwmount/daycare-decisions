@@ -1,0 +1,13 @@
+= form_for @waitlist_application do |f|
+  - if @waitlist_application.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@waitlist_application.errors.count, "error")} prohibited this waitlist_application from being saved:"
+      %ul
+        - @waitlist_application.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :guardian_id
+    = f.number_field :guardian_id
+  .actions
+    = f.submit 'Save'

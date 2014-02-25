@@ -72,13 +72,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 
-  create_table "applications", force: true do |t|
-  	t.integer  "guardian_id"
-  	t.string   "form"
-  	t.datetime "created_at"
-  	t.datetime "updated_at"
-  end
-
   create_table "certificates", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -131,13 +124,14 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 =end
 
   create_table "guardians", force: true do |t|
-    t.integer  "provider_id"
+    t.integer  "waitlist_id"
     t.string   "first_name"
     t.string   "family_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  
   create_table "people", force: true do |t|
     t.integer  "company_id"
     t.string   "first_name"
@@ -218,4 +212,59 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 =end
+create_table "waitlist_applications", force: true do |t|
+    t.integer  "guardian_id"
+    t.integer  "provider_id"
+    t.datetime "lodged_on"
+    t.string   "lodged_by"
+    t.integer  "lodged_for"
+    t.integer  "active"
+    t.string   "form_name"
+
+
+    t.string    "enrolment_goal"
+    t.datetime  "enrolment_goal_date"
+    t.datetime  "enroled_on"
+    t.string    "gender"
+    t.datetime  "dob" 
+    t.string    "born_country"
+    t.datetime  "confined_on"
+    t.string    "languages_spoken_at_home"
+    t.string    "special_needs"
+    t.string    "cultural_needs"
+
+    t.string    "mothers_name"
+    t.string    "mothers_occupation"
+    t.time      "mothers_hours_of_work"   
+    t.string    "mothers_employer"
+    t.string    "mothers_employment_status"   
+    t.boolean   "mother_is_aboriginal_descent"
+    t.boolean   "mother_has_other_children"
+    t.integer   "mother_dependents_count"
+
+    t.string    "fathers_name"
+    t.string    "fathers_occupation"
+    t.time      "fathers_hours_of_work"
+    t.string    "fathers_employer"
+    t.string    "fathers_employment_status"
+    t.boolean   "father_is_aboriginal_descent"
+    t.boolean   "father_has_other_children"
+    t.integer   "father_dependents_count"
+
+    t.integer   "number_care_days_required"
+    t.boolean   "care_day_sunday"
+    t.boolean   "care_day_monday"
+    t.boolean   "care_day_tuesday"
+    t.boolean   "care_day_wednesday"
+    t.boolean   "care_day_thursday"
+    t.boolean   "care_day_friday"
+    t.boolean   "care_day_saturday"
+    t.boolean   "will_accept_available"
+    
+    t.string    "special_circumstances"
+
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end

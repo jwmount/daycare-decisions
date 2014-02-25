@@ -73,8 +73,8 @@ ActiveAdmin.register Provider do
 
     column "Name (click for details)", :sortable => 'name' do |provider|
       render provider
-      render provider.rolodexes unless provider.rolodexes.empty?
-      render provider.addresses unless provider.addresses.empty?
+      render provider.rolodexes# unless provider.rolodexes.empty?
+      render provider.addresses# unless provider.addresses.empty?
     end
 
     column :company
@@ -218,11 +218,30 @@ ActiveAdmin.register Provider do
     #active_admin_comments
   end #show
 
+  batch_action :add_to_my_list, confirm: "Add selected providers to your provider short-list??" do |selection|
+    Provider.find(selection).each do |provider|
+      provider.prepare_waitlist_application! :hot
+    end
+  end
+
+  batch_action :Show_to_my_list, confirm: "Show only my selected providers?" do |selection|
+    Provider.find(selection).each do |provider|
+      provider.prepare_waitlist_application! :hot
+    end
+  end
+ 
+ batch_action :prepare_waitlist_application, confirm: "You want to prepare a waitlist application??" do |selection|
+      Provider.find(selection).each do |provider|
+        provider.prepare_waitlist_application! :hot
+      end
+    end
  batch_action :join_waitlist, confirm: "Are you sure you want to sign-up for the waitlists you've selected?" do |selection|
       Provider.find(selection).each do |provider|
         provider.join_waitlist! :hot
       end
     end
+
+#
 # P E R M I T  P A R A M S
 #
 

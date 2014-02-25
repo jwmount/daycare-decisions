@@ -2,6 +2,8 @@ class Provider < ActiveRecord::Base
 
   belongs_to :company
 
+  has_many :waitlist_applications
+  
   # polymorphs
   has_many  :addresses, 
             :as => :addressable, 
