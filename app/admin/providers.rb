@@ -51,6 +51,9 @@ ActiveAdmin.register Provider do
   scope :technology do |providers|
     providers.where ({technology: true})
   end
+  scope :sibling_has_priority do |providers|
+    providers.where ({sibling_has_priority: true})
+  end
   scope :vacancies do |providers|
     providers.where ({vacancies: true})
   end
@@ -79,10 +82,12 @@ ActiveAdmin.register Provider do
 
     column :company
     column :description
-    column :care
+    column "Care Options" do |provider|
+      provider.care
+      end 
     column :NQS_rating
-    column :age
-    column "Fee" do |provider| number_to_currency(provider.fee) end
+    column "Ages" do |provider| provider.age end
+    column "Fee"  do |provider| number_to_currency(provider.fee) end
     column :waitlist_fee
     column :hours
     column :language
@@ -141,6 +146,7 @@ ActiveAdmin.register Provider do
       f.input :outdoor_play_area
       f.input :real_grass
       f.input :technology
+      f.input :sibling_has_priority
       f.input :vacancies
     end
 
@@ -213,6 +219,7 @@ ActiveAdmin.register Provider do
       row("Outdoor Play Area") { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
       row("Real Grass") { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
       row("Technology") { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
+      row("Sibling Has Priority") { status_tag (provider.sibling_has_priority ? "YES" : "No"), (provider.sibling_has_priority ? :ok : :error) }
       row("Vacancies") { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
       end
     #active_admin_comments
@@ -261,7 +268,7 @@ ActiveAdmin.register Provider do
     :NQS_rating, :language, :url, :food_provided, :air_conditioning,
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
-    :technology, :vacancies,
+    :technology, :sibling_has_priority, :vacancies,
       addresses_attributes: [:id, :street, :suburb, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
       certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
