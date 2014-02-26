@@ -1,8 +1,9 @@
 class Guardian < ActiveRecord::Base
 
   has_many :waitlist_applications
-  has_many :providers
-
+  #has_many :providers
+  has_and_belongs_to_many :providers
+  
   # polymorphs
   has_many  :addresses, 
             :as        => :addressable, 

@@ -1,6 +1,8 @@
 ActiveAdmin.register Service do
 
- index do
+  menu false
+
+  index do
 
     selectable_column
 
@@ -9,6 +11,7 @@ ActiveAdmin.register Service do
     end
 
     column :description
+    
   end
   
   permit_params :name, :description  

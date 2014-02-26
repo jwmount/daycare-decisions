@@ -2,7 +2,9 @@ class Provider < ActiveRecord::Base
 
   belongs_to :company
 
-  has_many :waitlist_applications
+  #has_many :waitlist_applications
+  has_and_belongs_to_many :guardians
+
   
   # polymorphs
   has_many  :addresses, 
@@ -28,6 +30,9 @@ class Provider < ActiveRecord::Base
   validates :NQS_rating,
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 3}
 
-
+  def add_to_list! hot
+    puts hot
+    true
+  end
 
 end
