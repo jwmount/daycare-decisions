@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 
-create_table "guardians_providers", id: false  do |t|
+  create_table "guardians_providers", force: true, id: false  do |t|
     t.integer "guardian_id",      null: false
     t.integer "provider_id",      null: false
   end
