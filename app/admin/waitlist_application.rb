@@ -28,12 +28,56 @@ ActiveAdmin.register WaitlistApplication do
       f.input :lodged_on
     end
 
+    f.inputs "Child Details" do |wla|
+      f.input :lodged_for
+      f.input :enrolment_goal
+      f.input :enrolment_goal_date
+      f.input :enroled_on
+      f.input :gender
+      f.input :dob
+      #f.input :born_country #f.country_select :country_code
+      f.input :confined_on
+      f.input :languages_spoken_at_home
+      f.input :special_needs
+      f.input :cultural_needs
+    end
+
     f.inputs "Mother's Details" do |wla|
       f.input :mothers_name
+      f.input :mothers_occupation
+      f.input :mothers_hours_of_work
+      f.input :mothers_employer
+      f.input :mothers_employment_status
+      f.input :mother_is_aboriginal_descent
+      f.input :mother_has_other_children
+      f.input :mother_dependents_count
     end
 
     f.inputs "Father's Details" do |wla|
       f.input :fathers_name
+      f.input :fathers_occupation
+      f.input :fathers_hours_of_work
+      f.input :fathers_employer
+      f.input :fathers_employment_status
+      f.input :father_is_aboriginal_descent
+      f.input :father_has_other_children
+      f.input :father_dependents_count
+    end
+
+    f.inputs "Schedule Details" do |wla|
+      f.input :number_care_days_required
+      f.input :care_day_sunday
+      f.input :care_day_monday
+      f.input :care_day_tuesday
+      f.input :care_day_wednesday
+      f.input :care_day_thursday
+      f.input :care_day_friday
+      f.input :care_day_saturday
+      f.input :will_accept_available
+    end
+
+    f.inputs "Special Circumstances" do |wla|
+      f.input :special_circumstances
     end
 
   end # form
@@ -43,6 +87,9 @@ ActiveAdmin.register WaitlistApplication do
     attributes_table do
       row :guardian_id
       row :provider_id
+      row :lodged_by
+      row :lodged_for
+      row :active
       row :special_needs
       row :description
       row("Mother is aboriginal descent") { status_tag (waitlist_application.mother_is_aboriginal_descent ? "YES" : "No"), (waitlist_application.mother_is_aboriginal_descent ? :ok : :error) }

@@ -19,7 +19,7 @@ gem 'taps'  #needed by Heroku
 gem 'debugger', group: :development
 
 gem 'uglifier', '>= 1.0.3'
-gem 'country-select'
+gem "country_select"
 
 group :development do
   gem 'better_errors'	

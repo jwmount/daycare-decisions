@@ -81,7 +81,8 @@ csv.each do |row|
   end
   puts p_new.name
 end
-
+puts
+puts
 #
 # Agencies
 #
