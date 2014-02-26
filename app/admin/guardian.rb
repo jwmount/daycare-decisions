@@ -21,6 +21,9 @@ ActiveAdmin.register Guardian do
     f.semantic_errors *f.object.errors.keys
 
     f.inputs "Guardian Details" do
+      f.input :first_name,
+              :hint         => AdminConstants::ADMIN_GUARDIAN_FIRST_NAME_HINT,
+              :placeholder  => AdminConstants::ADMIN_GUARDIAN_FIRST_NAME_PLACEHOLDER
 
       f.input :family_name, 
               :hint         => AdminConstants::ADMIN_GUARDIAN_SURNAME_HINT,

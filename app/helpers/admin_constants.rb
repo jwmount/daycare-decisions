@@ -47,6 +47,9 @@ module AdminConstants
 #
 # Guardians
 #
+  ADMIN_GUARDIAN_FIRST_NAME_HINT         = "Name or something."
+  ADMIN_GUARDIAN_FIRST_NAME_PLACEHOLDER  = "first name"
+  
   ADMIN_GUARDIAN_SURNAME_HINT            = "Surname"
   ADMIN_GUARDIAN_SURNAME_PLACEHOLDER     = "Surname"
   
