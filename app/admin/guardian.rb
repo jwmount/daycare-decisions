@@ -11,7 +11,7 @@ ActiveAdmin.register Guardian do
     end
 
     column "Provider Waitlists" do |guardian|
-      render guardian.applications unless guardian.applications.empty?
+      render guardian.waitlist_applications unless guardian.waitlist_applications.empty?
     end
 
   end #index
