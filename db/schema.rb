@@ -123,10 +123,13 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 =end
 
+  # Set guardian_handle to be login name and use this to locate the guardian
+  # currently logged on.  
   create_table "guardians", force: true do |t|
     t.integer  "waitlist_id"
     t.string   "first_name"
     t.string   "family_name"
+    t.string   "handle"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -135,6 +138,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.integer "guardian_id",      null: false
     t.integer "provider_id",      null: false
   end
+  add_index "guardians_providers", [:guardian_id, :provider_id], name: "index_guardians_providers", using: :btree
 
   create_table "people", force: true do |t|
     t.integer  "company_id"
@@ -149,7 +153,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
   create_table "providers", force: true do |t|
     t.integer  "company_id"
-    t.integer  "guardian_id"
     t.string   "name"
     t.string   "care",            :default => 't.b.d.'
     t.decimal  "fee",             :default => 0.00

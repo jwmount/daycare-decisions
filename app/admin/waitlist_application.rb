@@ -21,9 +21,6 @@ ActiveAdmin.register WaitlistApplication do
       f.input :guardian,
               :include_blank => false
 
-      f.input :provider,
-              :include_blank => false
-
       f.input :lodged_by
       f.input :lodged_on
       f.input :active, 

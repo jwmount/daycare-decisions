@@ -1,5 +1,7 @@
 ActiveAdmin.register Guardian do
 
+  filter :name
+
   index do
 
     selectable_column
@@ -8,6 +10,10 @@ ActiveAdmin.register Guardian do
       render guardian
       render guardian.rolodexes unless guardian.rolodexes.empty?
       render guardian.addresses unless guardian.addresses.empty?
+    end
+
+    column "My Providers" do |guardian|
+      render guardian.providers
     end
 
     column "Provider Waitlists" do |guardian|
@@ -50,6 +56,19 @@ ActiveAdmin.register Guardian do
     end
     f.actions
   end #form
+
+#
+# My Providers Action Item - Display 'My' Prefered Providers
+#
+  action_item :only => [:index] do
+    link_to 'My Waitlist Application', admin_waitlist_applications_path
+  end
+
+  # My Prefered Provider List
+  member_action :mylist, :method => :get do
+    @waitlist_application = guardian.waitlist_application
+    redirect_to admin_waitlist_applications_path
+  end
 
 
   permit_params :first_name, :family_name,

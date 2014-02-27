@@ -210,8 +210,8 @@ ActiveAdmin.register Provider do
       row("Extended Hours for Kindys") { status_tag (provider.extended_hours_for_kindys ? "YES" : "No"), 
         (provider.extended_hours_for_kindys ? :ok : :error) }
       row("On-line Waitlist") { status_tag (provider.online_waitlist ? "YES" : "No"), (provider.online_waitlist ? :ok : :error) }
-      row("On-line Enrollment") { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
       row :waitlist_fee
+      row("On-line Enrollment") { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
       row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
       row("additional_activities_included") { status_tag (provider.additional_activities_included ? "YES" : "No"), (provider.additional_activities_included ? :ok : :error) }
       row("Excursions") { status_tag (provider.excursions ? "YES" : "No"), (provider.excursions ? :ok : :error) }
@@ -225,38 +225,38 @@ ActiveAdmin.register Provider do
     #active_admin_comments
   end #show
 
-#
-# My Providers Action Item - Display 'My' Prefered Providers
-#
-  action_item :only => [:index] do
-    link_to 'My Provider List', admin_providers_path
-  end
-
-  # My Prefered Provider List
-  member_action :mylist, :method => :get do
-  end
 
 #
 # batch actions
 #
   # add selected providers to user's list of prefered care providers
+  # This works:  current_admin_user.email
+  # http://stackoverflow.com/questions/4149326/rails-devise-get-object-of-the-currently-logged-in-user
   batch_action :add_to_list, confirm: "Add selected providers to your prefered provider list??" do |selection|
-    guardian = Guardian.first
+    @guardian = Guardian.first
+    @guardian.handle = current_admin_user.email
+    @guardian.save!
+
+    @guardian = Guardian.where(handle: current_admin_user.email)
+    @guardian = @guardian[0]
+    @guardian.providers.clear
+
     Provider.find(selection).each do |provider|
-      GuardiansProviders.create!(:guardian_id=>guardian.id, :provider_id=>provider.id)
+      @guardian.providers << provider
     end
+    
     redirect_to admin_providers_path
   end
 
   # remove_provider -- remove provider from user's list of prefered providers
+  # Do not destroy guardian or provider objects.
+  # http://apidock.com/rails/ActiveRecord/Associations/ClassMethods/has_and_belongs_to_many
   batch_action :clear_list, confirm: "Clear all providers from your list of selected providers?" do |selection|
-    guardian = Guardian.first
-    #Provider.find(selection).each do |provider|
-      guardian.providers.delete_all
-     # assoc_gp = GuardiansProviders.find(:guardian_id=>guardian.id, :provider_id=>provider.id)
-     # assoc_qp.destroy
-    #end
-    redirect_to admin_providers_path
+    @guardian = Guardian.first
+    gps = @guardian_providers unless @guardian.nil?
+    gps.clear unless gps.nil?
+    #redirect_to admin_providers_path
+    redirect_to admin_providers_path, {:notice => "My list of providers."}
   end
  
 
@@ -264,9 +264,10 @@ ActiveAdmin.register Provider do
 # P E R M I T  P A R A M S
 #
 
-  permit_params :id, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
-    :NQS_rating, :language, :url, :food_provided, :air_conditioning,
-    :bus_service, :extended_hours_for_kindys, :online_waitlist, :online_enrollment, :security_access,
+  permit_params :id, :age, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
+    :hours, :NQS_rating, :language, :url, :food_provided, :air_conditioning,
+    :bus_service, :extended_hours_for_kindys, :online_waitlist, :fee, :waitlist_fee, 
+    :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :sibling_has_priority, :vacancies,
       addresses_attributes: [:id, :street, :suburb, :state, :post_code, :lat, :long, :_destroy],
