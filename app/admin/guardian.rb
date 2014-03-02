@@ -16,9 +16,18 @@ ActiveAdmin.register Guardian do
       render guardian.providers
     end
 
-    column "Provider Waitlists" do |guardian|
+=begin
+    column "Provider Waitlist" do |guardian|
       render guardian.waitlist_applications unless guardian.waitlist_applications.empty?
     end
+    column :waitlist_applications do |guardian|
+      if guardian.waitlist_applications.count > 0
+        link_to "Waitlist Application (#{guardian.waitlist_applications.count.to_s})", admin_guardian_waitlist_applications_path( guardian )
+      else
+        link_to "New Application", new_admin_guardian_waitlist_applications_path( guardian )
+      end
+    end
+=end
 
   end #index
 
@@ -60,8 +69,9 @@ ActiveAdmin.register Guardian do
 #
 # My Providers Action Item - Display 'My' Prefered Providers
 #
+=begin
   action_item :only => [:index] do
-    link_to 'My Waitlist Application', admin_waitlist_applications_path
+    link_to 'My Waitlist Application', admin_guardian_waitlist_applications_path( guardian )
   end
 
   # My Prefered Provider List
@@ -69,7 +79,7 @@ ActiveAdmin.register Guardian do
     @waitlist_application = guardian.waitlist_application
     redirect_to admin_waitlist_applications_path
   end
-
+=end
 
   permit_params :first_name, :family_name,
       addresses_attributes: [:id, :street, :suburb, :state, :post_code, :lat, :long, :_destroy],

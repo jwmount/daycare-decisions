@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "suburb",                     default: "",                    null: false
     t.string   "state",            limit: 3, default: "",                    null: false
     t.string   "post_code",                  default: ""
-    t.integer  "lat",                        default: ""
-    t.integer  "long",                       default: ""
+    t.float    "lat",                        default: ""
+    t.float    "long",                       default: ""
     t.datetime "created_at",                 default: '2013-10-08 00:00:00', null: false
     t.datetime "updated_at",                 default: '2013-10-08 00:00:00', null: false
   end
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "agencies", force: true do |t|
-    t.string   "name"
+    t.string   "name",                                                   null: false
     t.string   "description"
     t.string   "jurisdiction"
     t.string   "url"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   create_table "certificates", force: true do |t|
-    t.string   "name"
+    t.string   "name",                                                  null: false
     t.string   "description"
     t.boolean  "for_person"
     t.boolean  "for_company"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 =end
   create_table "companies", force: true do |t|
-    t.string   "name"
+    t.string   "name",                                null: false
     t.boolean  "active"
     t.string   "url"
     t.string   "description"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   # Set guardian_handle to be login name and use this to locate the guardian
   # currently logged on.  
   create_table "guardians", force: true do |t|
-    t.integer  "waitlist_id"
+    t.integer  "waitlist_application_id"
     t.string   "first_name"
     t.string   "family_name"
     t.string   "handle"
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   create_table "requirements", force: true do |t|
     t.integer  "requireable_id"
     t.string   "requireable_type"
-    t.integer  "certificate_id"
+    t.integer  "certificate_id",                                           null: false
     t.integer  "for_person"
     t.integer  "for_company"
     t.integer  "for_provider"
@@ -197,7 +197,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   create_table "roles", force: true do |t|
-    t.string   "name"
+    t.string   "name",                                                      null:false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -228,7 +228,6 @@ create_table "waitlist_applications", force: true do |t|
     t.integer  "lodged_for"
     t.integer  "active",         defalut: true,        null: false
     t.string   "form_name",      default: 'master'
-
 
     t.string    "enrolment_goal"
     t.datetime  "enrolment_goal_date"

@@ -18,6 +18,13 @@ class Guardian < ActiveRecord::Base
   accepts_nested_attributes_for :addresses
   accepts_nested_attributes_for :rolodexes
 
+  scope :alphabetically, order("family_name ASC")
+  
+  #
+  # V A L I D A T I O N S    V A L I D A T I O N S    V A L I D A T I O N S    V A L I D A T I O N S
+  #
+  validates_presence_of :family_name
+
 
 
   def full_name

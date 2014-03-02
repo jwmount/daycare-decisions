@@ -98,19 +98,32 @@ module AdminConstants
   ADMIN_ROLODEX_NUMBER_OR_EMAIL_HINT             = "Kind of device or way to communicate with this Person.  Cannot be blank. E.g. person@company.com."
   ADMIN_ROLODEX_NUMBER_OR_EMAIL_PLACEHOLDER      = "0408 399 099"
 
-  ADMIN_ROLODEX_KIND_LABEL           = "Phone Number, address, etc."            
-  ADMIN_ROLODEX_KIND_HINT            = "Number, address, etc.  For example, 514 509-8381, or info@somecompany.com."
-  ADMIN_ROLODEX_KIND_PLACEHOLDER     = "Phone number, email address, ..."
+  ADMIN_ROLODEX_KIND_LABEL                       = "Phone Number, address, etc."            
+  ADMIN_ROLODEX_KIND_HINT                        = "Number, address, etc.  For example, 514 509-8381, or info@somecompany.com."
+  ADMIN_ROLODEX_KIND_PLACEHOLDER                 = "Phone number, email address, ..."
 
-  ADMIN_ROLODEX_WHEN_TO_USE_LABEL            = "Priority of use."
-  ADMIN_ROLODEX_WHEN_TO_USE_HINT             = "Order prefered."
-  ADMIN_ROLODEX_WHEN_TO_USE_PLACEHOLDER      = "1..9"
+  ADMIN_ROLODEX_WHEN_TO_USE_LABEL                = "Priority of use."
+  ADMIN_ROLODEX_WHEN_TO_USE_HINT                 = "Order prefered."
+  ADMIN_ROLODEX_WHEN_TO_USE_PLACEHOLDER          = "1..9"
 
 #
 # Roles
 #
 # none
 
+#
+# WAITLIST_APPLICATION
+#
+  ADMIN_WAITLIST_APPLICATION_GUARDIAN_LABEL        = "Guardian (Parent)"
+  ADMIN_WAITLIST_APPLICATION_GUARDIAN_HINT         = "Person responsible for this application."
+  ADMIN_WLA_GUARDIAN_PLACEHOLDER                   = "Shorter one"
 
+#  ADMIN_WAITLIST_APPLICATION_LODGED_BY_NAME        = "Person lodging this application"
+  ADMIN_WAITLIST_APPLICATION_LODGED_BY_HINT        = "Person lodging this application"
+  ADMIN_WAITLIST_APPLICATION_LODGED_BY_PLACEHOLDER = "Name"
+  
+#  ADMIN_WAITLIST_APPLICATION_LODGED_ON_NAME        = ""  
+  ADMIN_WAITLIST_APPLICATION_LODGED_ON_HINT         = "Date application was or will be lodged with Daycare Decisions"
+#  ADMIN_WAITLIST_APPLICATION_LODGED_ON_PLACEHOLDER  = ""
 
-end
+  ADMIN_WAITLIST_APPLICATION_ACTIVE_HINT            = "State of this application."
