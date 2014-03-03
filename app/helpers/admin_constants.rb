@@ -71,6 +71,11 @@ module AdminConstants
 #
 # Provider
 #
+
+  ADMIN_PROVIDER_AGE_LABEL               = ""
+  ADMIN_PROVIDER_AGE_HINT                = "Age range accomodated.  For example, '3 to 6 months'."
+  ADMIN_PROVIDER_AGE_PLACEHOLDER         = "3 to 6 months"
+
   ADMIN_PROVIDER_NAME_LABEL              = "Provider Name"
   ADMIN_PROVIDER_NAME_HINT               = "Provider name"
   ADMIN_PROVIDER_NAME_PLACEHOLDER        = "ABC Child Care"
@@ -78,13 +83,15 @@ module AdminConstants
   ADMIN_PROVIDER_CARE_HINT               = "Type of care provided."
   ADMIN_PROVIDER_CARE_PLACEHOLDER        = "Long Day"
 
+  ADMIN_PROVIDER_COMPANY_HINT            = "Company that owns or operates this facility."
+
   ADMIN_PROVIDER_NQS_RATING_LABEL        = "NQS rating"
   ADMIN_PROVIDER_NQS_RATING_PLACEHOLDER  = "1...3"
   ADMIN_PROVIDER_NQS_RATING_HINT         = "describe what an NQS rating means"
 
   ADMIN_PROVIDER_LANGUAGE_LABEL          = "Languages Available"
-  ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER   = "English"
-  ADMIN_PROVIDER_LANGUAGE_HINT          = "Language options offered"
+  ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER    = "English"
+  ADMIN_PROVIDER_LANGUAGE_HINT           = "Language options offered"
 
 # 
 # Requirements
@@ -116,14 +123,16 @@ module AdminConstants
 #
   ADMIN_WAITLIST_APPLICATION_GUARDIAN_LABEL        = "Guardian (Parent)"
   ADMIN_WAITLIST_APPLICATION_GUARDIAN_HINT         = "Person responsible for this application."
-  ADMIN_WLA_GUARDIAN_PLACEHOLDER                   = "Shorter one"
+  ADMIN_WAITLIST_APPLICATION_GUARDIAN_PLACEHOLDER  = "Shorter one"
 
-#  ADMIN_WAITLIST_APPLICATION_LODGED_BY_NAME        = "Person lodging this application"
+  ADMIN_WAITLIST_APPLICATION_LODGED_BY_NAME        = "Person lodging this application"
   ADMIN_WAITLIST_APPLICATION_LODGED_BY_HINT        = "Person lodging this application"
   ADMIN_WAITLIST_APPLICATION_LODGED_BY_PLACEHOLDER = "Name"
   
-#  ADMIN_WAITLIST_APPLICATION_LODGED_ON_NAME        = ""  
-  ADMIN_WAITLIST_APPLICATION_LODGED_ON_HINT         = "Date application was or will be lodged with Daycare Decisions"
-#  ADMIN_WAITLIST_APPLICATION_LODGED_ON_PLACEHOLDER  = ""
+  ADMIN_WAITLIST_APPLICATION_LODGED_ON_NAME        = ""  
+  ADMIN_WAITLIST_APPLICATION_LODGED_ON_HINT        = "Date application was or will be lodged with Daycare Decisions"
+  ADMIN_WAITLIST_APPLICATION_LODGED_ON_PLACEHOLDER  = ""
 
-  ADMIN_WAITLIST_APPLICATION_ACTIVE_HINT            = "State of this application."
+  ADMIN_WAITLIST_APPLICATION_ACTIVE_HINT           = "State of this application."
+  
+end #module

@@ -10,7 +10,7 @@ DaycareDecisions::Application.routes.draw do
   resources :families
 
   resources :companies
-
+    
   resources :certificates
 
   resources :agencies
@@ -27,6 +27,7 @@ DaycareDecisions::Application.routes.draw do
     resources :roles do
       resources :admin_users
     end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

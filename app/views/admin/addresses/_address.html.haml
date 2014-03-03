@@ -5,10 +5,8 @@
     =address.suburb
     =address.state
     =address.post_code
-    - unless address.lat == 0
-      =address.lat
-    - unless address.lat == 0
-      =address.long
+    =address.lat unless address.lat == 0.00
+    =address.long unless address.long == 0.00
 
 - else
   %h4= "No address assigned."

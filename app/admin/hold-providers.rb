@@ -102,14 +102,13 @@ ActiveAdmin.register Provider do
     f.semantic_errors *f.object.errors.keys
     #error_panel f
 
-    f.inputs "Provider Details" do
+    f.inputs "Provider Details" do |f|
 
       f.input :name, 
               :hint         => AdminConstants::ADMIN_PROVIDER_NAME_HINT,
               :placeholder  => AdminConstants::ADMIN_PROVIDER_NAME_PLACEHOLDER
 
-      f.input :company,
-              :hint         => AdminConstants::ADMIN_PROVIDER_COMPANY_HINT
+      f.input :company
       
       f.input :description
 
@@ -122,9 +121,7 @@ ActiveAdmin.register Provider do
               :hint          => AdminConstants::ADMIN_PROVIDER_CARE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_CARE_PLACEHOLDER
 
-      f.input :age,
-              :hint          => AdminConstants::ADMIN_PROVIDER_AGE_HINT,
-              :placeholder   => AdminConstants::ADMIN_PROVIDER_AGE_PLACEHOLDER
+      f.input :age
 
       f.input ('fee') { number_to_currency(provider.fee)}
 

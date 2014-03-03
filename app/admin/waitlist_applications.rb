@@ -19,8 +19,8 @@ ActiveAdmin.register WaitlistApplication do
     f.inputs "Waitlist Application Details" do |wla|
 
       f.input :guardian,
-              :include_blank => false,
-              :placeholder => AdminConstants::ADMIN_WLA_GUARDIAN_PLACEHOLDER
+              :include_blank => false #,
+              #:placeholder => AdminConstants::ADMIN_WLA_GUARDIAN_PLACEHOLDER
 
       f.input :lodged_by
 

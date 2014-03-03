@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "suburb",                     default: "",                    null: false
     t.string   "state",            limit: 3, default: "",                    null: false
     t.string   "post_code",                  default: ""
-    t.float    "lat",                        default: ""
-    t.float    "long",                       default: ""
+    t.float    "lat"
+    t.float    "long"
     t.datetime "created_at",                 default: '2013-10-08 00:00:00', null: false
     t.datetime "updated_at",                 default: '2013-10-08 00:00:00', null: false
   end
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "agencies", force: true do |t|
-    t.string   "name",                                                   null: false
+    t.string   "name"
     t.string   "description"
     t.string   "jurisdiction"
     t.string   "url"
