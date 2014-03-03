@@ -43,8 +43,8 @@ ActiveAdmin.register Person do
   
     f.inputs "Addresses" do
       f.has_many :addresses do |a|
-          a.input :street
-          a.input :suburb
+          a.input :street_address
+          a.input :locality
           a.input :state
           a.input :post_code
           a.input :lat
@@ -90,7 +90,7 @@ ActiveAdmin.register Person do
 #
 
   permit_params :company_id, :first_name, :last_name, :title, :active,
-      addresses_attributes: [:id, :street, :suburn, :state, :post_code, :lat, :long, :_destroy ],
+      addresses_attributes: [:id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy ],
       rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy ],
       certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ]  
 

@@ -1,8 +1,8 @@
 - unless address.nil?   
 
   %address
-    =address.street
-    =address.suburb
+    =address.street_address
+    =address.locality
     =address.state
     =address.post_code
     =address.lat unless address.lat == 0.00

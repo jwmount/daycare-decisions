@@ -142,8 +142,8 @@ ActiveAdmin.register Provider do
 
     f.inputs "Addresses" do
       f.has_many :addresses do |a|
-          a.input :street
-          a.input :suburb
+          a.input :street_address
+          a.input :locality
           a.input :state
           a.input :post_code
           a.input :lat
@@ -259,7 +259,7 @@ ActiveAdmin.register Provider do
     :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :sibling_has_priority, :vacancies,
-      addresses_attributes: [:id, :street, :suburb, :state, :post_code, :lat, :long, :_destroy],
+      addresses_attributes: [:id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
       certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
 

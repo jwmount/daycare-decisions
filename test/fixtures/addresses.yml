@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  street: MyString
-  suburb: MyString
+  street_address: MyString
+  locality: MyString
   state: MyString
   post_code: MyString
   lat: MyString
@@ -15,8 +15,8 @@ one:
   company_type: Company
 
 two:
-  street: MyString
-  suburb: MyString
+  street_address: MyString
+  locality: MyString
   state: MyString
   post_code: MyString
   lat: MyString

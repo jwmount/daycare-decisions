@@ -46,8 +46,8 @@ csv.each do |row|
   air_conditioning   = provider['Air conditioning']   == 'Y' ? true : false
   url                = provider['Web Address'].to_s.gsub("http://", "")
 
-  street             = provider['Address']
-  suburb             = provider['Suburb']
+  street_address     = provider['Street Address']
+  locality           = provider['Locality']
   state              = provider['State']
   post_code          = provider['Post Code']
 
@@ -70,7 +70,7 @@ csv.each do |row|
                             )
 
     Address.create( addressable_id: p_new[:id], addressable_type: 'Provider',
-    	street: street, suburb: suburb, state: state, post_code: post_code )
+    	street_address: street_address, locality: locality, state: state, post_code: post_code )
 
     Rolodex.create( rolodexable_id: p_new[:id], rolodexable_type: 'Provider',
       number_or_email: phone_number, kind: 'Office number', when_to_use: 'Anytime' )
@@ -89,14 +89,14 @@ puts
 csv_text = File.read('public/agencies.csv')
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
-# Name,Address,Suburb,State,Post Code,Phone Number,Email,Web Address
+# Name,Street_Address,Locality,State,Post Code,Phone Number,Email,Web Address
   agency             = row.to_hash
   name               = agency['Name']
   jurisdiction       = agency['Jurisdiction']
   url                = agency['Web Address'].to_s.gsub("http://", "")
 
-  street             = agency['Address']
-  suburb             = agency['Suburb']
+  street_address     = agency['Street_Address']
+  locality           = agency['Locality']
   state              = agency['State']
   post_code          = agency['Post Code']
 

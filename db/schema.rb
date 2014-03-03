@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
  create_table "addresses", force: true do |t|
     t.integer  "addressable_id",                                             null: false
     t.string   "addressable_type",                                           null: false
-    t.string   "street",                     default: "",                    null: false
-    t.string   "suburb",                     default: "",                    null: false
+    t.string   "street_address",             default: "",                    null: false
+    t.string   "locality",                   default: "",                    null: false
     t.string   "state",            limit: 3, default: "",                    null: false
     t.string   "post_code",                  default: ""
     t.float    "lat"
