@@ -35,4 +35,5 @@ class Provider < ActiveRecord::Base
     true
   end
 
+
 end
