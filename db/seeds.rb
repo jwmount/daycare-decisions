@@ -17,7 +17,7 @@ user_list = [
   ['rebecca@daycaredecisions.com', 'password', 1],
   ['rebecca@daycaredecisions.com.au', 'password', 1],
   ['guardian@iLab.com.au', 'password', 3],
-  ['tgodino@icloud.com'], 'password', 4]
+  ['tgodino@icloud.com', 'password', 4]
   ]
 
 user_list.each do |email, password, role|  
