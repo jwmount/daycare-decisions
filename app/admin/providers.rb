@@ -135,7 +135,8 @@ ActiveAdmin.register Provider do
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
-
+              
+      f.input :vacancies
 
     end
 

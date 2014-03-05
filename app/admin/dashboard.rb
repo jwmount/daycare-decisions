@@ -17,9 +17,25 @@ ActiveAdmin.register_page "Dashboard" do
          panel "Selected Providers" do
            ul do
              Provider.order("updated_at DESC").limit(5).map do |provider|
-               li link_to(provider.name, admin_provider_path(provider))
+               li link_to("#{provider.name}, #{provider.addresses[0].locality}", admin_provider_path(provider))
              end
            end
+         end
+       end
+
+       column do
+         panel "Providers With Vacancies" do
+           ul do
+             Provider.where(:vacancies => :true).count 
+             end
+         end
+       end
+
+       column do
+         panel "Waitlist Applications" do
+           ul do
+             WaitlistApplication.count
+             end
          end
        end
 
@@ -28,8 +44,9 @@ ActiveAdmin.register_page "Dashboard" do
            para "Welcome to Daycare Decisions."
          end
        end
-     end
+
+     end # columns
   end # content
 
-  
+
 end
