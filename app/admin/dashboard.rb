@@ -16,7 +16,7 @@ ActiveAdmin.register_page "Dashboard" do
        column do
          panel "Selected Providers" do
            ul do
-             Provider.first(5).map do |provider|
+             Provider.order("updated_at DESC").limit(5).map do |provider|
                li link_to(provider.name, admin_provider_path(provider))
              end
            end
@@ -30,4 +30,6 @@ ActiveAdmin.register_page "Dashboard" do
        end
      end
   end # content
+
+  
 end
