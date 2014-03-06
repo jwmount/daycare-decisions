@@ -54,6 +54,9 @@ ActiveAdmin.register Provider do
   scope :sibling_has_priority do |providers|
     providers.where ({sibling_has_priority: true})
   end
+  scope :waitlist_fee_refund do |providers|
+    providers.where ({waitlist_fee_refund: true})
+  end
   scope :vacancies do |providers|
     providers.where ({vacancies: true})
   end
@@ -93,6 +96,7 @@ ActiveAdmin.register Provider do
       number_to_currency(provider.fee) 
     end
     column :waitlist_fee
+    column :waitlist_fee_refund
     column :hours
     column :language
 
@@ -137,7 +141,8 @@ ActiveAdmin.register Provider do
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
               
       f.input :vacancies
-
+      f.input ('waitlist_fee')  { number_to_currency(provider.waitlist.fee) }
+      f.input :waitlist_fee_refund
     end
 
 
@@ -201,6 +206,7 @@ ActiveAdmin.register Provider do
         (provider.extended_hours_for_kindys ? :ok : :error) }
       row("On-line Waitlist") { status_tag (provider.online_waitlist ? "YES" : "No"), (provider.online_waitlist ? :ok : :error) }
       row :waitlist_fee
+      row("waitlist_fee_refund") { status_tag (provider.waitlist_fee_refund ? "YES" : "No"), (provider.waitlist_fee_refund ? :ok : :error) }
       row("On-line Enrollment") { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
       row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
       row("additional_activities_included") { status_tag (provider.additional_activities_included ? "YES" : "No"), (provider.additional_activities_included ? :ok : :error) }
@@ -256,7 +262,7 @@ ActiveAdmin.register Provider do
 
   permit_params :id, :age, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
     :hours, :NQS_rating, :language, :url, :food_provided, :air_conditioning,
-    :bus_service, :extended_hours_for_kindys, :online_waitlist, :fee, :waitlist_fee, 
+    :bus_service, :extended_hours_for_kindys, :online_waitlist, :fee, :waitlist_fee, :waitlist_fee_refund,
     :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :sibling_has_priority, :vacancies,

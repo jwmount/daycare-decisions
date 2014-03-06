@@ -170,7 +170,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "extended_hours_for_kindys"
     t.boolean  "online_waitlist"
     t.boolean  "online_enrollment"
-    t.decimal  "waitlist_fee"
     t.boolean  "security_access"
     t.boolean  "additional_activities_included" # Drop down menu: Music, Language, sports program, dance program, learning programs 
     t.boolean  "excursions"
@@ -180,6 +179,9 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
     t.boolean  "sibling_has_priority",   :default => false
     t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+    t.decimal  "waitlist_fee"
+    t.boolean  "waitlist_fee_refund"
+
     t.datetime "created_at"
     t.datetime "updated_at"
   end
