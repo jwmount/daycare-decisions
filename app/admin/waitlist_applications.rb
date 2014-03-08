@@ -24,7 +24,8 @@ ActiveAdmin.register WaitlistApplication do
 
       f.input :lodged_by
 
-      f.input :lodged_on
+      f.input :lodged_on,
+              :as => :date_picker
 
       f.input :active, 
               :as => :radio
@@ -33,12 +34,18 @@ ActiveAdmin.register WaitlistApplication do
     f.inputs "Child Details" do |wla|
       f.input :lodged_for
       f.input :enrolment_goal
-      f.input :enrolment_goal_date
-      f.input :enroled_on
-      f.input :gender
-      f.input :dob
+      f.input :enrolment_goal_date,
+              :as => :date_picker
+      f.input :enroled_on,
+              :as => :date_picker
+      f.input :gender,
+              :as => :radio,
+              :collection => [["Male", 1], ["Female", 2]]
+      f.input :dob,
+              :as => :date_picker
       #f.input :born_country #f.country_select :country_code
-      f.input :confined_on
+      f.input :confined_on,
+              :as => :date_picker
       f.input :languages_spoken_at_home
       f.input :special_needs
       f.input :cultural_needs

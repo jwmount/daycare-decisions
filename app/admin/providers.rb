@@ -56,6 +56,7 @@ ActiveAdmin.register Provider do
   end
   scope :waitlist_fee_refund do |providers|
     providers.where ({waitlist_fee_refund: true})
+    #works fine: providers.where ({waitlist_fee_refund: true, cloth_nappies: true})
   end
   scope :vacancies do |providers|
     providers.where ({vacancies: true})
@@ -70,7 +71,7 @@ ActiveAdmin.register Provider do
   filter :waitlist_fee
   filter :description
   filter :url
-  filter :language, :label => "Language Skills Training"
+  filter :languages, :label => "Language Skills Training"
   filter :vacancies          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
 
   index do
@@ -98,7 +99,7 @@ ActiveAdmin.register Provider do
     column :waitlist_fee
     column :waitlist_fee_refund
     column :hours
-    column :language
+    column :languages
 
   end # indexø
 
@@ -134,8 +135,7 @@ ActiveAdmin.register Provider do
 
       f.input :hours
 
-      f.input :language,
-              :collection    => language_options,
+      f.input :languages,
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
@@ -186,39 +186,43 @@ ActiveAdmin.register Provider do
   show :title => :name do
     attributes_table do
       row :name
-      row :company
-      row :care
-      row :NQS_rating
+      row ("Address") { render provider.addresses}
       row ("Age Range") { provider.age }
+      row :care
+      row ("Certifications") { render provider.certs}
+      row :company
+      row :description
+
       row ( 'fee' ) {number_to_currency(provider.fee)}
       row :hours
-      row ("Address") { render provider.addresses}
-      row ("Certifications") { render provider.certs}
-      row ("Rolodex") {render provider.rolodexes}
-      row ("Web Site") { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
-      row :description
-      row("Food Provided") { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
-      row("Disposable Nappies") { status_tag (provider.disposable_nappies ? "YES" : "No"), (provider.disposable_nappies ? :ok : :error) }
-      row("Cloth Nappies") { status_tag (provider.cloth_nappies ? "YES" : "No"), (provider.cloth_nappies ? :ok : :error) }
-      row("Air Conditioning") { status_tag (provider.air_conditioning ? "YES" : "No"), (provider.air_conditioning ? :ok : :error) }
-      row("Bus Service") { status_tag (provider.bus_service ? "YES" : "No"), (provider.bus_service ? :ok : :error) }
-      row("Extended Hours for Kindys") { status_tag (provider.extended_hours_for_kindys ? "YES" : "No"), 
-        (provider.extended_hours_for_kindys ? :ok : :error) }
-      row("On-line Waitlist") { status_tag (provider.online_waitlist ? "YES" : "No"), (provider.online_waitlist ? :ok : :error) }
+      row :languages
+      row :NQS_rating
       row :waitlist_fee
-      row("waitlist_fee_refund") { status_tag (provider.waitlist_fee_refund ? "YES" : "No"), (provider.waitlist_fee_refund ? :ok : :error) }
-      row("On-line Enrollment") { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
-      row("Security Access") { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
-      row("additional_activities_included") { status_tag (provider.additional_activities_included ? "YES" : "No"), (provider.additional_activities_included ? :ok : :error) }
-      row("Excursions") { status_tag (provider.excursions ? "YES" : "No"), (provider.excursions ? :ok : :error) }
-      row("Guest Speakers") { status_tag (provider.guest_speakers ? "YES" : "No"), (provider.guest_speakers ? :ok : :error) }
-      row("Outdoor Play Area") { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
-      row("Real Grass") { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
-      row("Technology") { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
-      row("Sibling Has Priority") { status_tag (provider.sibling_has_priority ? "YES" : "No"), (provider.sibling_has_priority ? :ok : :error) }
-      row("Vacancies") { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
+      row ( "Rolodex" ) {render provider.rolodexes}
+      row ( "Web Site" ) { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
+
+      row ( "Additional Activities Included") { status_tag (provider.additional_activities_included ? "YES" : "No"), (provider.additional_activities_included ? :ok : :error) }
+      row ( "Air Conditioning" ) { status_tag (provider.air_conditioning ? "YES" : "No"), (provider.air_conditioning ? :ok : :error) }
+      row ( "Bus Service" ) { status_tag (provider.bus_service ? "YES" : "No"), (provider.bus_service ? :ok : :error) }
+      row ( "Cloth Nappies" ) { status_tag (provider.cloth_nappies ? "YES" : "No"), (provider.cloth_nappies ? :ok : :error) }
+      row ( "Disposable Nappies" ) { status_tag (provider.disposable_nappies ? "YES" : "No"), (provider.disposable_nappies ? :ok : :error) }
+      row ( "Excursions" ) { status_tag (provider.excursions ? "YES" : "No"), (provider.excursions ? :ok : :error) }
+      row ( "Extended Hours for Kindys" ) { status_tag (provider.extended_hours_for_kindys ? "YES" : "No"), 
+        (provider.extended_hours_for_kindys ? :ok : :error) }
+      row ( "Food Provided" ) { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
+      row ( "Guest Speakers" ) { status_tag (provider.guest_speakers ? "YES" : "No"), (provider.guest_speakers ? :ok : :error) }
+      row ( "On-line Enrollment" ) { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
+      row ( "On-line Waitlist" ) { status_tag (provider.online_waitlist ? "YES" : "No"), (provider.online_waitlist ? :ok : :error) }
+      row ( "Outdoor Play Area" ) { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
+
+      row ( "Real Grass" ) { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
+      row ( "Security Access" ) { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
+      row ( "Sibling Has Priority" ) { status_tag (provider.sibling_has_priority ? "YES" : "No"), (provider.sibling_has_priority ? :ok : :error) }
+      row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
+      row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
+      row ( "Waitlist Fee Refund" ) { status_tag (provider.waitlist_fee_refund ? "YES" : "No"), (provider.waitlist_fee_refund ? :ok : :error) }
       end
-    #active_admin_comments
+    active_admin_comments
   end #show
 
 
@@ -261,7 +265,7 @@ ActiveAdmin.register Provider do
 #
 
   permit_params :id, :age, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
-    :hours, :NQS_rating, :language, :url, :food_provided, :air_conditioning,
+    :hours, :NQS_rating, :languages, :url, :food_provided, :air_conditioning,
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :fee, :waitlist_fee, :waitlist_fee_refund,
     :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,

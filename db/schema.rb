@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "hours"
     t.string   "age"
     t.string   "url"
-    t.string   "language"
+    t.string   "languages"
     t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
     t.boolean  "air_conditioning"
     t.boolean  "bus_service"
