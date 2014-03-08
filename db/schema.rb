@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 
-=begin  No need now
+=begin  Not needed yet
   create_table "services", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -227,7 +227,7 @@ create_table "waitlist_applications", force: true do |t|
     t.integer  "provider_id",                          null: false
     t.datetime "lodged_on"
     t.string   "lodged_by"
-    t.integer  "lodged_for"
+    t.string   "lodged_for"
     t.integer  "active",         defalut: true,        null: false
     t.string   "form_name",      default: 'master'
 

@@ -1,5 +1,15 @@
 ActiveAdmin.register WaitlistApplication do
 
+#
+# C A L L  B A C K S
+#
+# If there are no providers or if there are no guardians do not allow new waitlist_applications.
+#
+  before_build do |wla|
+    flash[:warning] = AdminConstants::ADMIN_WAITLIST_APPLICATION_MISSING_PROVIDERS if Provider.count == 0
+    flash[:warning] = AdminConstants::ADMIN_WAITLIST_APPLICATION_MISSING_GUARDIANS if Guardian.count == 0
+  end
+
   
   index do
 
@@ -19,36 +29,61 @@ ActiveAdmin.register WaitlistApplication do
     f.inputs "Waitlist Application Details" do |wla|
 
       f.input :guardian,
-              :include_blank => false #,
-              #:placeholder => AdminConstants::ADMIN_WLA_GUARDIAN_PLACEHOLDER
+              :include_blank => false,
+              :hint          => AdminConstants::ADMIN_WAITLIST_APPLICATION_GUARDIAN_HINT
 
-      f.input :lodged_by
+      f.input :lodged_by,
+              :as            => :select, 
+              :collection    => Guardian.alphabetically.all.map, #{|guardian| [guardian., guardian.id]}, 
+              :include_blank => false
 
       f.input :lodged_on,
-              :as => :date_picker
+              :as   => :date_picker,
+              :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_LODGED_BY_HINT
+
 
       f.input :active, 
               :as => :radio
     end
 
     f.inputs "Child Details" do |wla|
-      f.input :lodged_for
-      f.input :enrolment_goal
+
+      f.input :lodged_for,
+              :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_LODGED_FOR_HINT
+
+      f.input :enrolment_goal,
+              :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_ENROLMENT_GOAL_HINT
+
       f.input :enrolment_goal_date,
-              :as => :date_picker
+              :as => :date_picker,
+              :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_ENROLMENT_DATE_HINT
+
       f.input :enroled_on,
-              :as => :date_picker
+              :as => :date_picker,
+              :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_ENROLED_ON_HINT
+
       f.input :gender,
               :as => :radio,
               :collection => [["Male", 1], ["Female", 2]]
+
       f.input :dob,
-              :as => :date_picker
+              :as    => :date_picker,
+              :label => AdminConstants::ADMIN_WAITLIST_APPLICATION_DOB_LABEL,
+              :hint  => AdminConstants::ADMIN_WAITLIST_APPLICATION_DOB_HINT
+
       #f.input :born_country #f.country_select :country_code
+
       f.input :confined_on,
               :as => :date_picker
-      f.input :languages_spoken_at_home
-      f.input :special_needs
-      f.input :cultural_needs
+
+      f.input :languages_spoken_at_home,
+              :label => AdminConstants::ADMIN_WAITLIST_APPLICATION_DOB_LABEL
+
+      f.input :special_needs,
+              :hint  => AdminConstants::ADMIN_WAITLIST_APPLICATION_SPECIAL_NEEDS_HINT
+
+      f.input :cultural_needs,
+              :hint  => AdminConstants::ADMIN_WAITLIST_APPLICATION_CULTURAL_NEEDS_HINT
     end
     f.actions
 

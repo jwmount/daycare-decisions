@@ -11,7 +11,7 @@ ActiveAdmin::Views::Pages::Base.class_eval do
 
   def build_footer
     div :id => "footer" do
-      footer = "#{link_to("Daycare Decisions", "http://www.daycare-decisions.com.au")} #{ENV['VERSION']};".html_safe
+      footer = "#{link_to("Daycare Decisions", "http://www.daycare-decisions.herokuapp.com")} #{ENV['VERSION']};".html_safe
       footer << "  Powered by #{link_to("Active Admin", "http://www.activeadmin.info")} #{ActiveAdmin::VERSION}".html_safe
       para footer
     end

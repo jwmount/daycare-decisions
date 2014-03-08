@@ -40,4 +40,13 @@ class WaitlistApplication < ActiveRecord::Base
       :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than => 500001}
   end
 =end  
+
+  def display_name
+    full_name
+  end
+
+  def full_name
+    [self.first_name, self.last_name].compact.join ' '
+  end
+    
 end

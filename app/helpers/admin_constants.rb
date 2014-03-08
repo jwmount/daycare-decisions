@@ -121,6 +121,9 @@ module AdminConstants
 #
 # WAITLIST_APPLICATION
 #
+  ADMIN_WAITLIST_APPLICATION_MISSING_PROVIDERS     = "No providers exists, create them next."
+  ADMIN_WAITLIST_APPLICATION_MISSING_GUARDIANS     = "No guardians exist, create one or more next."
+
   ADMIN_WAITLIST_APPLICATION_GUARDIAN_LABEL        = "Guardian (Parent)"
   ADMIN_WAITLIST_APPLICATION_GUARDIAN_HINT         = "Person responsible for this application."
   ADMIN_WAITLIST_APPLICATION_GUARDIAN_PLACEHOLDER  = "Shorter one"
@@ -134,5 +137,23 @@ module AdminConstants
   ADMIN_WAITLIST_APPLICATION_LODGED_ON_PLACEHOLDER  = ""
 
   ADMIN_WAITLIST_APPLICATION_ACTIVE_HINT           = "State of this application."
-  
+
+  ADMIN_WAITLIST_APPLICATION_LODGED_FOR_HINT       = "Name of child or person to be enroled."
+  ADMIN_WAITLIST_APPLICATION_ENROLMENT_GOAL_HINT   = "? To be defined."
+
+  ADMIN_WAITLIST_APPLICATION_ENROLMENT_DATE_HINT   = "Date care services should be available."
+  ADMIN_WAITLIST_APPLICATION_ENROLED_ON_HINT       = "Actual enrol date."
+
+  ADMIN_WAITLIST_APPLICATION_DOB_LABEL             = "Enrolee's date of birth"
+  ADMIN_WAITLIST_APPLICATION_DOB_HINT              = "Birthday of enrolee."
+
+  ADMIN_WAITLIST_APPLICATION_LANGUAGES_LABEL       = "Languages"
+  ADMIN_WAITLIST_APPLICATION_LANGUAGES_HINT        = "Languages spoken at home (list)."
+
+  ADMIN_WAITLIST_APPLICATION_SPECIAL_NEEDS_LABEL   = "Special Needs"
+  ADMIN_WAITLIST_APPLICATION_SPECIAL_NEEDS_HINT    = "If person has special needs please list them here."
+
+  ADMIN_WAITLIST_APPLICATION_CULTURAL_NEEDS_LABEL  = "Cultural Needs"
+  ADMIN_WAITLIST_APPLICATION_CULTURAL_NEEDS_HINT   = "If person has cultural needs, please list them."
+
 end #module

@@ -23,12 +23,4 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :rolodexes
 
 
-  def self.display_name
-    full_name
-  end
-
-  def full_name
-    [self.first_name, self.last_name].compact.join ' '
-  end
-
 end
