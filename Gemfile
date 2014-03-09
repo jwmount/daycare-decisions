@@ -26,10 +26,12 @@ group :development do
   gem 'binding_of_caller'
 end
 
-gem 'rails_12factor', group: :production
 group :production do
   # gem 'mysql2'  On AWS using RDS instead
-  # Support for Rails 4.0 by & for Heroku
+  # Support for Rails 4 by & for Heroku
+  gem 'rails_12factor'
+  # needed for asset pipeline cache by Heroku, all 4.0.x releases, is in 4.1.x
+  gem 'sprockets_better_errors'
 end
 
 # To use ActiveModel has_secure_password
