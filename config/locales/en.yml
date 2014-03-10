@@ -26,7 +26,7 @@ en:
     dashboard: Dashboard
     dashboard_welcome:
       welcome: "Welcome to Daycare Decisions."
-      call_to_action: "Data For Parents and Providers"
+      call_to_action: "Better Information For Parents and Providers"
     view: "View"
     edit: "Edit"
     delete: "Delete"

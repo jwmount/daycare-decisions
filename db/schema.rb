@@ -214,14 +214,17 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 
-=begin  Not needed yet
   create_table "services", force: true do |t|
+    t.integer  "serviceable_id",                     null: false
+    t.string   "serviceable_type",                   null: false
     t.string   "name"
     t.string   "description"
+    t.decimal  "fee",                                default: 0.00
+    t.string   "basis"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-=end
+
 create_table "waitlist_applications", force: true do |t|
     t.integer  "guardian_id"
     t.integer  "provider_id",                          null: false

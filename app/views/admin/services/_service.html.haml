@@ -1,6 +1,8 @@
 - unless service.nil?   
 
-  %h4= link_to "#{service.name}", admin_service_path( service ), target: '_blank'
+  =[service.name, service.description, number_to_currency(service.fee), service.basis].join('; ')
+  %br
 
 - else
-  %h4= "No services are provided so far as we know."
+  %h4= "No services are provided."
+

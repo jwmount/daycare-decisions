@@ -82,6 +82,7 @@ ActiveAdmin.register Provider do
       render provider
       render provider.rolodexes# unless provider.rolodexes.empty?
       render provider.addresses# unless provider.addresses.empty?
+      render provider.services
     end
 
     column :company
@@ -165,6 +166,15 @@ ActiveAdmin.register Provider do
       end
     end
 
+    f.inputs "Services" do
+      f.has_many :services do |s|
+        s.input :name
+        s.input :description
+        s.input :fee
+        s.input :basis
+      end
+    end
+
     f.inputs "Certs (Certificates)" do
       f.has_many :certs do |f|
 
@@ -190,6 +200,7 @@ ActiveAdmin.register Provider do
       row ("Age Range") { provider.age }
       row :care
       row ("Certifications") { render provider.certs}
+      row ("Services") { render provider.services}
       row :company
       row :description
 
@@ -272,6 +283,7 @@ ActiveAdmin.register Provider do
     :technology, :sibling_has_priority, :vacancies,
       addresses_attributes: [:id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
-      certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
+      certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ],
+      services_attributes: [ :name, :description, :fee, :basis, :_destroy ]
 
 end
