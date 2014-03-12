@@ -1,5 +1,6 @@
 ActiveAdmin.register Person do
 
+  menu false
 
   filter :first_name
   filter :last_name

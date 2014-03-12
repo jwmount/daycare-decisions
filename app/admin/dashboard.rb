@@ -20,7 +20,7 @@ ActiveAdmin.register_page "Dashboard" do
          panel "Five Most Recently Updated Providers" do
            ul do
              Provider.order("updated_at DESC").limit(5).map do |provider|
-               label = "#{provider.name}, #{provider.addresses[0].locality}, #{provider.addresses[0].state}"
+               label = "#{provider.name}, #{provider.addresses.locality}, #{provider.addresses.state}"
                li link_to(label, admin_provider_path(provider))
              end
            end

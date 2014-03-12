@@ -8,29 +8,23 @@ class Provider < ActiveRecord::Base
   
   # polymorphs
   has_many  :addresses, 
-            :as => :addressable, 
-            :autosave => true, 
-            :dependent => :destroy
+            :as => :addressable
 
   has_many :certs, 
-           :as => :certifiable, 
-           :autosave => true, 
-           :dependent => :destroy
+           :as => :certifiable 
+           #:autosave => true, 
+           #:dependent => :destroy
 
   has_many :rolodexes, 
-           :as => :rolodexable, 
-           :autosave => true, 
-           :dependent => :destroy
+           :as => :rolodexable
 
   has_many :services, 
-           :as => :serviceable, 
-           :autosave => true, 
-           :dependent => :destroy
+           :as => :serviceable
 
-  accepts_nested_attributes_for :addresses
-  accepts_nested_attributes_for :certs
-  accepts_nested_attributes_for :rolodexes
-  accepts_nested_attributes_for :services
+  accepts_nested_attributes_for :addresses, :allow_destroy => true
+  accepts_nested_attributes_for :certs, :allow_destroy => true
+  accepts_nested_attributes_for :rolodexes, :allow_destroy => true
+  accepts_nested_attributes_for :services, :allow_destroy => true
 
   scope :alphabetically, order("full_name ASC")
   # NPS_rating seems to be 1...3, so 0 is default for now.

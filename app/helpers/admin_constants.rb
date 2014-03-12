@@ -116,7 +116,23 @@ module AdminConstants
 #
 # Roles
 #
-# none
+# no roles
+
+#
+# Services
+
+
+  ADMIN_SERVICE_NAME_HINT                          = "Name of the service, e.g. Ages 6 - 12 months tuition ($/hr)"
+  ADMIN_SERVICE_NAME_PLACEHOLDER                   = "Ages 6 - 12 months tuition ($/hr)"
+
+  ADMIN_SERVICE_DESCRIPTION_HINT                   = "Description of the service offered, e.g. Tuition ($/hr)"
+  ADMIN_SERVICE_DESCRIPTION_PLACEHOLDER            = "Tuition ($/hr)"
+
+  ADMIN_SERVICE_FEE_HINT                           = "Service Price"
+  ADMIN_SERVICE_FEE_PLACEHOLDER                    = "70.00"
+
+  ADMIN_SERVICE_BASIS_HINT                         = "Price basis, e.g. $/hr, $/day, $/month, included in overall rate,..."
+  ADMIN_SERVICE_BASIS_PLACEHOLDER                  = "$/hr"
 
 #
 # WAITLIST_APPLICATION

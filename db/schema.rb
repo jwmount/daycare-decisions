@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   create_table "services", force: true do |t|
     t.integer  "serviceable_id",                     null: false
     t.string   "serviceable_type",                   null: false
-    t.string   "name"
+    t.string   "name",                               null: false
     t.string   "description"
     t.decimal  "fee",                                default: 0.00
     t.string   "basis"

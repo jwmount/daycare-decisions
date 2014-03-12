@@ -80,8 +80,8 @@ ActiveAdmin.register Provider do
 
     column "Name (click for details)", :sortable => 'name' do |provider|
       render provider
-      render provider.rolodexes# unless provider.rolodexes.empty?
-      render provider.addresses# unless provider.addresses.empty?
+      render provider.rolodexes
+      render provider.addresses
       render provider.services
     end
 
@@ -146,20 +146,18 @@ ActiveAdmin.register Provider do
       f.input :waitlist_fee_refund
     end
 
-
-    f.inputs "Addresses" do
-      f.has_many :addresses do |a|
-          a.input :street_address
-          a.input :locality
-          a.input :state
-          a.input :post_code
-          a.input :lat
-          a.input :long
+    f.inputs do
+      f.has_many :addresses, :allow_destroy => true, :as => :boolean, :heading => 'Address or Location', :new_record => true do |addr|
+          addr.input :street_address
+          addr.input :locality
+          addr.input :state
+          addr.input :post_code
+        end
       end
-    end
+
 
     f.inputs "Rolodexes" do
-      f.has_many :rolodexes do |r|
+      f.has_many :rolodexes, :allow_destroy => true, :as => :boolean, :new_record => true do |r|
         r.input :number_or_email
         r.input :kind
         r.input :when_to_use
@@ -167,7 +165,7 @@ ActiveAdmin.register Provider do
     end
 
     f.inputs "Services" do
-      f.has_many :services do |s|
+      f.has_many :services, :allow_destroy => true, :as => :boolean, :new_record => true do |s|
         s.input :name
         s.input :description
         s.input :fee
@@ -176,7 +174,7 @@ ActiveAdmin.register Provider do
     end
 
     f.inputs "Certs (Certificates)" do
-      f.has_many :certs do |f|
+      f.has_many :certs, :allow_destroy => true, :as => :boolean, :new_record => true do |f|
 
         f.input :certificate,
                 :collection => Certificate.where({:for_provider => true}),
@@ -274,16 +272,18 @@ ActiveAdmin.register Provider do
 #
 # P E R M I T  P A R A M S
 #
-
+# NOTE:  polymorphs cannot be deleted if :id attribute is not given here; no error message occurs,
+# however records will duplicate on every update.
+#
   permit_params :id, :age, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
     :hours, :NQS_rating, :languages, :url, :food_provided, :air_conditioning,
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :fee, :waitlist_fee, :waitlist_fee_refund,
     :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :sibling_has_priority, :vacancies,
-      addresses_attributes: [:id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
-      rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
-      certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ],
-      services_attributes: [ :name, :description, :fee, :basis, :_destroy ]
+      addresses_attributes: [ :id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
+      rolodexes_attributes: [ :id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
+      certs_attributes:     [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ],
+      services_attributes:  [ :id, :name, :description, :fee, :basis, :_destroy ]
 
 end
