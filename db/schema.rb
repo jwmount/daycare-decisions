@@ -226,11 +226,10 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
 create_table "waitlist_applications", force: true do |t|
-    t.integer  "guardian_id"
-    t.integer  "provider_id",                          null: false
-    t.datetime "lodged_on"
-    t.string   "lodged_by"
-    t.string   "lodged_for"
+    t.integer  "guardian_id",                          null: false
+    t.datetime "lodged_on",                            null: false
+    t.string   "lodged_by",                            null: false
+    t.string   "lodged_for",                           null: false
     t.integer  "active",         defalut: true,        null: false
     t.string   "form_name",      default: 'master'
 

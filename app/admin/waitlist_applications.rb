@@ -6,8 +6,8 @@ ActiveAdmin.register WaitlistApplication do
 # If there are no providers or if there are no guardians do not allow new waitlist_applications.
 #
   before_build do |wla|
-    flash[:warning] = AdminConstants::ADMIN_WAITLIST_APPLICATION_MISSING_PROVIDERS if Provider.count == 0
-    flash[:warning] = AdminConstants::ADMIN_WAITLIST_APPLICATION_MISSING_GUARDIANS if Guardian.count == 0
+    flash[:error] = AdminConstants::ADMIN_WAITLIST_APPLICATION_MISSING_PROVIDERS unless Provider.any?
+    flash[:error] = AdminConstants::ADMIN_WAITLIST_APPLICATION_MISSING_GUARDIANS unless Guardian.any?
   end
 
   
@@ -15,6 +15,8 @@ ActiveAdmin.register WaitlistApplication do
 
     selectable_column
 
+    column :guardian
+    
     column "Name (click for details)", :sortable => 'guardian' do |wla|
       render wla
       render wla.rolodexes
@@ -77,15 +79,18 @@ ActiveAdmin.register WaitlistApplication do
               :as => :date_picker
 
       f.input :languages_spoken_at_home,
-              :label => AdminConstants::ADMIN_WAITLIST_APPLICATION_DOB_LABEL
+              :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_LANGUAGES_HINT,
+              :placeholder => AdminConstants::ADMIN_WAITLIST_APPLICATION_LANGUAGES_PLACEHOLDER
 
       f.input :special_needs,
-              :hint  => AdminConstants::ADMIN_WAITLIST_APPLICATION_SPECIAL_NEEDS_HINT
+              :hint  => AdminConstants::ADMIN_WAITLIST_APPLICATION_SPECIAL_NEEDS_HINT,
+              :placeholder => AdminConstants::ADMIN_WAITLIST_APPLICATION_SPECIAL_NEEDS_PLACEHOLDER
 
       f.input :cultural_needs,
-              :hint  => AdminConstants::ADMIN_WAITLIST_APPLICATION_CULTURAL_NEEDS_HINT
+              :hint  => AdminConstants::ADMIN_WAITLIST_APPLICATION_CULTURAL_NEEDS_HINT,
+              :placeholder => AdminConstants::ADMIN_WAITLIST_APPLICATION_CULTURAL_NEEDS_PLACEHOLDER
+
     end
-    f.actions
 
     f.inputs "Mother's Details" do |wla|
       f.input :mothers_name
@@ -97,7 +102,6 @@ ActiveAdmin.register WaitlistApplication do
       f.input :mother_has_other_children
       f.input :mother_dependents_count
     end
-    f.actions
 
     f.inputs "Father's Details" do |wla|
       f.input :fathers_name
@@ -109,7 +113,6 @@ ActiveAdmin.register WaitlistApplication do
       f.input :father_has_other_children
       f.input :father_dependents_count
     end
-    f.actions
 
     f.inputs "Schedule Details" do |wla|
       f.input :number_care_days_required
@@ -122,7 +125,6 @@ ActiveAdmin.register WaitlistApplication do
       f.input :care_day_saturday
       f.input :will_accept_available
     end
-    f.actions
 
     f.inputs "Special Circumstances" do |wla|
       f.input :special_circumstances
@@ -135,7 +137,6 @@ ActiveAdmin.register WaitlistApplication do
 #
 
   permit_params  :guardian_id,
-    :provider_id,
     :lodged_on,
     :lodged_by,
     :lodged_for,

@@ -85,21 +85,29 @@ ActiveAdmin.register Provider do
       render provider.services
     end
 
-    column :company
+    column :company, :sortable => 'name'
+
     column :description
-    column "Care Options" do |provider|
+    
+    column "Care Options", :sortable => 'care' do |provider|
       provider.care
       end 
-    column :NQS_rating
-    column "Ages" do |provider| 
+    column :NQS_rating, :sortable => 'nqs_rating'
+
+    column "Ages", :sortable => 'age' do |provider| 
       provider.age 
     end
-    column "Fee"  do |provider| 
+
+    column "Fee", :sortable => 'fee'  do |provider| 
       number_to_currency(provider.fee) 
     end
-    column :waitlist_fee
+    
+    column :waitlist_fee, :sortable => 'waitlist_fee'
+
     column :waitlist_fee_refund
+
     column :hours
+    
     column :languages
 
   end # indexø

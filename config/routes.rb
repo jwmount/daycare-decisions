@@ -25,11 +25,16 @@ DaycareDecisions::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  namespace :admin do
+
     resources :roles do
       resources :admin_users
     end
 
-
+    resources :guardian do
+      resources :waitlist_applications
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

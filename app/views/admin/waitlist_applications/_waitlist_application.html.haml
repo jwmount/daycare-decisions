@@ -1,1 +1,1 @@
-%h3= link_to "#{waitlist_application.guardian.full_name}", admin_waitlist_application_path( waitlist_application )
+= link_to "#{waitlist_application.lodged_for}", admin_guardian_waitlist_applications_path(waitlist_application.guardian_id)

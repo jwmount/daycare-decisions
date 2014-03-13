@@ -16,18 +16,9 @@ ActiveAdmin.register Guardian do
       render guardian.providers
     end
 
-=begin
-    column "Provider Waitlist" do |guardian|
+    column "Waitlist Applications" do |guardian|
       render guardian.waitlist_applications unless guardian.waitlist_applications.empty?
     end
-    column :waitlist_applications do |guardian|
-      if guardian.waitlist_applications.count > 0
-        link_to "Waitlist Application (#{guardian.waitlist_applications.count.to_s})", admin_guardian_waitlist_applications_path( guardian )
-      else
-        link_to "New Application", new_admin_guardian_waitlist_applications_path( guardian )
-      end
-    end
-=end
 
   end #index
 
@@ -46,18 +37,16 @@ ActiveAdmin.register Guardian do
     end
   
     f.inputs "Addresses" do
-      f.has_many :addresses do |a|
+      f.has_many :addresses, :allow_destroy => true, :as => :boolean, :heading => 'Address or Location', :new_record => true do |a|
           a.input :street_address
           a.input :locality
           a.input :state
           a.input :post_code
-          a.input :lat
-          a.input :long
       end
     end
 
     f.inputs "Rolodexes" do
-      f.has_many :rolodexes do |r|
+      f.has_many :rolodexes, :allow_destroy => true, :as => :boolean, :new_record => true do |r|
         r.input :number_or_email
         r.input :kind
         r.input :when_to_use
@@ -66,22 +55,33 @@ ActiveAdmin.register Guardian do
     f.actions
   end #form
 
+  show :title => :full_name do
+    attributes_table do
+      row :full_name
+      row :waitlist_applications
+      row :handle
+      row ("Address") { render guardian.addresses}
+      row ("Rolodex") { render guardian.rolodexes}
+    end
+  end
+
 #
 # My Providers Action Item - Display 'My' Prefered Providers
 #
-=begin
-  action_item :only => [:index] do
-    link_to 'My Waitlist Application', admin_guardian_waitlist_applications_path( guardian )
+  begin
+    action_item :only => [:edit] do
+      link_to 'My Waitlist Application', admin_guardian_waitlist_applications_path( guardian )
+    end
   end
 
   # My Prefered Provider List
-  member_action :mylist, :method => :get do
+  member_action :my_waitlist_applications, :method => :get do
     @waitlist_application = guardian.waitlist_application
     redirect_to admin_waitlist_applications_path
   end
-=end
 
-  permit_params :first_name, :family_name,
+
+  permit_params :first_name, :family_name, :waitlist_application, :handle,
       addresses_attributes: [:id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy]
 

@@ -125,10 +125,22 @@ personal_certificates_list = [
     'Blue Card',
     'Certificate 4 in Out of School Hours Care'
   ]
+provider_certificates_list = [
+    'Approved to provide Long Day Care Certificate',
+    'Approved to provide Home Care Certificate',
+    'In & Out of School Hours Care Certificate'
+  ]
 
 personal_certificates_list.each do |name|
   Certificate.create!(name: name, for_person: true)
 end
+provider_certificates_list.each do |name|
+  Certificate.create!(name: name, for_provider: true)
+end
+personal_certificates = Certificate.where(:for_person   => true)
+personal_certificates.each {|pc| puts pc.name }
+provider_certificates = Certificate.where(:for_provider => true)
+provider_certificates.each {|pc| puts pc.name }
 #
 # W R A P U P
 #

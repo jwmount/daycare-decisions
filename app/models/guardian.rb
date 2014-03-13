@@ -1,7 +1,6 @@
 class Guardian < ActiveRecord::Base
 
   has_many :waitlist_applications
-  #has_many :providers
   has_and_belongs_to_many :providers
   
   # polymorphs
@@ -15,8 +14,9 @@ class Guardian < ActiveRecord::Base
            :autosave   => true, 
            :dependent  => :destroy
 
-  accepts_nested_attributes_for :addresses
-  accepts_nested_attributes_for :rolodexes
+  accepts_nested_attributes_for :waitlist_applications, :allow_destroy => true
+  accepts_nested_attributes_for :addresses, :allow_destroy => true
+  accepts_nested_attributes_for :rolodexes, :allow_destroy => true
 
   scope :alphabetically, order("handle ASC")
   
