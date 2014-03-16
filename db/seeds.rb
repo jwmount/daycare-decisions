@@ -1,4 +1,5 @@
 require 'csv'    
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -27,6 +28,7 @@ user_list.each do |email, password, role|
   end
   Rails::logger.info( "*-*-*-*-* Created user #{email}, pswd: #{password.slice(0..2)}, role: #{role}" )
 end
+
 
 #
 # Provider list for Brisbane
@@ -141,6 +143,15 @@ personal_certificates = Certificate.where(:for_person   => true)
 personal_certificates.each {|pc| puts pc.name }
 provider_certificates = Certificate.where(:for_provider => true)
 provider_certificates.each {|pc| puts pc.name }
+=end
+
+
+
+puts
+puts
+
+# END OF EXPERIMENT -- Load qld_database class
+
 #
 # W R A P U P
 #

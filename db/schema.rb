@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 20140210051608) do
  create_table "addresses", force: true do |t|
     t.integer  "addressable_id",                                             null: false
     t.string   "addressable_type",                                           null: false
-    t.string   "street_address",             default: "",                    null: false
-    t.string   "locality",                   default: "",                    null: false
-    t.string   "state",            limit: 3, default: "",                    null: false
-    t.string   "post_code",                  default: ""
+    t.string   "street_address",             default: "ukn"
+    t.string   "locality",                   default: "ukn"
+    t.string   "state",                      default: "ukn"
+    t.string   "post_code",                  default: "ukn"
     t.float    "lat"
     t.float    "long"
     t.datetime "created_at",                 default: '2013-10-08 00:00:00', null: false
@@ -152,12 +152,31 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   create_table "providers", force: true do |t|
+
+    t.string   "service_approval_number"
+    t.string   "approval_number"
+    t.string   "legal_name"
+    t.string   "conditions_on_approval"
+    t.integer  "approved_places",  :default => 0
+    t.datetime "approval_granted_on"
+    t.string   "quality_area_rating_1"
+    t.string   "quality_area_rating_2"
+    t.string   "quality_area_rating_3"
+    t.string   "quality_area_rating_4"
+    t.string   "quality_area_rating_5"
+    t.string   "quality_area_rating_6"
+    t.string   "quality_area_rating_7"
+    t.string   "overall_rating"
+    t.boolean  "food"
+    t.boolean  "online_enrolment"
+    t.boolean  "security"
+
     t.integer  "company_id"
     t.string   "name"
     t.string   "care",            :default => 't.b.d.'
     t.decimal  "fee",             :default => 0.00
     t.integer  "NQS_rating",      :default => 0
-    t.string   "description"
+    t.text     "description",     :length => 1000
     t.boolean  "disposable_nappies"
     t.boolean  "cloth_nappies"
     t.string   "hours"
@@ -207,9 +226,10 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   create_table "rolodexes", force: true do |t|
     t.integer  "rolodexable_id",                                            null: false
     t.string   "rolodexable_type",                                          null: false
-    t.string   "number_or_email",                    default: ""
-    t.string   "kind",                               default: ""
-    t.string   "when_to_use",                        default: ""
+    t.string   "number_or_email",                    default: "t.b.d."
+    t.string   "kind",                               default: "t.b.d."
+    t.string   "when_to_use",                        default: "t.b.d."
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -227,6 +247,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
 create_table "waitlist_applications", force: true do |t|
     t.integer  "guardian_id",                          null: false
+    t.integer  "provider_id"
     t.datetime "lodged_on",                            null: false
     t.string   "lodged_by",                            null: false
     t.string   "lodged_for",                           null: false
