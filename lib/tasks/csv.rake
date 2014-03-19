@@ -1,4 +1,3 @@
-require 'debugger'
 require 'csv'    
 
 namespace :csv do
