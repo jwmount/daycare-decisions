@@ -1,3 +1,4 @@
+require 'debugger'
 require 'csv'    
 
 namespace :csv do
@@ -11,30 +12,31 @@ namespace :csv do
       puts "\n process file: #{filename}"
     
       CSV.parse(File.read(filename), :headers => true) do |row|
-        @new_provider = row.to_hash  
-        @provider = Provider.new
-        @provider.attributes.each do |pk,pv|  
-          key = pk.gsub('_',' ').split.map(&:capitalize).join(' ')
-          if @new_provider.has_key?(key)
-            @provider[pk] = @new_provider[key]
-          end
-        end
         
-        @provider.save
+        #find the provider name
+        name_key = 'Service Name'
+        name = row[name_key]
+        @provider = Provider.where(name: name ).first_or_create
 
-        #Provider.create!(row.to_hash)
-        puts "3.  Create newp object with validiation methods for each attribute"
-        puts "4.  For each file do"
-        puts "5.      itereate rows"
-        puts "6.        iterate newp keys"
-        puts "7.          assign k,v "
-        puts "8              newp[k] = candidate[k,v]"
-        puts "9                begin - rescue exceptions"
+        @provider.attributes.each do |pk,pv|  
+          
+          key = pk.gsub('_',' ').split.map(&:capitalize).join(' ')
+          if row.has_key?(key)
+            @provider[pk] = row[key]
+          else  #try with alternate key(s)
+            keys = @provider.alternate_keys( key )
+            keys.each do |altkey|
+              @provider[pk] = row[altkey]
+            end
+          end  
+        @provider.inspect
+        puts
+        end        
       end
     end
 
-    puts "Processed files."
   	puts "\n--Finished."
+    puts "Providers: #{Provider.count}"
   end #task
 end #namespace
 

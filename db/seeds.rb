@@ -29,11 +29,10 @@ user_list.each do |email, password, role|
   Rails::logger.info( "*-*-*-*-* Created user #{email}, pswd: #{password.slice(0..2)}, role: #{role}" )
 end
 
-
 #
 # Provider list for Brisbane
 #
-csv_text = File.read('public/DaycareDecisionsChildCareCentreDatabasev2.csv')
+csv_text = File.read('public/data/providers/DaycareDecisionsChildCareCentreDatabasev2.csv')
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   #Provider.create!(row.to_hash)
@@ -84,6 +83,7 @@ csv.each do |row|
   end
   puts p_new.name
 end
+
 puts
 puts
 #
@@ -143,7 +143,7 @@ personal_certificates = Certificate.where(:for_person   => true)
 personal_certificates.each {|pc| puts pc.name }
 provider_certificates = Certificate.where(:for_provider => true)
 provider_certificates.each {|pc| puts pc.name }
-=end
+
 
 
 

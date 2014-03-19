@@ -21,8 +21,10 @@ ActiveAdmin.register_page "Dashboard" do
            ul do
              Provider.order("updated_at DESC").limit(5).map do |provider|
                label = ["#{provider.name}"]
-               label << ["#{provider.addresses[0].locality}"] unless provider.addresses[0].nil?
-               label << ["#{provider.addresses[0].state}"] unless provider.addresses[0].state.nil?
+               unless provider.addresses.empty?
+                 label << ["#{provider.addresses[0].locality}"] unless provider.addresses[0].nil?
+                 label << ["#{provider.addresses[0].state}"] unless provider.addresses[0].state.nil?
+               end
                li link_to(label.join(', '), admin_provider_path(provider))
              end
            end

@@ -238,6 +238,25 @@ ActiveAdmin.register Provider do
       row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
       row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
       row ( "Waitlist Fee Refund" ) { status_tag (provider.waitlist_fee_refund ? "YES" : "No"), (provider.waitlist_fee_refund ? :ok : :error) }
+
+      row :service_approval_number
+      row :approval_number
+      row :legal_name
+      row :conditions_on_approval
+      row :approved_places
+      row :approval_granted_on
+      row :quality_area_rating_1
+      row :quality_area_rating_2
+      row :quality_area_rating_3
+      row :quality_area_rating_4
+      row :quality_area_rating_5
+      row :quality_area_rating_6
+      row :quality_area_rating_7
+      row :overall_rating
+      row :food
+      row :online_enrolment
+      row :security
+
       end
     active_admin_comments
   end #show

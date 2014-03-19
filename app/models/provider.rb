@@ -27,6 +27,11 @@ class Provider < ActiveRecord::Base
   accepts_nested_attributes_for :services, :allow_destroy => true
 
   scope :alphabetically, order("full_name ASC")
+
+  #
+  # V A L I D A T I O N S
+  #
+   validates_presence_of :name, :uniqueness => true
   # NPS_rating seems to be 1...3, so 0 is default for now.
   validates :NQS_rating,
     :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 3}
@@ -36,5 +41,15 @@ class Provider < ActiveRecord::Base
     true
   end
 
+  def alternate_keys key
+    case key
+      when 'Approval Number'              # need
+        ['Service Approval Number']       # look for
+      when 'Legal Name'
+        ['Provider Legal Name']
+      else
+        [key]
+    end
+  end
 
 end
