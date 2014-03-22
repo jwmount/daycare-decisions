@@ -32,9 +32,10 @@ ActiveAdmin.register_page "Dashboard" do
        end
 
        column do
-         panel "Providers With Vacancies" do
+         panel "Providers" do
            ul do
-             Provider.where(:vacancies => :true).count 
+             li "With Vacancies #{Provider.where(:vacancies => :true).count}" 
+             li "Total #{Provider.count}"              
            end
          end
        end

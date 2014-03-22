@@ -153,11 +153,15 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
   create_table "providers", force: true do |t|
 
+    t.integer  "approved_places",          :default => 0
+    t.boolean  "bus_service"
+    t.string   "care_offered"
+    t.string   "name",          :null => false
+
     t.string   "service_approval_number"
-    t.string   "approval_number"
+    t.string   "provider_approval_number"
     t.string   "legal_name"
-    t.string   "conditions_on_approval"
-    t.integer  "approved_places",  :default => 0
+    t.text     "conditions_on_approval"
     t.datetime "approval_granted_on"
     t.string   "quality_area_rating_1"
     t.string   "quality_area_rating_2"
@@ -167,16 +171,14 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "quality_area_rating_6"
     t.string   "quality_area_rating_7"
     t.string   "overall_rating"
-    t.boolean  "food"
-    t.boolean  "online_enrolment"
+    t.boolean  "food_provided"
     t.boolean  "security"
 
     t.integer  "company_id"
-    t.string   "name"
-    t.string   "care",            :default => 't.b.d.'
-    t.decimal  "fee",             :default => 0.00
-    t.integer  "NQS_rating",      :default => 0
-    t.text     "description",     :length => 1000
+    t.string   "form_of_care",            :default => 't.b.d.'
+    t.decimal  "fee",                     :default => 0.00
+    t.integer  "NQS_rating",              :default => 0
+    t.text     "description",             :length => 1000
     t.boolean  "disposable_nappies"
     t.boolean  "cloth_nappies"
     t.string   "hours"
@@ -185,7 +187,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "languages"
     t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
     t.boolean  "air_conditioning"
-    t.boolean  "bus_service"
     t.boolean  "extended_hours_for_kindys"
     t.boolean  "online_waitlist"
     t.boolean  "online_enrollment"
@@ -196,7 +197,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "outdoor_play_area"  #Amount of Land        Amount or drop down menu?
     t.boolean  "real_grass"
     t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
-    t.boolean  "sibling_has_priority",   :default => false
+    t.boolean  "sibling_priority",   :default => false
     t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
     t.decimal  "waitlist_fee"
     t.boolean  "waitlist_fee_refund"

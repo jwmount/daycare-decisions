@@ -29,6 +29,7 @@ user_list.each do |email, password, role|
   Rails::logger.info( "*-*-*-*-* Created user #{email}, pswd: #{password.slice(0..2)}, role: #{role}" )
 end
 
+
 #
 # Provider list for Brisbane
 #
