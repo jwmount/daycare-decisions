@@ -29,7 +29,7 @@ user_list.each do |email, password, role|
   Rails::logger.info( "*-*-*-*-* Created user #{email}, pswd: #{password.slice(0..2)}, role: #{role}" )
 end
 
-
+=begin
 #
 # Provider list for Brisbane
 #
@@ -84,7 +84,7 @@ csv.each do |row|
   end
   puts p_new.name
 end
-
+=end
 puts
 puts
 #

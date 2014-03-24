@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.integer  "approved_places",          :default => 0
     t.boolean  "bus_service"
     t.string   "care_offered"
-    t.string   "name",          :null => false
+    t.string   "name",                     :null => false
 
     t.string   "service_approval_number"
     t.string   "provider_approval_number"
