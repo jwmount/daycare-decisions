@@ -51,8 +51,8 @@ ActiveAdmin.register Provider do
   scope :technology do |providers|
     providers.where ({technology: true})
   end
-  scope :sibling_has_priority do |providers|
-    providers.where ({sibling_has_priority: true})
+  scope :sibling_priority do |providers|
+    providers.where ({sibling_priority: true})
   end
   scope :waitlist_fee_refund do |providers|
     providers.where ({waitlist_fee_refund: true})
@@ -234,7 +234,7 @@ ActiveAdmin.register Provider do
 
       row ( "Real Grass" ) { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
       row ( "Security Access" ) { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
-      row ( "Sibling Has Priority" ) { status_tag (provider.sibling_has_priority ? "YES" : "No"), (provider.sibling_has_priority ? :ok : :error) }
+      row ( "Sibling Has Priority" ) { status_tag (provider.sibling_priority ? "YES" : "No"), (provider.sibling_priority ? :ok : :error) }
       row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
       row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
       row ( "Waitlist Fee Refund" ) { status_tag (provider.waitlist_fee_refund ? "YES" : "No"), (provider.waitlist_fee_refund ? :ok : :error) }
@@ -307,7 +307,7 @@ ActiveAdmin.register Provider do
     :bus_service, :extended_hours_for_kindys, :online_waitlist, :fee, :waitlist_fee, :waitlist_fee_refund,
     :online_enrollment, :security_access,
     :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
-    :technology, :sibling_has_priority, :vacancies,
+    :technology, :sibling_priority, :vacancies,
       addresses_attributes: [ :id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [ :id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
       certs_attributes:     [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ],

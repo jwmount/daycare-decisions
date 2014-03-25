@@ -1,3 +1,4 @@
+require 'debugger'
 require 'csv'    
 
 namespace :csv do
@@ -11,26 +12,12 @@ namespace :csv do
       puts "\n process file: #{filename}"
     
       CSV.parse(File.read(filename), :headers => true) do |row|
-        
-        #find the provider name
-        name_key = 'Service Name'
-        name = row[name_key]
-        @provider = Provider.where(name: name ).first_or_create
+        p_hash = row.to_hash
+        provider = p_hash['Service Name'].gsub[' ','_'].downcase
 
-        @provider.attributes.each do |pk,pv|  
-          
-          key = pk.gsub('_',' ').split.map(&:capitalize).join(' ')
-          if row.has_key?(key)
-            @provider[pk] = row[key]
-          else  #try with alternate key(s)
-            keys = @provider.alternate_keys( key )
-            keys.each do |altkey|
-              @provider[pk] = row[altkey]
-            end
-          end  
-        @provider.inspect
+        provider = Provider.create.where(:name => name).first_or_create
+        provider.inspect
         puts
-        end        
       end
     end
 
