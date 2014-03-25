@@ -21,16 +21,13 @@ ActiveAdmin.register Provider do
   scope :extended_hours_for_kindys do |providers|
     providers.where ({extended_hours_for_kindys: true})
   end
-  scope :online_waitlist do |providers|
-    providers.where ({online_waitlist: true})
+  scope :waitlist_online do |providers|
+    providers.where ({waitlist_online: true})
   end
-  scope :online_waitlist do |providers|
+  scope :online_enrollment do |providers|
     providers.where ({online_enrollment: true})
   end
   scope :security_access do |providers|
-    providers.where ({online_enrollment: true})
-  end
-  scope :online_enrollment do |providers|
     providers.where ({security_access: true})
   end
   scope :additional_activities_included do |providers|
@@ -54,9 +51,10 @@ ActiveAdmin.register Provider do
   scope :sibling_priority do |providers|
     providers.where ({sibling_priority: true})
   end
-  scope :waitlist_fee_refund do |providers|
-    providers.where ({waitlist_fee_refund: true})
-    #works fine: providers.where ({waitlist_fee_refund: true, cloth_nappies: true})
+  scope :waitlist_reimbursed do |providers|
+    providers.where ({waitlist_reimbursed: true})
+    # works fine: providers.where ({waitlist_reimbursed: true, cloth_nappies: true})
+    # question is, how to show this?
   end
   scope :vacancies do |providers|
     providers.where ({vacancies: true})
@@ -68,11 +66,11 @@ ActiveAdmin.register Provider do
   filter :care_offered, :label => "Care Options"
   filter :NQS_rating
   filter :fee
-  filter :waitlist_fee
   filter :description
   filter :url
   filter :languages, :label => "Language Skills Training"
   filter :vacancies          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+  filter :waitlist_fee
 
   index do
 
@@ -104,7 +102,7 @@ ActiveAdmin.register Provider do
     
     column :waitlist_fee, :sortable => 'waitlist_fee'
 
-    column :waitlist_fee_refund
+    column :waitlist_reimbursed
 
     column :hours
     
@@ -151,7 +149,7 @@ ActiveAdmin.register Provider do
               
       f.input :vacancies
       f.input ('waitlist_fee')  { number_to_currency(provider.waitlist.fee) }
-      f.input :waitlist_fee_refund
+      f.input :waitlist_reimbursed
     end
 
     f.inputs do
@@ -229,7 +227,7 @@ ActiveAdmin.register Provider do
       row ( "Food Provided" ) { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
       row ( "Guest Speakers" ) { status_tag (provider.guest_speakers ? "YES" : "No"), (provider.guest_speakers ? :ok : :error) }
       row ( "On-line Enrollment" ) { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
-      row ( "On-line Waitlist" ) { status_tag (provider.online_waitlist ? "YES" : "No"), (provider.online_waitlist ? :ok : :error) }
+      row ( "On-line Waitlist" ) { status_tag (provider.waitlist_online ? "YES" : "No"), (provider.waitlist_online ? :ok : :error) }
       row ( "Outdoor Play Area" ) { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
 
       row ( "Real Grass" ) { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
@@ -237,7 +235,7 @@ ActiveAdmin.register Provider do
       row ( "Sibling Has Priority" ) { status_tag (provider.sibling_priority ? "YES" : "No"), (provider.sibling_priority ? :ok : :error) }
       row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
       row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
-      row ( "Waitlist Fee Refund" ) { status_tag (provider.waitlist_fee_refund ? "YES" : "No"), (provider.waitlist_fee_refund ? :ok : :error) }
+      row ( "Waitlist Fee Refund" ) { status_tag (provider.waitlist_reimbursed ? "YES" : "No"), (provider.waitlist_reimbursed ? :ok : :error) }
 
       row :service_approval_number
       row :approval_number
@@ -302,12 +300,16 @@ ActiveAdmin.register Provider do
 # NOTE:  polymorphs cannot be deleted if :id attribute is not given here; no error message occurs,
 # however records will duplicate on every update.
 #
-  permit_params :id, :age, :company_id, :name, :care_offered, :description, :disposable_nappies, :cloth_nappies,
-    :hours, :NQS_rating, :languages, :url, :food_provided, :air_conditioning,
-    :bus_service, :extended_hours_for_kindys, :online_waitlist, :fee, :waitlist_fee, :waitlist_fee_refund,
+  permit_params :additional_activities_included, :age, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
+    :hours, :NQS_rating, :languages, :url, :id, :food_provided, :air_conditioning,
+    :bus_service, :extended_hours_for_kindys, :fee, 
     :online_enrollment, :security_access,
-    :additional_activities_included, :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
+    :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
     :technology, :sibling_priority, :vacancies,
+    :approved_places, :provider_approval_number, :service_approval_number, :provier_legal_name,
+    :quality_area_rating_1, :quality_area_rating_2, :quality_area_rating_3, :quality_area_rating_4,
+    :quality_area_rating_5, :quality_area_rating_6, :quality_area_rating_7, :overall_rating,
+    :waitlist_fee, :waitlist_online, :waitlist_reimbursed,
       addresses_attributes: [ :id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [ :id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
       certs_attributes:     [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ],
