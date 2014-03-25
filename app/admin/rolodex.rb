@@ -2,7 +2,7 @@ ActiveAdmin.register Rolodex do
 
   actions :all, :except => :new
 
-  # filter :number_or_email
+  #filter :number_or_email
   filter :kind
   filter :when_to_use
 
@@ -10,7 +10,7 @@ ActiveAdmin.register Rolodex do
 
     selectable_column
 
-    column "Name (click for details)", :sortable => 'name' do |item|
+    column "Name (click for details)" do |item|
       facility = "#{item.rolodexable_type}".constantize.where(id: item.rolodexable_id)
       render facility
     end

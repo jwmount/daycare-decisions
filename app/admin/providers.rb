@@ -307,6 +307,7 @@ ActiveAdmin.register Provider do
 
     :extended_hours_for_kindys, 
     :excursions, 
+    
     :fee, 
     :food_provided,
 

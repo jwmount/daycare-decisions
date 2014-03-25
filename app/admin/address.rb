@@ -2,11 +2,12 @@ ActiveAdmin.register Address do
 
   actions :all, :except => :new
 
+
   index do
 
     selectable_column
 
-    column "Name (click for details)", :sortable => 'name' do |address|
+    column "Name (click for details)" do |address|
       facility = "#{address.addressable_type}".constantize.where(id: address.addressable_id)
       render facility
     end

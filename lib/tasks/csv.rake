@@ -29,6 +29,7 @@ namespace :csv do
         provider.description              = p_hash['Description']
         provider.disposable_nappies       = p_hash['Disposable Nappies']  == 'Y' ? true : false
 
+        provider.extended_hours_for_kindys= p_hash['Extended Hours For Kindys']  ? true : false
         provider.excursions               = p_hash['Excursions']          == 'Y' ? true : false
 
         provider.fee                      = p_hash['Fee']
@@ -99,11 +100,110 @@ namespace :csv do
         else
           puts "--Dropped\n"
         end
-
+      
       puts
       end
     end
   	puts "\n--Finished."
+    puts "Providers: #{Provider.count}"
+    puts "Addresses: #{Address.count}"
+    puts "Rolodexes: #{Rolodex.count}"
+  end #task
+
+#
+# L O A D  T E S T
+#
+  task load_test: :environment do
+  
+    @count = 0
+    @started = Time.now()
+    1000.times do 
+    
+      provider = Provider.where(:name => "Service Name-#{rand.to_s}").first_or_create
+      provider.age_range                = 'Age Range'
+      provider.additional_activities_included = true
+      provider.air_conditioning         = true
+      provider.approval_granted_on      = Date.today
+      provider.approved_places          = 40
+
+      provider.bus_service              = true
+      
+      provider.cloth_nappies            = true
+      provider.conditions_on_approval   = 'Conditions on Approval'
+      
+      provider.description              = 'Description'
+      provider.disposable_nappies       = true
+      
+      provider.extended_hours_for_kindys= true
+      provider.excursions               = true
+      
+      provider.fee                      = 75.00
+      provider.food_provided            = true
+      
+      provider.guest_speakers           = true
+      
+      provider.languages                = true
+      
+      provider.outdoor_play_area        = true
+      provider.overall_rating           = 'Overall Rating'
+      
+      provider.provider_approval_number = 'Provider Approval Number'
+      provider.provider_legal_name      = 'Provider Legal Name'
+      
+      provider.quality_area_rating_1    = 'Quality Area 1 Rating'
+      provider.quality_area_rating_2    = 'Quality Area 2 Rating'
+      provider.quality_area_rating_3    = 'Quality Area 3 Rating'
+      provider.quality_area_rating_4    = 'Quality Area 4 Rating'
+      provider.quality_area_rating_5    = 'Quality Area 5 Rating'
+      provider.quality_area_rating_6    = 'Quality Area 6 Rating'
+      provider.quality_area_rating_7    = 'Quality Area 7 Rating'
+      
+      provider.real_grass               = true
+      
+      provider.security_access          = true
+      provider.service_approval_number  = 'Service Approval Number'
+      provider.sibling_priority         = true
+      
+      provider.technology               = true
+      
+      provider.url                      = 'www.wsj.com'       
+      provider.vacancies                = 1
+      provider.vaccines_compulsory      = true
+      provider.waitlist_fee             = 25.00
+      provider.waitlist_online          = true
+      provider.waitlist_reimbursed      = true
+      
+        # Save provider but only create polymorphic dependents if successful.
+        if provider.save!
+          @count += 1
+          puts "--Saved #{@count.to_s}"
+
+          address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
+          address.street_address = 'Service Address'
+          address.locality       = 'Suburb'
+          address.state          = 'QLD'
+          address.post_code      = 'Postcode'
+          address.save
+
+          phone = Rolodex.where(rolodexable_id: provider[:id], kind: 'Office number', rolodexable_type: 'Provider').first_or_create
+          phone.number_or_email = '+61 423 999 000'
+          phone.save        
+
+          fax = Rolodex.where( rolodexable_id: provider[:id], kind: 'Fax', rolodexable_type: 'Provider').first_or_create
+          fax.number_or_email = '+61 (0)4 2399 9000'
+          fax.save
+
+          email = Rolodex.where( rolodexable_id: provider[:id], kind: 'Email', rolodexable_type: 'Provider').first_or_create
+          email.number_or_email = 'info@daycaredecisions.com.au'
+          email.save
+        else
+          puts "--Dropped\n"
+        end
+
+      end # do
+    @finished = Time.now()
+    rate = (@finished - @started)/@count
+    puts "\n--Finished.  average rate: #{rate}"
     puts "Providers: #{Provider.count}"
     puts "Addresses: #{Address.count}"
     puts "Rolodexes: #{Rolodex.count}"
