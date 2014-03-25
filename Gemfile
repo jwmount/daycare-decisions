@@ -4,7 +4,9 @@ ruby '2.0.0'
 gem 'rails', '>=4.0.1'
 gem 'rake', '10.1.0'
 
-gem 'sass-rails'
+# sprockets Environment error, it's ALWAYS sprockets
+# http://stackoverflow.com/questions/22426698/undefined-method-environment-for-nilnilclass-when-importing-bootstrap-into-ra
+gem "sass-rails", "~> 4.0.2"
 gem 'haml-rails'
 gem 'carrierwave'
 
@@ -58,4 +60,4 @@ group :doc do
 end
 
 # Rails 4 support, see https://github.com/gregbell/active_admin/pull/2326
-gem 'activeadmin',         github: 'gregbell/active_admin'#, branch: 'rails4'
+gem 'activeadmin',         github: 'gregbell/active_admin'  #, branch: 'rails4'

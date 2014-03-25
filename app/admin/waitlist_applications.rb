@@ -53,10 +53,10 @@ ActiveAdmin.register WaitlistApplication do
       f.input :lodged_for,
               :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_LODGED_FOR_HINT
 
-      f.input :enrolment_goal,
+      f.input :enrollment_goal,
               :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_ENROLMENT_GOAL_HINT
 
-      f.input :enrolment_goal_date,
+      f.input :enrollment_goal_date,
               :as => :date_picker,
               :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_ENROLMENT_DATE_HINT
 
@@ -144,8 +144,8 @@ ActiveAdmin.register WaitlistApplication do
     :form_name,
 
 
-    :enrolment_goal,
-    :enrolment_goal_date,
+    :enrollment_goal,
+    :enrollment_goal_date,
     :enroled_on,
     :gender,
     :dob,

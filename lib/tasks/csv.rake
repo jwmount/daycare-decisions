@@ -16,8 +16,8 @@ namespace :csv do
         
         provider = Provider.where(:name => p_new[:name]).first_or_create
 
-        provider.age                      = p_hash['Age Range']
-        provider.additional_activities_included = p_hash['Additional Activities Included']
+        provider.age_range                = p_hash['Age Range']
+        provider.additional_activities_included = p_hash['Additional Activities Included'] == 'Y' ? true : false
         provider.air_conditioning         = p_hash['Air Conditioning']    == 'Y' ? true : false        
         provider.approval_granted_on      = p_hash['Service Approval Granted Date']
         provider.approved_places          = p_hash['Number Of Approved Places']
@@ -33,7 +33,7 @@ namespace :csv do
         provider.excursions               = p_hash['Excursions']          == 'Y' ? true : false
 
         provider.fee                      = p_hash['Fee']
-        provider.food                     = p_hash['Food Provided']       == 'Y' ? true : false
+        provider.food_provided            = p_hash['Food Provided']       == 'Y' ? true : false
 
         provider.guest_speakers           = p_hash['Guest Speakers']      == 'Y' ? true : false
 
@@ -63,47 +63,43 @@ namespace :csv do
 
         provider.url                      = p_hash['Website']       
         provider.vacancies                = p_hash['Vacancies']           == 'Y' ? true : false
+        provider.vaccines_compulsory      = p_hash['Vaccines']            == 'Y' ? true : false
         provider.waitlist_fee             = p_hash['Waitlist Fee']    
         provider.waitlist_online          = p_hash['Online Waitlist']     == 'Y' ? true : false
         provider.waitlist_reimbursed      = p_hash['Waitlist Reimbursed'] == 'Y' ? true : false
 
         provider.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
         puts provider.description
-        if provider.save 
+
+        # Save provider but only create polymorphic dependents if successful.
+        if provider.save! 
           puts "--Saved\n"
+
+          address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
+          address.street_address = p_hash['Service Address']
+          address.locality       = p_hash['Suburb']
+          address.state          = p_hash['State']
+          address.post_code      = p_hash['Postcode'] 
+          address.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
+          address.save
+
+          phone = Rolodex.where(rolodexable_id: provider[:id], kind: 'Office number', rolodexable_type: 'Provider').first_or_create
+          phone.number_or_email = p_hash['Phone']
+          phone.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
+          phone.save        
+
+          fax = Rolodex.where( rolodexable_id: provider[:id], kind: 'Fax', rolodexable_type: 'Provider').first_or_create
+          fax.number_or_email = p_hash['Fax']
+          fax.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
+          fax.save
+
+          email = Rolodex.where( rolodexable_id: provider[:id], kind: 'Email', rolodexable_type: 'Provider').first_or_create
+          email.number_or_email = p_hash['Email Address']
+          email.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
+          email.save
         else
           puts "--Dropped\n"
         end
-
-        address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
-        address.street_address = p_hash['Service Address']
-        address.locality       = p_hash['Suburb']
-        address.state          = p_hash['State']
-        address.post_code      = p_hash['Postcode'] 
-        address.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
-        address.save
-
-        #Address.create( addressable_id: provider[:id], addressable_type: 'Provider',
-        #  street_address: p_hash['Service Address'], locality: p_hash['Suburb'], 
-        #  state: p_hash['state'], post_code: p_hash['post_code'] )
-        
-        phone = Rolodex.where(rolodexable_id: provider[:id], kind: 'Office number', rolodexable_type: 'Provider').first_or_create
-        phone.number_or_email = p_hash['Phone']
-        phone.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
-        phone.save        
-
-        #Rolodex.create( rolodexable_id: provider[:id], rolodexable_type: 'Provider',
-        #  number_or_email: p_hash['Phone'], kind: 'Office number', when_to_use: 'Anytime' )
-
-        fax = Rolodex.where( rolodexable_id: provider[:id], kind: 'Fax', rolodexable_type: 'Provider').first_or_create
-        fax.number_or_email = p_hash['Fax']
-        fax.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
-        fax.save
-
-        email = Rolodex.where( rolodexable_id: provider[:id], kind: 'Email', rolodexable_type: 'Provider').first_or_create
-        email.number_or_email = p_hash['Email Address']
-        email.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
-        email.save
 
       puts
       end

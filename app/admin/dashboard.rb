@@ -36,7 +36,7 @@ ActiveAdmin.register_page "Dashboard" do
            ul "Providers" do
              li "Vacancies: #{Provider.where(:vacancies => :true).count.to_s}"
              li "Providers: #{Provider.count.to_s}"
-             li "Places: t.b.d."
+             li "Places: #{Provider.sum(:approved_places)}"
            end
          end
        end

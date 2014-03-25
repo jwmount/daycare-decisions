@@ -154,14 +154,44 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   create_table "providers", force: true do |t|
 
     t.boolean  "additional_activities_included" # Drop down menu: Music, Language, sports program, dance program, learning programs 
+    t.string   "age_range"
+    t.boolean  "air_conditioning"    
     t.datetime "approval_granted_on"
     t.string   "approval_number"
-    t.string   "approved_places",  :default => 0
+    t.integer  "approved_places",  :default => 0
+
+    t.boolean  "bus_service"
+
+    t.string   "care_offered"
+    t.integer  "company_id"
+    t.text     "conditions_on_approval", :length => 1000
+    t.boolean  "cloth_nappies"
+
+    t.text     "description",             :length => 1000
+    t.boolean  "disposable_nappies"
+
+    t.boolean  "excursions"
+    t.boolean  "extended_hours_for_kindys"
+
+    t.decimal  "fee",                     :default => 0.00
+    t.boolean  "food_provided"
+    t.string   "form_of_care",            :default => 't.b.d.'
+
+    t.boolean  "guest_speakers"
+
+    t.string   "hours"
+
+    t.string   "languages"
+
+    t.string   "name",                    :null => false
+    t.integer  "NQS_rating",              :default => 0
+
+    t.boolean  "online_enrollment"
+    t.boolean  "outdoor_play_area"  #Amount of Land        Amount or drop down menu?
+    t.string   "overall_rating"
 
     t.string   "provider_approval_number"
-    t.string   "service_approval_number"
     t.string   "provider_legal_name"
-    t.text     "conditions_on_approval", :length => 1000
     t.string   "quality_area_rating_1"
     t.string   "quality_area_rating_2"
     t.string   "quality_area_rating_3"
@@ -169,33 +199,19 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "quality_area_rating_5"
     t.string   "quality_area_rating_6"
     t.string   "quality_area_rating_7"
-    t.string   "overall_rating"
-    t.boolean  "food_provided"
-    t.boolean  "security"
 
-    t.integer  "company_id"
-    t.string   "form_of_care",            :default => 't.b.d.'
-    t.decimal  "fee",                     :default => 0.00
-    t.integer  "NQS_rating",              :default => 0
-    t.text     "description",             :length => 1000
-    t.boolean  "disposable_nappies"
-    t.boolean  "cloth_nappies"
-    t.string   "hours"
-    t.string   "age"
-    t.string   "url"
-    t.string   "languages"
-    t.boolean  "food_provided" # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
-    t.boolean  "air_conditioning"
-    t.boolean  "extended_hours_for_kindys"
-    t.boolean  "online_enrollment"
     t.boolean  "security_access"
-    t.boolean  "excursions"
-    t.boolean  "guest_speakers"
-    t.boolean  "outdoor_play_area"  #Amount of Land        Amount or drop down menu?
+    t.string   "service_approval_number"
+    t.boolean  "sibling_priority",   :default => false
+
     t.boolean  "real_grass"
     t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
-    t.boolean  "sibling_priority",   :default => false
+
+    t.string   "url"
+
     t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+    t.boolean  "vaccines_compulsory"
+
     t.decimal  "waitlist_fee"
     t.boolean  "waitlist_online"
     t.boolean  "waitlist_reimbursed"
@@ -253,9 +269,9 @@ create_table "waitlist_applications", force: true do |t|
     t.integer  "active",         defalut: true,        null: false
     t.string   "form_name",      default: 'master'
 
-    t.string    "enrolment_goal"
-    t.datetime  "enrolment_goal_date"
-    t.datetime  "enroled_on"
+    t.string    "enrollment_goal"
+    t.datetime  "enrollment_goal_date"
+    t.datetime  "enrolled_on"
     t.string    "gender"
     t.datetime  "dob" 
     t.string    "born_country"

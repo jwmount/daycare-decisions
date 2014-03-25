@@ -2,15 +2,8 @@ ActiveAdmin.register Provider do
 
 
   scope :all, :default => true 
-  scope :disposable_nappies do |providers|
-    providers.where ({disposable_nappies: true})
-  end
-  scope :cloth_nappies do |providers|
-    providers.where ({cloth_nappies: true})
-  end
-  # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
-  scope :food_provided do |providers|
-    providers.where ({food_provided: true})
+  scope :additional_activities_included do |providers|
+    providers.where ({additional_activities_included: true})
   end
   scope :air_conditioning do |providers|
     providers.where ({air_conditioning: true})
@@ -18,26 +11,27 @@ ActiveAdmin.register Provider do
   scope :bus_service do |providers|
     providers.where ({bus_service: true})
   end
-  scope :extended_hours_for_kindys do |providers|
-    providers.where ({extended_hours_for_kindys: true})
+  scope :cloth_nappies do |providers|
+    providers.where ({cloth_nappies: true})
   end
-  scope :waitlist_online do |providers|
-    providers.where ({waitlist_online: true})
+  scope :disposable_nappies do |providers|
+    providers.where ({disposable_nappies: true})
   end
-  scope :online_enrollment do |providers|
-    providers.where ({online_enrollment: true})
-  end
-  scope :security_access do |providers|
-    providers.where ({security_access: true})
-  end
-  scope :additional_activities_included do |providers|
-    providers.where ({additional_activities_included: true})
-  end
+  # – Morning Tea, Lunch, Afternoon Tea MVP has Yes or some
   scope :excursions do |providers|
     providers.where ({excursions: true})
   end
+  scope :extended_hours_for_kindys do |providers|
+    providers.where ({extended_hours_for_kindys: true})
+  end
+  scope :food_provided do |providers|
+    providers.where ({food_provided: true})
+  end
   scope :guest_speakers do |providers|
     providers.where ({guest_speakers: true})
+  end
+  scope :online_enrollment do |providers|
+    providers.where ({online_enrollment: true})
   end
   scope :outdoor_play_area do |providers|
     providers.where ({outdoor_play_area: true})
@@ -45,11 +39,17 @@ ActiveAdmin.register Provider do
   scope :real_grass do |providers|
     providers.where ({real_grass: true})
   end
-  scope :technology do |providers|
-    providers.where ({technology: true})
+  scope :security_access do |providers|
+    providers.where ({security_access: true})
   end
   scope :sibling_priority do |providers|
     providers.where ({sibling_priority: true})
+  end
+  scope :technology do |providers|
+    providers.where ({technology: true})
+  end
+  scope :waitlist_online do |providers|
+    providers.where ({waitlist_online: true})
   end
   scope :waitlist_reimbursed do |providers|
     providers.where ({waitlist_reimbursed: true})
@@ -252,7 +252,7 @@ ActiveAdmin.register Provider do
       row :quality_area_rating_7
       row :overall_rating
       row :food
-      row :online_enrolment
+      row :online_enrollment
       row :security
 
       end
@@ -300,15 +300,42 @@ ActiveAdmin.register Provider do
 # NOTE:  polymorphs cannot be deleted if :id attribute is not given here; no error message occurs,
 # however records will duplicate on every update.
 #
-  permit_params :additional_activities_included, :age, :company_id, :name, :care, :description, :disposable_nappies, :cloth_nappies,
-    :hours, :NQS_rating, :languages, :url, :id, :food_provided, :air_conditioning,
-    :bus_service, :extended_hours_for_kindys, :fee, 
-    :online_enrollment, :security_access,
-    :excursions, :guest_speakers, :outdoor_play_area, :real_grass,
-    :technology, :sibling_priority, :vacancies,
-    :approved_places, :provider_approval_number, :service_approval_number, :provier_legal_name,
+  permit_params  :additional_activities_included, :age_range, :air_conditioning, :approved_places, 
+    :bus_service, 
+    :care_offered, :cloth_nappies, :company_id, 
+    :description, :disposable_nappies,
+
+    :extended_hours_for_kindys, 
+    :excursions, 
+    :fee, 
+    :food_provided,
+
+    :guest_speakers, 
+    :hours, 
+    :id, 
+
+    :languages, 
+    
+    :name, 
+    :NQS_rating, :url,
+
+    :online_enrollment, 
+    :outdoor_play_area, :overall_rating,
+
+    :real_grass,
+
+    :security_access, :service_approval_number, :sibling_priority, 
+    
+    :technology,
+
+    :provider_approval_number, :provider_legal_name,
+
     :quality_area_rating_1, :quality_area_rating_2, :quality_area_rating_3, :quality_area_rating_4,
-    :quality_area_rating_5, :quality_area_rating_6, :quality_area_rating_7, :overall_rating,
+    :quality_area_rating_5, :quality_area_rating_6, :quality_area_rating_7, 
+    
+    :url,
+    :vacancies,  :vaccines_compulsory,
+
     :waitlist_fee, :waitlist_online, :waitlist_reimbursed,
       addresses_attributes: [ :id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
       rolodexes_attributes: [ :id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
