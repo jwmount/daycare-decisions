@@ -153,12 +153,15 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
   create_table "providers", force: true do |t|
 
-    t.string   "service_approval_number"
-    t.string   "approval_number"
-    t.string   "legal_name"
-    t.string   "conditions_on_approval"
-    t.integer  "approved_places",  :default => 0
+    t.boolean  "additional_activities_included" # Drop down menu: Music, Language, sports program, dance program, learning programs 
     t.datetime "approval_granted_on"
+    t.string   "approval_number"
+    t.string   "approved_places",  :default => 0
+
+    t.string   "provider_approval_number"
+    t.string   "service_approval_number"
+    t.string   "provider_legal_name"
+    t.text     "conditions_on_approval", :length => 1000
     t.string   "quality_area_rating_1"
     t.string   "quality_area_rating_2"
     t.string   "quality_area_rating_3"
@@ -187,10 +190,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "air_conditioning"
     t.boolean  "bus_service"
     t.boolean  "extended_hours_for_kindys"
-    t.boolean  "online_waitlist"
     t.boolean  "online_enrollment"
     t.boolean  "security_access"
-    t.boolean  "additional_activities_included" # Drop down menu: Music, Language, sports program, dance program, learning programs 
     t.boolean  "excursions"
     t.boolean  "guest_speakers"
     t.boolean  "outdoor_play_area"  #Amount of Land        Amount or drop down menu?
@@ -199,7 +200,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "sibling_priority",   :default => false
     t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
     t.decimal  "waitlist_fee"
-    t.boolean  "waitlist_fee_refund"
+    t.boolean  "waitlist_online"
+    t.boolean  "waitlist_reimbursed"
 
     t.datetime "created_at"
     t.datetime "updated_at"

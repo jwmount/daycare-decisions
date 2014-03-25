@@ -46,7 +46,7 @@ csv.each do |row|
   p_new.air_conditioning           = provider['Air conditioning']   == 'Y' ? true : false
   p_new.languages                  = provider['Languages']          == 'Y' ? true : false
   p_new.online_enrolment           = provider['Online_enrollment']  == 'Y' ? true : false
-  p_new.online_waitlist            = provider['Online waitlist']    == 'Y' ? true : false
+  p_new.waitlist_online            = provider['Online waitlist']    == 'Y' ? true : false
   p_new.outdoor_play_area          = provider['outdoor_play_area']  == 'Y' ? true : false
   p_new.real_grass                 = provider['Real_Grass']         == 'Y' ? true : false
   p_new.security                   = provider['Security Access']    == 'Y' ? true : false

@@ -29,6 +29,7 @@ user_list.each do |email, password, role|
   Rails::logger.info( "*-*-*-*-* Created user #{email}, pswd: #{password.slice(0..2)}, role: #{role}" )
 end
 
+=begin
 #
 # Provider list for Brisbane
 #
@@ -83,7 +84,7 @@ csv.each do |row|
   end
   puts p_new.name
 end
-
+=end
 puts
 puts
 #
@@ -170,3 +171,4 @@ puts "Services:     \t#{Service.count.to_s}"
 puts "Users:        \t#{AdminUser.count.to_s}"
 puts "Waitlist Applications: \t#{WaitlistApplication.count.to_s}"
 puts "\n\n --Done"
+puts "Next Step:  Load providers with $ csv:load_providers."
