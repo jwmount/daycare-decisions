@@ -92,8 +92,8 @@ ActiveAdmin.register Provider do
       end 
     column :NQS_rating, :sortable => 'nqs_rating'
 
-    column "Ages", :sortable => 'age' do |provider| 
-      provider.age 
+    column "Ages", :sortable => 'age_range' do |provider| 
+      provider.age_range 
     end
 
     column "Fee", :sortable => 'fee'  do |provider| 
@@ -134,7 +134,7 @@ ActiveAdmin.register Provider do
               :hint          => AdminConstants::ADMIN_PROVIDER_CARE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_CARE_PLACEHOLDER
 
-      f.input :age,
+      f.input :age_range,
               :hint          => AdminConstants::ADMIN_PROVIDER_AGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_AGE_PLACEHOLDER
 
@@ -201,7 +201,7 @@ ActiveAdmin.register Provider do
     attributes_table do
       row :name
       row ("Address") { render provider.addresses}
-      row ("Age Range") { provider.age }
+      row ("Age Range") { provider.age_range }
       row :care_offered
       row ("Certifications") { render provider.certs}
       row ("Services") { render provider.services}

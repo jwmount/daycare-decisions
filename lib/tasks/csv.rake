@@ -1,5 +1,4 @@
 require 'csv'
-require 'debugger'
 
 namespace :csv do
   desc "Load provider.csv files"
