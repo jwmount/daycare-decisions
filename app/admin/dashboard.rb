@@ -32,11 +32,14 @@ ActiveAdmin.register_page "Dashboard" do
        end
 
        column do
-         panel "Providers" do
-           ul "Key Indicators" do
-             li "Vacancies Overall: #{Provider.where(:vacancies => :true).count}"
-             li "Total Providers: #{Provider.count}"
-             li "Total Places: #{Provider.sum(:approved_places)}"
+         panel "Current Statistics" do
+           ul "Providers" do
+             li "Service Providers: #{Provider.count}"
+             li "Places: #{Provider.sum(:approved_places)}"
+             li "Vacancies: #{Provider.where(:vacancies => :true).count}"
+           end
+           ul "Agencies" do
+             li "Total: #{Agency.count}"
            end
          end
        end
@@ -50,8 +53,9 @@ ActiveAdmin.register_page "Dashboard" do
        end
 
        column do
-         panel "Info" do
+         panel "Announcements" do
            para "Welcome to Daycare Decisions."
+           para "Data Collection begins in April."
          end
        end
 
