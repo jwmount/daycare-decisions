@@ -53,8 +53,6 @@ ActiveAdmin.register Company do
           a.input :locality
           a.input :state
           a.input :post_code
-          a.input :lat
-          a.input :long
       end
     end
 

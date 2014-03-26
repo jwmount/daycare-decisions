@@ -188,10 +188,10 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
     t.boolean  "online_enrollment"
     t.boolean  "outdoor_play_area"  #Amount of Land        Amount or drop down menu?
-    t.string   "overall_rating"
 
     t.string   "provider_approval_number"
     t.string   "provider_legal_name"
+
     t.string   "quality_area_rating_1"
     t.string   "quality_area_rating_2"
     t.string   "quality_area_rating_3"
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "quality_area_rating_5"
     t.string   "quality_area_rating_6"
     t.string   "quality_area_rating_7"
+    t.string   "quality_overall_rating"
 
     t.boolean  "security_access"
     t.string   "service_approval_number"

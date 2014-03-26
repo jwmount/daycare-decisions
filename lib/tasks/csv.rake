@@ -30,6 +30,7 @@ namespace :csv do
         provider.disposable_nappies       = p_hash['Disposable Nappies']  == 'Y' ? true : false
 
         provider.extended_hours_for_kindys= p_hash['Extended Hours For Kindys']  ? true : false
+
         provider.excursions               = p_hash['Excursions']          == 'Y' ? true : false
 
         provider.fee                      = p_hash['Fee']
@@ -40,7 +41,6 @@ namespace :csv do
         provider.languages                = p_hash['Languages']           == 'Y' ? true : false
 
         provider.outdoor_play_area        = p_hash['Outdoor Play Area']   == 'Y' ? true : false
-        provider.overall_rating           = p_hash['Overall Rating']
 
         provider.provider_approval_number = p_hash['Provider Approval Number']
         provider.provider_legal_name      = p_hash['Provider Legal Name']
@@ -52,6 +52,7 @@ namespace :csv do
         provider.quality_area_rating_5    = p_hash['Quality Area 5 Rating']
         provider.quality_area_rating_6    = p_hash['Quality Area 6 Rating']
         provider.quality_area_rating_7    = p_hash['Quality Area 7 Rating']
+        provider.quality_overall_rating   = p_hash['Overall Rating']
 
         provider.real_grass               = p_hash['Real Grass']          == 'Y' ? true : false
 
@@ -145,7 +146,6 @@ namespace :csv do
       provider.languages                = true
       
       provider.outdoor_play_area        = true
-      provider.overall_rating           = 'Overall Rating'
       
       provider.provider_approval_number = 'Provider Approval Number'
       provider.provider_legal_name      = 'Provider Legal Name'
@@ -157,7 +157,8 @@ namespace :csv do
       provider.quality_area_rating_5    = 'Quality Area 5 Rating'
       provider.quality_area_rating_6    = 'Quality Area 6 Rating'
       provider.quality_area_rating_7    = 'Quality Area 7 Rating'
-      
+      provider.quality_overall_rating   = 'Quality Rating'
+
       provider.real_grass               = true
       
       provider.security_access          = true

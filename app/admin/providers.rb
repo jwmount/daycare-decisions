@@ -120,6 +120,8 @@ ActiveAdmin.register Provider do
               :hint         => AdminConstants::ADMIN_PROVIDER_NAME_HINT,
               :placeholder  => AdminConstants::ADMIN_PROVIDER_NAME_PLACEHOLDER
 
+      f.input :approval_number
+
       f.input :company,
               :hint         => AdminConstants::ADMIN_PROVIDER_COMPANY_HINT
       
@@ -142,14 +144,51 @@ ActiveAdmin.register Provider do
 
       f.input :hours
 
+      f.input :additional_activities_included
+      f.input :air_conditioning
+      f.input :bus_service
+      f.input :cloth_nappies
+      f.input :disposable_nappies
+      f.input :excursions
+      f.input :extended_hours_for_kindys
+      f.input :food_provided
+      f.input :guest_speakers
       f.input :languages,
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
+      f.input :online_enrollment
+      f.input :outdoor_play_area
+      
+      f.input :provider_legal_name
+      
+      f.input :quality_area_rating_1
+      f.input :quality_area_rating_2
+      f.input :quality_area_rating_3
+      f.input :quality_area_rating_4
+      f.input :quality_area_rating_5
+      f.input :quality_area_rating_6
+      f.input :quality_area_rating_7
+
+      f.input :real_grass
+
+      f.input :security_access
+      f.input :service_approval_number
+      f.input :sibling_priority
+
+      f.input :technology
+
+      f.input :url
+
+      f.input :vacancies
+      f.input :vaccines_compulsory
+
+      f.input :waitlist_online
+      f.input :waitlist_reimbursed
+      f.input ('waitlist_fee') { number_to_currency(provider.waitlist_fee) }
+
               
       f.input :vacancies
-      f.input ('waitlist_fee')  { number_to_currency(provider.waitlist.fee) }
-      f.input :waitlist_reimbursed
     end
 
     f.inputs do
@@ -199,50 +238,47 @@ ActiveAdmin.register Provider do
 
   show :title => :name do
     attributes_table do
-      row :name
-      row ("Address") { render provider.addresses}
-      row ("Age Range") { provider.age_range }
-      row :care_offered
-      row ("Certifications") { render provider.certs}
-      row ("Services") { render provider.services}
-      row :company
-      row :description
-
-      row ( 'fee' ) {number_to_currency(provider.fee)}
-      row :hours
-      row :languages
-      row :NQS_rating
-      row :waitlist_fee
-      row ( "Rolodex" ) {render provider.rolodexes}
-      row ( "Web Site" ) { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
-
+      row ( "Address") { render provider.addresses}
       row ( "Additional Activities Included") { status_tag (provider.additional_activities_included ? "YES" : "No"), (provider.additional_activities_included ? :ok : :error) }
+      row ( "Age Range") { provider.age_range }
       row ( "Air Conditioning" ) { status_tag (provider.air_conditioning ? "YES" : "No"), (provider.air_conditioning ? :ok : :error) }
+      row :approval_granted_on
+      row :approval_number
+      row :approved_places
+
       row ( "Bus Service" ) { status_tag (provider.bus_service ? "YES" : "No"), (provider.bus_service ? :ok : :error) }
+
+      row :care_offered
+      row ( "Certifications" ) { render provider.certs}
       row ( "Cloth Nappies" ) { status_tag (provider.cloth_nappies ? "YES" : "No"), (provider.cloth_nappies ? :ok : :error) }
+      row :company
+      row :conditions_on_approval
+
+
+      row :description
       row ( "Disposable Nappies" ) { status_tag (provider.disposable_nappies ? "YES" : "No"), (provider.disposable_nappies ? :ok : :error) }
+
       row ( "Excursions" ) { status_tag (provider.excursions ? "YES" : "No"), (provider.excursions ? :ok : :error) }
       row ( "Extended Hours for Kindys" ) { status_tag (provider.extended_hours_for_kindys ? "YES" : "No"), 
         (provider.extended_hours_for_kindys ? :ok : :error) }
+
+      row ( 'fee' ) {number_to_currency(provider.fee)}
       row ( "Food Provided" ) { status_tag (provider.food_provided ? "YES" : "No"), (provider.food_provided ? :ok : :error) }
+      
       row ( "Guest Speakers" ) { status_tag (provider.guest_speakers ? "YES" : "No"), (provider.guest_speakers ? :ok : :error) }
+
+      row :hours
+
+      row :languages
+      row :legal_name
+
+      row :NQS_rating
+
       row ( "On-line Enrollment" ) { status_tag (provider.online_enrollment ? "YES" : "No"), (provider.online_enrollment ? :ok : :error) }
-      row ( "On-line Waitlist" ) { status_tag (provider.waitlist_online ? "YES" : "No"), (provider.waitlist_online ? :ok : :error) }
       row ( "Outdoor Play Area" ) { status_tag (provider.outdoor_play_area ? "YES" : "No"), (provider.outdoor_play_area ? :ok : :error) }
 
-      row ( "Real Grass" ) { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
-      row ( "Security Access" ) { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
-      row ( "Sibling Has Priority" ) { status_tag (provider.sibling_priority ? "YES" : "No"), (provider.sibling_priority ? :ok : :error) }
-      row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
-      row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
-      row ( "Waitlist Fee Refund" ) { status_tag (provider.waitlist_reimbursed ? "YES" : "No"), (provider.waitlist_reimbursed ? :ok : :error) }
+      row :provider_legal_name
 
-      row :service_approval_number
-      row :approval_number
-      row :legal_name
-      row :conditions_on_approval
-      row :approved_places
-      row :approval_granted_on
       row :quality_area_rating_1
       row :quality_area_rating_2
       row :quality_area_rating_3
@@ -250,10 +286,25 @@ ActiveAdmin.register Provider do
       row :quality_area_rating_5
       row :quality_area_rating_6
       row :quality_area_rating_7
-      row :overall_rating
-      row :food
-      row :online_enrollment
-      row :security
+      row :quality_overall_rating
+
+      row ( "Real Grass" ) { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
+      row ( "Rolodex" ) {render provider.rolodexes}
+
+      row ( "Secure Access" ) { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
+      row :service_approval_number
+      row ( "Services") { render provider.services}
+      row ( "Sibling Given Priority" ) { status_tag (provider.sibling_priority ? "YES" : "No"), (provider.sibling_priority ? :ok : :error) }
+
+      row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
+      row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
+      row ( "Vaccines Compulsory" ) { status_tag (provider.vaccines_compulsory ? "YES" : "No"), (provider.vaccines_compulsory ? :ok : :error) }
+
+      row ( "Wait List Fee" ) {number_to_currency(provider.waitlist_fee)}
+      row ( "Waitlist Online" ) { status_tag (provider.waitlist_online ? "YES" : "No"), (provider.waitlist_online ? :ok : :error) }
+      row ( "Waitlist Fee Reimbursed" ) { status_tag (provider.waitlist_reimbursed ? "YES" : "No"), (provider.waitlist_reimbursed ? :ok : :error) }
+
+      row ( "Web Site" ) { link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank' }
 
       end
     active_admin_comments
