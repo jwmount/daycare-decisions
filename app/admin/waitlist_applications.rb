@@ -60,7 +60,7 @@ ActiveAdmin.register WaitlistApplication do
               :as => :date_picker,
               :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_ENROLMENT_DATE_HINT
 
-      f.input :enroled_on,
+      f.input :enrolled_on,
               :as => :date_picker,
               :hint => AdminConstants::ADMIN_WAITLIST_APPLICATION_ENROLED_ON_HINT
 

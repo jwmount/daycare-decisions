@@ -12,13 +12,16 @@ ActiveAdmin.register Guardian do
       render guardian.addresses unless guardian.addresses.empty?
     end
 
-    column "My Providers" do |guardian|
+    column "My Favorite Providers" do |guardian|
       render guardian.providers
     end
 
+=begin
+    to be better defined
     column "Waitlist Applications" do |guardian|
       render guardian.waitlist_applications unless guardian.waitlist_applications.empty?
     end
+=end
 
   end #index
 

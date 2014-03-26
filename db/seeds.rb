@@ -145,9 +145,6 @@ personal_certificates.each {|pc| puts pc.name }
 provider_certificates = Certificate.where(:for_provider => true)
 provider_certificates.each {|pc| puts pc.name }
 
-
-
-
 puts
 puts
 
@@ -171,4 +168,5 @@ puts "Services:     \t#{Service.count.to_s}"
 puts "Users:        \t#{AdminUser.count.to_s}"
 puts "Waitlist Applications: \t#{WaitlistApplication.count.to_s}"
 puts "\n --Done\n\n"
-puts " --Next Step:  Load providers with \t$ rake csv:load_providers.\n\n"
+puts " --Next Step:  Load providers with \t\t$ rake csv:load_providers.\n\n"
+puts "               Load 2000 test providers with \t$ rake csv:load_test.\n\n"

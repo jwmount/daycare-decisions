@@ -138,7 +138,7 @@ module AdminConstants
 # WAITLIST_APPLICATION
 #
   ADMIN_WAITLIST_APPLICATION_MISSING_PROVIDERS     = "No providers exists, you must create at least one before you proceed."
-  ADMIN_WAITLIST_APPLICATION_MISSING_GUARDIANS     = "No guardians exist, you must create at least one before you proceed."
+  ADMIN_WAITLIST_APPLICATION_MISSING_GUARDIANS     = "No guardians exist and your application cannot be completed without one.  You can create one before you proceed."
 
   ADMIN_WAITLIST_APPLICATION_GUARDIAN_LABEL        = "Guardian (Parent)"
   ADMIN_WAITLIST_APPLICATION_GUARDIAN_HINT         = "Person responsible for this application."

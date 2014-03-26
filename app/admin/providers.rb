@@ -317,7 +317,8 @@ ActiveAdmin.register Provider do
   # add selected providers to user's list of prefered care providers
   # This works:  current_admin_user.email
   # http://stackoverflow.com/questions/4149326/rails-devise-get-object-of-the-currently-logged-in-user
-  batch_action :add_to_list, confirm: "Add selected providers to your prefered provider list??" do |selection|
+  batch_action :add_to_favorites, confirm: "Add selected providers to your favorite providers list??" do |selection|
+
     @guardian = Guardian.first
     @guardian.handle = current_admin_user.email
     @guardian.save!
@@ -330,7 +331,8 @@ ActiveAdmin.register Provider do
       @guardian.providers << provider
     end
     
-    redirect_to admin_providers_path
+    #redirect_to admin_providers_path
+    redirect_to admin_guardians_path
   end
 
   # remove_provider -- remove provider from user's list of prefered providers
