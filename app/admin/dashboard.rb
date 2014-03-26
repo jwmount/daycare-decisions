@@ -33,12 +33,22 @@ ActiveAdmin.register_page "Dashboard" do
 
        column do
          panel "Current Statistics" do
-           ul "Providers" do
-             li "Service Providers: #{Provider.count}"
-             li "Places: #{Provider.sum(:approved_places)}"
-             li "Vacancies: #{Provider.where(:vacancies => :true).count}"
+           h6 "Providers" 
+           ul do
+             li "Total: #{Provider.count}"
+               ul  do
+                 li "New South Wales: #{Address.where(:state => 'NSW').count}"
+                 li "Northern Territories: #{Address.where(:state => 'NT').count}"
+                 li "Queensland: #{Address.where(:state => 'QLD').count}"
+                 li "South Australia: #{Address.where(:state => 'SA').count}"
+                 li "Victoria: #{Address.where(:state => 'VIC').count}"
+                 li "Western Australia: #{Address.where(:state => 'WA').count}"
+               end
+             li "Total Places: #{Provider.sum(:approved_places)}"
+             li "Total Vacancies: #{Provider.where(:vacancies => :true).count}"
            end
-           ul "Agencies" do
+           h6 "Agencies" 
+           ul do
              li "Total: #{Agency.count}"
            end
          end
