@@ -29,62 +29,6 @@ user_list.each do |email, password, role|
   Rails::logger.info( "*-*-*-*-* Created user #{email}, pswd: #{password.slice(0..2)}, role: #{role}" )
 end
 
-=begin
-#
-# Provider list for Brisbane
-#
-csv_text = File.read('public/data/providers/DaycareDecisionsChildCareCentreDatabasev2.csv')
-csv = CSV.parse(csv_text, :headers => true)
-csv.each do |row|
-  #Provider.create!(row.to_hash)
-  provider           = row.to_hash
-  name               = provider['Name']
-  fee                = provider['Fees']
-  disposable_nappies = provider['Disposable Nappies'] == 'Y' ? true : false
-  cloth_nappies      = provider['Cloth Nappies']      == 'Y' ? true : false
-  food               = provider['Food']               == 'Y' ? true : false
-  hours              = provider['Hours']
-  age                = provider['Age']
-  bus                = provider['Bus']                == 'Y' ? true : false
-  air_conditioning   = provider['Air conditioning']   == 'Y' ? true : false
-  url                = provider['Web Address'].to_s.gsub("http://", "")
-
-  street_address     = provider['Street Address']
-  locality           = provider['Locality']
-  state              = provider['State']
-  post_code          = provider['Post Code']
-
-  phone_number       = provider['Phone Number']
-  email              = provider['Email']
-
-  
-  p_new = Provider.where( name: name )
-  if p_new[0] == nil
-  	p_new = Provider.create!( name: name, 
-                              fee: fee,
-                              disposable_nappies: disposable_nappies, 
-                              cloth_nappies: cloth_nappies,
-      	                      food_provided: food, 
-                              hours: hours,
-                              age: age,
-                              bus_service: bus, 
-                              air_conditioning: air_conditioning, 
-                              url: url
-                            )
-
-    Address.create( addressable_id: p_new[:id], addressable_type: 'Provider',
-    	street_address: street_address, locality: locality, state: state, post_code: post_code )
-
-    Rolodex.create( rolodexable_id: p_new[:id], rolodexable_type: 'Provider',
-      number_or_email: phone_number, kind: 'Office number', when_to_use: 'Anytime' )
-
-    Rolodex.create( rolodexable_id: p_new[:id], rolodexable_type: 'Provider',
-      number_or_email: email, kind: 'Email', when_to_use: 'Anytime' )
-
-  end
-  puts p_new.name
-end
-=end
 puts
 puts
 #

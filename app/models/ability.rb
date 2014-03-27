@@ -21,24 +21,24 @@
 #   operations
 #   sales (sees anything related to accounts they have oversight for)
 #   superadmin (have to be one to create a Person with role of 'admin')
- 
+
 class Ability
   include CanCan::Ability
 
+=begin
   def XXinitialize(user)
     can :manage, :all
-      #can :manage, Company
-      #can :read, Project
-      #can :manage, User, :id => user.id
-      #can :read, ActiveAdmin::Page, :name => "Dashboard"
+      can :manage, Company
+      can :read, Project
+      can :manage, User, :id => user.id
+      can :read, ActiveAdmin::Page, :name => "Dashboard"
   end
-
-  # redirect loop will occur when expression leads to root or nil.
+=end
+  # NOTE:  redirect loop occurs when expression leads to root or nil.
   def initialize(user)
-
     #can :manage, :all
     #return
-    
+
     user ||= AdminUser.new # user (not logged in)
 
     case user.role.name
@@ -46,8 +46,9 @@ class Ability
     when 'admin'
       can :manage, :all
 
-    when 'parent'
-      can :read, :all
+    when 'guardian'
+      can :read, Provider
+      can :read, ActiveAdmin::Page, :name => "Dashboard"
       
     when 'management'
       can :read, :all
@@ -60,8 +61,7 @@ class Ability
     # actually want to return to login
     # guest
     else
-      can :read, :all
-      can :manage, Comment
+      can :read, ActiveAdmin::Page, :name => "Dashboard"
     end  
 =begin
     if user.role.name == 'admin'
