@@ -53,6 +53,8 @@ module AdminConstants
   ADMIN_GUARDIAN_SURNAME_HINT            = "Surname"
   ADMIN_GUARDIAN_SURNAME_PLACEHOLDER     = "Surname"
   
+  ADMIN_GUARDIAN_HANDLE_HINT             = "Handle to favorites list, usually email used to login."
+  ADMIN_GUARDIAN_HANDLE_PLACEHOLDER      = "info@somesite.com"
 #
 # Person
 #

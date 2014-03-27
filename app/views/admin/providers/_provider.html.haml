@@ -1,3 +1,4 @@
 %h3= link_to "#{provider.name}", admin_provider_path( provider )
 %p= link_to "#{provider.url}", href="http://#{provider.url}", target: '_blank'
+%p= "Selected by #{provider.guardians.count} guardians."
 %br

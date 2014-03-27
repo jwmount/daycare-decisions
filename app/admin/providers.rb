@@ -318,15 +318,8 @@ ActiveAdmin.register Provider do
   # This works:  current_admin_user.email
   # http://stackoverflow.com/questions/4149326/rails-devise-get-object-of-the-currently-logged-in-user
   batch_action :add_to_favorites, confirm: "Add selected providers to your favorite providers list??" do |selection|
-
-    @guardian = Guardian.first
-    @guardian.handle = current_admin_user.email
-    @guardian.save!
-
     @guardian = Guardian.where(handle: current_admin_user.email)
     @guardian = @guardian[0]
-    @guardian.providers.clear
-
     Provider.find(selection).each do |provider|
       @guardian.providers << provider
     end
@@ -338,14 +331,16 @@ ActiveAdmin.register Provider do
   # remove_provider -- remove provider from user's list of prefered providers
   # Do not destroy guardian or provider objects.
   # http://apidock.com/rails/ActiveRecord/Associations/ClassMethods/has_and_belongs_to_many
-  batch_action :clear_list, confirm: "Clear all providers from your list of selected providers?" do |selection|
-    @guardian = Guardian.first
-    gps = @guardian_providers unless @guardian.nil?
-    gps.clear unless gps.nil?
+  batch_action :clear_favorites_list, confirm: "Clear all providers from your list of selected providers?" do |selection|
+    @guardian = Guardian.where(handle: current_admin_user.email)
+    @guardian = @guardian[0]
+    unless @guardian.nil?
+      gps = @guardian.providers
+      gps.clear
+    end
     #redirect_to admin_providers_path
     redirect_to admin_providers_path, {:notice => "My list of providers."}
   end
- 
 
 #
 # P E R M I T  P A R A M S

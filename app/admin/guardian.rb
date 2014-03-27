@@ -37,6 +37,10 @@ ActiveAdmin.register Guardian do
       f.input :family_name, 
               :hint         => AdminConstants::ADMIN_GUARDIAN_SURNAME_HINT,
               :placeholder  => AdminConstants::ADMIN_GUARDIAN_SURNAME_PLACEHOLDER
+
+      f.input :handle,
+              :hint         => AdminConstants::ADMIN_GUARDIAN_HANDLE_HINT,
+              :placeholder  => AdminConstants::ADMIN_GUARDIAN_HANDLE_PLACEHOLDER
     end
   
     f.inputs "Addresses" do
