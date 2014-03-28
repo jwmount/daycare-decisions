@@ -50,7 +50,7 @@ class Ability
       can :read, Provider
       can :read, ActiveAdmin::Page, :name => "Dashboard"
       
-    when 'management'
+    when 'staff'
       can :read, :all
       can :update, Provider
             

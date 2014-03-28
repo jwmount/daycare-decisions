@@ -16,7 +16,7 @@ end
 user_list = [
   ['john@venuesoftware.com', 'password', 4],
   ['rebecca@daycaredecisions.com', 'password', 1],
-  ['rebecca@daycaredecisions.com.au', 'password', 1],
+  ['rebecca@daycaredecisions.com.au', 'password', 2],
   ['guardian@iLab.com.au', 'password', 3],
   ['tgodino@icloud.com', 'password', 4]
   ]
