@@ -6,6 +6,7 @@ gem 'rake', '10.1.0'
 
 # sprockets Environment error, it's ALWAYS sprockets
 # http://stackoverflow.com/questions/22426698/undefined-method-environment-for-nilnilclass-when-importing-bootstrap-into-ra
+gem 'coffee-rails'
 gem "sass-rails", "~> 4.0.2"
 gem 'haml-rails'
 gem 'carrierwave'

@@ -225,6 +225,7 @@ DEPENDENCIES
   binding_of_caller
   cancan
   carrierwave
+  coffee-rails
   country_select
   debugger
   devise
