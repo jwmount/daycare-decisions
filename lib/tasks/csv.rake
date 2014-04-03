@@ -90,7 +90,7 @@ namespace :csv do
         puts COUNT
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
-        if provider.save! and !provider.name.nil?
+        if !provider.name.nil? and provider.save! 
           puts "--Saved\n\n\n"
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
@@ -116,7 +116,7 @@ namespace :csv do
          # email.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
           email.save
         else
-          puts "--Dropped\n"
+          puts "--Provider could not be saved, Dropped\n"
         end
       
       puts provider.name
