@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "url"
 
     t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
-    t.boolean  "vaccines_compulsory"
+    t.boolean  "vaccinations_compulsory"
 
     t.decimal  "waitlist_fee"
     t.boolean  "waitlist_online"

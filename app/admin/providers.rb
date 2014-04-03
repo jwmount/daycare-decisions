@@ -181,7 +181,7 @@ ActiveAdmin.register Provider do
       f.input :url
 
       f.input :vacancies
-      f.input :vaccines_compulsory
+      f.input :vaccinations_compulsory
 
       f.input :waitlist_online
       f.input :waitlist_reimbursed
@@ -298,7 +298,7 @@ ActiveAdmin.register Provider do
 
       row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
       row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
-      row ( "Vaccines Compulsory" ) { status_tag (provider.vaccines_compulsory ? "YES" : "No"), (provider.vaccines_compulsory ? :ok : :error) }
+      row ( "Vaccinations Compulsory" ) { status_tag (provider.vaccinations_compulsory ? "YES" : "No"), (provider.vaccinations_compulsory ? :ok : :error) }
 
       row ( "Wait List Fee" ) {number_to_currency(provider.waitlist_fee)}
       row ( "Waitlist Online" ) { status_tag (provider.waitlist_online ? "YES" : "No"), (provider.waitlist_online ? :ok : :error) }
@@ -383,7 +383,7 @@ ActiveAdmin.register Provider do
     :quality_area_rating_5, :quality_area_rating_6, :quality_area_rating_7, 
     
     :url,
-    :vacancies,  :vaccines_compulsory,
+    :vacancies,  :vaccinations_compulsory,
 
     :waitlist_fee, :waitlist_online, :waitlist_reimbursed,
       addresses_attributes: [ :id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
