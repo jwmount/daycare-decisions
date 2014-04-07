@@ -8,9 +8,11 @@ gem 'rake', '10.1.0'
 # http://stackoverflow.com/questions/22426698/undefined-method-environment-for-nilnilclass-when-importing-bootstrap-into-ra
 gem 'coffee-rails'
 gem "sass-rails", "~> 4.0.2"
+gem "twitter-bootstrap-rails"
+gem "bootstrap-sass"
 gem 'haml-rails'
-gem 'carrierwave'
 
+gem 'carrierwave'
 gem 'devise'
 gem 'cancan'
 gem 'pg'

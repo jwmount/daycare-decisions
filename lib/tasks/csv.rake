@@ -26,6 +26,9 @@ namespace :csv do
         row.each do |k,v|
           p_hash[k] = sanitize_utf8(v)
         end
+
+        # get provider if one exists (validated to unique so only one can exist) or
+        # create new one.
         provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
 
         provider.age_range                = p_hash['Age Range']

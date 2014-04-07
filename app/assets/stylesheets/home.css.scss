@@ -1,0 +1,146 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+  
+  body {
+    background-color: #F7F5E0;    
+    font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+    font-size: 13px;
+    color: #333;
+    width: 90%;
+    margin: 10px auto;
+    border: 1px solid #aaa;
+  }
+  
+  h1 {
+    font-size: 28px;
+    color: #000;
+  }
+  h2 {
+  	font-size: 24px;
+  }
+  h3 {
+    font-size: 18px;
+    color: blue;
+  }
+  
+  a  {color: #03c}
+  a:hover {
+    background-color: #D668A8;
+    color: white;
+    text-decoration: none;
+  }
+  
+//
+// Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs
+//
+  
+  #content {
+    float: left;
+    padding: 25px;
+    width: 100%;
+  }
+  
+  #footer {
+    clear: both;
+    margin-top: 25px;
+  }
+  
+  #header, #home, #Advertise, #about_us, #contact, #Privacy, #Terms   {
+    padding-left: 75px;
+    padding-right: 30px;
+  }
+  
+  #header {
+    background: url( "../assets/dcd_main_1.jpg" );
+    background-image: url("assets/images/dcd_main_1.jpg");
+    background-repeat: no-repeat;
+    background-position: top left;
+    height: 64px;
+  }
+  #header h1, #header h2 {margin: 0}
+  #header h2 {
+    color: #888;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  #header h3 {
+    color: green;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  
+  #navbar {
+    background-color: #a90329;    
+    margin: 20px auto;
+    width: 100%;
+    height: 40px;
+  }
+  
+  .panel {
+  	border: 1px;
+  	margin: 20px auto;
+  }
+ .panel ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .panel ul h3 {
+    margin-top: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  .panel li {
+    list-style-type: none;
+  }
+ 
+  .panel ul.links li {
+    margin-bottom: 5px;
+  }
+
+  .panel#ads {
+  	background-color: green;
+  	float: right;
+  	width: 25%;
+    border: 1px;
+  }
+  .panel#attributess {
+  	float: left;
+  	width: 25%;
+    background-color: pink;
+  }
+  .panel#providers {
+  	float: right;
+  	width: 25%;
+    background-color: pink;
+  }
+  .panel#search {
+    background-color: light_grey;
+    clear: both;
+    margin-top: 25px;
+    width: 75%;
+  }
+  
+  .sidebar {
+    float: right;
+    width: 175px;
+  }
+  
+  .sidebar ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .sidebar ul h3 {
+    margin-top: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  .sidebar li {
+    list-style-type: none;
+  }
+  .sidebar ul.links li {
+    margin-bottom: 5px;
+  }
+  
