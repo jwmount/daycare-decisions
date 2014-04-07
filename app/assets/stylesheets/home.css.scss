@@ -4,7 +4,7 @@
   
   body {
     background-color: #F7F5E0;    
-    font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+    font-family: "Papyrus", "Chalkduster", "Bitstream Vera Sans", "Verdana";
     font-size: 13px;
     color: #333;
     width: 90%;
@@ -31,10 +31,36 @@
     text-decoration: none;
   }
   
+  ul#navlist {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    }
+  ul#navlist li { 
+    background-color: #a90329;    
+    display: inline; 
+    height: 6em;
+    }
+  ul#navlist li a {
+    border-right: 1px solid #fff;
+    width: 10em;
+    color: #fff;
+    padding: 0.2em 1em;
+    text-decoration: none;
+    }
+  ul#navlist li a:hover {
+    background-color: pink;
+    color: #fff;
+    }
 //
 // Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs
 //
-  
+  .floatright { 
+    float: right; 
+    margin: 0 0 10px 10px;
+    clear: right;
+    }
+
   #content {
     float: left;
     padding: 25px;
@@ -76,6 +102,7 @@
     width: 100%;
     height: 40px;
   }
+
   
   .panel {
   	border: 1px;
@@ -99,28 +126,27 @@
     margin-bottom: 5px;
   }
 
-  .panel#ads {
-  	background-color: green;
+  .ad {
+    border: 2px;
+    width: 25%;
+    height: 100px;
+    }
+
+  .provider{
+    background-color: pink; 
+    border: 1px;   
+    }
+  .providers {
   	float: right;
-  	width: 25%;
-    border: 1px;
-  }
-  .panel#attributess {
-  	float: left;
-  	width: 25%;
-    background-color: pink;
-  }
-  .panel#providers {
-  	float: right;
-  	width: 25%;
-    background-color: pink;
-  }
+  	width: 50%;
+    }
+
   .panel#search {
     background-color: light_grey;
     clear: both;
     margin-top: 25px;
     width: 75%;
-  }
+    }
   
   .sidebar {
     float: right;

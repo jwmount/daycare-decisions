@@ -1,52 +1,46 @@
 %body
   #header 
-    %h1 "header h1"
-    %h1 "another header h1"
-    %h2 "header h2"
-    %h2 "another header h2"
-    %h3 "and now a header h3"
+    %img
+      images/logo.png
+    %h1 Daycare Decisions
+    %img images/childness.png
+    %h2 Logon or Register
   
-  #navbar
-    %a Home
-    %a FAQ
-    %a Blog
-    %a About
-    %a Research
-    %a Fact Sheets
-    Search
-    %a Newsletter
-    %a Provider Services
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    <p>
 
   #container
-    .panel#ads
-      Ads
-      %br
-        More ads
-      And even more ads
-      %br
-        And even more ads
-      Then some ads
-      Ads
-      %br
-        More ads
-      And even more ads
-      %br
-        And even more ads
-      Then some ads
-      Ads
-      %br
-        More ads
-      And even more ads
-      %br
-        And even more ads
-      Then some ads
-      Ads
-      %br
-        More ads
-      And even more ads
-      %br
-        And even more ads
-      Then some ads
       
     .content
       %h1 Finding Childcare Is Hard, We Can Help
@@ -70,14 +64,8 @@
       
       %h3= 'Waitlisted Providers'
       .panel
-        #providers    
+        #providers
           %a 1 Little Feet Provider One Mooloombaba
-          %a Provider Two Dalton Town Center
-          %br
-          %a Little Feet Provider One Mooloombaba
-          %a Provider Two Dalton Town Center
-          %br
-          %a Little Feet Provider One Mooloombaba
           %a Provider Two Dalton Town Center
       
         
@@ -95,29 +83,74 @@
 
       %h3 Why List Your Center With Us?
       Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
-  
+      %h3 Find Child Care Providers
       .panel 
+        %h3 Locate Based on Any of These 
         #search
           %p Suburb
           %p Post Code
           %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
 
-    #container
-      .panel#attributes
-        %p Cloth Nappies
-        %p Air Con
-        %p Real grass
-      .panel
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers With What You're Looking For
         #providers
-          %p Provider One
-          %p two
-          %p three
-  #container
-    .panel#ads
-      Ads
-      %br
-        More ads
-      And even more ads
+          %a First One
+          %a Thirty Second One
+          %a First One
+          %a Thirty Second One
+          %a First One
+          %a Thirty Second One
+          %a First One
+          %a Thirty Second One
 
   #footer
     %a Home
