@@ -1,10 +1,13 @@
 %body
   #header 
-    %img
-      images/logo.png
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
     %h1 Daycare Decisions
-    %img images/childness.png
-    %h2 Logon or Register
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
   
   
   %navbar
@@ -26,18 +29,20 @@
       %li
         %a Provider Services
 
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
-    <img class="floatright" src="images/ad.gif" alt="" width="60" height="60">
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
     <p>
 
   #container
@@ -62,7 +67,7 @@
       <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
       </p>
       
-      %h3= 'Waitlisted Providers'
+      %h3= 'Selected Providers (Favorites?)'
       .panel
         #providers
           %a 1 Little Feet Provider One Mooloombaba
@@ -141,16 +146,1770 @@
             =check_box_tag("x",  1, false)
             Watilist Fee Reimbursed            
        
-        %h3 Providers With What You're Looking For
+        %h3 Providers Who Have What You Want
         #providers
-          %a First One
-          %a Thirty Second One
-          %a First One
-          %a Thirty Second One
-          %a First One
-          %a Thirty Second One
-          %a First One
-          %a Thirty Second One
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+
+  #footer
+    %a Home
+    %a About Us
+    %a Advertise
+    %a Contact Us
+    %a Privacy Policy
+    %a Terms and Conditions
+%body
+  #header 
+    .floatleft
+      =image_tag( "logo.png", size: "280x90", alt: "logo" )
+    %h1 Daycare Decisions
+    =image_tag("dcd_main_1.jpg", size: "90x90", alt: "Childness image")
+    .floatright
+      %h4
+        %a
+          =link_to "Logon or Register", admin_root_path
+  
+  
+  %navbar
+    %ul#navlist
+      %li
+        %a Home
+      %li
+        %a FAQ
+      %li
+        %a About
+      %li
+        %a Research
+      %li
+        %a Fact Sheets
+      %li
+        %input Search
+      %li
+        %a Newsletter
+      %li
+        %a Provider Services
+
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="160">
+    <img class="floatright" src="images/ad.png" alt="" width="260" height="120">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <img class="floatright" src="images/ad.png" alt="" width="60" height="60">
+    <p>
+
+  #container
+      
+    .content
+      %h1 Finding Childcare Is Hard, We Can Help
+      %h2 What Kind of Daycare Do You Want?
+      
+      <p>
+      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      <p>
+      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+      </p>
+      
+      %h3= 'Selected Providers (Favorites?)'
+      .panel
+        #providers
+          %a 1 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+      
+        
+      %h3 Latest Providers Added
+      .panel
+        #providers    
+          %a 2 Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+          %br
+          %a Little Feet Provider One Mooloombaba
+          %a Provider Two Dalton Town Center
+
+      %h3 Why List Your Center With Us?
+      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+      %h3 Find Child Care Providers
+      .panel 
+        %h3 Locate Based on Any of These 
+        #search
+          %p Suburb
+          %p Post Code
+          %p State
+      .content
+        %h3 And Then Refine Your Search
+        .panel
+          %h3 Check the Services And Facilities You Want
+          .panel	
+            =check_box_tag("x",  1, false)
+            Air Conditioning  
+            =check_box_tag("x",  1, false)
+            Bus Service
+            %p
+            =check_box_tag("Disposable Nappies",  1, true)
+            Disposable Nappies  
+            =check_box_tag("Cloth Nappies",  1, false)
+            Cloth Nappies
+            %p
+            =check_box_tag("x",  1, true)
+            Excursions 
+            =check_box_tag("x",  1, true)
+            Extended Hours for Kindys
+
+            %p
+
+            =check_box_tag("x",  1, true)
+            Food Provided
+            =check_box_tag("x",  1, false)
+            Guest Speakers
+            %p
+            =check_box_tag("x",  1, false)
+            Languages
+            =check_box_tag("x",  1, true)
+            Real Grass
+            %p
+            =check_box_tag("x",  1, false)
+            Secure Access
+            =check_box_tag("x",  1, true)
+            Siblings Given Priority
+
+            %p
+            =check_box_tag("x",  1, false)
+            Technology
+            =check_box_tag("x",  1, false)
+            Vacancies
+            %p
+            =check_box_tag("x",  1, false)
+            Vaccinations Compulsory
+            =check_box_tag("x",  1, false)
+            Waitlist Online
+            %p
+            =check_box_tag("x",  1, false)
+            Watilist Fee Reimbursed            
+       
+        %h3 Providers Who Have What You Want
+        #providers
+          -@providers.each do |p|
+            = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
 
   #footer
     %a Home
