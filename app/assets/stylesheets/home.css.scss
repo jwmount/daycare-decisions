@@ -78,15 +78,13 @@
   }
   
   #header, #home, #Advertise, #about_us, #contact, #Privacy, #Terms   {
-    padding-left: 75px;
-    padding-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   
   #header {
-    background: url( "../assets/dcd_main_1.jpg" );
     background-image: url("assets/images/dcd_main_1.jpg");
     background-repeat: no-repeat;
-    background-position: top left;
     height: 64px;
   }
   #header h1, #header h2 {margin: 0}

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   def index
+    # Replace this with a Helper or search form
   	@addresses = Address.where(locality: "BRISBANE")
     @providers = []
     @addresses.each do |a|
@@ -9,9 +10,9 @@ class HomeController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @companies }
+      format.json { render json: [@providers, @favorites, @latest] }
     end
-  end
+  end 
 
   def edit
   	debugger
