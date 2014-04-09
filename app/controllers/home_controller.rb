@@ -1,11 +1,24 @@
 class HomeController < ApplicationController
 
   def index
-    # Replace this with a Helper or search form
-  	@addresses = Address.where(locality: "BRISBANE")
+
+    qry = {}
+
+    unless params[:locality].empty?
+      qry.merge! locality: params[:locality].upcase
+    end
+    unless params[:post_code].empty?
+      qry.merge! post_code: params[:post_code]
+    end
+    unless params[:state].empty?
+      qry.merge! state: params[:state]               
+    end
+
+  	@addresses = Address.where qry
     @providers = []
+
     @addresses.each do |a|
-    	@providers << Provider.where(id: a.addressable_id)
+      @providers << Provider.where(id: a.addressable_id)
     end
 
     respond_to do |format|
