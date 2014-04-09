@@ -11,7 +11,6 @@
       = image_tag "free-daycare-checklist.png"
       = link_to "Logon or Register", admin_root_path
 
-  
   #content
     %navbar
       %ul#navlist
@@ -31,147 +30,177 @@
           %a Newsletter
         %li
           %a Provider Services
+    
+  #content  
+    = image_tag  "ad.png", :class => "floatright"
 
-  .floatright
-    #content
-      =image_tag  "ad.png", :class => "floatright"
-      =image_tag  "ad_2.png", :class => "floatright"
-      =image_tag  "ad_3.gif", :class => "floatright"
-      =image_tag  "ad.png", :class => "floatright"
-      =image_tag  "ad_2.png", :class => "floatright"
-      =image_tag  "ad_3.gif", :class => "floatright"
-      =image_tag  "ad.png", :class => "floatright"
-      =image_tag  "ad_2.png", :class => "floatright"
-      =image_tag  "ad_3.gif", :class => "floatright"
-      =image_tag  "ad.png", :class => "floatright"
-      =image_tag  "ad_2.png", :class => "floatright"
-      =image_tag  "ad_3.gif", :class => "floatright"
-      <p>
-
-  #container
-      
-    .content
-      %h1 Finding Childcare Is Hard, We Can Help
-      %h2 What Kind of Daycare Do You Want?
-      
-      <p>
-      <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
-      </p>
-      
-      <p>
-      <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
-      </p>
-      
-      <p>
-      <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
-      </p>
-      
-      <p>
-      <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
-      </p>
-      
-      %h3= 'Selected Providers (Favorites?)'
-      .panel
-        #providers
-          -favorites.each do |f|
-            #provider
-              - if f.url.nil?
-                "#{f.name}"
-              - else
-                = link_to "#{f.name}", href="http://#{f.url}", target: '_blank'
-
-        
-      %h3 Latest Providers Added
-      .panel
-        #providers    
-          -latest.each do |p|
-            #provider
-              - if p.url.nil?
-                "#{p.name}"
-              - else
-                = link_to "#{p.name}", href="http://#{p.url}", target: '_blank'
-
-
-      %h3 Why List Your Center With Us?
-      Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
-
-    %h3 Find Child Care Providers (form)
-    .panel 
-      %h3 Choose Any Or All of These 
-      #panel
-        = form_tag({controller: "home", action: "index"}, method: "get") do
-          = text_field_tag 'locality', 'Suburb or Town', maxlength: 15, size: 20
-          %h4 Suburb
-          = text_field_tag 'post_code', '4000', maxlength: 4, size: 20
-          %h4 Post Code
-          = text_field_tag 'state', '', maxlength: 3, size: 20
-          %h4 State
-
-          = submit_tag nil, class: "form_submit"
-        /= link_to "Search", root_path, :class => "btn icon-edit"
-        /= link_to "Search", "https://twitter.com/intent/tweet?text=#{@twitter_message}", :class => "btn icon-edit"
-        
-  = form_tag do
-    %h3 You Can Refine Your Search (form)
+  #content
+    %h1 Finding Childcare Is Hard, We Can Help
+    %h2 What Kind of Daycare Do You Want?
+    
+    <p>
+    <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+    </p>
+    
+    <p>
+    <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
+    </p>
+    
+    <p>
+    <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
+    </p>
+    
+    <p>
+    <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
+    </p>
+    
+    %h3= 'Selected Providers (Favorites?)'
     .panel
-      %h3 Check the Services And Facilities You Want for Your Child
-      .panel	
-        =check_box_tag("x",  1, false)
-        Air Conditioning  
-        =check_box_tag("x",  1, false)
-        Bus Service
-        %p
-        =check_box_tag("Disposable Nappies",  1, true)
-        Disposable Nappies  
-        =check_box_tag("Cloth Nappies",  1, false)
-        Cloth Nappies
-        %p
-        =check_box_tag("x",  1, true)
-        Excursions 
-        =check_box_tag("x",  1, true)
-        Extended Hours for Kindys
+      #providers
+        -favorites.each do |f|
+          #provider
+            - if f.url.nil?
+              "#{f.name}"
+            - else
+              = link_to "#{f.name}", href="http://#{f.url}", target: '_blank'
     
-        %p
+      
+    %h3 Latest Providers Added
+    .panel
+      #providers    
+        -latest.each do |p|
+          #provider
+            - if p.url.nil?
+              "#{p.name}"
+            - else
+              = link_to "#{p.name}", href="http://#{p.url}", target: '_blank'
     
-        =check_box_tag("x",  1, true)
-        Food Provided
-        =check_box_tag("x",  1, false)
-        Guest Speakers
-        %p
-        =check_box_tag("x",  1, false)
-        Languages
-        =check_box_tag("x",  1, true)
-        Real Grass
-        %p
-        =check_box_tag("x",  1, false)
-        Secure Access
-        =check_box_tag("x",  1, true)
-        Siblings Given Priority
     
-        %p
-        =check_box_tag("x",  1, false)
-        Technology
-        =check_box_tag("x",  1, false)
-        Vacancies
-        %p
-        =check_box_tag("x",  1, false)
-        Vaccinations Compulsory
-        =check_box_tag("x",  1, false)
-        Waitlist Online
-        %p
-        =check_box_tag("x",  1, false)
-        Watilist Fee Reimbursed            
-        %p
-        = link_to "Search", root_path, :class => "btn icon-edit"
+    %h3 Why List Your Center With Us?
+    Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
+    
+  %h3 Find Child Care Providers (form)
+  .panel 
+    %h3 Choose Any Or All of These 
+    #panel
+      = form_tag({controller: "home", action: "index"}, method: "get") do
+        = text_field_tag 'locality', 'Brisbane', maxlength: 15, size: 20
+        %h4 Suburb
+        = text_field_tag 'post_code', '4000', maxlength: 4, size: 20
+        %h4 Post Code
+        = text_field_tag 'state', '', maxlength: 3, size: 20
+        %h4 State
+  
+        %h3 You Can Refine Your Search Too
+        .panel
+          %h3 Check the Services And Facilities You Want for Your Child
+          .panel	
 
-        %h3 Providers Who Have What You Want
+            = check_box_tag 'air_conditioning', 1, false
+            Air Conditioning  
+
+            = check_box_tag 'bus_service',  1, false
+            Bus Service
+
+            %p
+
+            = check_box_tag 'disposable_nappies',  1, false
+            Disposable Nappies  
+
+            = check_box_tag 'cloth_nappies',  1, false
+            Cloth Nappies
+
+            %p
+            
+            = check_box_tag 'excursions',  1, false
+            Excursions 
+
+            = check_box_tag  'extended_hours_for_kindys',  1, false
+            Extended Hours for Kindys
+        
+            %p
+        
+            = check_box_tag 'food_provider',  1, false
+            Food Provided
+
+            = check_box_tag 'guest_speakers',  1, false
+            Guest Speakers
+
+            %p
+
+            = check_box_tag 'languages',  1, false
+            Languages
+
+            = check_box_tag 'real_grass',  1, true
+            Real Grass
+
+            %p
+
+            = check_box_tag 'secure_access',  1, false
+            Secure Access
+
+            = check_box_tag 'siblings_given_priority',  1, false
+            Siblings Given Priority
+        
+            %p
+            = check_box_tag 'technology',  1, false
+            Technology
+
+            = check_box_tag 'vacancies',  1, false
+            Vacancies
+
+            %p
+
+            = check_box_tag 'vaccinations_compulsory',  1, false
+            Vaccinations Compulsory
+
+            = check_box_tag 'waitlist_online',  1, false
+            Waitlist Online
+
+            %p
+            
+            = check_box_tag 'waitlist_reimbursed',  1, false
+            Watilist Feex Reimbursed            
+
+            %p
+            /= link_to "Search", root_path, :class => "btn icon-edit"
+            = submit_tag nil, class: "form_submit"
+
+
+        %h3 These #{@providers.count} Providers Are Within The Area You Want
         #providers
           -@providers.each do |p|
-            - if p[0].url.nil?
-              "#{p[0].name}"
+            - if p.url.nil?
+              "#{p.name}"
             - else
-              = link_to "#{p[0].name}", href="http://#{p[0].url}", target: '_blank'
+              = link_to "#{p.name}", href="http://#{p.url}", target: '_blank'
 
+        - if @refined_providers.count == 0
+          %h3 None of Your Local Providers Offer the Services and Facilities You Checked
+        - else
+          %h3 These #{@refined_providers.count} Offer the Services and Facilities You Checked
+        #providers
+          -@refined_providers.each do |p|
+            - if p.url.nil?
+              "#{p.name}"
+            - else
+              = link_to "#{p.name}", href="http://#{p.url}", target: '_blank'
+
+  #content
+  
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    =image_tag  "ad.png", :class => "floatright"
+    =image_tag  "ad_2.png", :class => "floatright"
+    =image_tag  "ad_3.gif", :class => "floatright"
+    <p>
+  
   #footer
     %a Home
     %a About Us
