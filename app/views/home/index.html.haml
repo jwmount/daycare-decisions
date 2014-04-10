@@ -131,7 +131,7 @@
             = check_box_tag 'languages',  1, false
             Languages
 
-            = check_box_tag 'real_grass',  1, true
+            = check_box_tag 'real_grass',  1, false
             Real Grass
 
             %p
@@ -160,7 +160,7 @@
             %p
             
             = check_box_tag 'waitlist_reimbursed',  1, false
-            Watilist Feex Reimbursed            
+            Watilist Fee Reimbursed            
 
             %p
             /= link_to "Search", root_path, :class => "btn icon-edit"
@@ -169,22 +169,19 @@
 
         %h3 These #{@providers.count} Providers Are Within The Area You Want
         #providers
-          -@providers.each do |p|
-            - if p.url.nil?
-              "#{p.name}"
-            - else
-              = link_to "#{p.name}", href="http://#{p.url}", target: '_blank'
+          = render @providers
 
         - if @refined_providers.count == 0
           %h3 None of Your Local Providers Offer the Services and Facilities You Checked
         - else
           %h3 These #{@refined_providers.count} Offer the Services and Facilities You Checked
+
         #providers
-          -@refined_providers.each do |p|
-            - if p.url.nil?
-              "#{p.name}"
-            - else
-              = link_to "#{p.name}", href="http://#{p.url}", target: '_blank'
+          %h4 You were looking for (reminder list, t.b.completed):  
+          - params.each do |k,v|
+            %h5 "#{k}: #{v}"
+
+          = render @refined_providers
 
   #content
   

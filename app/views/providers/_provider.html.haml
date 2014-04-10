@@ -1,0 +1,4 @@
+- if provider.url.nil?
+  "#{provider.name}"
+- else
+  = link_to "#{provider.name}", href="http://#{provider.url}", target: '_blank'

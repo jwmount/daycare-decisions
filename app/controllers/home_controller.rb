@@ -90,8 +90,6 @@ class HomeController < ApplicationController
 
     @refined_providers = @providers.where rqry
 
-   debugger 
-
     respond_to do |format|
       format.html
       format.json { render json: [@providers, @favorites, @latest] }
