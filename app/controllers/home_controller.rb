@@ -4,13 +4,13 @@ class HomeController < ApplicationController
 
     qry = {}
 
-    unless params[:locality].empty?
+    if params[:locality] and !params[:locality].empty?
       qry.merge! locality: params[:locality].upcase
     end
-    unless params[:post_code].empty?
+    if params[:post_code] and !params[:post_code].empty?
       qry.merge! post_code: params[:post_code]
     end
-    unless params[:state].empty?
+    if params[:state] and !params[:state].empty?
       qry.merge! state: params[:state]               
     end
 
@@ -20,7 +20,6 @@ class HomeController < ApplicationController
     @addresses.each do |a|
       provider_ids << a.addressable_id
     end
-    #@providers = Provider.find provider_ids
     @providers = Provider.where(:id => provider_ids)
 
     rqry = {}

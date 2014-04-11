@@ -52,6 +52,8 @@
     background-color: pink;
     color: #fff;
     }
+
+
 //
 // Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs
 //
@@ -83,9 +85,9 @@
   }
   
   #header {
-    background-image: url("assets/images/dcd_main_1.jpg");
+    background-image: url("dcd_main_1.jpg");
     background-repeat: no-repeat;
-    height: 64px;
+    height: 44px;
   }
   #header h1, #header h2 {margin: 0}
   #header h2 {
@@ -99,17 +101,23 @@
     font-size: 16px;
   }
   
-  #navbar {
-    background-color: #a90329;    
+  #location-box {
+    background-color: white;    
     margin: 20px auto;
-    width: 100%;
-    height: 40px;
+    width: 66%;
   }
-
+  #location-box h3 {
+    color: green;
+  }
+  #location-box h4 {
+    color: orange;
+    font-size: 14
+  }
   
   .panel {
   	border: 1px;
   	margin: 20px auto;
+    width: 33%;
   }
  .panel ul {
     margin-left: 0;
@@ -135,21 +143,28 @@
     height: 100px;
     }
 
-  .provider{
-    background-color: pink; 
-    border: 1px;   
-    }
   .providers {
-  	float: right;
+    background-color: #fff000;
   	width: 50%;
     }
 
-  .panel#search {
-    background-color: light_grey;
-    clear: both;
-    margin-top: 25px;
-    width: 75%;
+  .provider{
+    padding: 12px; 
+    width: 50%; 
     }
+  .provider ul{
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .provider ul h3 {
+    margin-top: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  #provider ul h3 li {
+    border: 1px;
+  }
   
   .sidebar {
     float: right;
