@@ -95,16 +95,20 @@
   
   %h3 See Where Your Child Care Providers Are
   
+
   #location-box
     %h4 Pick Your Location Using These 
     = form_tag({controller: "home", action: "index"}, method: "get") do
-      = text_field_tag 'locality', 'Brisbane', maxlength: 15, size: 20
+      = search_field_tag 'locality', 'Brisbane', maxlength: 15, size: 20
       %h4 Suburb
-      = text_field_tag 'post_code', '4000', maxlength: 4, size: 20
+      
+      = search_field_tag 'post_code', '4000', maxlength: 4, size: 20
       %h4 Post Code
-      = text_field_tag 'state', '', maxlength: 3, size: 20
+      
+      = search_field_tag 'state', '', maxlength: 3, size: 20
       %h4 State
     
+
       %h3 You Can Refine Your Search Too -- Check the Services And Facilities You Want for Your Child
       
       = check_box_tag 'air_conditioning', 1, false
@@ -174,19 +178,20 @@
       Watilist Fee Reimbursed            
     
       %p
+
       /= link_to "Search", root_path, :class => "btn icon-edit"
       = submit_tag nil, class: "form_submit"
     
     
-      %h3 These #{@providers.count} Providers Are Within The Area You Want
+      %h3 #{@providers.count} Childcare providers Are Within The Area You Defined:
       #providers
         = render @providers
     
       - if @refined_providers.count == 0
-        %h3 None of Your Local Providers Offer the Services and Facilities You Checked
+        %h3 However, None of Your Local Providers Offer the Services and Facilities You Chose.
     
       #providers
-        %h4= "You were looking for Providers in #{params[:locality]}, post code #{params[:post_code]} or even in all of #{params[:state]} Who Have:"  
+        %h4= "Your search area is #{params[:locality]}, post code #{params[:post_code]}, in #{params[:state]}.  There are #{@providers.count} providers in this area:"  
         - @keys = params.except :utf8, :commit, :action, :controller, :locality, :post_code, :state
         - @keys.each do |k,v|
           %h5= "#{k}"
@@ -195,10 +200,15 @@
           %h4 Unfortunately There Aren't Any.
         -else
           %h4 And We Found #{@refined_providers.count}:
-          = render @refined_providers
+          = render @refined_providers 
+  
+      %h3 You wanted to know how many child care providers there are in #{params[:locality]}, post code #{params[:post_code]}, and #{params[:state]} and we found #{@providers.count}, and #{@refined_providers.count} have the services you are looking for.  These providers all have
+      - @keys.each do |k,v| 
+        %h5= #{k}
 
-  
-  
+      %h3 They are:
+      =render @refined_providers
+
   #footer
     %a Home
     %a About Us

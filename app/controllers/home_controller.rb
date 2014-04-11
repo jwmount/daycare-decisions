@@ -20,7 +20,7 @@ class HomeController < ApplicationController
     @addresses.each do |a|
       provider_ids << a.addressable_id
     end
-    @providers = Provider.where(:id => provider_ids)
+    @providers = Provider.where(:id => provider_ids).order(:name)
 
     rqry = {}
     if params[:air_conditioning] and !params[:air_conditioning].empty?
@@ -97,6 +97,10 @@ class HomeController < ApplicationController
 
   def edit
   	debugger
+  end
+
+  def show
+    @provider = Provider.find params[:id]
   end
 
   def update

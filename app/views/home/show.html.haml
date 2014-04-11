@@ -1,0 +1,138 @@
+%p#notice= notice
+
+%p
+  .provider
+    %h2 #{@provider.name}
+
+%p
+  %b Url:
+  = @provider.url
+%p
+  %b Description:
+  = @provider.description
+
+%p
+  %b Additional Activities Included:
+  = @provider.additional_activities_included ? "YES" : 'No'
+
+%p
+  %b Age Range:
+  = @provider.age_range
+
+%p
+  %b Air Conditioning:
+  = @provider.air_conditioning ? "YES" : 'No'
+
+%p
+  %b Approved Places:
+  = @provider.approved_places
+
+%p
+  %b Bus Service:
+  = @provider.bus_service ? "YES" : 'No'
+
+%p
+  %b Type of Care Offered:
+  = @provider.care_offered 
+
+%P
+  %b Cloth Nappies:
+  = @provider.cloth_nappies ? "YES" : 'No'
+
+%p
+  %b Disposable Nappies:
+  = @provider.disposable_nappies ? "YES" : 'No'
+
+%p
+  %b Disposable Excursions:
+  = @provider.excursions ? "YES" : 'No'
+
+%p
+  %b Extended Hours for Kindys:
+  = @provider.extended_hours_for_kindys ? "YES" : 'No'
+
+%p
+  %b Fee ($):
+  = @provider.fee
+
+%p
+  %b Food Provided
+  = @provider.food_provided ? "YES" : 'No'
+
+%p
+  %b Form of Care:
+  = @provider.form_of_care
+
+%p
+  %b Guest Speakers:
+  = @provider.guest_speakers ? "YES" : 'No'
+
+%p
+  %b Hours of Operation:
+  = @provider.hours
+
+%p
+  %b Language Training:
+  = @provider.languages
+
+%p
+  %b NQS Rating:
+  = @provider.NQS_rating
+
+%p
+  %b Online Enrollment: 
+  = @provider.online_enrollment
+
+%p
+  %b Outdoor Play Area:
+  = @provider.outdoor_play_area ? "YES" : 'No'
+
+%p
+  %b Legal Name:
+  = @provider.provider_legal_name
+
+%p
+  %b Secure Access:
+  = @provider.security_access ? "YES" : 'No'
+
+%p
+  %b Siblings Get Priority:
+  = @provider.sibling_priority ? "YES" : 'No'
+
+%p
+  %b Real Grass in Play Area:
+  = @provider.real_grass ? "YES" : 'No'
+
+%p
+  %b Technology:
+  = @provider.technology ? "YES" : 'No'
+
+%p
+  %b Vancancies:
+  = @provider.vacancies ? "YES" : 'No'
+
+%p
+  %b Compulsory Vaccinactions
+  = @provider.vaccinations_compulsory ? "YES" : 'No'
+
+%p
+  %b Waitlist Fee ($):
+  = @provider.waitlist_fee
+
+%p
+  %b Waitlist Online Form:
+  = @provider.waitlist_online ? "YES" : 'No'
+
+%p
+  %b Waitlist Reimbursed:
+  = @provider.waitlist_reimbursed ? "YES" : 'No'
+
+%p
+  %b Date last updated:
+  = @provider.updated_at.strftime("%d-%m-%Y")
+
+
+/= link_to 'Edit', edit_company_path(@company)
+\|
+/= link_to 'Back', companies_path
+
