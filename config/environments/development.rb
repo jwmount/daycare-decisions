@@ -29,6 +29,8 @@ DaycareDecisions::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
- 
+
+  # Suggested by Heroku to enable sprockets better errors:
+  config.assets.raise_production_errors = true
 
 end
