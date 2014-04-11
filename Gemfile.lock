@@ -265,7 +265,7 @@ DEPENDENCIES
   jquery-rails
   pg
   polyamorous!
-  rails
+  rails (>= 4.1)
   rails_12factor
   rake (= 10.1.0)
   ransack!
