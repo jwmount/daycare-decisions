@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.1'
 
-gem 'rails', '>=4.0.1'
+gem 'rails' #, '>=4.1'
 gem 'rake', '10.1.0'
 
 # sprockets Environment error, it's ALWAYS sprockets
@@ -63,4 +63,8 @@ group :doc do
 end
 
 # Rails 4 support, see https://github.com/gregbell/active_admin/pull/2326
-gem 'activeadmin',         github: 'gregbell/active_admin'  #, branch: 'rails4'
+# http://stackoverflow.com/questions/20648814/rails-4-1-0-beta1-upgrade-fails
+gem 'formtastic', github: 'justinfrench/formtastic'
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
+gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+gem 'activeadmin', github: 'gregbell/active_admin'
