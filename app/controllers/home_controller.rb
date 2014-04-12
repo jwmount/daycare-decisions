@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
 
+  
   def index
 
     qry = {}
@@ -22,7 +23,9 @@ class HomeController < ApplicationController
     end
     @providers = Provider.where(:id => provider_ids).order(:name)
 
+    # Refined queries, based on services offered by providers
     rqry = {}
+
     if params[:air_conditioning] and !params[:air_conditioning].empty?
       rqry.merge! air_conditioning: params[:air_conditioning]
     end
@@ -91,7 +94,8 @@ class HomeController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: [@providers, @favorites, @latest] }
+      #format.json { render json: [@providers, @favorites, @latest] }
+      format.json { render json: [@providers] }
     end
   end 
 
@@ -106,5 +110,36 @@ class HomeController < ApplicationController
   def update
   	debugger
   end
+
+  def about
+  end
+  
+  def advertise
+  end
+
+  def contact_us
+  end
+
+  def faq
+  end
+
+  def fact_sheets
+  end
+
+  def newsletter
+  end
+
+  def privacy_policy
+  end
+
+  def provider_services
+  end
+
+  def research
+  end
+
+  def terms_conditions
+  end
+  
 
 end
