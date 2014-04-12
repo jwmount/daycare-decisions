@@ -96,6 +96,11 @@
                                          PUT        /home/:id(.:format)                                                   home#update
                                          DELETE     /home/:id(.:format)                                                   home#destroy
                                    about GET        /about(.:format)                                                      home#about
+                                     faq GET        /faq(.:format)                                                        home#faq
+                             fact_sheets GET        /fact_sheets(.:format)                                                home#fact_sheets
+                                research GET        /research(.:format)                                                   home#research
+                              newsletter GET        /newsletter(.:format)                                                 home#newsletter
+                       provider_services GET        /provider_services(.:format)                                          home#provider_services
                   new_admin_user_session GET        /admin/login(.:format)                                                active_admin/devise/sessions#new
                       admin_user_session POST       /admin/login(.:format)                                                active_admin/devise/sessions#create
               destroy_admin_user_session DELETE|GET /admin/logout(.:format)                                               active_admin/devise/sessions#destroy

@@ -23,7 +23,17 @@ DaycareDecisions::Application.routes.draw do
   resources :providers
 
   resources :home
-      get 'about',                to: 'home#about',                 as: :about
+    # reference as about_path in HomeController views
+    get 'about',                to: 'home#about',             as: :about
+    get 'advertise',            to: 'home#advertise',         as: :advertise
+    get 'contact_us',           to: 'home#contact_us',        as: :contact_us
+    get 'faq',                  to: 'home#faq',               as: :faq
+    get 'fact_sheets',          to: 'home#fact_sheets',       as: :fact_sheets
+    get 'research',             to: 'home#research',          as: :research
+    get 'newsletter',           to: 'home#newsletter',        as: :newsletter
+    get 'privacy_policy',       to: 'home#privacy_policy',    as: :privacy_policy
+    get 'provider_services',    to: 'home#provider_services', as: :provider_services
+    get 'terms_conditions',     to: 'home#terms_conditions',  as: :terms_conditions
 
 
   devise_for :admin_users, ActiveAdmin::Devise.config
