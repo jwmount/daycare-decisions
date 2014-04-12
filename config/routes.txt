@@ -87,6 +87,15 @@
                                          PATCH      /providers/:id(.:format)                                              providers#update
                                          PUT        /providers/:id(.:format)                                              providers#update
                                          DELETE     /providers/:id(.:format)                                              providers#destroy
+                              home_index GET        /home(.:format)                                                       home#index
+                                         POST       /home(.:format)                                                       home#create
+                                new_home GET        /home/new(.:format)                                                   home#new
+                               edit_home GET        /home/:id/edit(.:format)                                              home#edit
+                                    home GET        /home/:id(.:format)                                                   home#show
+                                         PATCH      /home/:id(.:format)                                                   home#update
+                                         PUT        /home/:id(.:format)                                                   home#update
+                                         DELETE     /home/:id(.:format)                                                   home#destroy
+                                   about GET        /about(.:format)                                                      home#about
                   new_admin_user_session GET        /admin/login(.:format)                                                active_admin/devise/sessions#new
                       admin_user_session POST       /admin/login(.:format)                                                active_admin/devise/sessions#create
               destroy_admin_user_session DELETE|GET /admin/logout(.:format)                                               active_admin/devise/sessions#destroy

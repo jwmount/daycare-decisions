@@ -23,6 +23,8 @@ DaycareDecisions::Application.routes.draw do
   resources :providers
 
   resources :home
+      get 'about',                to: 'home#about',                 as: :about
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -39,6 +41,7 @@ DaycareDecisions::Application.routes.draw do
   end
 
   root :to => "home#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
