@@ -5,8 +5,8 @@
     %h2 #{@provider.name}
 
 %p
-  %b Url:
-  = @provider.url
+  %b Web Site:
+  = link_to @provider.name, @provider.url
 %p
   %b Description:
   = @provider.description
@@ -132,7 +132,4 @@
   = @provider.updated_at.strftime("%d-%m-%Y")
 
 
-/= link_to 'Edit', edit_company_path(@company)
-\|
-/= link_to 'Back', companies_path
-
+= render 'shared/footer'

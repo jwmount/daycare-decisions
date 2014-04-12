@@ -180,7 +180,8 @@
       %p
 
       /= link_to "Search", root_path, :class => "btn icon-edit"
-      = submit_tag nil, class: "form_submit"
+      .btn-lg
+        = submit_tag 'Find Providers', class: "form_submit"
     
     
       %h3 #{@providers.count} Childcare providers Are Within The Area You Defined:
@@ -209,10 +210,4 @@
       %h3 They are:
       =render @refined_providers
 
-  #footer
-    %a Home
-    %a About Us
-    %a Advertise
-    %a Contact Us
-    %a Privacy Policy
-    %a Terms and Conditions
+= render 'shared/footer'

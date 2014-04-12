@@ -1,6 +1,7 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "partials/footer";
   
   body {
     background-color: #F7F5E0;    
@@ -78,7 +79,8 @@
   #footer {
     clear: both;
     margin-top: 25px;
-  }
+    border-bottom: 1px solid #ccc; 
+    }
   
   #header, #home, #Advertise, #about_us, #contact, #Privacy, #Terms   {
     padding-left: 15px;
