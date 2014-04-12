@@ -15,21 +15,19 @@
     %navbar
       %ul#navlist
         %li
-          %a Home
+          = link_to 'Home', root_path
         %li
-          %a FAQ
+          = link_to "FAQ", faq_path
         %li
-          %a About
+          = link_to "About Us", about_path
         %li
-          %a Research
+          = link_to "Research", research_path
         %li
-          %a Fact Sheets
+          = link_to "Fact Sheets", fact_sheets_path
         %li
-          %input Search
+          = link_to "Newsletter", newsletter_path
         %li
-          %a Newsletter
-        %li
-          %a Provider Services
+          = link_to "Provider Services", provider_services_path
     
 #content  
   = image_tag  "ad.png", :class => "floatright"
@@ -210,4 +208,3 @@
       %h3 They are:
       =render @refined_providers
 
-= render 'shared/footer'
