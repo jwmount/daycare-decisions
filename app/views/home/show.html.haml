@@ -4,7 +4,7 @@
   .provider
     %h2 #{@provider.name}
     %h4= "#{@provider.addresses[0].locality}, #{@provider.addresses[0].post_code}"
-    %h4= "#{@provider.rolodexes[0].number_or_email}"
+    %h4= "#{@provider.rolodexes[0].kind}: #{@provider.rolodexes[0].number_or_email}"
 
 %p
   %b Web Site:

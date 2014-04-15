@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
   end
 
   # This associates the current user with her list of favorite providers.
-  # When lodged waitlists will be from these, at least for now.
+  # When lodged, waitlists will be from these, at least for now.
   create_table "guardians_providers", force: true, id: false  do |t|
     t.integer "guardian_id",      null: false
     t.integer "provider_id",      null: false

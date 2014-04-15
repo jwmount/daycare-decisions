@@ -66,26 +66,11 @@
 
     
   %h3 Selected Providers (Your Favorites)
-  %ul
-    -favorites.each do |f|
-      - if f.url.nil?
-        %h4
-          = f.name
-      - else
-        .provider#li#h3
-          = link_to "#{f.name}", href="http://#{f.url}", target: '_blank'
-    
+  =render favorites    
       
-  %h3= 'Latest Providers Added'
-  %ul
-    -latest.each do |p|
-      - if p.url.nil?
-        %h4
-          = p.name
-      - else
-        .provider#li#h3
-          = link_to p.name, href="http://#{p.url}", target: '_blank'
-    
+  %h3= 'Recently Updated or Added Providers'  
+  =render latest
+
     
   %h3 Why List Your Center With Us?
   Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
@@ -95,13 +80,13 @@
   
 
   %h3 grey location-box goes here... soon
-  %h4 Pick Your Location Using These 
+  %h4 Pick Your Location Using One Of These:
   = form_tag({controller: "home", action: "index"}, method: "get") do
-    = search_field_tag 'locality', 'Brisbane', maxlength: 15, size: 20
+    = search_field_tag 'locality', '', maxlength: 15, size: 20
   
     %h4 Suburb
     
-    = search_field_tag 'post_code', '4000', maxlength: 4, size: 20
+    = search_field_tag 'post_code', '', maxlength: 4, size: 20
     %h4 Post Code
     
     = search_field_tag 'state', '', maxlength: 3, size: 20
@@ -181,18 +166,26 @@
     /= link_to "Search", root_path, :class => "btn icon-edit"
     .btn-lg
       = submit_tag 'Find Providers', class: "form_submit"
-  
-  
-    %h3 #{@providers.count} Childcare Providers Are Within The Area You Defined.
-    %h4= "Your search area is #{params[:locality]}, post code #{params[:post_code]}, in #{params[:state]}.  You wanted to find Providers who offer:"  
+
+    %h3= "Providers in suburb: #{params[:locality]}"
+    = render locality_providers
+
+    %h3= "Providers in postal code #{params[:post_code]}"
+    = render post_code_providers
+
+    %h3= "Providers in #{params[:state]}"
+    = render state_providers
+
+
+    - if @refined_providers.nil?
+      %h3 None of Your Local Providers Offer the Services and Facilities You Chose.  You may want to remove a requirement and try again.
+    - else
+      %h3 Refined providers who have:
+
     - @keys = params.except :utf8, :commit, :action, :controller, :locality, :post_code, :state
     - @keys.each do |k,v|
-      %h4= "#{k}"
-    %h4 These are:
+      = "#{k}"
+    %h4 ...are:
+    /=render @refined_providers
   
-    - if @providers.count > 0 and @refined_providers.count == 0
-      %h3 None of Your Local Providers Offer the Services and Facilities You Chose.  You may want to remove a requirement and try again.
-      =render @providers
-    - else
-      =render @refined_providers
 

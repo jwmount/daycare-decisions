@@ -31,7 +31,23 @@
     color: white;
     text-decoration: none;
   }
-  
+
+  ul#testhdr {
+    padding: 0;
+    margin: 0;
+    float: left;
+  }
+  ul#testhdr { list-style-type: none; }  
+  ul#testhdr li { 
+    color: green;
+    display: inline; 
+    padding: 0.2em 4em;
+    height: 60px;
+    }
+  ul#testhdr li a {
+    text-decoration: none;
+    }
+
   ul#navlist {
     color: #fff;
     padding: 0;

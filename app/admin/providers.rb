@@ -253,7 +253,7 @@ ActiveAdmin.register Provider do
       row ( "Cloth Nappies" ) { status_tag (provider.cloth_nappies ? "YES" : "No"), (provider.cloth_nappies ? :ok : :error) }
       row :company
       row :conditions_on_approval
-
+      row :created_at
 
       row :description
       row ( "Disposable Nappies" ) { status_tag (provider.disposable_nappies ? "YES" : "No"), (provider.disposable_nappies ? :ok : :error) }
@@ -297,6 +297,7 @@ ActiveAdmin.register Provider do
       row ( "Sibling Given Priority" ) { status_tag (provider.sibling_priority ? "YES" : "No"), (provider.sibling_priority ? :ok : :error) }
 
       row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
+      row :updated_at
       row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
       row ( "Vaccinations Compulsory" ) { status_tag (provider.vaccinations_compulsory ? "YES" : "No"), (provider.vaccinations_compulsory ? :ok : :error) }
 
