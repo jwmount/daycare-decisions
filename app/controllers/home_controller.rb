@@ -39,76 +39,72 @@ class HomeController < ApplicationController
     # @providers = Provider.where(:id => provider_ids).select("id, name, url, updated_at").order(:name)
  
 
-    @xlocality_providers = Provider.where(:id => @locality_provider_ids).order(:name)
-    @xpost_code_providers = Provider.where(:id => @post_code_provider_ids).order(:name)
-    @xstate_providers = Provider.where(:id => @state_provider_ids).order(:name)
-
-
      # Refined queries, based on services offered by providers
     rqry = {}
+    @rqry = {}
      
      if params[:air_conditioning] and !params[:air_conditioning].empty?
-       rqry.merge! air_conditioning: params[:air_conditioning]
+       @rqry[:air_conditioning] = true
      end
      
      if params[:bus_service] and !params[:bus_service].empty?
-       rqry.merge! bus_service: params[:bus_service]
+       @rqry[:bus_service] = true
      end
      
      if params[:disposable_nappies] and !params[:disposable_nappies].empty?
-       rqry.merge! disposable_nappies: params[:disposable_nappies]
+       @rqry[:disposable_nappies] = true
      end
      
      if params[:cloth_nappies] and !params[:cloth_nappies].empty?
-       rqry.merge! cloth_nappies: params[:cloth_nappies]
+       @rqry[:cloth_nappies] = true
      end
      
      if params[:excursions] and !params[:excursions].empty?
-       rqry.merge! excursions: params[:excursions]
+       @rqry[:excursions] = true
      end
      
      if params[:extended_hours_for_kindys] and !params[:extended_hours_for_kindys].empty?
-       rqry.merge! extended_hours_for_kindys: params[:extended_hours_for_kindys]
+       @rqry[:extended_hours_for_kindys] = true
      end
      
      if params[:food_provided] and !params[:food_provided].empty?
-       rqry.merge! food_provided: params[:food_provided]
+       @rqry[:food_provided] = true
      end
      
      if params[:guest_speakers] and !params[:guest_speakers].empty?
-       rqry.merge! guest_speakers: params[:guest_speakers]
+       @rqry.merge[:guest_speakers] = true
      end
      
      if params[:languages] and !params[:languages].empty?
-       rqry.merge! languages: params[:languages]
+       @rqry[:languages] = true
      end
      
      if params[:real_grass] and !params[:real_grass].empty?
-       rqry.merge! real_grass: params[:real_grass]
+       @rqry[:real_grass] = true
      end
      
      if params[:secure_access] and !params[:secure_access].empty?
-       rqry.merge! secure_access: params[:secure_access]
+       @rqry[:secure_access] = true
      end
      
      if params[:siblings_given_priority] and !params[:siblings_given_priority].empty?
-       rqry.merge! siblings_given_priority: params[:siblings_given_priority]
+       @rqry[:siblings_given_priority] = true
      end
      
      if params[:technology] and !params[:technology].empty?
-       rqry.merge! technology: params[:technology]
+       @rqry[:technology] = true
      end
      
      if params[:vaccinations_compulsory] and !params[:vaccinations_compulsory].empty?
-       rqry.merge! vaccinations_compulsory: params[:vaccinations_compulsory]
+       @rqry[:vaccinations_compulsory] = true
      end
      
      if params[:waitlist_online] and !params[:waitlist_online].empty?
-       rqry.merge! waitlist_online: params[:waitlist_online]
+       @rqry[:waitlist_online] = true
      end
      
      if params[:waitlist_reimbursed] and !params[:waitlist_reimbursed].empty?
-       rqry.merge! waitlist_reimbursed: params[:waitlist_reimbursed]
+       @rqry[:waitlist_reimbursed] = true
      end
      
      # @refined_providers = @providers.where rqry

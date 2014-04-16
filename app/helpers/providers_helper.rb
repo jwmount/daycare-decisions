@@ -32,14 +32,16 @@ module ProvidersHelper
   end  
 
   def locality_providers
-    Provider.where(:id => @locality_provider_ids).order(:name)
+    Provider.where(:id => @locality_provider_ids).where(@rqry).order(:name)
   end
 
   def post_code_providers
-    Provider.where(:id => @post_code_provider_ids).order(:name)
+    Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
   end
 
   def state_providers
-    Provider.where(:id => @state_provider_ids).order(:name)
+    Provider.where(:id => @state_provider_ids).where(@rqry).order(:name)
   end
+
+
 end

@@ -167,25 +167,25 @@
     .btn-lg
       = submit_tag 'Find Providers', class: "form_submit"
 
-    %h3= "Providers in suburb: #{params[:locality]}"
-    = render locality_providers
-
-    %h3= "Providers in postal code #{params[:post_code]}"
-    = render post_code_providers
-
-    %h3= "Providers in #{params[:state]}"
-    = render state_providers
-
-
     - if @refined_providers.nil?
-      %h3 None of Your Local Providers Offer the Services and Facilities You Chose.  You may want to remove a requirement and try again.
+      %h3 If it seems that no proviers offer the services and facilities you chose, you may want to remove a requirement and try again.  Currently, we're looking for:
     - else
       %h3 Refined providers who have:
 
     - @keys = params.except :utf8, :commit, :action, :controller, :locality, :post_code, :state
     - @keys.each do |k,v|
       = "#{k}"
-    %h4 ...are:
-    /=render @refined_providers
+
+    -if @locality_provider_ids.count > 0
+      %h3= "#{@locality_provider_ids.count} providers in #{params[:locality]}"
+      = render locality_providers
+
+    -if @post_code_provider_ids.count > 0
+      %h3= "#{@post_code_provider_ids.count} providers in postal code #{params[:post_code]}"
+      = render post_code_providers
+
+    -if @state_provider_ids.count > 0
+      %h3= "#{@state_provider_ids.count} providers in #{params[:state]}"
+      = render state_providers
   
 
