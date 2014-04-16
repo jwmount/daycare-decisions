@@ -43,5 +43,15 @@ module ProvidersHelper
     Provider.where(:id => @state_provider_ids).where(@rqry).order(:name)
   end
 
+  def list_services params
+    services = []
+    @keys = params.except :utf8, :commit, :action, :controller, :locality, :post_code, :state
+    @keys.each do |k,v|
+      services << "#{k}"
+    end
+    return nil if services.size == 0
+    services.join(', ')
+  end
+
 
 end

@@ -12,22 +12,21 @@
       = link_to "Logon or Register", admin_root_path
 
   #content
-    %navbar
-      %ul#navlist
-        %li
-          = link_to 'Home', root_path
-        %li
-          = link_to "FAQ", faq_path
-        %li
-          = link_to "About Us", about_path
-        %li
-          = link_to "Research", research_path
-        %li
-          = link_to "Fact Sheets", fact_sheets_path
-        %li
-          = link_to "Newsletter", newsletter_path
-        %li
-          = link_to "Provider Services", provider_services_path
+    %ul#navlist
+      %li
+        = link_to 'Home', root_path
+      %li
+        = link_to "FAQ", faq_path
+      %li
+        = link_to "About Us", about_path
+      %li
+        = link_to "Research", research_path
+      %li
+        = link_to "Fact Sheets", fact_sheets_path
+      %li
+        = link_to "Newsletter", newsletter_path
+      %li
+        = link_to "Provider Services", provider_services_path
     
 #content  
   = image_tag  "ad.png", :class => "floatright"
@@ -77,9 +76,7 @@
 
   
   %h3 See Where Your Child Care Providers Are
-  
-
-  %h3 grey location-box goes here... soon
+    
   %h4 Pick Your Location Using One Of These:
   = form_tag({controller: "home", action: "index"}, method: "get") do
     = search_field_tag 'locality', '', maxlength: 15, size: 20
@@ -119,7 +116,7 @@
     
     %p
     
-    = check_box_tag 'food_provider',  1, false
+    = check_box_tag 'food_provided',  1, false
     Food Provided
     
     = check_box_tag 'guest_speakers',  1, false
@@ -167,25 +164,20 @@
     .btn-lg
       = submit_tag 'Find Providers', class: "form_submit"
 
-    - if @refined_providers.nil?
-      %h3 If it seems that no proviers offer the services and facilities you chose, you may want to remove a requirement and try again.  Currently, we're looking for:
-    - else
-      %h3 Refined providers who have:
-
-    - @keys = params.except :utf8, :commit, :action, :controller, :locality, :post_code, :state
-    - @keys.each do |k,v|
-      = "#{k}"
 
     -if @locality_provider_ids.count > 0
-      %h3= "#{@locality_provider_ids.count} providers in #{params[:locality]}"
-      = render locality_providers
+      - providers = locality_providers
+      %h3= "There are #{@locality_provider_ids.count} providers in #{params[:locality]}.  #{providers.count} with #{list_services params}."
+      = render providers
 
     -if @post_code_provider_ids.count > 0
-      %h3= "#{@post_code_provider_ids.count} providers in postal code #{params[:post_code]}"
-      = render post_code_providers
+      - providers = post_code_providers
+      %h3= "There are #{@post_code_provider_ids.count} providers in postal code #{params[:post_code]}.  #{providers.count} with #{list_services params}."
+      = render providers
 
     -if @state_provider_ids.count > 0
-      %h3= "#{@state_provider_ids.count} providers in #{params[:state]}"
-      = render state_providers
+      - providers = state_providers      
+      %h3= "There are #{@state_provider_ids.count} providers in #{params[:state]}.  #{providers.count} with #{list_services params}."
+      = render providers
   
 

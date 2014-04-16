@@ -116,40 +116,18 @@
   }
   
   #location-box {
-    background-color: white;    
-    margin: 20px auto;
+    background-color: grey;    
+    border: 1px solid #aaa;
+    margin: 10px auto;
     width: 66%;
   }
   #location-box h3 {
     color: green;
   }
   #location-box h4 {
-    color: orange;
     font-size: 14
   }
   
-  .panel {
-  	border: 1px;
-  	margin: 20px auto;
-    width: 33%;
-  }
- .panel ul {
-    margin-left: 0;
-    padding-left: 0;
-  }
-  .panel ul h3 {
-    margin-top: 25px;
-    font-size: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  .panel li {
-    list-style-type: none;
-  }
- 
-  .panel ul.links li {
-    margin-bottom: 5px;
-  }
 
   .ad {
     border: 2px;
@@ -157,28 +135,6 @@
     height: 100px;
     }
 
-  .providers {
-    background-color: #fff000;
-  	width: 50%;
-    }
-
-  .provider{
-    padding: 12px; 
-    width: 50%; 
-    }
-  .provider ul{
-    margin-left: 0;
-    padding-left: 0;
-  }
-  .provider ul h3 {
-    margin-top: 25px;
-    font-size: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  #provider ul h3 li {
-    border: 1px;
-  }
   
   .sidebar {
     float: right;
