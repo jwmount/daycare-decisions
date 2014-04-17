@@ -18,16 +18,6 @@ module ProvidersHelper
     latest = Provider.select("id, name, url, updated_at").order(:updated_at).limit(6)
   end
 
-  def xlatest
-  	count = Provider.count.to_i
-
-    latest_ids = []
-    6.times do |i|
-      latest_ids << rand(1...count)
-    end
-    latest = Provider.find latest_ids
-  end  
-
   def provider_list area, ids
     
     return "No providers were found in #{params["#{area}"]}.", '', [] if ids.empty?
