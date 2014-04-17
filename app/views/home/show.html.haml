@@ -14,8 +14,10 @@
   = @provider.description
 
 %p
-  %b Additional Activities Included:
-  = @provider.additional_activities_included ? "YES" : 'No'
+  %b Additional Activities:
+  = @provider.additional_activities ? "YES" : "No"
+  - if @provider.additional_activities
+    = @provider.additional_activities_list
 
 %p
   %b Age Range:
@@ -74,8 +76,10 @@
   = @provider.hours
 
 %p
-  %b Language Training:
-  = @provider.languages
+  %b Languages:
+  = @provider.languages ? "YES" : "No"
+  - if @provider.languages
+    = @provider.languages_list
 
 %p
   %b NQS Rating:
@@ -108,6 +112,8 @@
 %p
   %b Technology:
   = @provider.technology ? "YES" : 'No'
+  - if @provider.technology
+    = @provider.technology_list
 
 %p
   %b Vancancies:

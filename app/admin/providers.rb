@@ -2,8 +2,8 @@ ActiveAdmin.register Provider do
 
 
   scope :all, :default => true 
-  scope :additional_activities_included do |providers|
-    providers.where ({additional_activities_included: true})
+  scope :additional_activities do |providers|
+    providers.where ({additional_activities: true})
   end
   scope :air_conditioning do |providers|
     providers.where ({air_conditioning: true})
@@ -144,7 +144,8 @@ ActiveAdmin.register Provider do
 
       f.input :hours
 
-      f.input :additional_activities_included
+      f.input :additional_activities
+      f.input :additional_activities_list
       f.input :air_conditioning
       f.input :bus_service
       f.input :cloth_nappies
@@ -157,6 +158,7 @@ ActiveAdmin.register Provider do
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
+      f.input :languages_list
       f.input :online_enrollment
       f.input :outdoor_play_area
       
@@ -177,6 +179,7 @@ ActiveAdmin.register Provider do
       f.input :sibling_priority
 
       f.input :technology
+      f.input :technology_list
 
       f.input :url
 
@@ -239,7 +242,8 @@ ActiveAdmin.register Provider do
   show :title => :name do
     attributes_table do
       row ( "Address") { render provider.addresses}
-      row ( "Additional Activities Included") { status_tag (provider.additional_activities_included ? "YES" : "No"), (provider.additional_activities_included ? :ok : :error) }
+      row ( "Additional Activities" ) { status_tag (provider.additional_activities ? "YES" : "No"), (provider.additional_activities ? :ok : :error) }
+      row :additional_activities_list
       row ( "Age Range") { provider.age_range }
       row ( "Air Conditioning" ) { status_tag (provider.air_conditioning ? "YES" : "No"), (provider.air_conditioning ? :ok : :error) }
       row :approval_granted_on
@@ -349,7 +353,7 @@ ActiveAdmin.register Provider do
 # NOTE:  polymorphs cannot be deleted if :id attribute is not given here; no error message occurs,
 # however records will duplicate on every update.
 #
-  permit_params  :additional_activities_included, :age_range, :air_conditioning, :approved_places, 
+  permit_params  :additional_activities, :additional_activities_list, :age_range, :air_conditioning, :approved_places, 
     :bus_service, 
     :care_offered, :cloth_nappies, :company_id, 
     :description, :disposable_nappies,
@@ -364,7 +368,7 @@ ActiveAdmin.register Provider do
     :hours, 
     :id, 
 
-    :languages, 
+    :languages, :languages_list,
     
     :name, 
     :NQS_rating, :url,
@@ -376,7 +380,7 @@ ActiveAdmin.register Provider do
 
     :security_access, :service_approval_number, :sibling_priority, 
     
-    :technology,
+    :technology, :technology_list,
 
     :provider_approval_number, :provider_legal_name,
 

@@ -155,7 +155,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
   create_table "providers", force: true do |t|
 
-    t.boolean  "additional_activities_included" # Drop down menu: Music, Language, sports program, dance program, learning programs 
+    t.boolean  "additional_activities"
+    t.string   "additional_activities_list" # Drop down menu: Music, Language, sports program, dance program, learning programs 
     t.string   "age_range"
     t.boolean  "air_conditioning"    
     t.datetime "approval_granted_on"
@@ -183,7 +184,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
     t.string   "hours"
 
-    t.string   "languages"
+    t.boolean  "languages"
+    t.string   "languages_list"
 
     t.string   "name",                    :null => false
     t.integer  "NQS_rating",              :default => 0
@@ -208,11 +210,13 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "sibling_priority",   :default => false
 
     t.boolean  "real_grass"
+
     t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
+    t.string   "technology_list"  #Technology        Drop down ipad, smart screens (36mths +)
 
     t.string   "url"
 
-    t.boolean  "vacancies"   #Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+    t.boolean  "vacancies"   
     t.boolean  "vaccinations_compulsory"
 
     t.decimal  "waitlist_fee"

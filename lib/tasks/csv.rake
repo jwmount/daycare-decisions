@@ -1,9 +1,17 @@
+
+# in daycare-decisions, $ rake csv:load_providers
+require 'debugger'
 require 'csv'
 
 namespace :csv do
   desc "Load provider.csv files"
 
   def sanitize_utf8(string)
+    if string.nil?
+      'nil'
+    else
+      puts '...sanitize: ' + string
+    end
     return nil if string.nil?
     return string if string.valid_encoding?
     string.chars.select { |c| c.valid_encoding? }.join
@@ -11,14 +19,13 @@ namespace :csv do
 
 
   task load_providers: :environment do
-    COUNT = 0
+    
   	puts "\n\nLoad the provider.csv files found in public/data/providers...."
 
     Dir.glob("public/data/providers/*.csv").each do |filename|
       puts "\n process file: #{filename}"
     
       CSV.parse(File.read(filename), :encoding => "iso-8859-1", :headers => true) do |row|
-        COUNT = COUNT + 1
 
         # Create new hash for provider by sanitizing each element in row.  See
         # Gist 'Invalid UTF8 in .csv' for discussion of this.        
@@ -30,35 +37,36 @@ namespace :csv do
         # get provider if one exists (validated to unique so only one can exist) or
         # create new one.
         provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
-
         provider.age_range                = p_hash['Age Range']
-        provider.additional_activities_included = p_hash['Additional Activities Included'] == 'Y' ? true : false
-        provider.air_conditioning         = p_hash['Air conditioning'] == 'Y' ? true : false        
-        provider.approval_granted_on      = p_hash['ServiceApprovalGrantedDate']
+        provider.additional_activities      = p_hash['Additional Activities'] == ('Y' || 'T')
+        provider.additional_activities_list = p_hash['Additional Activities List']
+        provider.air_conditioning         = p_hash['Air conditioning'] == ('Y' || 'T') ? true : false
+   #     provider.approval_granted_on      = p_hash['ServiceApprovalGrantedDate']
         provider.approved_places          = p_hash['NumberOfApprovedPlaces']
 
-        provider.bus_service              = p_hash['Bus service']         == 'Y' ? true : false
+        provider.bus_service              = p_hash['Bus service']         == ('Y' || 'T') ? true : false
 
-        provider.cloth_nappies            = p_hash['Cloth Nappies']       == 'Y' ? true : false
+        provider.cloth_nappies            = p_hash['Cloth Nappies']       == ('Y' || 'T') ? true : false
         provider.conditions_on_approval   = p_hash['Conditions on Approval']
 
         provider.description              = p_hash['Description']
-        provider.disposable_nappies       = p_hash['Disposable Nappies']  == 'Y' ? true : false
+        provider.disposable_nappies       = p_hash['Disposable Nappies']  == ('Y' || 'T') ? true : false
 
-        provider.extended_hours_for_kindys= p_hash['Extended Hours For Kindys']  ? true : false
+        provider.extended_hours_for_kindys= p_hash['Extended Hours For Kindys'] == ('Y' || 'T') ? true : false
 
-        provider.excursions               = p_hash['Excursions']          == 'Y' ? true : false
+        provider.excursions               = p_hash['Excursions']          == ('Y' || 'T') ? true : false
 
         provider.fee                      = p_hash['Fees']
-        provider.food_provided            = p_hash['Food Provided']       == 'Y' ? true : false
+        provider.food_provided            = p_hash['Food Provided']       == ('Y' || 'T') ? true : false
 
-        provider.guest_speakers           = p_hash['Guest Speakers']      == 'Y' ? true : false
+        provider.guest_speakers           = p_hash['Guest Speakers']      == ('Y' || 'T') ? true : false
 
-        provider.languages                = p_hash['Languages']           == 'Y' ? true : false
+        provider.languages                = (p_hash['Languages'] == 'Y' || 'T')
+        provider.languages_list           = p_hash['Languages List']
 
         provider.name                     = p_hash['ServiceName']
 
-        provider.outdoor_play_area        = p_hash['Outdoor Play Area']   == 'Y' ? true : false
+        provider.outdoor_play_area        = p_hash['Outdoor Play Area']   == ('Y' || 'T') ? true : false
 
         provider.provider_approval_number = p_hash['Provider Approval Number']
         provider.provider_legal_name      = p_hash['ProviderLegalName']
@@ -72,29 +80,30 @@ namespace :csv do
         provider.quality_area_rating_7    = p_hash['QualityArea7Rating']
         provider.quality_overall_rating   = p_hash['OverallRating']
 
-        provider.real_grass               = p_hash['Real Grass']          == 'Y' ? true : false
+        provider.real_grass               = p_hash['Real Grass']          == ('Y' || 'T') ? true : false
 
-        provider.security_access          = p_hash['Security Access']     == 'Y' ? true : false
+        provider.security_access          = p_hash['Security Access']     == ('Y' || 'T') ? true : false
         provider.service_approval_number  = p_hash['ServiceApprovalNumber']
-        provider.sibling_priority         = p_hash['Sibling Priority']    == 'Y' ? true : false
+        provider.sibling_priority         = p_hash['Sibling Priority']    == ('Y' || 'T') ? true : false
 
-        provider.technology               = p_hash['Technology']          == 'Y' ? true : false
+        provider.technology              = p_hash['Technology'] == ('Y' || 'T') ? true : false
+        provider.technology_list         = p_hash['Technology_list']
 
         provider.url                      = p_hash['Website'] 
 
-        provider.vacancies                = p_hash['Vacancies']      
-        provider.vaccinations_compulsory  = p_hash['Vaccinactions Compulsory']== 'Y' ? true : false
+        provider.vacancies                = p_hash['Vacancies'] == ('Y' || 'T') ? true : false     
+        provider.vaccinations_compulsory  = p_hash['Vaccinactions Compulsory'] == ('Y' || 'T') ? true : false
         provider.waitlist_fee             = p_hash['Waitlist Fee']    
-        provider.waitlist_online          = p_hash['Online waitlist']     == 'Y' ? true : false
-        provider.waitlist_reimbursed      = p_hash['Waitlist refundable'] == 'Y' ? true : false
+        provider.waitlist_online          = p_hash['Online waitlist']     == ('Y' || 'T') ? true : false
+        provider.waitlist_reimbursed      = p_hash['Waitlist refundable'] == ('Y' || 'T') ? true : false
 
         #provider.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
 
-        puts COUNT
+
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
         if !provider.name.nil? and provider.save! 
-          puts "--Saved\n\n\n"
+          puts "--#{provider.name} from #{filename} Saved\n\n\n"
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
           address.street_address = p_hash['Service Address']
@@ -122,7 +131,6 @@ namespace :csv do
           puts "--Provider could not be saved, Dropped\n"
         end
       
-      puts provider.name
       puts "\n\n"
       end
     end
@@ -143,7 +151,8 @@ namespace :csv do
     
       provider = Provider.where(:name => "Service Name-#{rand.to_s}").first_or_create
       provider.age_range                = 'Age Range'
-      provider.additional_activities_included = true
+      provider.additional_activities    = true
+      provider.additional_activities_list    = "Physikids"
       provider.air_conditioning         = true
       provider.approval_granted_on      = Date.today
       provider.approved_places          = 40
@@ -164,7 +173,8 @@ namespace :csv do
       
       provider.guest_speakers           = true
       
-      provider.languages                = true
+      provider.languages               = true
+      provider.languages_list          = "French"
       
       provider.outdoor_play_area        = true
       
@@ -186,7 +196,8 @@ namespace :csv do
       provider.service_approval_number  = 'Service Approval Number'
       provider.sibling_priority         = true
       
-      provider.technology               = true
+      provider.technology              = true
+      provider.technology_list         = "iPads"
       
       provider.url                      = 'www.wsj.com'       
       provider.vacancies                = 1
