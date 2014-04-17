@@ -1,6 +1,5 @@
 
 # in daycare-decisions, $ rake csv:load_providers
-require 'debugger'
 require 'csv'
 
 namespace :csv do
