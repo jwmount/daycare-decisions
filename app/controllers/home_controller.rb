@@ -107,8 +107,6 @@ class HomeController < ApplicationController
        @rqry[:waitlist_reimbursed] = true
      end
      
-     # @refined_providers = @providers.where rqry
-
     
     respond_to do |format|
       format.html
