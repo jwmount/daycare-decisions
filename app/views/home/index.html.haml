@@ -1,4 +1,5 @@
 %body
+
   #header 
     %h3 Daycare Decisions Landing Page (MVP Mechanical)
 
@@ -10,6 +11,7 @@
     .floatright
       = image_tag "free-daycare-checklist.png"
       = link_to "Logon or Register", admin_root_path
+
 
   #content
     %ul#navlist
@@ -43,7 +45,6 @@
   = image_tag  "ad_2.png", :class => "floatright"
   = image_tag  "ad_3.gif", :class => "floatright"
     
-
   %h1 Finding Childcare Is Hard, We Can Help
   %h2 What Kind of Daycare Do You Want?
   
@@ -74,98 +75,94 @@
   %h3 Why List Your Center With Us?
   Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
 
+  .dialog
+    %h3 See Where Your Child Care Providers Are
+    = form_tag({controller: "home", action: "index"}, method: "get") do
+      = search_field_tag 'locality', '', maxlength: 15, size: 20  
+      %h4 Suburb
+      = search_field_tag 'post_code', '', maxlength: 4, size: 4
+      %h4 Post Code
+      = search_field_tag 'state', '', maxlength: 4, size: 4
+      %h4 State
+      .btn-lg
+        = submit_tag 'Find Providers', class: "form_submit"  
   
-  %h3 See Where Your Child Care Providers Are
-    
-  %h4 Pick Your Location Using One Of These:
-  = form_tag({controller: "home", action: "index"}, method: "get") do
-    = search_field_tag 'locality', '', maxlength: 15, size: 20
-  
-    %h4 Suburb
-    
-    = search_field_tag 'post_code', '', maxlength: 4, size: 20
-    %h4 Post Code
-    
-    = search_field_tag 'state', '', maxlength: 3, size: 20
-    %h4 State
-  
-  
-    %h3 You Can Refine Your Search Too -- Check the Services And Facilities You Want for Your Child
-
-    = check_box_tag 'additional_activities', 1, false
-    Additional Activities
-    
-    = check_box_tag 'air_conditioning', 1, false
-    Air Conditioning  
-    
-    = check_box_tag 'bus_service',  1, false
-    Bus Service
-  
-    %p
-  
-    = check_box_tag 'disposable_nappies',  1, false
-    Disposable Nappies  
-    
-    = check_box_tag 'cloth_nappies',  1, false
-    Cloth Nappies
-    
-    %p
-    
-    = check_box_tag 'excursions',  1, false
-    Excursions 
-    
-    = check_box_tag  'extended_hours_for_kindys',  1, false
-    Extended Hours for Kindys
-    
-    %p
-    
-    = check_box_tag 'food_provided',  1, false
-    Food Provided
-    
-    = check_box_tag 'guest_speakers',  1, false
-    Guest Speakers
-    
-    %p
-    
-    = check_box_tag 'languages',  1, false
-    Languages
-    
-    = check_box_tag 'real_grass',  1, false
-    Real Grass
-    
-    %p
-    
-    = check_box_tag 'secure_access',  1, false
-    Secure Access
-    
-    = check_box_tag 'siblings_given_priority',  1, false
-    Siblings Given Priority
-    
-    %p
-    = check_box_tag 'technology',  1, false
-    Technology
-    
-    = check_box_tag 'vacancies',  1, false
-    Vacancies
-    
-    %p
-    
-    = check_box_tag 'vaccinations_compulsory',  1, false
-    Vaccinations Compulsory
-    
-    = check_box_tag 'waitlist_online',  1, false
-    Waitlist Online
-    
-    %p
-    
-    = check_box_tag 'waitlist_reimbursed',  1, false
-    Watilist Fee Reimbursed            
-  
-    %p
-  
-    /= link_to "Search", root_path, :class => "btn icon-edit"
-    .btn-lg
-      = submit_tag 'Find Providers', class: "form_submit"
+      %h3 You Can Refine Your Search Too -- Check the Services And Facilities You Want for Your Child
+      
+      = check_box_tag 'additional_activities', 1, false
+      Additional Activities
+      
+      = check_box_tag 'air_conditioning', 1, false
+      Air Conditioning  
+      
+      = check_box_tag 'bus_service',  1, false
+      Bus Service
+      
+      %p
+      
+      = check_box_tag 'disposable_nappies',  1, false
+      Disposable Nappies  
+      
+      = check_box_tag 'cloth_nappies',  1, false
+      Cloth Nappies
+      
+      %p
+      
+      = check_box_tag 'excursions',  1, false
+      Excursions 
+      
+      = check_box_tag  'extended_hours_for_kindys',  1, false
+      Extended Hours for Kindys
+      
+      %p
+      
+      = check_box_tag 'food_provided',  1, false
+      Food Provided
+      
+      = check_box_tag 'guest_speakers',  1, false
+      Guest Speakers
+      
+      %p
+      
+      = check_box_tag 'languages',  1, false
+      Languages
+      
+      = check_box_tag 'real_grass',  1, false
+      Real Grass
+      
+      %p
+      
+      = check_box_tag 'secure_access',  1, false
+      Secure Access
+      
+      = check_box_tag 'siblings_given_priority',  1, false
+      Siblings Given Priority
+      
+      %p
+      = check_box_tag 'technology',  1, false
+      Technology
+      
+      = check_box_tag 'vacancies',  1, false
+      Vacancies
+      
+      %p
+      
+      = check_box_tag 'vaccinations_compulsory',  1, false
+      Vaccinations Compulsory
+      
+      = check_box_tag 'waitlist_online',  1, false
+      Waitlist Online
+      
+      %p
+      
+      = check_box_tag 'waitlist_reimbursed',  1, false
+      Watilist Fee Reimbursed            
+      
+      %p
+      
+      /= link_to "Search", root_path, :class => "btn icon-edit"
+      .btn-lg
+        = submit_tag 'Find Providers', class: "form_submit"
 
     - if !@locality_provider_ids.empty?
       - l1, l2, providers = provider_list :locality, @locality_provider_ids
