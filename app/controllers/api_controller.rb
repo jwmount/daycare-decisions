@@ -1,3 +1,6 @@
+//localhost:3000/api => all providers
+//localhost:3000/api/20 = provider :id = 20
+
 class ApiController < ApplicationController
   include ActionController::MimeResponds
 
