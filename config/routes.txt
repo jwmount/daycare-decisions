@@ -1,92 +1,12 @@
                                   Prefix Verb       URI Pattern                                                           Controller#Action
-                   waitlist_applications GET        /waitlist_applications(.:format)                                      waitlist_applications#index
-                                         POST       /waitlist_applications(.:format)                                      waitlist_applications#create
-                new_waitlist_application GET        /waitlist_applications/new(.:format)                                  waitlist_applications#new
-               edit_waitlist_application GET        /waitlist_applications/:id/edit(.:format)                             waitlist_applications#edit
-                    waitlist_application GET        /waitlist_applications/:id(.:format)                                  waitlist_applications#show
-                                         PATCH      /waitlist_applications/:id(.:format)                                  waitlist_applications#update
-                                         PUT        /waitlist_applications/:id(.:format)                                  waitlist_applications#update
-                                         DELETE     /waitlist_applications/:id(.:format)                                  waitlist_applications#destroy
-                               guardians GET        /guardians(.:format)                                                  guardians#index
-                                         POST       /guardians(.:format)                                                  guardians#create
-                            new_guardian GET        /guardians/new(.:format)                                              guardians#new
-                           edit_guardian GET        /guardians/:id/edit(.:format)                                         guardians#edit
-                                guardian GET        /guardians/:id(.:format)                                              guardians#show
-                                         PATCH      /guardians/:id(.:format)                                              guardians#update
-                                         PUT        /guardians/:id(.:format)                                              guardians#update
-                                         DELETE     /guardians/:id(.:format)                                              guardians#destroy
-                            applications GET        /applications(.:format)                                               applications#index
-                                         POST       /applications(.:format)                                               applications#create
-                         new_application GET        /applications/new(.:format)                                           applications#new
-                        edit_application GET        /applications/:id/edit(.:format)                                      applications#edit
-                             application GET        /applications/:id(.:format)                                           applications#show
-                                         PATCH      /applications/:id(.:format)                                           applications#update
-                                         PUT        /applications/:id(.:format)                                           applications#update
-                                         DELETE     /applications/:id(.:format)                                           applications#destroy
-                                  people GET        /people(.:format)                                                     people#index
-                                         POST       /people(.:format)                                                     people#create
-                              new_person GET        /people/new(.:format)                                                 people#new
-                             edit_person GET        /people/:id/edit(.:format)                                            people#edit
-                                  person GET        /people/:id(.:format)                                                 people#show
-                                         PATCH      /people/:id(.:format)                                                 people#update
-                                         PUT        /people/:id(.:format)                                                 people#update
-                                         DELETE     /people/:id(.:format)                                                 people#destroy
-                                families GET        /families(.:format)                                                   families#index
-                                         POST       /families(.:format)                                                   families#create
-                              new_family GET        /families/new(.:format)                                               families#new
-                             edit_family GET        /families/:id/edit(.:format)                                          families#edit
-                                  family GET        /families/:id(.:format)                                               families#show
-                                         PATCH      /families/:id(.:format)                                               families#update
-                                         PUT        /families/:id(.:format)                                               families#update
-                                         DELETE     /families/:id(.:format)                                               families#destroy
-                               companies GET        /companies(.:format)                                                  companies#index
-                                         POST       /companies(.:format)                                                  companies#create
-                             new_company GET        /companies/new(.:format)                                              companies#new
-                            edit_company GET        /companies/:id/edit(.:format)                                         companies#edit
-                                 company GET        /companies/:id(.:format)                                              companies#show
-                                         PATCH      /companies/:id(.:format)                                              companies#update
-                                         PUT        /companies/:id(.:format)                                              companies#update
-                                         DELETE     /companies/:id(.:format)                                              companies#destroy
-                            certificates GET        /certificates(.:format)                                               certificates#index
-                                         POST       /certificates(.:format)                                               certificates#create
-                         new_certificate GET        /certificates/new(.:format)                                           certificates#new
-                        edit_certificate GET        /certificates/:id/edit(.:format)                                      certificates#edit
-                             certificate GET        /certificates/:id(.:format)                                           certificates#show
-                                         PATCH      /certificates/:id(.:format)                                           certificates#update
-                                         PUT        /certificates/:id(.:format)                                           certificates#update
-                                         DELETE     /certificates/:id(.:format)                                           certificates#destroy
-                                agencies GET        /agencies(.:format)                                                   agencies#index
-                                         POST       /agencies(.:format)                                                   agencies#create
-                              new_agency GET        /agencies/new(.:format)                                               agencies#new
-                             edit_agency GET        /agencies/:id/edit(.:format)                                          agencies#edit
-                                  agency GET        /agencies/:id(.:format)                                               agencies#show
-                                         PATCH      /agencies/:id(.:format)                                               agencies#update
-                                         PUT        /agencies/:id(.:format)                                               agencies#update
-                                         DELETE     /agencies/:id(.:format)                                               agencies#destroy
-                                services GET        /services(.:format)                                                   services#index
-                                         POST       /services(.:format)                                                   services#create
-                             new_service GET        /services/new(.:format)                                               services#new
-                            edit_service GET        /services/:id/edit(.:format)                                          services#edit
-                                 service GET        /services/:id(.:format)                                               services#show
-                                         PATCH      /services/:id(.:format)                                               services#update
-                                         PUT        /services/:id(.:format)                                               services#update
-                                         DELETE     /services/:id(.:format)                                               services#destroy
-                                   roles GET        /roles(.:format)                                                      roles#index
-                                         POST       /roles(.:format)                                                      roles#create
-                                new_role GET        /roles/new(.:format)                                                  roles#new
-                               edit_role GET        /roles/:id/edit(.:format)                                             roles#edit
-                                    role GET        /roles/:id(.:format)                                                  roles#show
-                                         PATCH      /roles/:id(.:format)                                                  roles#update
-                                         PUT        /roles/:id(.:format)                                                  roles#update
-                                         DELETE     /roles/:id(.:format)                                                  roles#destroy
-                               providers GET        /providers(.:format)                                                  providers#index
-                                         POST       /providers(.:format)                                                  providers#create
-                            new_provider GET        /providers/new(.:format)                                              providers#new
-                           edit_provider GET        /providers/:id/edit(.:format)                                         providers#edit
-                                provider GET        /providers/:id(.:format)                                              providers#show
-                                         PATCH      /providers/:id(.:format)                                              providers#update
-                                         PUT        /providers/:id(.:format)                                              providers#update
-                                         DELETE     /providers/:id(.:format)                                              providers#destroy
+                               api_index GET        /api(.:format)                                                        api#index
+                                         POST       /api(.:format)                                                        api#create
+                                 new_api GET        /api/new(.:format)                                                    api#new
+                                edit_api GET        /api/:id/edit(.:format)                                               api#edit
+                                     api GET        /api/:id(.:format)                                                    api#show
+                                         PATCH      /api/:id(.:format)                                                    api#update
+                                         PUT        /api/:id(.:format)                                                    api#update
+                                         DELETE     /api/:id(.:format)                                                    api#destroy
                               home_index GET        /home(.:format)                                                       home#index
                                          POST       /home(.:format)                                                       home#create
                                 new_home GET        /home/new(.:format)                                                   home#new
@@ -96,11 +16,15 @@
                                          PUT        /home/:id(.:format)                                                   home#update
                                          DELETE     /home/:id(.:format)                                                   home#destroy
                                    about GET        /about(.:format)                                                      home#about
+                               advertise GET        /advertise(.:format)                                                  home#advertise
+                              contact_us GET        /contact_us(.:format)                                                 home#contact_us
                                      faq GET        /faq(.:format)                                                        home#faq
                              fact_sheets GET        /fact_sheets(.:format)                                                home#fact_sheets
                                 research GET        /research(.:format)                                                   home#research
                               newsletter GET        /newsletter(.:format)                                                 home#newsletter
+                          privacy_policy GET        /privacy_policy(.:format)                                             home#privacy_policy
                        provider_services GET        /provider_services(.:format)                                          home#provider_services
+                        terms_conditions GET        /terms_conditions(.:format)                                           home#terms_conditions
                   new_admin_user_session GET        /admin/login(.:format)                                                active_admin/devise/sessions#new
                       admin_user_session POST       /admin/login(.:format)                                                active_admin/devise/sessions#create
               destroy_admin_user_session DELETE|GET /admin/logout(.:format)                                               active_admin/devise/sessions#destroy

@@ -1,26 +1,9 @@
 DaycareDecisions::Application.routes.draw do
-  
-  resources :waitlist_applications
 
-  resources :guardians
+ # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  resources :applications
-
-  resources :people
-
-  resources :families
-
-  resources :companies
-    
-  resources :certificates
-
-  resources :agencies
-
-  resources :services
-
-  resources :roles
-
-  resources :providers
+  resources :api  
 
   resources :home
     # reference as about_path in HomeController views
