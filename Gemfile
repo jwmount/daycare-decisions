@@ -21,14 +21,13 @@ gem 'foreigner'
 gem 'i18n'
 gem 'taps'  #needed by Heroku
 
-gem 'debugger', group: :development
-
 gem 'uglifier', '>= 1.0.3'
 gem "country_select"
 
 group :development do
   gem 'better_errors' 
   gem 'binding_of_caller'
+  gem 'debugger'
 end
 
 group :production do
