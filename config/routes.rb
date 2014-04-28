@@ -4,6 +4,7 @@ DaycareDecisions::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   resources :api  
+  resources :addresses
 
   resources :home
     # reference as about_path in HomeController views

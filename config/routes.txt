@@ -7,6 +7,14 @@
                                          PATCH      /api/:id(.:format)                                                    api#update
                                          PUT        /api/:id(.:format)                                                    api#update
                                          DELETE     /api/:id(.:format)                                                    api#destroy
+                               addresses GET        /addresses(.:format)                                                  addresses#index
+                                         POST       /addresses(.:format)                                                  addresses#create
+                             new_address GET        /addresses/new(.:format)                                              addresses#new
+                            edit_address GET        /addresses/:id/edit(.:format)                                         addresses#edit
+                                 address GET        /addresses/:id(.:format)                                              addresses#show
+                                         PATCH      /addresses/:id(.:format)                                              addresses#update
+                                         PUT        /addresses/:id(.:format)                                              addresses#update
+                                         DELETE     /addresses/:id(.:format)                                              addresses#destroy
                               home_index GET        /home(.:format)                                                       home#index
                                          POST       /home(.:format)                                                       home#create
                                 new_home GET        /home/new(.:format)                                                   home#new

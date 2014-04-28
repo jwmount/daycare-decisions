@@ -46,6 +46,11 @@ class HomeController < ApplicationController
 
   def show
     @provider = Provider.find params[:id]
+    respond_to do |format|
+      format.html
+      format.json { render json: [@provider] }
+    end
+
   end
 
   def update
