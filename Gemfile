@@ -3,6 +3,7 @@ ruby '2.1.1'
 
 gem 'rails', '>=4.1'
 gem 'rake', '10.1.0'
+gem 'rails-api'
 
 # sprockets Environment error, it's ALWAYS sprockets
 # http://stackoverflow.com/questions/22426698/undefined-method-environment-for-nilnilclass-when-importing-bootstrap-into-ra
@@ -11,6 +12,7 @@ gem "sass-rails", "~> 4.0.2"
 gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
 gem 'haml-rails'
+gem 'geocoder'
 
 gem 'carrierwave'
 gem 'devise'

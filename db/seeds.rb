@@ -43,7 +43,7 @@ csv.each do |row|
   jurisdiction       = agency['Jurisdiction']
   url                = agency['Web Address'].to_s.gsub("http://", "")
 
-  street_address     = agency['Street_Address']
+  street             = agency['Street']
   locality           = agency['Locality']
   state              = agency['State']
   post_code          = agency['Post Code']

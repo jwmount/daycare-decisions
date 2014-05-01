@@ -196,7 +196,7 @@ ActiveAdmin.register Provider do
 
     f.inputs do
       f.has_many :addresses, :allow_destroy => true, :as => :boolean, :heading => 'Address or Location', :new_record => true do |addr|
-          addr.input :street_address
+          addr.input :street
           addr.input :locality
           addr.input :state
           addr.input :post_code
@@ -391,7 +391,7 @@ ActiveAdmin.register Provider do
     :vacancies,  :vaccinations_compulsory,
 
     :waitlist_fee, :waitlist_online, :waitlist_reimbursed,
-      addresses_attributes: [ :id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
+      addresses_attributes: [ :id, :street, :locality, :state, :post_code, :country, :latitude, :longitude, :_destroy],
       rolodexes_attributes: [ :id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
       certs_attributes:     [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ],
       services_attributes:  [ :id, :name, :description, :fee, :basis, :_destroy ]

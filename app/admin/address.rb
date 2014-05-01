@@ -15,12 +15,12 @@ ActiveAdmin.register Address do
     column "Kind of Facility" do |address|
     	address.addressable_type
     end
-    column :street_address
+    column :street
     column :locality
     column :state
     column :post_code
-    column :lat
-    column :long
+    column :latitude
+    column :longitude
     column :created_at
     column :updated_at
 
@@ -29,6 +29,6 @@ ActiveAdmin.register Address do
 # P A R A M S
 #  
 
-  permit_params :street_address,  :locality, :state, :post_code, :lat, :long, :utf8
+  permit_params :street,  :locality, :state, :post_code, :latitude, :longitude, :country, :utf8
   
 end

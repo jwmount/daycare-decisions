@@ -1,6 +1,7 @@
-
 # in daycare-decisions, $ rake csv:load_providers
 require 'csv'
+require 'ruby-debug'
+require 'uri'
 
 namespace :csv do
   desc "Load provider.csv files"
@@ -16,6 +17,10 @@ namespace :csv do
     string.chars.select { |c| c.valid_encoding? }.join
   end
 
+  task geocode_address: :environment do
+    puts '-- geocode_address completed'
+    geocode 'Broad Beach', false
+  end
 
   task load_providers: :environment do
     
@@ -105,7 +110,7 @@ namespace :csv do
           puts "--#{provider.name} from #{filename} Saved\n\n\n"
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
-          address.street_address = p_hash['Service Address']
+          address.street         = p_hash['Service Address']
           address.locality       = p_hash['Suburb']
           address.state          = p_hash['State']
           address.post_code      = p_hash['Postcode'] 
@@ -211,7 +216,7 @@ namespace :csv do
           puts "--Saved #{@count.to_s}"
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
-          address.street_address = 'Service Address'
+          address.street         = 'Service Address'
           address.locality       = 'Suburb'
           address.state          = 'QLD'
           address.post_code      = 'Postcode'
@@ -242,3 +247,27 @@ namespace :csv do
   end #task
 end #namespace
 
+#
+# this URL works
+# https://maps.googleapis.com/maps/api/geocode/json?address=5+St+Kilda+Ave.,+Broad+Beach,QLD,Postal_code+4218,Australia,&sensor=false&key=AIzaSyDVUWaiCEzOlXjYsSCJaKlAOwKcnqDA7Cs
+#
+GEOCODE_BASE_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
+
+  def geocode(address,sensor)
+    geo_args = ({
+        'address' => address,
+        'sensor' => false,
+        'key'=> ENV['google_api_key']  
+    })
+    url = GEOCODE_BASE_URL + '?' + CGI::escape(geo_args.to_s) #'?' + urllib.urlencode(geo_args)
+
+    debugger
+    uri = URI.parse("http://pragprog.com:1234/mypage.cgi?q=ruby")
+    result = simplejson.load(urllib.urlopen(url))
+
+    #print simplejson.dumps([s['formatted_address'] for s in result['results']], indent=2)
+    puts result
+    #if __name__ == '__main__':
+    #  geocode(address="San+Francisco",sensor="false")
+    #nd
+  end

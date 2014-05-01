@@ -186,7 +186,7 @@ ActiveAdmin.register WaitlistApplication do
     :special_circumstances,
 
     :updated_at,
-      addresses_attributes: [:id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
+      addresses_attributes: [:id, :street, :locality, :state, :post_code, :country, :latitude, :longitude, :_destroy],
       rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
       certs_attributes: [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ]
 

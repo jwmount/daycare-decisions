@@ -10,7 +10,9 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
+#
+# $ rake db:drop db:create db:schema:load db:seed csv:load_providers
+#
 ActiveRecord::Schema.define(version: 20140210051608) do
 
   # These are extensions that must be enabled in order to support this database
@@ -34,12 +36,13 @@ ActiveRecord::Schema.define(version: 20140210051608) do
  create_table "addresses", force: true do |t|
     t.integer  "addressable_id",                                             null: false
     t.string   "addressable_type",                                           null: false
-    t.string   "street_address",             default: "ukn"
+    t.string   "street",                     default: "ukn"
     t.string   "locality",                   default: "ukn"
     t.string   "state",                      default: "ukn"
     t.string   "post_code",                  default: "ukn"
-    t.float    "lat"
-    t.float    "long"
+    t.string   "country",                    default: "Australia"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",                 default: '2013-10-08 00:00:00', null: false
     t.datetime "updated_at",                 default: '2013-10-08 00:00:00', null: false
   end

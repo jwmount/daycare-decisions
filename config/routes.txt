@@ -1,12 +1,12 @@
                                   Prefix Verb       URI Pattern                                                           Controller#Action
-                               api_index GET        /api(.:format)                                                        api#index
-                                         POST       /api(.:format)                                                        api#create
-                                 new_api GET        /api/new(.:format)                                                    api#new
-                                edit_api GET        /api/:id/edit(.:format)                                               api#edit
-                                     api GET        /api/:id(.:format)                                                    api#show
-                                         PATCH      /api/:id(.:format)                                                    api#update
-                                         PUT        /api/:id(.:format)                                                    api#update
-                                         DELETE     /api/:id(.:format)                                                    api#destroy
+                           api_addresses GET        /api/addresses(.:format)                                              api/addresses#index
+                                         POST       /api/addresses(.:format)                                              api/addresses#create
+                         new_api_address GET        /api/addresses/new(.:format)                                          api/addresses#new
+                        edit_api_address GET        /api/addresses/:id/edit(.:format)                                     api/addresses#edit
+                             api_address GET        /api/addresses/:id(.:format)                                          api/addresses#show
+                                         PATCH      /api/addresses/:id(.:format)                                          api/addresses#update
+                                         PUT        /api/addresses/:id(.:format)                                          api/addresses#update
+                                         DELETE     /api/addresses/:id(.:format)                                          api/addresses#destroy
                                addresses GET        /addresses(.:format)                                                  addresses#index
                                          POST       /addresses(.:format)                                                  addresses#create
                              new_address GET        /addresses/new(.:format)                                              addresses#new

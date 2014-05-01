@@ -45,7 +45,7 @@ ActiveAdmin.register Guardian do
   
     f.inputs "Addresses" do
       f.has_many :addresses, :allow_destroy => true, :as => :boolean, :heading => 'Address or Location', :new_record => true do |a|
-          a.input :street_address
+          a.input :street
           a.input :locality
           a.input :state
           a.input :post_code
@@ -89,7 +89,7 @@ ActiveAdmin.register Guardian do
 
 
   permit_params :first_name, :family_name, :waitlist_application, :handle,
-      addresses_attributes: [:id, :street_address, :locality, :state, :post_code, :lat, :long, :_destroy],
+      addresses_attributes: [:id, :street, :locality, :state, :post_code, :country, :latitude, :longitude, :_destroy],
       rolodexes_attributes: [:id, :number_or_email, :kind, :when_to_use, :description, :_destroy]
 
 end
