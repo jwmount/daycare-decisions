@@ -29,6 +29,6 @@ ActiveAdmin.register Address do
 # P A R A M S
 #  
 
-  permit_params :street,  :locality, :state, :post_code, :latitude, :longitude, :country, :utf8
+  permit_params :street,  :locality, :state, :post_code, :country, :latitude, :longitude,  :utf8
   
 end

@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "locality",                   default: "ukn"
     t.string   "state",                      default: "ukn"
     t.string   "post_code",                  default: "ukn"
-    t.string   "country",                    default: "Australia"
+    t.string   "country"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at",                 default: '2013-10-08 00:00:00', null: false
