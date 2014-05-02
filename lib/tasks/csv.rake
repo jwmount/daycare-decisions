@@ -1,6 +1,5 @@
 # in daycare-decisions, $ rake csv:load_providers
 require 'csv'
-require 'ruby-debug'
 require 'uri'
 
 namespace :csv do
@@ -261,7 +260,6 @@ GEOCODE_BASE_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
     })
     url = GEOCODE_BASE_URL + '?' + CGI::escape(geo_args.to_s) #'?' + urllib.urlencode(geo_args)
 
-    debugger
     uri = URI.parse("http://pragprog.com:1234/mypage.cgi?q=ruby")
     result = simplejson.load(urllib.urlopen(url))
 
