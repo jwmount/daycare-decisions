@@ -6,7 +6,7 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses/200  => 200th of them
 
 
-  #resources :api  
+  resources :api  
   resources :addresses
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
