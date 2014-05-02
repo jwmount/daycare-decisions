@@ -6,8 +6,8 @@ class Address < ActiveRecord::Base
   
   # add geocodes on insertion, c.f. http://www.rubygeocoder.com/
   # Note, you can also batch them with $ rake geocode:all CLASS=Address
-  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
-  #after_validation :geocode
+  # after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+  after_validation :geocode
   geocoded_by :address
 
   def address
