@@ -11,7 +11,7 @@ class Address < ActiveRecord::Base
   geocoded_by :address
 
   def address
-    [street, locality, state, post_code, country].compact.join(', ')
+    [street, locality, state, post_code].compact.join(', ')
   end
 
  # Best practice in Rails is set defaults here and not in database
