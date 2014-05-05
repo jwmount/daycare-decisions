@@ -187,6 +187,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
     t.string   "hours"
 
+    t.boolean  "kindergarten"            
+    
     t.boolean  "languages"
     t.string   "languages_list"
 

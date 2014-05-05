@@ -87,6 +87,9 @@ module AdminConstants
 
   ADMIN_PROVIDER_COMPANY_HINT            = "Company that owns or operates this facility."
 
+  ADMIN_PROVIDER_KINDERGARTEN_LABEL      = "Kindergarten Approved (QLD only)"
+  ADMIN_PROVIDER_KINDERGARTEN_HINT       = "The centre offers an approved Kindergarten Program (Kindergarten QLD tick of approval, qualified teachers etc)"
+
   ADMIN_PROVIDER_NQS_RATING_LABEL        = "NQS rating"
   ADMIN_PROVIDER_NQS_RATING_PLACEHOLDER  = "1...3"
   ADMIN_PROVIDER_NQS_RATING_HINT         = "describe what an NQS rating means"

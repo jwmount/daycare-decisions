@@ -30,6 +30,9 @@ ActiveAdmin.register Provider do
   scope :guest_speakers do |providers|
     providers.where ({guest_speakers: true})
   end
+  scope :kindergarten do |providers|
+    providers.where ({kindergarten: true})
+  end
   scope :online_enrollment do |providers|
     providers.where ({online_enrollment: true})
   end
@@ -63,7 +66,7 @@ ActiveAdmin.register Provider do
 
   filter :company
   filter :name
-  filter :care_offered, :label => "Care Options"
+  filter :care_offered, :label => "Form of Care"
   filter :NQS_rating
   filter :fee
   filter :description
@@ -154,6 +157,9 @@ ActiveAdmin.register Provider do
       f.input :extended_hours_for_kindys
       f.input :food_provided
       f.input :guest_speakers
+      f.input :kindergarten,
+              :label => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_LABEL,
+              :hint => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_HINT
       f.input :languages,
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
@@ -273,6 +279,8 @@ ActiveAdmin.register Provider do
 
       row :hours
 
+      row (:kindergarten) { status_tag (provider.kindergarten ? "Yes" : "no"), (provider.kindergarten ? :ok : :error) }
+
       row :languages
       row :legal_name
 
@@ -367,6 +375,8 @@ ActiveAdmin.register Provider do
     :guest_speakers, 
     :hours, 
     :id, 
+
+    :kindergarten,
 
     :languages, :languages_list,
     

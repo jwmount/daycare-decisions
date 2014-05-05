@@ -22,5 +22,10 @@ module DaycareDecisions
 
     # Required by Heroku, http://guides.rubyonrails.org/asset_pipeline.html#manifest-files-and-directives
     config.assets.initialize_on_precompile = false
+
+    # Suggest in http://stackoverflow.com/questions/19600905/undefined-method-flash-for-actiondispatchrequest?lq=1
+    # apparently gem rails-api removes middleware Action::Flash needs, or something.
+    # Set it to false to avoid this.  Apparently it defaults to true!
+    config.api_only = false
   end
 end
