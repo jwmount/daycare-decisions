@@ -16,11 +16,10 @@ namespace :csv do
     string.chars.select { |c| c.valid_encoding? }.join
   end
 
-  task geocode_address: :environment do
-    puts '-- geocode_address completed'
-    geocode 'Broad Beach', false
-  end
-
+#
+# LOAD PROVIDERS
+# $ rake csv:load_providers
+#
   task load_providers: :environment do
     
   	puts "\n\nLoad the provider.csv files found in public/data/providers...."
@@ -31,24 +30,31 @@ namespace :csv do
       CSV.parse(File.read(filename), :encoding => "iso-8859-1", :headers => true) do |row|
 
         # Create new hash for provider by sanitizing each element in row.  See
-        # Gist 'Invalid UTF8 in .csv' for discussion of this.        
+        # If row begins with '#' it's a comment.
+        # Gist 'Invalid UTF8 in .csv' for discussion of this.     
         p_hash = Hash.new(nil)
-        row.each do |k,v|
-          p_hash[k] = sanitize_utf8(v)
+        if row.index(/[# ]/, 0) 
+          puts row
+          break
+        else
+          row.each do |k,v|
+            p_hash[k] = sanitize_utf8(v)
+          end
         end
 
         # get provider if one exists (validated to unique so only one can exist) or
         # create new one.
         provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
-        provider.age_range                = p_hash['Age Range']
+        provider.age_range                  = p_hash['Age Range']
         provider.additional_activities      = p_hash['Additional Activities'] == ('Y' || 'T')
         provider.additional_activities_list = p_hash['Additional Activities List']
-        provider.air_conditioning         = p_hash['Air conditioning'] == ('Y' || 'T') ? true : false
+        provider.air_conditioning           = p_hash['Air conditioning'] == ('Y' || 'T') ? true : false
    #     provider.approval_granted_on      = p_hash['ServiceApprovalGrantedDate']
         provider.approved_places          = p_hash['NumberOfApprovedPlaces']
 
         provider.bus_service              = p_hash['Bus service']         == ('Y' || 'T') ? true : false
 
+        provider.care_offered             = p_hash['Type of Care']
         provider.cloth_nappies            = p_hash['Cloth Nappies']       == ('Y' || 'T') ? true : false
         provider.conditions_on_approval   = p_hash['Conditions on Approval']
 
@@ -64,7 +70,8 @@ namespace :csv do
 
         provider.guest_speakers           = p_hash['Guest Speakers']      == ('Y' || 'T') ? true : false
 
-        provider.languages                = (p_hash['Languages'] == 'Y' || 'T')
+        provider.kindergarten             = p_hash['Kindergarten']        == ('Y' || 'T') ? true : false
+        provider.languages                = (p_hash['Languages']          == 'Y' || 'T')
         provider.languages_list           = p_hash['Languages List']
 
         provider.name                     = p_hash['ServiceName']
@@ -162,6 +169,7 @@ namespace :csv do
 
       provider.bus_service              = true
       
+      provider.care_offered             = 'Long Day Care'
       provider.cloth_nappies            = true
       provider.conditions_on_approval   = 'Conditions on Approval'
       
@@ -176,8 +184,9 @@ namespace :csv do
       
       provider.guest_speakers           = true
       
-      provider.languages               = true
-      provider.languages_list          = "French"
+      provider.kindergarten             = false
+      provider.languages                = true
+      provider.languages_list           = "French"
       
       provider.outdoor_play_area        = true
       
@@ -246,26 +255,3 @@ namespace :csv do
   end #task
 end #namespace
 
-#
-# this URL works
-# https://maps.googleapis.com/maps/api/geocode/json?address=5+St+Kilda+Ave.,+Broad+Beach,QLD,Postal_code+4218,Australia,&sensor=false&key=AIzaSyDVUWaiCEzOlXjYsSCJaKlAOwKcnqDA7Cs
-#
-GEOCODE_BASE_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
-
-  def geocode(address,sensor)
-    geo_args = ({
-        'address' => address,
-        'sensor' => false,
-        'key'=> ENV['google_api_key']  
-    })
-    url = GEOCODE_BASE_URL + '?' + CGI::escape(geo_args.to_s) #'?' + urllib.urlencode(geo_args)
-
-    uri = URI.parse("http://pragprog.com:1234/mypage.cgi?q=ruby")
-    result = simplejson.load(urllib.urlopen(url))
-
-    #print simplejson.dumps([s['formatted_address'] for s in result['results']], indent=2)
-    puts result
-    #if __name__ == '__main__':
-    #  geocode(address="San+Francisco",sensor="false")
-    #nd
-  end

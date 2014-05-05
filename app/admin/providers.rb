@@ -1,6 +1,5 @@
 ActiveAdmin.register Provider do
 
-
   scope :all, :default => true 
   scope :additional_activities do |providers|
     providers.where ({additional_activities: true})
