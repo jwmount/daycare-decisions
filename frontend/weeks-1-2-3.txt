@@ -1,0 +1,5 @@
+week 1: Basic proof of concept and scaffold html with dummy json
+
+week 2: Wire up to real API and test and refine functionality
+
+week 3: Beautification, QA, and enhancements

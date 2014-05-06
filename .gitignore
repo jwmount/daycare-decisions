@@ -34,3 +34,10 @@ rerun.txt
 pickle-email-*.html
 .project
 config/initializers/secret_token.rb
+
+# Added by Sean
+*.py[co~]
+*.swp
+:2e.*
+.DS.*
+.DS_Store
