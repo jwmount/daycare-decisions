@@ -5,13 +5,18 @@ class Address < ActiveRecord::Base
   belongs_to :addressable, polymorphic: true
   
   # add geocodes on insertion, c.f. http://www.rubygeocoder.com/
-  # Note, you can also batch them with $ rake geocode:all CLASS=Address
+  # and https://github.com/alexreisner/geocoder
+  # Note, you can also batch them with: $ rake geocode:all CLASS=Address
   # after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
-  after_validation :geocode, if: ->(address){ address.address.present? and address.address_changed? }
-  #:after_validation :geocode
-  geocoded_by :address
+  
+  geocoded_by :full_address
 
-  def address
+  # The following works and only fires if address is present and has changed since
+  # last save, or has never been saved.
+  after_validation :geocode, if: ->(address){ address.present? and address.address_changed? }
+  # after_validation :geocode
+
+  def full_address
     [street, locality, state, post_code].compact.join(', ')
   end
 

@@ -360,7 +360,13 @@ ActiveAdmin.register Provider do
 # NOTE:  polymorphs cannot be deleted if :id attribute is not given here; no error message occurs,
 # however records will duplicate on every update.
 #
-  permit_params  :additional_activities, :additional_activities_list, :age_range, :air_conditioning, :approved_places, 
+  permit_params  :additional_activities, 
+    :additional_activities_list, 
+    :age_range, 
+    :air_conditioning, 
+    :approval_number,
+    :approved_places, 
+
     :bus_service, 
     :care_offered, :cloth_nappies, :company_id, 
     :description, :disposable_nappies,
