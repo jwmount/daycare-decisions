@@ -28,13 +28,19 @@ class Provider < ActiveRecord::Base
 
   scope :alphabetically, order("full_name ASC")
 
+
   #
   # V A L I D A T I O N S
   #
+
   validates_presence_of :name, :uniqueness => true
   # NPS_rating seems to be 1...3, so 0 is default for now.
   #validates :NQS_rating,
   #  :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 3}
+
+  # Tues. May 6, try this formerly in address.rb
+  # Note that assumption is provider.address.address_changed exists.
+
 
   def key_map k
     case k

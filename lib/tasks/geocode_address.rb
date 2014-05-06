@@ -10,9 +10,6 @@ module geocode_address
         'key': ENV['google_api_key']  
     }
 
-    url = GEOCODE_BASE_URL + geo_args.collect #'?' + urllib.urlencode(geo_args)
-    result = simplejson.load(urllib.urlopen(url))
-
   
   end
 end

@@ -7,22 +7,22 @@ class Address < ActiveRecord::Base
   # add geocodes on insertion, c.f. http://www.rubygeocoder.com/
   # and https://github.com/alexreisner/geocoder
   # Note, you can also batch them with: $ rake geocode:all CLASS=Address
+  # or $ rake geocode:all CLASS=Address SLEEP=0.25 BATCH=100
   # after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
   
   geocoded_by :full_address
 
   # The following works and only fires if address is present and has changed since
-  # last save, or has never been saved.
-  after_validation :geocode, if: ->(address){ address.present? and address.address_changed? }
-  # after_validation :geocode
+  # last save, or has never been saved.  Do you need to code address_changed? to use
+  # selective method?  There is none now.
+  # http://stackoverflow.com/questions/12034179/using-after-validation-with-an-if-or-clause
+  # after_validation :geocode, if: ->(address){ address.present? and address.address_changed? }
+  after_validation :geocode
 
   def full_address
     [street, locality, state, post_code].compact.join(', ')
   end
 
-  def address_changed?
-    false
-  end
 
  # Best practice in Rails is set defaults here and not in database
   def set_defaults

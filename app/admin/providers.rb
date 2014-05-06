@@ -360,7 +360,9 @@ ActiveAdmin.register Provider do
 # NOTE:  polymorphs cannot be deleted if :id attribute is not given here; no error message occurs,
 # however records will duplicate on every update.
 #
-  permit_params  :additional_activities, 
+  
+  permit_params(  :id,
+    :additional_activities, 
     :additional_activities_list, 
     :age_range, 
     :air_conditioning, 
@@ -403,12 +405,17 @@ ActiveAdmin.register Provider do
     :quality_area_rating_5, :quality_area_rating_6, :quality_area_rating_7, 
     
     :url,
-    :vacancies,  :vaccinations_compulsory,
+    :vacancies,  
+    :vaccinations_compulsory,
 
-    :waitlist_fee, :waitlist_online, :waitlist_reimbursed,
+    :waitlist_fee, 
+    :waitlist_online, 
+    :waitlist_reimbursed,
+
       addresses_attributes: [ :id, :street, :locality, :state, :post_code, :country, :latitude, :longitude, :_destroy],
       rolodexes_attributes: [ :id, :number_or_email, :kind, :when_to_use, :description, :_destroy],
       certs_attributes:     [ :id, :certificate_id, :serial_number, :expires_on, :active, :_destroy ],
       services_attributes:  [ :id, :name, :description, :fee, :basis, :_destroy ]
+    )
 
 end
