@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
     <meta charset="utf-8">
@@ -38,14 +38,14 @@
             </div>
         </nav>
     </header>
-    <div class="header-bg"></div> 
+    <div class="header-bg"></div>
 
     <!-- Begin Page Content -->
     <div class="content">
         <section>
 
             <!-- Main Content -->
-            <article class="main-content">
+            <article class="main-content" ng-controller="ProvidersCtrl">
                 <h1>Finding childcare is hard. We can help.</h1>
                 <h3>What kind of daycare do you want?</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, fugiat, dolorem, veritatis, quod adipisci neque esse dignissimos delectus nesciunt labore temporibus molestiae possimus officiis sint illo quia incidunt. Velit, consequatur?</p>
@@ -55,18 +55,19 @@
                     <!-- 1 -->
                     <section>
                         <article class="left-column">
-                            <span class="number-circle">1</span>    
+                            <span class="number-circle">1</span>
                         </article>
                         <article class="right-column form-group">
                             <h3><strong>Where</strong> do you need daycare?</h3>
-                            <input type="text" class="form-control" name="location" placeholder="Enter city/town or postal code">
+                            <autocomplete ng-model="selectedLocation" data="locations" on-type="updateLocations"></autocomplete>
+                            <!-- <input type="text" class="form-control autocomplete" name="location" placeholder="Enter city/town or postal code" ng-model="location"> -->
                         </article>
                     </section>
 
                     <!-- 2 -->
                     <section>
                         <article class="left-column">
-                            <span class="number-circle">2</span>    
+                            <span class="number-circle">2</span>
                         </article>
                         <article class="right-column form-group">
                             <h3>What <strong>kind</strong> of daycare are you looking for?</h3>
@@ -95,7 +96,7 @@
                     <!-- 3 -->
                     <section>
                         <article class="left-column">
-                            <span class="number-circle">3</span>    
+                            <span class="number-circle">3</span>
                         </article>
                         <article class="right-column">
                             <h3>What special <strong>preferences</strong> do you have?</h3>
@@ -196,6 +197,8 @@
     <!-- Scripts -->
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/autocomplete.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
