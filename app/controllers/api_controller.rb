@@ -23,7 +23,7 @@ class ApiController < ApplicationController
       @addresses = Address.where( "locality ~* ?", locality).select("addressable_id")
 
       if !@addresses.nil?
-        @providers = Provider.where(:id => @addresses).order(:name).select("id, name")
+        @providers = Provider.where(:id => @addresses).order(:name)
       end      
     end
 
@@ -48,9 +48,9 @@ class ApiController < ApplicationController
     end
    
     unless @providers.nil?
-      render json: [geo_req, @providers]
+      render json: @providers
     else
-      render json: [params]
+      render json: []
     end
 
   end
