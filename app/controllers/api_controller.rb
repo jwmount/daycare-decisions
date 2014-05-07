@@ -1,4 +1,3 @@
-require 'debugger'
 # localhost:3000/api => all providers
 # localhost:3000/api/20 => provider :id = 20
 # http://localhost:3000/api?utf8=%E2%9C%93&locality=burleigh%20wa&post_code=&state=&commit=Find+Address
