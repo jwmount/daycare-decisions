@@ -254,24 +254,5 @@ namespace :csv do
     puts "Rolodexes: #{Rolodex.count}"
   end #task
 
-  GEOCODE_BASE_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
- 
-   def geocode(address,sensor)
-     geo_args = ({
-        'address' => address,
-        'sensor' => false,
-         'key'=> ENV['google_api_key']  
-     })
-     url = GEOCODE_BASE_URL + '?' + CGI::escape(geo_args.to_s) #'?' + urllib.urlencode(geo_args)
- 
-     uri = URI.parse("http://pragprog.com:1234/mypage.cgi?q=ruby")
-     result = simplejson.load(urllib.urlopen(url))
- 
-     #print simplejson.dumps([s['formatted_address'] for s in result['results']], indent=2)
-     puts result
-     #if __name__ == '__main__':
-     #  geocode(address="San+Francisco",sensor="false")
-     #  end  
-   end
 end #namespace
 
