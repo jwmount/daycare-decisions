@@ -18,10 +18,17 @@ module ProvidersHelper
     latest = Provider.select("id, name, url, updated_at").order(:updated_at).limit(6)
   end
 
+  # Get the providers according to area reqeusted and services provided.
+  # Returns three objects:
+  # 1.  Number of providers returned.
+  # 2.  @r2 is a not found with xxx message.
+  # 3.  @r3 providers found with services requested.
   def provider_list area, ids
     
+    # Nothing in ids array, get to quit early.
     return "No providers were found in #{params["#{area}"]}.", '', [] if ids.empty?
   
+    # 
     @services_requested, @requested, @qry = list_services(params)
 
     @r1 = "There are #{ids.count} providers in #{params["#{area}"]}."
@@ -30,7 +37,6 @@ module ProvidersHelper
       return @r1, '', providers
     end
 
-    @qry
     providers = Provider.where(:id => ids).where(@qry).order(:name)
 
     @r2 = "None of the providers in #{params["#{area}"]} offer #{@requested}."
@@ -40,6 +46,9 @@ module ProvidersHelper
     return @r1, @r2, providers
   end
 
+  #
+  #
+  #
   def post_code_providers
     Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
   end
