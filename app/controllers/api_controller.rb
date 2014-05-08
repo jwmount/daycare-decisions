@@ -14,45 +14,43 @@ class ApiController < ApplicationController
     # all providers.
     geo_req = params.except :utf8, :commit, :action, :controller
       
-    if !geo_req.nil?
-      @providers = Provider.all.order(:name)
-    end
+ #   if !geo_req.nil?
+ #     @providers = Provider.all.order(:name)
+ #   end
 
     if geo_req.include?(:locality) && !geo_req[:locality].empty?
       locality = geo_req[:locality].upcase
       @addresses = Address.where( "locality ~* ?", locality).select("addressable_id")
-
       if !@addresses.nil?
-        @providers = Provider.where(:id => @addresses).order(:name)
+        @addresses.each {|aid| @provider_ids << aid.addressable_id}
       end      
     end
 
     if geo_req.include?(:post_code) && !geo_req[:post_code].empty?
       @addresses = Address.where( :post_code => params[:post_code]).select("addressable_id")
       if !@addresses.nil?
-        @addresses.each do |a|
-          @provider_ids << a.addressable_id
-        end
-        @providers = Provider.where(:id => @provider_ids).order(:name)#.limit(20)
-      end      
+        @addresses.each { |aid|  @provider_ids << aid.addressable_id }
+      end
     end
 
     if geo_req.include?(:state) && !geo_req[:state].empty?
       @addresses = Address.where( :state => params[:state]).select("addressable_id")
       if !@addresses.nil?
-        @addresses.each do |a|
-          @provider_ids << a.addressable_id
-        end
-        @providers = Provider.where(:id => @provider_ids).order(:name)#.limit(20)
-      end      
+        @addresses.each { |aid| @provider_ids << aid.addressable_id }
+      end
     end
-   
-    unless @providers.nil?
-      render json: @providers
+
+    # Return response in JSON
+    render json: [params, Provider.where(:id => @provider_ids)]
+=begin
+    unless @provider_ids.nil?
+      @providers = Provider.where(:id => @provider_ids)
+      #render json @providers
+      render :json => @providers.to_json(:include => :addresses)
     else
       render json: []
     end
-
+=end
   end
 
   def show
@@ -67,4 +65,6 @@ class ApiController < ApplicationController
   def post_code_providers
     Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
   end
+
+
 end

@@ -51,6 +51,6 @@ class Provider < ActiveRecord::Base
     end
   end
 
-
-
+  
 end
+

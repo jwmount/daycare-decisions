@@ -181,7 +181,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
     t.decimal  "fee",                     :default => 0.00
     t.boolean  "food_provided"
-    t.string   "form_of_care",            :default => 't.b.d.'
 
     t.boolean  "guest_speakers"
 

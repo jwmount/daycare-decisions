@@ -7,7 +7,7 @@ DaycareDecisions::Application.routes.draw do
 
 
   resources :api  
-  resources :addresses
+    get 'form_key',            to: 'api#form_key',           as: :form_key
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -41,10 +41,6 @@ DaycareDecisions::Application.routes.draw do
     end
   end
 
-  namespace :api do
-    resources :address
-    resources :provider
-  end
 
   root :to => "home#index"
 

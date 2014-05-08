@@ -168,23 +168,25 @@
           .btn-lg
             = submit_tag 'Find Providers', class: "form_submit"
 
-        - if !@locality_provider_ids.empty?
-          - l1, l2, providers = provider_list :locality, @locality_provider_ids
-          %h3= l1
-          %h4= l2
-          = render providers # unless providers.empty?
+      - if !@locality_provider_ids.empty?
+        - l1, l2, providers = provider_list :locality, @locality_provider_ids
+        %h3= l1
+        %h4= l2
+        = render providers
      
-        -if !@post_code_provider_ids.empty?
-          - l1, l2, providers = provider_list :post_code, @post_code_provider_ids
-          %h3= l1
-          %h4= l2
-          = render providers # unless providers.empty?
+      -if !@post_code_provider_ids.empty?
+        - l1, l2, providers = provider_list :post_code, @post_code_provider_ids
+        %h3= l1
+        %h4= l2
+        = render providers
      
-        -if !@state_provider_ids.empty?
-          - l1, l2, providers = provider_list :state, @state_provider_ids
-          %h3= l1
-          %h4= l2
-          = render providers # unless providers.empty?
+      -if !@state_provider_ids.empty?
+        - l1, l2, providers = provider_list :state, @state_provider_ids
+        %h3= l1
+        %h4= l2
+        = render providers
+
+      /= render providers
 
 %br
 %footer
