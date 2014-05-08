@@ -38,11 +38,11 @@ class Provider < ActiveRecord::Base
   #validates :NQS_rating,
   #  :numericality => { :only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 3}
 
+
   # Tues. May 6, try this formerly in address.rb
   # Note that assumption is provider.address.address_changed exists.
 
-
-  def key_map k
+  def xkey_map k
     case k
     when 'Name', 'name', 'Service Name', 'ServiceName'
       :name
@@ -51,6 +51,6 @@ class Provider < ActiveRecord::Base
     end
   end
 
-  
 end
+
 

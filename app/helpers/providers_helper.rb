@@ -3,13 +3,8 @@ module ProvidersHelper
   
   # Only PROXY of this so far, need to use guardians_providers model
   def favorites
-  	count = Provider.count.to_i
-
     @favorite_ids = []
-    6.times do |i|
-      @favorite_ids << rand(1...count)
-    end
-    favorites = Provider.find @favorite_ids
+    favorites = Provider.first
   end
 
   # Get the 6 most recently changed or updated.  

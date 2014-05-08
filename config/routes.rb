@@ -5,7 +5,7 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses => all of them
 # <host>/addresses/200  => 200th of them
 
-
+  
   resources :api  
     get 'form_key',            to: 'api#form_key',           as: :form_key
 

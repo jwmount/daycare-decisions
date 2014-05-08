@@ -41,7 +41,8 @@ class ApiController < ApplicationController
     end
 
     # Return response in JSON
-    render json: [params, Provider.where(:id => @provider_ids)]
+    render :json => Provider.where(:id => @provider_ids).to_json(:include=>:addresses)
+
 =begin
     unless @provider_ids.nil?
       @providers = Provider.where(:id => @provider_ids)

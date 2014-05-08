@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "excursions"
     t.boolean  "extended_hours_for_kindys"
 
-    t.decimal  "fee",                     :default => 0.00
+    t.decimal  "fee" #,                     :default => 0.00
     t.boolean  "food_provided"
 
     t.boolean  "guest_speakers"

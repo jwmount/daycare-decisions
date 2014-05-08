@@ -67,7 +67,7 @@
    
       
     %h3 Selected Providers (Your Favorites)
-    =render favorites    
+    =render favorites    unless favorites.nil?
         
     %h3= 'Recently Updated or Added Providers'  
     =render latest

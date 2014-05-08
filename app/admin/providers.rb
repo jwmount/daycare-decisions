@@ -196,7 +196,6 @@ ActiveAdmin.register Provider do
       f.input ('waitlist_fee') { number_to_currency(provider.waitlist_fee) }
 
               
-      f.input :vacancies
     end
 
     f.inputs do
