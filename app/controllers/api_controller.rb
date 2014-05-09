@@ -6,9 +6,19 @@
 class ApiController < ApplicationController
   include ActionController::MimeResponds
 
-  def index
-  end
   def locations
+    if params.include?(:locality) && !params[:locality].empty?
+      city_states = []
+      locality = params[:locality]
+      @addresses = Address.where( "locality ~* ?", locality).select("locality, state")
+      @addresses.each do |aid| 
+        city_states << "#{aid.locality.split.map(&:capitalize).*(' ')}, #{aid.state}"
+      end
+      render json: city_states
+    end
+  end #locations
+
+  def index_unused
     @provider_ids = []
     @addresses = []
 
@@ -71,12 +81,6 @@ class ApiController < ApplicationController
     Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
   end
 
-  def get_providers p_ids
-    [
-     'Brisbane', 'QLD', 
-     'Brisbane Grove', 'NSW'
-    ]
-  end
 
 
 end

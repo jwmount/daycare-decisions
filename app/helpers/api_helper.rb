@@ -23,11 +23,11 @@ module ApiHelper
     return @r1, @r2, providers
   end
 
-  def post_code_providers
+  def XXpost_code_providers
     Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
   end
 
-  def state_providers
+  def XXstate_providers
     Provider.where(:id => @state_provider_ids).where(@rqry).order(:name)
   end
 
