@@ -1,5 +1,6 @@
 module ApiHelper
 
+
   def provider_list area, ids
     
     return "No providers were found in #{params["#{area}"]}.", '', [] if ids.empty?

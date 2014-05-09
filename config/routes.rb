@@ -5,9 +5,12 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses => all of them
 # <host>/addresses/200  => 200th of them
 
-  
-  resources :api  
-    get 'form_key',            to: 'api#form_key',           as: :form_key
+namespace :api do  
+    # GET /api/locations/<partial string>
+    # for example:  <host>/api/locations/Bris
+    get 'locations/:locality',           to: :locations
+
+end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -40,6 +43,8 @@ DaycareDecisions::Application.routes.draw do
       resources :waitlist_applications
     end
   end
+
+
 
 
   root :to => "home#index"
@@ -85,7 +90,7 @@ DaycareDecisions::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-
+  
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

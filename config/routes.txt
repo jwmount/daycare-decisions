@@ -1,13 +1,6 @@
                                   Prefix Verb       URI Pattern                                                           Controller#Action
-                               api_index GET        /api(.:format)                                                        api#index
-                                         POST       /api(.:format)                                                        api#create
-                                 new_api GET        /api/new(.:format)                                                    api#new
-                                edit_api GET        /api/:id/edit(.:format)                                               api#edit
-                                     api GET        /api/:id(.:format)                                                    api#show
-                                         PATCH      /api/:id(.:format)                                                    api#update
-                                         PUT        /api/:id(.:format)                                                    api#update
-                                         DELETE     /api/:id(.:format)                                                    api#destroy
-                                form_key GET        /form_key(.:format)                                                   api#form_key
+                            api_form_key GET        /api/form_key(.:format)                                               api/api#form_key
+                                     api GET        /api/locations/:locality(.:format)                                    api#locations
                               home_index GET        /home(.:format)                                                       home#index
                                          POST       /home(.:format)                                                       home#create
                                 new_home GET        /home/new(.:format)                                                   home#new

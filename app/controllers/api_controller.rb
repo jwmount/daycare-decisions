@@ -7,6 +7,8 @@ class ApiController < ApplicationController
   include ActionController::MimeResponds
 
   def index
+  end
+  def locations
     @provider_ids = []
     @addresses = []
 
@@ -40,8 +42,10 @@ class ApiController < ApplicationController
       end
     end
 
+    render :json => get_providers(@provider_ids)
+
     # Return response in JSON
-    render :json => Provider.where(:id => @provider_ids).to_json(:include=>:addresses)
+    # render :json => Provider.where(:id => @provider_ids).to_json(:include=>:addresses)
 
 =begin
     unless @provider_ids.nil?
@@ -65,6 +69,13 @@ class ApiController < ApplicationController
 
   def post_code_providers
     Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
+  end
+
+  def get_providers p_ids
+    [
+     'Brisbane', 'QLD', 
+     'Brisbane Grove', 'NSW'
+    ]
   end
 
 
