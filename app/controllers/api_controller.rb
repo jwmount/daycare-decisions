@@ -6,11 +6,14 @@
 class ApiController < ApplicationController
   include ActionController::MimeResponds
 
+  #
+  # Get all locations in soundex queries, e.g. 'B' followed by 'Bri'
+  #
   def locations
     if params.include?(:locality) && !params[:locality].empty?
       city_states = []
       locality = params[:locality]
-      @addresses = Address.where( "locality ~* ?", locality).select("locality, state")
+      @addresses = Address.where( "locality ~* ?", locality).select("locality, state").distinct
       @addresses.each do |aid| 
         city_states << "#{aid.locality.split.map(&:capitalize).*(' ')}, #{aid.state}"
       end
