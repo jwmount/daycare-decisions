@@ -18,7 +18,32 @@ class ApiController < ApplicationController
     end
   end #locations
 
-  def index_unused
+  # Return all providers, or if filters are present, filtered ones.
+  def providers
+    filter = params.except :utf8, :commit, :action, :controller
+    if filter.empty?
+      render :json => Provider.all.order(:name)
+    else
+      geo_req, services_req = get_filter_queries params
+      #@providers = Provider.where(geo_req).where(services_req).order("name")      
+      provider = Provider.first
+      render json: [ provider, "filtered on #{params}" ]
+    end
+  end
+
+  # Get providers under filters 
+  def get_filter_queries filter
+    geo_ids = Address.where("locality: ?, state: ?", filter[:locality], filter[:state] ).select("addressable_id")
+    services_req = ''
+    return geo_ids, services_req
+  end
+
+
+  def provider
+    render :json => Provider.where( "id = ?", params[:id])
+  end
+
+  def index
     @provider_ids = []
     @addresses = []
 
@@ -26,9 +51,9 @@ class ApiController < ApplicationController
     # all providers.
     geo_req = params.except :utf8, :commit, :action, :controller
       
- #   if !geo_req.nil?
- #     @providers = Provider.all.order(:name)
- #   end
+    if !geo_req.nil?
+      @providers = Provider.all.order(:name)
+    end
 
     if geo_req.include?(:locality) && !geo_req[:locality].empty?
       locality = geo_req[:locality].upcase
@@ -81,6 +106,15 @@ class ApiController < ApplicationController
     Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
   end
 
-
+# Return if a list of services wanted, and a string to display these.
+  def list_services params
+    services_req = {}
+    @keys = params.except :utf8, :commit, :action, :controller, :locality, :post_code, :state
+    @keys.each do |k,v|
+      services << "#{k}".sub('_',' ')
+      services_req["#{k}"] = true
+    end
+    return services_req
+  end
 
 end

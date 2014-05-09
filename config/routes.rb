@@ -6,9 +6,13 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses/200  => 200th of them
 
 namespace :api do  
+  resources :api
     # GET /api/locations/<partial string>
     # for example:  <host>/api/locations/Bris
     get 'locations/:locality',           to: :locations
+    get 'providers',                     to: :providers
+    get 'provider/:id',                  to: :provider
+    get 'provider/',                     to: :providers_filtered
 
 end
 
