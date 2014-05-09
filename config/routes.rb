@@ -6,14 +6,17 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses/200  => 200th of them
 
 namespace :api do  
-  resources :api
+  resources :api do
+    collection do
+      get 'provider'
+    end
+  end
     # GET /api/locations/<partial string>
     # for example:  <host>/api/locations/Bris
     get 'locations/:locality',           to: :locations
     get 'providers',                     to: :providers
     get 'provider/:id',                  to: :provider
     get 'provider/',                     to: :providers_filtered
-
 end
   # Example of named route that can be invoked with purchase_url(id: product.id)
   # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
