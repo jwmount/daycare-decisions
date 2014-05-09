@@ -15,7 +15,6 @@ namespace :api do
     get 'provider/',                     to: :providers_filtered
 
 end
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
