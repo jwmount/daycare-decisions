@@ -23,24 +23,26 @@ class ApiController < ApplicationController
   end #locations
 
   # Return all providers, or if filters are present, filtered ones.
+  # <host>/api/providers
+  # <host>/api/providers/?locality=Brisbane%2c%20&real_grass=1
   def providers
-    render :json => Provider.all.order(:name)
-  end
-
-  def providers_filtered
     filter = params.except :utf8, :commit, :action, :controller
-    geo_ids, services = get_queries filter
-    providers = Provider.where(:id => geo_ids).where(services).order("name")      
-    render :json => providers
+    if filter.empty?
+      render :json => Provider.all.order(:name)
+    else
+      geo_ids, services = get_queries filter
+      providers = Provider.where(:id => geo_ids).where(services).order("name")      
+      render :json => [providers, params, geo_ids, services]
+    end
   end
 
-  # Get providers under filters 
-  def get_queries filter
-    elements = filter[:locality].gsub(/,/,'').split
-    city = elements[0]
-    state = elements[1]
-    geo_ids = Address.where("locality ~* ? and state = ?", city, state ).select("addressable_id")
 
+  # Construct where clauses
+  def get_queries filter
+    elements = filter[:locality].split(',')
+    city = elements[0]
+    state = elements[1].lstrip
+    geo_ids = Address.where("locality ~* ? and state = ?", city, state ).select("addressable_id")
     # get the services filter set, first remove the location elements
     services = filter.except :locality, :post_code, :state
     return geo_ids, services
