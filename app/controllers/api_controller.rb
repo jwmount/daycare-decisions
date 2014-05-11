@@ -1,8 +1,8 @@
 # localhost:3000/api => all providers
 # localhost:3000/api/locations/bri => locations with 'b-r-i' prefix
 # http://localhost:3000/api?utf8=%E2%9C%93&locality=burleigh%20wa&post_code=&state=&commit=Find+Address
-# curl -i -H "Accept: application/json" http://localhost:3000/api/1  
-
+# curl -i -H "Accept: application/json" http://localhost:3000/api/locations/Bro
+# curl -i -H "Accept: application/json" http://daycare-decisions.herokuapp.com/api/locations/Bri  
 class ApiController < ApplicationController
   include ActionController::MimeResponds
   after_filter :set_access_control_headers
@@ -24,14 +24,14 @@ class ApiController < ApplicationController
 
   # Return all providers, or if filters are present, filtered ones.
   def providers
+    render :json => Provider.all.order(:name)
+  end
+
+  def providers_filtered
     filter = params.except :utf8, :commit, :action, :controller
-    if filter.empty?
-      render :json => Provider.all.order(:name)
-    else
-      geo_ids, services = get_queries filter
-      providers = Provider.where(:id => geo_ids).where(services).order("name")      
-      render :json => providers
-    end
+    geo_ids, services = get_queries filter
+    providers = Provider.where(:id => geo_ids).where(services).order("name")      
+    render :json => providers
   end
 
   # Get providers under filters 
@@ -58,4 +58,8 @@ class ApiController < ApplicationController
     headers['Access-Control-Request-Method'] = '*' 
   end
 
+  # remove this if catch-all route that calls it is removed.
+  def xss_options_request
+    render :text => ""
+  end
 end

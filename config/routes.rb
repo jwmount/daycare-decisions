@@ -6,11 +6,6 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses/200  => 200th of them
 
 namespace :api do  
-  resources :api do
-    collection do
-      get 'provider'
-    end
-  end
     # GET /api/locations/<partial string>
     # for example:  <host>/api/locations/Bris
     get 'locations/:locality',           to: :locations
@@ -55,6 +50,8 @@ end
 
   root :to => "home#index"
 
+  # http://www.tsheffler.com/blog/?p=428 -- note by Forrest Zeisler
+  # get "*path" => "api#xss_options_request", :constraints => {:method => "OPTIONS"}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
