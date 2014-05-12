@@ -62,7 +62,7 @@ class ApiController < ApplicationController
   # from http://madhukaudantha.blogspot.com/2011/05/access-control-allow-origin-in-rails.html
   # called by before filter
   def set_access_control_headers 
-    headers['Access-Control-Allow-Origin'] = 'http://localhost:8081/' 
+    headers['Access-Control-Allow-Origin'] = '*'# =>  'http://localhost:8081/' 
     headers['Access-Control-Request-Method'] = '*' 
   end
 
