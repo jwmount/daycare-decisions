@@ -228,7 +228,7 @@ app.directive('autocomplete', function(){
                   '<li suggestion ng-repeat="suggestion in suggestions | filter:searchFilter | orderBy:\'toString()\' track by $index"'+
                   'index="{{$index}}" val="{{suggestion}}" ng-class="{active: '+
                   '($index == selectedIndex)}" ng-click="select(suggestion)" '+
-                  'ng-bind-html="suggestion | highlight:searchParam">'+
+                  'ng-bind-html="suggestion">'+
                     '{{suggestion}}' +
                   '</li>'+
                 '</ul>'+
