@@ -8,6 +8,13 @@ class ApiController < ApplicationController
   after_filter :set_access_control_headers
 
   #
+  # ? - Help, if this gets longer go to a template
+  #
+  def help
+    #render html: "#{man}".html_safe
+    render template: "shared/_api_guide"
+  end
+  #
   # Get all locations in soundex queries, e.g. 'B' followed by 'Bri'
   #
   def locations
@@ -32,7 +39,7 @@ class ApiController < ApplicationController
     else
       geo_ids, services = get_queries filter
       providers = Provider.where(:id => geo_ids).where(services).order("name")      
-      render :json => [providers, params, geo_ids, services]
+      render :json => providers
     end
   end
 

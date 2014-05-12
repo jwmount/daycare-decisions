@@ -5,14 +5,16 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses => all of them
 # <host>/addresses/200  => 200th of them
 
-namespace :api do  
-  # GET /api/locations/<partial string>
-  # for example:  <host>/api/locations/Bris
-  get 'locations/:locality',           to: :locations
-  get 'providers',                     to: :providers
-  get 'provider/:id',                  to: :provider
-end
+  namespace :api do  
+    # GET /api/locations/<partial string>
+    # for example:  <host>/api/locations/Bris
+    get 'locations/:locality',           to: :locations
+    get 'providers',                     to: :providers
+    get 'provider/:id',                  to: :provider
+    get '/',                             to: :help
   
+  end #:api namespace
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
@@ -43,10 +45,8 @@ end
     resources :guardian do
       resources :waitlist_applications
     end
-  end
 
-
-
+  end #:admin namespace
 
   root :to => "home#index"
 
