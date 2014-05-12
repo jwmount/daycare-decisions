@@ -11,7 +11,6 @@ class ApiController < ApplicationController
   # ? - Help, if this gets longer go to a template
   #
   def help
-    #render html: "#{man}".html_safe
     render template: "shared/_api_guide"
   end
   #
