@@ -14,4 +14,4 @@ def static(filename):
     return static_file(filename, root=app_path)
 
 
-run(host='localhost', port=8081, debug=True, reloader=True)
+run(host='localhost', port=8080, debug=True, reloader=True)

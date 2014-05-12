@@ -5,11 +5,11 @@ var server = "http://daycare-decisions.herokuapp.com/api";
 // Initialize Angular App
 var app = angular.module("app", ['autocomplete', 'ngSanitize']);
 
-// app.config(['$httpProvider', function($httpProvider) {
-//         $httpProvider.defaults.useXDomain = true;
-//         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-//     }
-// ]);
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
 
 
 // Locations Controller
