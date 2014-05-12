@@ -50,7 +50,7 @@ app.directive('autocomplete', function(){
         if(watching && $scope.searchParam) {
           $scope.completing = true;
           $scope.searchFilter = $scope.searchParam;
-          $scope.selectedIndex = -1;
+          $scope.selectedIndex = 0; // changed by Sean to select first item
         }
 
         // function thats passed to on-type attribute gets executed
