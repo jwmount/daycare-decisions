@@ -45,7 +45,7 @@
         <section>
 
             <!-- Main Content -->
-            <article class="main-content" ng-controller="ProvidersCtrl">
+            <article class="main-content">
                 <h1>Finding childcare is hard. We can help.</h1>
                 <h3>What kind of daycare do you want?</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, fugiat, dolorem, veritatis, quod adipisci neque esse dignissimos delectus nesciunt labore temporibus molestiae possimus officiis sint illo quia incidunt. Velit, consequatur?</p>
@@ -57,9 +57,9 @@
                         <article class="left-column">
                             <span class="number-circle">1</span>
                         </article>
-                        <article class="right-column form-group">
+                        <article class="right-column form-group" ng-controller="locationsCtrl">
                             <h3><strong>Where</strong> do you need daycare?</h3>
-                            <autocomplete ng-model="selectedLocation" data="locations" on-type="updateLocations"></autocomplete>
+                            <autocomplete ng-model="selectedLocation" data="locations" on-type="updateLocations" attr-placeholder="City or Town Name..."></autocomplete>
                             <!-- <input type="text" class="form-control autocomplete" name="location" placeholder="Enter city/town or postal code" ng-model="location"> -->
                         </article>
                     </section>
@@ -69,26 +69,31 @@
                         <article class="left-column">
                             <span class="number-circle">2</span>
                         </article>
-                        <article class="right-column form-group">
+                        <article class="right-column kinds">
                             <h3>What <strong>kind</strong> of daycare are you looking for?</h3>
                             <div>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="" id="">
-                                    Long Day Care
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="" id="">
-                                    Family Day Care
-                                </label>
-                                <br>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="" id="">
-                                    Kinder Care
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="" id="">
-                                    Outside of School Hours
-                                </label>
+                                <section>
+                                    <article class="left-checkboxes-col">
+                                        <label>
+                                            <input type="checkbox" name="">
+                                            Long Day Care
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="">
+                                            Family Day Care
+                                        </label>
+                                    </article>
+                                    <article class="right-checkboxes-col">
+                                        <label>
+                                            <input type="checkbox" name="">
+                                            Kinder Care
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="">
+                                            Outside of School Hours
+                                        </label>
+                                    </article>
+                                </section>
                             </div>
                         </article>
                     </section>
@@ -98,76 +103,106 @@
                         <article class="left-column">
                             <span class="number-circle">3</span>
                         </article>
-                        <article class="right-column">
+                        <article class="right-column preferences">
                             <h3>What special <strong>preferences</strong> do you have?</h3>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Cloth nappies
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Bus
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Real grass
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Lunch
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Cloth nappies
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Bus
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Real grass
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Lunch
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Cloth nappies
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Bus
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Real grass
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Lunch
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Cloth nappies
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Bus
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Real grass
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="" id="">
-                                Lunch
-                            </label>
+
+                            <section>
+                                <article class="left-checkboxes-col">
+                                    <label>
+                                <input type="checkbox" name="additional_activities">
+                                    Additional Activities
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="air_conditioning">
+                                    Air Conditioning
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="bus_service">
+                                    Bus Service
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="disposable_nappies">
+                                    Disposable Nappies
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="cloth_nappies">
+                                    Cloth Nappies
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="excursions">
+                                    Excursions
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="extended_hours_for_kindys">
+                                    Extended Hours for Kindys
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="food_provided">
+                                    Food Provided
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="guest_speakers">
+                                    Guest Speakers
+                                </label>
+                                </article>
+
+                                <article class="right-checkboxes-col">
+                                <label>
+                                    <input type="checkbox" name="languages">
+                                    Languages
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="real_grass">
+                                    Real Grass
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="secure_access">
+                                    Secure Access
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="siblings_given_priority">
+                                    Siblings Given Priority
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="technology">
+                                    Technology
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="" id="vacancies">
+                                    Vacancies
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="" id="vaccinations_compulsory">
+                                    Vaccinations Compulsory
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="" id="waitlist_online">
+                                    Waitlist Online
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="" id="waitlist_reimbursed">
+                                    Waitlist Fee Reimbursed
+                                </label>
+
+                                </article>
+                            </section>
 
                         </article>
                     </section>
                 </form>
+
+                <!-- Provider Results -->
+                <div class="providers">
+                    <section>
+                        <article><strong>Provider 1</strong>, Sydney NSW</article>
+                    </section>
+                    <section>
+                        <article><strong>Provider 2</strong>, Sydney NSW</article>
+                    </section>
+                    <section>
+                        <article><strong>Provider 3</strong>, Sydney NSW</article>
+                    </section>
+                </div>
 
             </article>
 
@@ -198,6 +233,7 @@
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-sanitize.min.js"></script>
     <script src="js/autocomplete.js"></script>
     <script src="js/app.js"></script>
 </body>
