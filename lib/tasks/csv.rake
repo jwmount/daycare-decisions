@@ -117,7 +117,7 @@ namespace :csv do
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
           address.street         = p_hash['Service Address']
-          address.locality       = p_hash['Suburb']
+          address.locality       = p_hash['Suburb'].split.map(&:capitalize).*(' ')
           address.state          = p_hash['State']
           address.post_code      = p_hash['Postcode'] 
          # address.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}

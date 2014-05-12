@@ -1,70 +1,73 @@
 # localhost:3000/api => all providers
-# localhost:3000/api/20 => provider :id = 20
+# localhost:3000/api/locations/bri => locations with 'b-r-i' prefix
 # http://localhost:3000/api?utf8=%E2%9C%93&locality=burleigh%20wa&post_code=&state=&commit=Find+Address
-# curl -i -H "Accept: application/json" http://localhost:3000/api/1  
-
+# curl -i -H "Accept: application/json" http://localhost:3000/api/locations/Bro
+# curl -i -H "Accept: application/json" http://daycare-decisions.herokuapp.com/api/locations/Bri  
 class ApiController < ApplicationController
   include ActionController::MimeResponds
+  after_filter :set_access_control_headers
 
-  def index
-    @provider_ids = []
-    @addresses = []
-
-    # If no geo values are passed in params, get all the addresses and return
-    # all providers.
-    geo_req = params.except :utf8, :commit, :action, :controller
-      
- #   if !geo_req.nil?
- #     @providers = Provider.all.order(:name)
- #   end
-
-    if geo_req.include?(:locality) && !geo_req[:locality].empty?
-      locality = geo_req[:locality].upcase
-      @addresses = Address.where( "locality ~* ?", locality).select("addressable_id")
-      if !@addresses.nil?
-        @addresses.each {|aid| @provider_ids << aid.addressable_id}
-      end      
-    end
-
-    if geo_req.include?(:post_code) && !geo_req[:post_code].empty?
-      @addresses = Address.where( :post_code => params[:post_code]).select("addressable_id")
-      if !@addresses.nil?
-        @addresses.each { |aid|  @provider_ids << aid.addressable_id }
+  #
+  # ? - Help, if this gets longer go to a template
+  #
+  def help
+    render template: "shared/_api_guide"
+  end
+  #
+  # Get all locations in soundex queries, e.g. 'B' followed by 'Bri'
+  #
+  def locations
+    if params.include?(:locality) && !params[:locality].empty?
+      city_states = []
+      locality = params[:locality]
+      @addresses = Address.where( "locality ~* ?", locality).select("locality, state").distinct
+      @addresses.each do |aid| 
+        city_states << "#{aid.locality.split.map(&:capitalize).*(' ')}, #{aid.state}"
       end
+      render json: city_states
     end
+  end #locations
 
-    if geo_req.include?(:state) && !geo_req[:state].empty?
-      @addresses = Address.where( :state => params[:state]).select("addressable_id")
-      if !@addresses.nil?
-        @addresses.each { |aid| @provider_ids << aid.addressable_id }
-      end
-    end
-
-    # Return response in JSON
-    render json: [params, Provider.where(:id => @provider_ids)]
-=begin
-    unless @provider_ids.nil?
-      @providers = Provider.where(:id => @provider_ids)
-      #render json @providers
-      render :json => @providers.to_json(:include => :addresses)
+  # Return all providers, or if filters are present, filtered ones.
+  # <host>/api/providers
+  # <host>/api/providers/?locality=Brisbane%2c%20&real_grass=1
+  def providers
+    filter = params.except :utf8, :commit, :action, :controller
+    if filter.empty?
+      render :json => Provider.all.order(:name)
     else
-      render json: []
+      geo_ids, services = get_queries filter
+      providers = Provider.where(:id => geo_ids).where(services).order("name")      
+      render :json => providers
     end
-=end
-  end
-
-  def show
-  	@providers = Provider.find params[:id]
-    render json: [params, @providers]
-  end
-
-  def latest
-    latest = Provider.select("id, name, url, updated_at").order(:updated_at).limit(6)
-  end
-
-  def post_code_providers
-    Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
   end
 
 
+  # Construct where clauses
+  def get_queries filter
+    elements = filter[:locality].split(',')
+    city = elements[0]
+    state = elements[1].lstrip
+    geo_ids = Address.where("locality ~* ? and state = ?", city, state ).select("addressable_id")
+    # get the services filter set, first remove the location elements
+    services = filter.except :locality, :post_code, :state
+    return geo_ids, services
+  end
+
+
+  def provider
+    render :json => Provider.where( "id = ?", params[:id])
+  end
+
+  # from http://madhukaudantha.blogspot.com/2011/05/access-control-allow-origin-in-rails.html
+  # called by before filter
+  def set_access_control_headers 
+    headers['Access-Control-Allow-Origin'] = 'http://localhost:8081/' 
+    headers['Access-Control-Request-Method'] = '*' 
+  end
+
+  # remove this if catch-all route that calls it is removed.
+  def xss_options_request
+    render :text => ""
+  end
 end

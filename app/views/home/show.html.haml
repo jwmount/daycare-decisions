@@ -9,155 +9,92 @@
 %p
   %b Web Site:
   = link_to @provider.name, @provider.url
-%p
-  %b Description:
-  = @provider.description
+
+%p Description: #{@provider.description}
 
 - if @provider.additional_activities
-  %p
-    %b Additional Activities:
-    = @provider.additional_activities ? "YES" : "No"
-    - if @provider.additional_activities
-      = @provider.additional_activities_list
+  %p Additional Activities:  #{@provider.additional_activities_list}
 
-- if @provider.age_range
-  %p
-    %b Age Range:
-    = @provider.age_range
-
+- unless @provider.age_range.empty?
+  %p= "Age Range:  #{@provider.age_range.gsub(/"/,'')}"
+  
 - if @provider.air_conditioning
-  %p
-    %b Air Conditioning:
-    = @provider.air_conditioning ? "YES" : 'No'
+  %p Air Conditioned 
 
 - if @provider.approved_places
-  %p
-    %b Approved Places:
-    = @provider.approved_places
+  %p Approved Places: #{@provider.approved_places}
 
 - if @provider.bus_service
-  %p
-    %b Bus Service:
-    = @provider.bus_service ? "YES" : 'No'
+  %p Bus Service
 
 - if @provider.care_offered
-  %p
-    %b Type of Care Offered:
-    = @provider.care_offered 
+  %p Type of Care Offered:  #{@provider.care_offered.gsub(/"/,'') }
 
 - if @provider.cloth_nappies
-  %P
-    %b Cloth Nappies:
-    = @provider.cloth_nappies ? "YES" : 'No'
+  %P Cloth Nappies
 
 - if @provider.disposable_nappies
-  %p
-    %b Disposable Nappies:
-    = @provider.disposable_nappies ? "YES" : 'No'
+  %p Disposable Nappies
 
 - if @provider.excursions
-  %p
-    %b Disposable Excursions:
-    = @provider.excursions ? "YES" : 'No'
+  %p Disposable Excursions
 
 - if @provider.extended_hours_for_kindys
-  %p
-    %b Extended Hours for Kindys:
-    = @provider.extended_hours_for_kindys ? "YES" : 'No'
+  %p Extended Hours for Kindys:
 
 - if @provider.fee
-  %p
-    %b Fee ($):
-    = @provider.fee
+  %p Fee ($):  #{@provider.fee}
 
 - if @provider.food_provided
-  %p
-    %b Food Provided
-    = @provider.food_provided ? "YES" : 'No'
+  %p Food Provided
 
 - if @provider.guest_speakers
-  %p
-    %b Guest Speakers:
-    = @provider.guest_speakers ? "YES" : 'No'
+  %p Guest Speakers
 
 - if @provider.hours
-  %p
-    %b Hours of Operation:
-    = @provider.hours
+  %p Hours of Operation: #{@provider.hours}
 
 - if @provider.languages
-  %p
-    %b Languages:
-    = @provider.languages ? "YES" : "No"
-    = @provider.languages_list
+  %p Languages:  #{@provider.languages_list}
 
 - if @provider.NQS_rating
-  %p
-    %b NQS Rating:
-    = @provider.NQS_rating
+  %p NQS Rating
 
 - if @provider.online_enrollment
-  %p
-    %b Online Enrollment: 
-    = @provider.online_enrollment
+  %p Online Enrollment
 
 - if @provider.outdoor_play_area
-  %p
-    %b Outdoor Play Area:
-    = @provider.outdoor_play_area ? "YES" : 'No'
+  %p Outdoor Play Area
 
 - if @provider.provider_legal_name
-  %p
-    %b Legal Name:
-    = @provider.provider_legal_name
+  %p Legal Name:  #{@provider.provider_legal_name}
 
 - if @provider.security_access
-  %p
-    %b Secure Access:
-    = @provider.security_access ? "YES" : 'No'
+  %p Secure Access
 
 - if @provider.sibling_priority
-  %p
-    %b Siblings Get Priority:
-    = @provider.sibling_priority ? "YES" : 'No'
+  %p Siblings Get Priority
 
 - if @provider.real_grass
-  %p
-    %b Real Grass in Play Area:
-    = @provider.real_grass ? "YES" : 'No'
+  %p Real Grass in Play Area
 
 - if @provider.technology
-  %p
-    %b Technology:
-    = @provider.technology ? "YES" : 'No'
-    = @provider.technology_list
+  %p Technology:
 
 - if @provider.vacancies
-  %p
-    %b Vancancies:
-    = @provider.vacancies ? "YES" : 'No'
+  %p Vancancies:
 
 - if @provider.vaccinations_compulsory
-  %p
-    %b Compulsory Vaccinations
-    = @provider.vaccinations_compulsory ? "YES" : 'No'
+  %p Compulsory Vaccinations
 
 - if @provider.waitlist_fee
-  %p
-    %b Waitlist Fee ($):
-    = @provider.waitlist_fee
+  %p Waitlist Fee ($):  #{number_to_currency(@provider.waitlist_fee)}
 
 - if @provider.waitlist_online
-  %p
-    %b Waitlist Online Form:
-    = @provider.waitlist_online ? "YES" : 'No'
+  %p Waitlist Online Form
 
 - if @provider.waitlist_reimbursed
-  %p
-    %b Waitlist Reimbursed:
-    = @provider.waitlist_reimbursed ? "YES" : 'No'
+  %p Waitlist Reimbursed
 
-%p
-  %b Date last updated:
-  = @provider.updated_at.strftime("%d-%m-%Y")
+%p Last updated:  #{@provider.updated_at.strftime("%d-%m-%Y")}
 

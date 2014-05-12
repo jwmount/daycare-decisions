@@ -5,9 +5,15 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses => all of them
 # <host>/addresses/200  => 200th of them
 
-
-  resources :api  
-    get 'form_key',            to: 'api#form_key',           as: :form_key
+  namespace :api do  
+    # GET /api/locations/<partial string>
+    # for example:  <host>/api/locations/Bris
+    get 'locations/:locality',           to: :locations
+    get 'providers',                     to: :providers
+    get 'provider/:id',                  to: :provider
+    get '/',                             to: :help
+  
+  end #:api namespace
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -39,11 +45,13 @@ DaycareDecisions::Application.routes.draw do
     resources :guardian do
       resources :waitlist_applications
     end
-  end
 
+  end #:admin namespace
 
   root :to => "home#index"
 
+  # http://www.tsheffler.com/blog/?p=428 -- note by Forrest Zeisler
+  # get "*path" => "api#xss_options_request", :constraints => {:method => "OPTIONS"}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -85,7 +93,7 @@ DaycareDecisions::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-
+  
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

@@ -7,7 +7,9 @@
                                          PATCH      /api/:id(.:format)                                                    api#update
                                          PUT        /api/:id(.:format)                                                    api#update
                                          DELETE     /api/:id(.:format)                                                    api#destroy
-                                form_key GET        /form_key(.:format)                                                   api#form_key
+                                         GET        /locations/:locality(.:format)                                        api#locations
+                               providers GET        /providers(.:format)                                                  api#providers
+                                         GET        /provider/:id(.:format)                                               api#provider
                               home_index GET        /home(.:format)                                                       home#index
                                          POST       /home(.:format)                                                       home#create
                                 new_home GET        /home/new(.:format)                                                   home#new
