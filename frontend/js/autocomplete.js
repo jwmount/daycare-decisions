@@ -50,7 +50,7 @@ app.directive('autocomplete', function(){
         if(watching && $scope.searchParam) {
           $scope.completing = true;
           $scope.searchFilter = $scope.searchParam;
-          $scope.selectedIndex = -1;
+          $scope.selectedIndex = 0; // changed by Sean to select first item
         }
 
         // function thats passed to on-type attribute gets executed
@@ -228,7 +228,7 @@ app.directive('autocomplete', function(){
                   '<li suggestion ng-repeat="suggestion in suggestions | filter:searchFilter | orderBy:\'toString()\' track by $index"'+
                   'index="{{$index}}" val="{{suggestion}}" ng-class="{active: '+
                   '($index == selectedIndex)}" ng-click="select(suggestion)" '+
-                  'ng-bind-html="suggestion | highlight:searchParam">'+
+                  'ng-bind-html="suggestion">'+
                     '{{suggestion}}' +
                   '</li>'+
                 '</ul>'+
