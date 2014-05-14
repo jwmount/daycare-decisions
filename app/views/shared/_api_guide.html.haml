@@ -9,7 +9,22 @@
     %li Example 2: /api/locations/br
     %li Example 3: /api/locations/bri
     %p= ["Brisbane, QLD", "Brisbane Grove, NSW"]
+
+  %li.h3 Get Locations in a state using Australian abbrviations, e.g. 'QLD'
+  %p Note:  A list of all provider names is not supported.
+  %ul
+    %li Request: GET /api/states/_state_abbreviation_
+    %li Returns: JSON array of all providers in state
+    %li Example 1: /api/states/NT
+    %p= ["Alpurrurulam, NT"]
     
+  %li.h3 Get Providers based on Partial Name
+  %p Note:  A list of all names is not supported.
+  %ul
+    %li Request: GET /api/names/_name_
+    %li Returns: JSON array of all providers with names beginning _name_
+    %li Example 1: /api/names/Small World
+
   %li.h3 Get All Providers
   %ul
     %li Request: GET /api/providers

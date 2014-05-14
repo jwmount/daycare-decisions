@@ -6,11 +6,16 @@ DaycareDecisions::Application.routes.draw do
 # <host>/addresses/200  => 200th of them
 
   namespace :api do  
+    get 'names',                          to: :names
+    get 'names/:name',                    to: :names
+    get 'states',                         to: :states
+    get 'states/:state',                  to: :states
     # GET /api/locations/<partial string>
     # for example:  <host>/api/locations/Bris
     get 'locations/:locality',           to: :locations
     get 'providers',                     to: :providers
     get 'provider/:id',                  to: :provider
+    get 'state/:state',                  to: :state
     get '/',                             to: :help
   
   end #:api namespace
@@ -50,6 +55,7 @@ DaycareDecisions::Application.routes.draw do
 
   root :to => "home#index"
 
+  # catch-all route for api_controller
   # http://www.tsheffler.com/blog/?p=428 -- note by Forrest Zeisler
   # get "*path" => "api#xss_options_request", :constraints => {:method => "OPTIONS"}
 

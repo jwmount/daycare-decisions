@@ -3,6 +3,7 @@
 # http://localhost:3000/api?utf8=%E2%9C%93&locality=burleigh%20wa&post_code=&state=&commit=Find+Address
 # curl -i -H "Accept: application/json" http://localhost:3000/api/locations/Bro
 # curl -i -H "Accept: application/json" http://daycare-decisions.herokuapp.com/api/locations/Bri  
+
 class ApiController < ApplicationController
   include ActionController::MimeResponds
   after_filter :set_access_control_headers
@@ -13,19 +14,49 @@ class ApiController < ApplicationController
   def help
     render template: "shared/_api_guide"
   end
+  
   #
-  # Get all locations in soundex queries, e.g. 'B' followed by 'Bri'
+  # Get providers by name, e.g. 'Small'
   #
-  def locations
-    if params.include?(:locality) && !params[:locality].empty?
+  def names
+    if params[:name].nil?
+      render :json => []
+    else
+      render :json => Provider.where("name ~* ?", params[:name]).order("name")      
+    end
+  end
+
+  #
+  # Get all locations in a state, e.g. 'QLD' or 'NT' followed by 'Bri'
+  #
+  def states
+    if params[:state].nil?
+      render :json => []
+    else
       city_states = []
-      locality = params[:locality]
-      @addresses = Address.where( "locality ~* ?", locality).select("locality, state").distinct
-      @addresses.each do |aid| 
+      # State only, get those 
+      if params.include?(:state) && !params[:state].empty?
+        addresses = Address.where( "state = ?", params[:state]).select("locality, state")
+      end
+      addresses.each do |aid| 
         city_states << "#{aid.locality.split.map(&:capitalize).*(' ')}, #{aid.state}"
       end
       render json: city_states
     end
+  end
+
+  #
+  # Get all locations in soundex queries, e.g. 'B' followed by 'Bri'
+  #
+  def locations
+    city_states = []
+    if params.include?(:locality) && !params[:locality].empty?
+      addresses = Address.where( "locality ~* ?", params[:locality]).select("locality, state").distinct
+    end
+    addresses.each do |aid| 
+      city_states << "#{aid.locality.split.map(&:capitalize).*(' ')}, #{aid.state}"
+    end
+    render json: city_states
   end #locations
 
   # Return all providers, or if filters are present, filtered ones.
@@ -66,8 +97,5 @@ class ApiController < ApplicationController
     headers['Access-Control-Request-Method'] = '*' 
   end
 
-  # remove this if catch-all route that calls it is removed.
-  def xss_options_request
-    render :text => ""
-  end
+
 end
