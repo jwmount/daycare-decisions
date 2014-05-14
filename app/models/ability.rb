@@ -54,9 +54,11 @@ class Ability
       can :read, :all
       can :update, Provider
             
+    # :all does not seem to allow you to make comments... ?  with Provider it's OK.
     when 'superadmin'
       can :manage, :all
-    
+      can :manage, Provider
+
     # we do not allow other values, we do allow login  
     # actually want to return to login
     # guest
@@ -113,10 +115,6 @@ class Ability
           # end
       end
 
-      if user.role? :driver
-        # can [:read, :update], Person, :id => user.id
-        can [:create], Docket
-      end
 =end
   end
 end
