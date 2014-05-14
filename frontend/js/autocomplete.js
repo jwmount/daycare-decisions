@@ -223,7 +223,7 @@ app.directive('autocomplete', function(){
       });
     },
     template: '<div class="autocomplete {{attrs.class}}" id="{{attrs.id}}">'+
-                '<input type="text" ng-model="searchParam" placeholder="{{attrs.placeholder}}" class="{{attrs.inputclass}}" id="{{attrs.inputid}}"/>' +
+                '<input type="text" ng-model="searchParam" placeholder="{{attrs.placeholder}}" class="{{attrs.inputclass}}" id="{{attrs.inputid}}" />' +
                 '<ul ng-show="completing">' +
                   '<li suggestion ng-repeat="suggestion in suggestions | filter:searchFilter | orderBy:\'toString()\' track by $index"'+
                   'index="{{$index}}" val="{{suggestion}}" ng-class="{active: '+

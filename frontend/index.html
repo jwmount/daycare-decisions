@@ -45,22 +45,23 @@
         <section>
 
             <!-- Main Content -->
-            <article class="main-content">
+            <article class="main-content" ng-controller="formCtrl">
                 <h1>Finding childcare is hard. We can help.</h1>
                 <h3>What kind of daycare do you want?</h3>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, fugiat, dolorem, veritatis, quod adipisci neque esse dignissimos delectus nesciunt labore temporibus molestiae possimus officiis sint illo quia incidunt. Velit, consequatur?</p>
 
                 <!-- Provider Search Form -->
                 <form action="" method="get" class="provider-search">
+
                     <!-- 1 -->
                     <section>
                         <article class="left-column">
                             <span class="number-circle">1</span>
                         </article>
-                        <article class="right-column form-group" ng-controller="locationsCtrl">
+                        <article class="right-column form-group">
                             <h3><strong>Where</strong> do you need daycare?</h3>
-                            <autocomplete ng-model="selectedLocation" data="locations" on-type="updateLocations" attr-placeholder="City or Town Name..."></autocomplete>
-                            <!-- <input type="text" class="form-control autocomplete" name="location" placeholder="Enter city/town or postal code" ng-model="location"> -->
+                            <autocomplete ng-model="form.locality" data="locations" on-type="updateLocations" attr-placeholder="City or Town Name..." ng-change="updateProviders()"></autocomplete>
+                            <a href="" ng-click="updateProviders()">Update Results</a>
                         </article>
                     </section>
 
@@ -109,80 +110,80 @@
                             <section>
                                 <article class="left-checkboxes-col">
                                     <label>
-                                <input type="checkbox" name="additional_activities">
-                                    Additional Activities
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="air_conditioning">
-                                    Air Conditioning
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="bus_service">
-                                    Bus Service
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="disposable_nappies">
-                                    Disposable Nappies
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="cloth_nappies">
-                                    Cloth Nappies
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="excursions">
-                                    Excursions
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="extended_hours_for_kindys">
-                                    Extended Hours for Kindys
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="food_provided">
-                                    Food Provided
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="guest_speakers">
-                                    Guest Speakers
-                                </label>
+                                        <input type="checkbox" name="additional_activities" ng-change="updateProviders()" ng-model="form.additional_activities">
+                                        Additional Activities
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="air_conditioning" ng-change="updateProviders()" ng-model="form.air_conditioning">
+                                        Air Conditioning
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="bus_service" ng-change="updateProviders()" ng-model="form.bus_service">
+                                        Bus Service
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="disposable_nappies" ng-change="updateProviders()" ng-model="form.disposable_nappies">
+                                        Disposable Nappies
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="cloth_nappies" ng-change="updateProviders()" ng-model="form.cloth_nappies">
+                                        Cloth Nappies
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="excursions" ng-change="updateProviders()" ng-model="form.excursions">
+                                        Excursions
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="extended_hours_for_kindys" ng-change="updateProviders()" ng-model="form.extended_hours_for_kindys">
+                                        Extended Hours for Kindys
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="food_provided" ng-change="updateProviders()" ng-model="form.food_provided">
+                                        Food Provided
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="guest_speakers" ng-change="updateProviders()" ng-model="form.guest_speakers">
+                                        Guest Speakers
+                                    </label>
                                 </article>
 
                                 <article class="right-checkboxes-col">
-                                <label>
-                                    <input type="checkbox" name="languages">
-                                    Languages
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="real_grass">
-                                    Real Grass
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="secure_access">
-                                    Secure Access
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="siblings_given_priority">
-                                    Siblings Given Priority
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="technology">
-                                    Technology
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="" id="vacancies">
-                                    Vacancies
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="" id="vaccinations_compulsory">
-                                    Vaccinations Compulsory
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="" id="waitlist_online">
-                                    Waitlist Online
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="" id="waitlist_reimbursed">
-                                    Waitlist Fee Reimbursed
-                                </label>
+                                    <label>
+                                        <input type="checkbox" name="languages" ng-change="updateProviders()" ng-model="form.languages">
+                                        Languages
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="real_grass" ng-change="updateProviders()" ng-model="form.real_grass">
+                                        Real Grass
+                                    </label>
+                                    <!-- <label>
+                                        <input type="checkbox" name="secure_access" ng-change="updateProviders()" ng-model="form.secure_access">
+                                        Secure Access
+                                    </label> -->
+                                    <label>
+                                        <input type="checkbox" name="siblings_given_priority" ng-change="updateProviders()" ng-model="form.siblings_given_priority">
+                                        Siblings Given Priority
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="technology" ng-change="updateProviders()" ng-model="form.technology">
+                                        Technology
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="vacancies" ng-change="updateProviders()" ng-model="form.vacancies">
+                                        Vacancies
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="vaccinations_compulsory" ng-change="updateProviders()" ng-model="form.vaccinations_compulsory">
+                                        Vaccinations Compulsory
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="waitlist_online" ng-change="updateProviders()" ng-model="form.waitlist_online">
+                                        Waitlist Online
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="waitlist_reimbursed" ng-change="updateProviders()" ng-model="form.waitlist_reimbursed">
+                                        Waitlist Fee Reimbursed
+                                    </label>
 
                                 </article>
                             </section>
@@ -192,15 +193,13 @@
                 </form>
 
                 <!-- Provider Results -->
-                <div class="providers">
+                <div class="providers" ng-repeat="provider in providers">
                     <section>
-                        <article><strong>Provider 1</strong>, Sydney NSW</article>
-                    </section>
-                    <section>
-                        <article><strong>Provider 2</strong>, Sydney NSW</article>
-                    </section>
-                    <section>
-                        <article><strong>Provider 3</strong>, Sydney NSW</article>
+                        <article>
+                            <h4>{{provider.name}}</h4>
+                            <p>{{provider.conditions_on_approval}}</p>
+                            <strong>{{provider.age_range}}</strong>
+                        </article>
                     </section>
                 </div>
 

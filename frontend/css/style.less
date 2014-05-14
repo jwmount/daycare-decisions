@@ -246,10 +246,20 @@ form.provider-search {
 
 .providers {
     section {
-        background: #fff;
-        border: 1px solid #e3e3e3;
+        background: #d383b2; /* Old browsers */
+        background: -moz-linear-gradient(top,  #d383b2 0%, #d46aa8 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d383b2), color-stop(100%,#d46aa8)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #d383b2 0%,#d46aa8 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #d383b2 0%,#d46aa8 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #d383b2 0%,#d46aa8 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #d383b2 0%,#d46aa8 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d383b2', endColorstr='#d46aa8',GradientType=0 ); /* IE6-9 */
+        border: 3px solid #fff;
         border-radius: 4px;
-        padding: 50px 20px;
+        padding: 10px 20px;
+        color: #fff;
+        margin: 4px 0;
+        .box-shadow(1px 2px 6px 0px rgba(50, 50, 50, 0.3););
     }
 }
 
