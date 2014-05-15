@@ -3,10 +3,20 @@ class HomeController < ApplicationController
   def index
 
     @locality_provider_ids = []    
-    @post_code_provider_ids = []
-    @state_provider_ids = []
-    @addresses = []
-
+    #@post_code_provider_ids = []
+    #@state_provider_ids = []
+    #@addresses = []
+    
+    place = params[:locality].split(', ')
+    locality = place[0]
+    state = place[1]
+    @addresses = Address.where( "locality = ? and state = ?", locality, state).select("addressable_id")
+    if !@addresses.nil?
+      @addresses.each do |a|
+        @locality_provider_ids << a.addressable_id
+      end
+    end
+=begin    
     unless params[:locality].nil?
       @addresses = Address.where(  :locality => (params[:locality]).upcase ).select("addressable_id")
       if !@addresses.nil?
@@ -33,7 +43,7 @@ class HomeController < ApplicationController
         end
       end      
     end
-
+=end
     
     respond_to do |format|
       format.html

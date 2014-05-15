@@ -27,7 +27,7 @@ class ApiController < ApplicationController
   end
 
   #
-  # Get all locations in a state, e.g. 'QLD' or 'NT' followed by 'Bri'
+  # Get all locations in a state, e.g. 'QLD' or 'NT' generated from 'Bri'
   #
   def states
     if params[:state].nil?

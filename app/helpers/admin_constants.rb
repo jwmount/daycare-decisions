@@ -73,6 +73,15 @@ module AdminConstants
 #
 # Provider
 #
+  ADMIN_PROVIDER_ADDITIONAL_ACTIVITIES_FILTER  = "Additional activities available"
+  ADMIN_PROVIDER_COMPANY_FILTER                = "Owner or corporate parent"
+  ADMIN_PROVIDER_CARE_OFFERED_FILTER           = "Form of Care"
+  ADMIN_PROVIDER_OVERALLL_RATING_FILTER        = "Overall Quality Rating"
+  ADMIN_PROVIDER_FEE_FILTER                    = "Fee (hourly)"
+  ADMIN_PROVIDER_URL_FILTER                    = "Website"
+  ADMIN_PROVIDER_LANGUAGES_FILTER              = "Language Skills Training"
+  ADMIN_PROVIDER_TECHNOLOGIES_AVAILABLE_FILTER = "Technologies Available"
+  ADMIN_PROVIDER_VACANCY_LIST                  = "Vacancies by group"
 
   ADMIN_PROVIDER_AGE_LABEL               = ""
   ADMIN_PROVIDER_AGE_HINT                = "Age range accomodated.  For example, '3 to 6 months'."
@@ -96,7 +105,10 @@ module AdminConstants
 
   ADMIN_PROVIDER_LANGUAGE_LABEL          = "Languages Available"
   ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER    = "English"
-  ADMIN_PROVIDER_LANGUAGE_HINT           = "Language options offered"
+  ADMIN_PROVIDER_LANGUAGE_HINT           = "Language options offered.  If checked please list the languages in Languages list."
+
+  ADMIN_PROVIDER_LANGUAGE_LIST_HINT      = "List languages used or for which training is available."
+  ADMIN_PROVIDER_VACANCIES_LIST_HINT     = "If there are vacancies, list age groups or categories open.  For example, ages 2 - 4, 2 places."
 
 # 
 # Requirements

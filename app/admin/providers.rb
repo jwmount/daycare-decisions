@@ -1,5 +1,9 @@
 ActiveAdmin.register Provider do
 
+  # scopes can be logical ands, for example this works:
+  #  providers.where ({waitlist_reimbursed: true, cloth_nappies: true})
+  # Question is, how to show this?
+
   scope :all, :default => true 
   scope :additional_activities do |providers|
     providers.where ({additional_activities: true})
@@ -32,6 +36,11 @@ ActiveAdmin.register Provider do
   scope :kindergarten do |providers|
     providers.where ({kindergarten: true})
   end
+
+  scope :languages do |providers|
+    providers.where ({languages: true})
+  end
+
   scope :online_enrollment do |providers|
     providers.where ({online_enrollment: true})
   end
@@ -50,28 +59,34 @@ ActiveAdmin.register Provider do
   scope :technology do |providers|
     providers.where ({technology: true})
   end
-  scope :waitlist_online do |providers|
-    providers.where ({waitlist_online: true})
-  end
-  scope :waitlist_reimbursed do |providers|
-    providers.where ({waitlist_reimbursed: true})
-    # works fine: providers.where ({waitlist_reimbursed: true, cloth_nappies: true})
-    # question is, how to show this?
-  end
+  
   scope :vacancies do |providers|
     providers.where ({vacancies: true})
   end
+  scope :vaccinations_compulsory do |providers| 
+    providers.where( {vaccinations_compulsory: true } )
+  end
+
+  scope :waitlist_online do |providers|
+    providers.where ({waitlist_online: true})
+  end
+
+  scope :waitlist_reimbursed do |providers|
+    providers.where ({waitlist_reimbursed: true})
+  end
 
 
-  filter :company
+  filter :additional_activities_list, :label => AdminConstants::ADMIN_PROVIDER_ADDITIONAL_ACTIVITIES_FILTER
+  filter :company, :label => AdminConstants::ADMIN_PROVIDER_COMPANY_FILTER
   filter :name
-  filter :care_offered, :label => "Form of Care"
-  filter :NQS_rating
-  filter :fee
+  filter :care_offered, :label => AdminConstants::ADMIN_PROVIDER_CARE_OFFERED_FILTER
+  filter :NQS_rating, :label => AdminConstants::ADMIN_PROVIDER_OVERALLL_RATING_FILTER
+  filter :fee, :label => AdminConstants::ADMIN_PROVIDER_FEE_FILTER
   filter :description
-  filter :url
-  filter :languages, :label => "Language Skills Training"
-  filter :vacancies          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+  filter :url, :label => AdminConstants::ADMIN_PROVIDER_URL_FILTER
+  filter :languages_list, :label => AdminConstants::ADMIN_PROVIDER_LANGUAGES_FILTER
+  filter :technology_list, :label => AdminConstants::ADMIN_PROVIDER_TECHNOLOGIES_AVAILABLE_FILTER
+  filter :vacancies_list, :label => AdminConstants::ADMIN_PROVIDER_VACANCY_LIST          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
   filter :waitlist_fee
 
   index do
@@ -163,7 +178,8 @@ ActiveAdmin.register Provider do
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
-      f.input :languages_list
+      f.input :languages_list,
+              :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LIST_HINT
       f.input :online_enrollment
       f.input :outdoor_play_area
       
@@ -189,6 +205,9 @@ ActiveAdmin.register Provider do
       f.input :url
 
       f.input :vacancies
+      f.input :vacancies_list,
+              :hint          => AdminConstants::ADMIN_PROVIDER_VACANCIES_LIST_HINT
+
       f.input :vaccinations_compulsory
 
       f.input :waitlist_online

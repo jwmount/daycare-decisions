@@ -3,7 +3,7 @@ module ApplicationHelper
 
   def care_options
     [
-      'Long Day', 'Occaisional Care', 'Other'
+      'Long Day', 'Home Day Care', 'Occaisional Care', 'Kindy Care', 'Before or After School Care'
     ]
   end
 
