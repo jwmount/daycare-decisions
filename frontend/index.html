@@ -52,15 +52,15 @@
                 <p>
                   <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
                   </p>
-                  
+
                   <p>
                   <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
                   </p>
-                  
+
                   <p>
                   <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
                   </p>
-                  
+
                   <p>
                   <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
                   </p>
@@ -74,8 +74,8 @@
                         </article>
                         <article class="right-column form-group">
                             <h3><strong>Where</strong> do you need daycare?</h3>
-                            <autocomplete ng-model="form.locality" data="locations" on-type="updateLocations" attr-placeholder="City or Town Name..." ng-change="updateProviders()"></autocomplete>
-                            <a href="" ng-click="updateProviders()">Update Results</a>
+                            <autocomplete ng-model="form.locality" data="locations" on-type="updateLocations" attr-placeholder="City or Town Name..." on-select="updateProviders"></autocomplete>
+                            <!-- <a href="" ng-click="updateProviders()">Update Results</a> -->
                         </article>
                     </section>
 
