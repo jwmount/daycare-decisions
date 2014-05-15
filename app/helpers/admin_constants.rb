@@ -73,6 +73,15 @@ module AdminConstants
 #
 # Provider
 #
+  ADMIN_PROVIDER_ADDITIONAL_ACTIVITIES_FILTER  = "Additional activities available"
+  ADMIN_PROVIDER_COMPANY_FILTER                = "Owner or corporate parent"
+  ADMIN_PROVIDER_CARE_OFFERED_FILTER           = "Form of Care"
+  ADMIN_PROVIDER_OVERALLL_RATING_FILTER        = "Overall Quality Rating"
+  ADMIN_PROVIDER_FEE_FILTER                    = "Fee (hourly)"
+  ADMIN_PROVIDER_URL_FILTER                    = "Website"
+  ADMIN_PROVIDER_LANGUAGES_FILTER              = "Language Skills Training"
+  ADMIN_PROVIDER_TECHNOLOGIES_AVAILABLE_FILTER = "Technologies Available"
+  ADMIN_PROVIDER_VACANCY_LIST                  = "Vacancies by group"
 
   ADMIN_PROVIDER_AGE_LABEL               = ""
   ADMIN_PROVIDER_AGE_HINT                = "Age range accomodated.  For example, '3 to 6 months'."

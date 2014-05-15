@@ -209,11 +209,11 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "quality_area_rating_7"
     t.string   "quality_overall_rating"
 
+    t.boolean  "real_grass"
+
     t.boolean  "security_access"
     t.string   "service_approval_number"
     t.boolean  "sibling_priority",   :default => false
-
-    t.boolean  "real_grass"
 
     t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
     t.string   "technology_list"  #Technology        Drop down ipad, smart screens (36mths +)
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "url"
 
     t.boolean  "vacancies"   
+    t.boolean  "vacancies_list"
     t.boolean  "vaccinations_compulsory"
 
     t.decimal  "waitlist_fee"

@@ -1,6 +1,17 @@
 module ProvidersHelper
 
-  
+  def cities
+    city_states = []
+    addresses = Address.all.select("locality, state").order("locality")
+    addresses.each do |aid| 
+      locality = "#{aid.locality.split.map(&:capitalize).*(' ')}, #{aid.state}"
+      unless city_states.include? locality
+        city_states << locality
+      end
+    end
+    city_states
+  end
+
   # Only PROXY of this so far, need to use guardians_providers model
   def favorites
     @favorite_ids = []
@@ -44,15 +55,7 @@ module ProvidersHelper
   #
   #
   #
-  def XXpost_code_providers
-    Provider.where(:id => @post_code_provider_ids).where(@rqry).order(:name)
-  end
 
-  def XXstate_providers
-    Provider.where(:id => @state_provider_ids).where(@rqry).order(:name)
-  end
-
-  # Return if a list of services is wanted, and a string to display these.
   def list_services params
     services = []
     rqry = {}

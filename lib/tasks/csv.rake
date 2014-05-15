@@ -102,6 +102,7 @@ namespace :csv do
         provider.url                      = p_hash['Website'] 
 
         provider.vacancies                = p_hash['Vacancies'] == ('Y' || 'T') ? true : false     
+        provider.vacancies_list           = p_hash['Vacancies_list']
         provider.vaccinations_compulsory  = p_hash['Vaccinactions Compulsory'] == ('Y' || 'T') ? true : false
         provider.waitlist_fee             = p_hash['Waitlist Fee']    
         provider.waitlist_online          = p_hash['Online waitlist']     == ('Y' || 'T') ? true : false
@@ -162,7 +163,7 @@ namespace :csv do
       provider = Provider.where(:name => "Service Name-#{rand.to_s}").first_or_create
       provider.age_range                = 'Age Range'
       provider.additional_activities    = true
-      provider.additional_activities_list    = "Physikids"
+      provider.additional_activities_list = "Physikids"
       provider.air_conditioning         = true
       provider.approval_granted_on      = Date.today
       provider.approved_places          = 40
@@ -213,6 +214,7 @@ namespace :csv do
       
       provider.url                      = 'www.wsj.com'       
       provider.vacancies                = 1
+      provider.vacancies_list           = "Ages 6-12 months: 2"
       provider.vaccinations_compulsory  = true
       provider.waitlist_fee             = 25.00
       provider.waitlist_online          = true
