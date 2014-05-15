@@ -221,7 +221,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "url"
 
     t.boolean  "vacancies"   
-    t.boolean  "vacancies_list"
+    t.string   "vacancies_list"
     t.boolean  "vaccinations_compulsory"
 
     t.decimal  "waitlist_fee"

@@ -105,7 +105,10 @@ module AdminConstants
 
   ADMIN_PROVIDER_LANGUAGE_LABEL          = "Languages Available"
   ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER    = "English"
-  ADMIN_PROVIDER_LANGUAGE_HINT           = "Language options offered"
+  ADMIN_PROVIDER_LANGUAGE_HINT           = "Language options offered.  If checked please list the languages in Languages list."
+
+  ADMIN_PROVIDER_LANGUAGE_LIST_HINT      = "List languages used or for which training is available."
+  ADMIN_PROVIDER_VACANCIES_LIST_HINT     = "If there are vacancies, list age groups or categories open.  For example, ages 2 - 4, 2 places."
 
 # 
 # Requirements

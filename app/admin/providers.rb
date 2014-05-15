@@ -178,7 +178,8 @@ ActiveAdmin.register Provider do
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
-      f.input :languages_list
+      f.input :languages_list,
+              :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LIST_HINT
       f.input :online_enrollment
       f.input :outdoor_play_area
       
@@ -204,6 +205,9 @@ ActiveAdmin.register Provider do
       f.input :url
 
       f.input :vacancies
+      f.input :vacancies_list,
+              :hint          => AdminConstants::ADMIN_PROVIDER_VACANCIES_LIST_HINT
+
       f.input :vaccinations_compulsory
 
       f.input :waitlist_online
