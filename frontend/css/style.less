@@ -245,6 +245,16 @@ form.provider-search {
 }
 
 .providers {
+    &.ng-enter {
+        -webkit-transition: 0.5s linear all;
+        transition: 0.5s linear all;
+        opacity: 0;
+    }
+
+    &.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+
     section {
         background: #d383b2; /* Old browsers */
         background: -moz-linear-gradient(top,  #d383b2 0%, #d46aa8 100%); /* FF3.6+ */
