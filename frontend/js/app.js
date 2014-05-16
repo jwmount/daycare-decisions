@@ -53,16 +53,18 @@ app.controller("formCtrl", function($scope, $http) {
     };
 
     // Update Providers
-    $scope.updateProviders = function() {
+    $scope.updateProviders = function(suggestion) {
         var params = $scope.form;
-        console.log(params);
+        if (suggestion)
+            params.locality = suggestion;
+        // console.log(params);
         $http({ method: 'GET', url: app.providers_api_call, params: params })
             .success(function(data) {
                 $scope.providers = data;
-                console.log(data);
+                // console.log(data);
             })
             .error(function (data) {
-                console.log(data)
+                // console.log(data)
             });
     }
 });

@@ -10,7 +10,8 @@ app.directive('autocomplete', function(){
     scope: {
       searchParam: '=ngModel',
       suggestions: '=data',
-      onType: '=onType'
+      onType: '=onType',
+      onSelect: '=onSelect' // Added by Sean
     },
     controller: function($scope, $element, $attrs){
       $scope.searchParam;
@@ -85,6 +86,9 @@ app.directive('autocomplete', function(){
         if(suggestion){
           $scope.searchParam = suggestion;
           $scope.searchFilter = suggestion;
+          // Added by sean
+          if($scope.onSelect)
+            $scope.onSelect(suggestion);
         }
         watching = false;
         $scope.completing = false;
