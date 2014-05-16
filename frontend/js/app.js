@@ -1,5 +1,5 @@
 // Initialize Angular App
-var app = angular.module("app", ['autocomplete', 'ngSanitize']);
+var app = angular.module("app", ['ngAnimate', 'ngSanitize', 'autocomplete']);
 
 
 // Set Config Variables
@@ -18,7 +18,7 @@ app.config(['$httpProvider', function($httpProvider) {
 
 
 // Locations Controller
-app.controller("formCtrl", function($scope, $http) {
+app.controller("formCtrl", function($scope, $http, $timeout) {
 
     // Fires whenever key is clicked in form.locality field
     // We want to make the API call only when we have two chars in
@@ -55,6 +55,10 @@ app.controller("formCtrl", function($scope, $http) {
     // Update Providers
     $scope.updateProviders = function(suggestion) {
         var params = $scope.form;
+        // When updateProviders is called from checkboxes, the suggestion (city, state)
+        // is already populated. But when it's called from the autocomplete on-select
+        // directive, that event happens BEFORE the form is fully populated, so we
+        // pass the <suggestion> arg directly from autocomplete.js
         if (suggestion)
             params.locality = suggestion;
         // console.log(params);
