@@ -1,74 +1,86 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 @import "partials/footer";
+@import "partials/colors";
   
   body {
-    background-color:  #F7F5E0;
-    font-family: "Papyrus", "Chalkduster", "Bitstream Vera Sans", "Verdana";
-    font-size: 13px;
-    color: #333;
-    width: 90%;
-    margin: 10px auto;
-  }
+    background-color:          $dd-page-background-color;
+    font-family:               "Papyrus", "Chalkduster", "Bitstream Vera Sans", "Verdana";
+    font-size:                                      13px;
+    color:                           $dd-page-font-color;
+    width:                                           90%;
+    margin:                                    10px auto;
+    }
 
-  .dialog {
-    background-color: #afb8c2;
-    display: block;
-    width: 66%;
+  dialog {
+    background-color:        $dd-dialog-background-color;
+    display:                                       block;
+    width:                                           66%;
 /*    margin: 4em auto 0 auto; */
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px;    
-    padding: 7px 4em 0 4em;
+    border:                               1px solid #CCC;
+    border-right-color:    $dd-dialog-border-right-color;
+    border-left-color:      $dd-dialog-border-left-color;
+    border-bottom-color:  $dd-dialog-border-bottom-color;
+    border-top:                        #B00100 solid 4px;
+    border-top-left-radius:                          9px;
+    border-top-right-radius:                         9px;
+    border-bottom-left-radius:                       9px;
+    border-bottom-right-radius:                      9px;    
+    padding:                               7px 4em 0 4em;
   }
 
   h1 {
-    font-size: 28px;
-    color: #000;
-  }
-  h2 {
-    font-size: 24px;
+    font-size:                                      28px;
+    color:                            $dd-headline-color;
+  }                            
+  h2 {                         
+    font-size:                                      24px;
+    color:                     $dd-2ndary-headline-color;
   }
   h3 {
-    font-size: 18px;
-    color: blue;
-  }
-  
-  a  {color: #03c}
+    font-size:                                      18px;
+    color:                   $dd-tertiary-headline-color;
+  }                         
+                            
+  a {                       
+    color:                              $dd-anchor-color;
+    }
   a:hover {
-    background-color: #D668A8;
-    color: white;
-    text-decoration: none;
+    background-color:        $dd-anchor-background-color;
+    color:                         $dd-anchor-font-color;
+    text-decoration:                                none;
   }
 
+  content {
+    float: left;
+    padding: 25px;
+    width: 100%;
+  }
+
+
   ul#navlist {
-    color: #fff;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+    color:                        $dd-navlist_font_color;
+    padding:                                           0;
+    margin:                                            0;
+    list-style-type:                                none;
     }
   ul#navlist li { 
-    background-color: #d668a8;  
-    display: inline; 
-    height: 6em;
+    background-color:  $dd-navlist-item-background-color;  
+    display:                                      inline; 
+    height:                                          6em;
     }
   ul#navlist li a {
-    border-right: 1px solid #fff;
-    width: 10em;
-    color: #fff;
-    padding: 0.2em 1em;
-    text-decoration: none;
+    border-right:    $dd-navlist-item-border-right-color;
+    width:                                          10em;
+    color:                   $dd-navlist-item-font-color;
+    padding:                                   0.2em 1em;
+    text-decoration:                                none;
     }
   ul#navlist li a:hover {
-    background-color: pink;
-    color: #fff;
+    background-color:       $dd-navlist-item-hover-background-color;
+    color:                        $dd-navlist-item-hover-font-color;
     }
 
 
@@ -76,88 +88,35 @@
 // Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs
 //
   .floatleft { 
-    float: left; 
-    margin: 0 0 10px 10px;
+    float:                                         left; 
+    margin:                               0 0 10px 10px;
     }
 
   .floatright { 
-    float: right; 
-    margin: 0 0 10px 10px;
-    clear: right;
+    float:                                        right; 
+    margin:                               0 0 10px 10px;
+    clear:                                        right;
     }
-
-  #content {
-    float: left;
-    padding: 25px;
-    width: 100%;
-  }
-  
-  
-  #header, #home, #Advertise, #about_us, #contact, #Privacy, #Terms   {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  #header {
-    background-image: url("dcd_main_1.jpg");
-    background-repeat: no-repeat;
-    height: 44px;
-  }
-  #header h1, #header h2 {margin: 0}
-  #header h2 {
-    color: #888;
-    font-weight: normal;
-    font-size: 16px;
-  }
-  #header h3 {
-    color: green;
-    font-weight: normal;
-    font-size: 16px;
-  }
-  #header p {
-    display: block;
-  }
-
-  #location-box {
-    background-color: grey;    
-    border: 1px solid #aaa;
-    margin: 10px auto;
-    width: 66%;
-  }
-  #location-box h3 {
-    color: green;
-  }
-  #location-box h4 {
-    font-size: 14
-  }
-  
-
-  .ad {
-    border: 2px;
-    width: 25%;
-    height: 100px;
-    }
-
   
   .sidebar {
-    float: right;
-    width: 175px;
+    float:                                        right;
+    width:                                        175px;
   }
   
   .sidebar ul {
-    margin-left: 0;
-    padding-left: 0;
+    margin-left:                                      0;
+    padding-left:                                     0;
   }
   .sidebar ul h3 {
-    margin-top: 25px;
-    font-size: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
+    margin-top:                                    25px;
+    font-size:                                     16px;
+    padding-bottom:                                10px;
+    border-bottom:                       1px solid #ccc;
   }
   .sidebar li {
-    list-style-type: none;
+    list-style-type:                               none;
   }
   .sidebar ul.links li {
-    margin-bottom: 5px;
+    margin-bottom:                                  5px;
   }
   

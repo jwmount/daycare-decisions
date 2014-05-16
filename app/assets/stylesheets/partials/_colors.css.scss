@@ -1,0 +1,47 @@
+$dd-green:        rgb(  37, 178, 100 ); 
+$dd-black:        rgb(  35,  31,  32 );
+$dd-topbar-black: rgb(  93, 89, 89 ); 
+$dd-grey:         rgb( 187, 188, 188 );
+$dd-white:        rgb( 255,255,255 );
+
+$dd-light-green:    lighten($dd-green,         10%);
+$dd-lighter-green:  lighten($dd-light-green,   10%);
+$dd-lightest-green: lighten($dd-lighter-green, 10%);
+$dd-accent-green:   darken($dd-green,          25%); 
+
+$dd-light-black:     lighten($dd-black,         10%);
+$dd-lighter-black:   lighten($dd-light-black,   10%);
+$dd-lightest-black:  lighten($dd-lighter-black, 10%);
+
+$dd-light-grey:     lighten($dd-grey,         10%);
+$dd-lighter-grey:   lighten($dd-light-grey,   10%);
+$dd-lightest-grey:  lighten($dd-lighter-grey, 15%);
+
+
+$dd-page-background-color:   #F7F5E0;
+$dd-page-font-color:            #333;
+
+$dd-dialog-background-color: #afb8c2;
+$dd-dialog-border-right-color:  #999;
+$dd-dialog-border-left-color:   #999;
+$dd-dialog-border-bottom-color: #BBB;
+
+$dd-headline-color:             #000;
+$dd-2ndary-headline-color:      lighten($dd-headline-color, 20%);
+$dd-tertiary-headline-color:    lighten($dd-headline-color, 40%);
+
+$dd-anchor-color:               #03c;
+$dd-anchor-background-color: #D668A8;
+$dd-anchor-font-color:         white;
+
+$dd-navlist-font-color:                        #fff; 
+$dd-navlist-item-background-color:          #d668a8;  
+$dd-navlist-item-border-right-color: 1px solid #fff;
+$dd-navlist-item-font-color:                   #fff;
+$dd-navlist-item-hover-background-color:       pink;
+$dd-navlist-item-hover-font-color:             #fff;
+
+
+$dd-topbar-color: $dd-topbar-black;                      // topbar-black per John Gandar request
+$dd-right-topbar-color: lighten($dd-topbar-black, 20%);  // topbar-black per John Gandar request
+$dd-topbar-hover-color: $dd-green;

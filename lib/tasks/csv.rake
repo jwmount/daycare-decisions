@@ -138,7 +138,10 @@ namespace :csv do
           phone.number_or_email = p_hash['Phone']
          # phone.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
           phone.save        
-
+=begin
+  return these once database row limit is raised, using these puts us over the 
+  10,000 row limit at Heroku.
+  
           fax = Rolodex.where( rolodexable_id: provider[:id], kind: 'Fax', rolodexable_type: 'Provider').first_or_create
           fax.number_or_email = p_hash['Fax']
          # fax.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
@@ -148,6 +151,7 @@ namespace :csv do
           email.number_or_email = p_hash['Email Address']
          # email.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
           email.save
+=end
         else
           puts "--Provider could not be saved, Dropped\n"
         end

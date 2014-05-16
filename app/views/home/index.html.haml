@@ -51,7 +51,7 @@
   %br
 
     .content
-      .dialog
+      %dialog
         %h3 See Where Your Child Care Providers Are
         %h4 You Can Refine Your Search Too -- Check the Services And Facilities You Want for Your Child   
         = form_tag({controller: "home", action: "index"}, method: "get") do
@@ -153,18 +153,18 @@
         %h3= l1
         %h4= l2
         = render providers
-     
-      -if !@post_code_provider_ids.empty?
-        - l1, l2, providers = provider_list :post_code, @post_code_provider_ids
-        %h3= l1
-        %h4= l2
-        = render providers
-     
-      -if !@state_provider_ids.empty?
-        - l1, l2, providers = provider_list :state, @state_provider_ids
-        %h3= l1
-        %h4= l2
-        = render providers
+
+/    -if !@post_code_provider_ids.empty?
+/      - l1, l2, providers = provider_list :post_code, @post_code_provider_ids
+/      %h3= l1
+/      %h4= l2
+/      = render providers
+/   
+/    -if !@state_provider_ids.empty?
+/      - l1, l2, providers = provider_list :state, @state_provider_ids
+/      %h3= l1
+/      %h4= l2
+/      = render providers
 
 %br
 %footer
