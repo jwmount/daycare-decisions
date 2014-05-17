@@ -1,5 +1,5 @@
 // Initialize Angular App
-var app = angular.module("app", ['ngAnimate', 'ngSanitize', 'autocomplete']);
+var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomplete']);
 
 
 // Set Config Variables
@@ -17,8 +17,32 @@ app.config(['$httpProvider', function($httpProvider) {
 ]);
 
 
+// Routes
+// -------------------------------
+app.config(function($routeProvider) {
+    $routeProvider.when('/', {
+        // Home
+        templateUrl: "home.html",
+        controller: "HomeController"
+    })
+    .when('/faq', {
+        // FAQ
+        templateUrl: "faq.html"
+        // controller: "FaqController"
+    })
+    .otherwise({
+        // Anything Else
+        redirectTo: '/'
+    });
+});
+
+
+
+// Controllers
+// -------------------------------
+
 // Locations Controller
-app.controller("formCtrl", function($scope, $http, $timeout) {
+app.controller("HomeController", function($scope, $http, $timeout) {
 
     // Fires whenever key is clicked in form.locality field
     // We want to make the API call only when we have two chars in
@@ -61,7 +85,12 @@ app.controller("formCtrl", function($scope, $http, $timeout) {
         // pass the <suggestion> arg directly from autocomplete.js
         if (suggestion)
             params.locality = suggestion;
-        // console.log(params);
+
+        // Remove any explicit calls to items equal to "false"
+        // (for example if a checkbox is checked, then unchecked)
+        params = remove_false_attributes(params);
+
+        console.log(params);
         $http({ method: 'GET', url: app.providers_api_call, params: params })
             .success(function(data) {
                 $scope.providers = data;
@@ -72,4 +101,16 @@ app.controller("formCtrl", function($scope, $http, $timeout) {
             });
     }
 });
+
+
+// Helper function
+remove_false_attributes = function(obj) {
+    for (var prop in obj) {
+        // console.log('prop: ' + prop);
+        // console.log('obj[prop]: ' + obj[prop]);
+        if (obj.hasOwnProperty(prop) && obj[prop] === false)
+            delete obj[prop];
+    }
+    return obj;
+}
 
