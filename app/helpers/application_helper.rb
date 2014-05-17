@@ -7,7 +7,7 @@ module ApplicationHelper
     ]
   end
 
-  def language_options
+  def XXlanguage_options
     [
       'Arabic', 'Cantonese', 'Czech', 'English', 'French', 'Hebrew', 'Hungarian', 
       'Italian', 'Japanese', 'German', 'Hindi',
