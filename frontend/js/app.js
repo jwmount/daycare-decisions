@@ -61,7 +61,12 @@ app.controller("formCtrl", function($scope, $http, $timeout) {
         // pass the <suggestion> arg directly from autocomplete.js
         if (suggestion)
             params.locality = suggestion;
-        // console.log(params);
+
+        // Remove any explicit calls to items equal to "false"
+        // (for example if a checkbox is checked, then unchecked)
+        params = remove_false_attributes(params);
+
+        console.log(params);
         $http({ method: 'GET', url: app.providers_api_call, params: params })
             .success(function(data) {
                 $scope.providers = data;
@@ -72,4 +77,16 @@ app.controller("formCtrl", function($scope, $http, $timeout) {
             });
     }
 });
+
+
+// Helper function
+remove_false_attributes = function(obj) {
+    for (var prop in obj) {
+        // console.log('prop: ' + prop);
+        // console.log('obj[prop]: ' + obj[prop]);
+        if (obj.hasOwnProperty(prop) && obj[prop] === false)
+            delete obj[prop];
+    }
+    return obj;
+}
 
