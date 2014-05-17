@@ -1,5 +1,5 @@
 // Initialize Angular App
-var app = angular.module("app", ['ngAnimate', 'ngSanitize', 'autocomplete']);
+var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomplete']);
 
 
 // Set Config Variables
@@ -17,8 +17,32 @@ app.config(['$httpProvider', function($httpProvider) {
 ]);
 
 
+// Routes
+// -------------------------------
+app.config(function($routeProvider) {
+    $routeProvider.when('/', {
+        // Home
+        templateUrl: "home.html",
+        controller: "HomeController"
+    })
+    .when('/faq', {
+        // FAQ
+        templateUrl: "faq.html"
+        // controller: "FaqController"
+    })
+    .otherwise({
+        // Anything Else
+        redirectTo: '/'
+    });
+});
+
+
+
+// Controllers
+// -------------------------------
+
 // Locations Controller
-app.controller("formCtrl", function($scope, $http, $timeout) {
+app.controller("HomeController", function($scope, $http, $timeout) {
 
     // Fires whenever key is clicked in form.locality field
     // We want to make the API call only when we have two chars in
