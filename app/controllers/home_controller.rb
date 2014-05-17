@@ -2,53 +2,20 @@ class HomeController < ApplicationController
   
   def index
 
-    if params.include? :locality_provider_ids
-      @locality_provider_ids = []    
-    #@post_code_provider_ids = []
-    #@state_provider_ids = []
-    #@addresses = []
+    @provider_ids = []    
+
+    if params.include? :locality
     
       place = params[:locality].split(', ')
       locality = place[0]
       state = place[1]
-      @addresses = Address.where( "locality = ? and state = ?", locality, state).select("addressable_id")
-      if !@addresses.nil?
-        @addresses.each do |a|
-          @locality_provider_ids << a.addressable_id
-        end
-      end
-    else
-      @locality_provider_ids = []
-    end
-=begin    
-    unless params[:locality].nil?
-      @addresses = Address.where(  :locality => (params[:locality]).upcase ).select("addressable_id")
-      if !@addresses.nil?
-        @addresses.each do |a|
-          @locality_provider_ids << a.addressable_id
-        end
-      end      
-    end
+      @addresses = Address.where( "locality = ?",locality).where("state = ?",state).select("addressable_id")
+      unless @addresses.empty?
+        @addresses.each { |a| @provider_ids << a.addressable_id }
+      end #unless
+    end #if
 
-    unless params[:post_code].nil?
-      @addresses = Address.where( :post_code => params[:post_code]).select("addressable_id")
-      if !@addresses.nil?
-        @addresses.each do |a|
-          @post_code_provider_ids << a.addressable_id
-        end
-      end      
-    end
-
-    if !params[:state].nil?
-      @addresses = Address.where( :state => params[:state]).select("addressable_id")
-      if !@addresses.nil?
-        @addresses.each do |a|
-          @state_provider_ids << a.addressable_id
-        end
-      end      
-    end
-=end
-    
+    @provider_ids
     respond_to do |format|
       format.html
       format.json { render json: [@providers] }

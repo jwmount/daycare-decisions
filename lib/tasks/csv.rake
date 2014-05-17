@@ -6,11 +6,6 @@ namespace :csv do
   desc "Load provider.csv files"
 
   def sanitize_utf8(string)
-    if string.nil?
-      'nil'
-    else
-      puts '...sanitize: ' + string
-    end
     return nil if string.nil?
     return string if string.valid_encoding?
     string.chars.select { |c| c.valid_encoding? }.join
@@ -19,11 +14,15 @@ namespace :csv do
   def townify
     towns = ["Brisbane", "Southport", "Broadbeach", "Mooloombaba", "Indiroopulli"]
     town = towns[rand(5)]
+    # force single town for testing
+    town = 'Broadbeach'
   end
 
   def statify
     states = ["QLD", "NSW", "NT", "VIC", "SA", "WA", "TAS"]
     state = states[rand(7)]
+    # seems to work better if forced to one state...?
+    state = 'QLD'
   end
 
 #
@@ -172,7 +171,7 @@ namespace :csv do
   
     @count = 0
     @started = Time.now()
-    100.times do 
+    10.times do 
     
       provider = Provider.where(:name => "Service Name-#{rand(3000).to_s}").first_or_create
       provider.age_range                = 'Age Range'

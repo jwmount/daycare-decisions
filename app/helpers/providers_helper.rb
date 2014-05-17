@@ -34,7 +34,7 @@ module ProvidersHelper
     # Nothing in ids array, get to quit early.
     return "No providers were found in #{params["#{area}"]}.", '', [] if ids.empty?
   
-    # 
+    # Return what services were clicked, the requested locality, and the qry to use to get them.
     @services_requested, @requested, @qry = list_services(params)
 
     @r1 = "There are #{ids.count} providers in #{params["#{area}"]}."
