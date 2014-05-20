@@ -76,7 +76,7 @@
 //
 // Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs   Classes and IDs
 //
-  .dialog {
+  #dialog {
     background-color:        $dd-dialog-background-color;
     display:                                       block;
     width:                                           33%;
@@ -96,12 +96,14 @@
   .floatleft { 
     float:                                         left; 
     margin:                               0 0 10px 10px;
+    background-color: red;
     }
 
   .floatright { 
     float:                                        right; 
     margin:                               0 0 10px 10px;
     clear:                                        right;
+    background-color: yellow
     }
   
   .sidebar {

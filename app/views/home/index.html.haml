@@ -3,17 +3,17 @@
 
       
     .content  
-    = image_tag  "ad.png", :class => "floatright"
-    = image_tag  "ad.png", :class => "floatright"
+    = image_tag  "ad.png",   :class => "floatright"
+    = image_tag  "ad.png",   :class => "floatright"
     = image_tag  "ad_2.png", :class => "floatright"
     = image_tag  "ad_3.gif", :class => "floatright"
-    = image_tag  "ad.png", :class => "floatright"
+    = image_tag  "ad.png",   :class => "floatright"
     = image_tag  "ad_2.png", :class => "floatright"
     = image_tag  "ad_3.gif", :class => "floatright"
-    = image_tag  "ad.png", :class => "floatright"
+    = image_tag  "ad.png",   :class => "floatright"
     = image_tag  "ad_2.png", :class => "floatright"
     = image_tag  "ad_3.gif", :class => "floatright"
-    = image_tag  "ad.png", :class => "floatright"
+    = image_tag  "ad.png",   :class => "floatright"
     = image_tag  "ad_2.png", :class => "floatright"
     = image_tag  "ad_3.gif", :class => "floatright"
       
@@ -49,7 +49,8 @@
 
   %br
   %br
-  .dialog
+
+  %div#dialog{ :width => "66%" }
     %h3 See Where Your Child Care Providers Are
     = form_tag({controller: "home", action: "index"}, method: "get") do
 
@@ -136,6 +137,8 @@
     %h3= l1
     %h2= l2
     = render providers
+
+ 
 
 
 %br
