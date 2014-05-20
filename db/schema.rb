@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
     t.boolean  "real_grass"
 
-    t.boolean  "security_access"
+    t.boolean  "secure_access"
     t.string   "service_approval_number"
     t.boolean  "sibling_priority",   :default => false
 

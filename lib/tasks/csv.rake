@@ -101,12 +101,12 @@ namespace :csv do
 
         provider.real_grass               = p_hash['Real Grass']          == ('Y' || 'T') ? true : false
 
-        provider.security_access          = p_hash['Security Access']     == ('Y' || 'T') ? true : false
+        provider.secure_access            = p_hash['Secure Access']       == ('Y' || 'T') ? true : false
         provider.service_approval_number  = p_hash['ServiceApprovalNumber']
         provider.sibling_priority         = p_hash['Sibling Priority']    == ('Y' || 'T') ? true : false
 
-        provider.technology              = p_hash['Technology'] == ('Y' || 'T') ? true : false
-        provider.technology_list         = p_hash['Technology_list']
+        provider.technology               = p_hash['Technology'] == ('Y' || 'T') ? true : false
+        provider.technology_list          = p_hash['Technology_list']
 
         provider.url                      = p_hash['Website'] 
 
@@ -218,12 +218,12 @@ namespace :csv do
 
       provider.real_grass               = rand( 2 )
       
-      provider.security_access          = rand( 2 )
+      provider.secure_access            = rand( 2 )
       provider.service_approval_number  = 'Service Approval Number'
       provider.sibling_priority         = rand( 2 )
       
-      provider.technology              = rand( 2 )
-      provider.technology_list         = "iPads"
+      provider.technology               = rand( 2 )
+      provider.technology_list          = "iPads"
       
       provider.url                      = 'www.wsj.com'       
       provider.vacancies                = rand( 2 )

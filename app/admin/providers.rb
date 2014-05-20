@@ -50,8 +50,8 @@ ActiveAdmin.register Provider do
   scope :real_grass do |providers|
     providers.where ({real_grass: true})
   end
-  scope :security_access do |providers|
-    providers.where ({security_access: true})
+  scope :secure_access do |providers|
+    providers.where ({secure_access: true})
   end
   scope :sibling_priority do |providers|
     providers.where ({sibling_priority: true})
@@ -172,8 +172,8 @@ ActiveAdmin.register Provider do
       f.input :food_provided
       f.input :guest_speakers
       f.input :kindergarten,
-              :label => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_LABEL,
-              :hint => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_HINT
+              :label         => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_LABEL,
+              :hint          => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_HINT
       f.input :languages,
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
@@ -195,7 +195,7 @@ ActiveAdmin.register Provider do
 
       f.input :real_grass
 
-      f.input :security_access
+      f.input :secure_access
       f.input :service_approval_number
       f.input :sibling_priority
 
@@ -320,7 +320,7 @@ ActiveAdmin.register Provider do
       row ( "Real Grass" ) { status_tag (provider.real_grass ? "YES" : "No"), (provider.real_grass ? :ok : :error) }
       row ( "Rolodex" ) {render provider.rolodexes}
 
-      row ( "Secure Access" ) { status_tag (provider.security_access ? "YES" : "No"), (provider.security_access ? :ok : :error) }
+      row ( "Secure Access" ) { status_tag (provider.secure_access ? "YES" : "No"), (provider.secure_access ? :ok : :error) }
       row :service_approval_number
       row ( "Services") { render provider.services}
       row ( "Sibling Given Priority" ) { status_tag (provider.sibling_priority ? "YES" : "No"), (provider.sibling_priority ? :ok : :error) }
@@ -413,7 +413,7 @@ ActiveAdmin.register Provider do
 
     :real_grass,
 
-    :security_access, :service_approval_number, :sibling_priority, 
+    :secure_access, :service_approval_number, :sibling_priority, 
     
     :technology, :technology_list,
 
