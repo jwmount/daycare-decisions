@@ -8,7 +8,6 @@ app.server = "http://daycare-decisions.herokuapp.com/api";
 app.locations_api_call = app.server + "/locations/";
 app.providers_api_call = app.server + "/providers/";
 
-
 // Set headers for CORS
 app.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;

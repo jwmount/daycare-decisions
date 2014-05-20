@@ -106,6 +106,7 @@
                                     <input type="checkbox" name="languages" ng-change="updateProviders()" ng-model="form.languages">
                                     Languages
                                 </label>
+                                <br/>
                                 <label>
                                     <input type="checkbox" name="real_grass" ng-change="updateProviders()" ng-model="form.real_grass">
                                     Real Grass
@@ -122,6 +123,7 @@
                                     <input type="checkbox" name="technology" ng-change="updateProviders()" ng-model="form.technology">
                                     Technology
                                 </label>
+                                <br/>
                                 <label>
                                     <input type="checkbox" name="vacancies" ng-change="updateProviders()" ng-model="form.vacancies">
                                     Vacancies
@@ -151,7 +153,7 @@
                 <section>
                     <article>
                         <h4>{{provider.name}}</h4>
-                        <p>{{provider.conditions_on_approval}}</p>
+                        <p>{{provider.care_offered}}</p>
                         <strong>{{provider.age_range}}</strong>
                     </article>
                 </section>

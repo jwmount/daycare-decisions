@@ -187,7 +187,7 @@ namespace :csv do
       provider.cloth_nappies            = rand( 2 )
       provider.conditions_on_approval   = 'Conditions on Approval'
       
-      provider.description              = 'Description'
+      provider.description              = 'Description text goes here...'
       provider.disposable_nappies       = rand( 2 )
       
       provider.extended_hours_for_kindys= rand( 2 )
