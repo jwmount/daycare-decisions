@@ -152,8 +152,9 @@
             <div class="providers" ng-repeat="provider in providers">
                 <section>
                     <article>
-                        <h4>{{provider.name}}</h4>
-                        <p>{{provider.care_offered}}</p>
+                        <h4>{{provider.name}} - {{provider.care_offered}}</h4>
+                        <p>{{provider.description}}</p>
+                        <h5>{{provider.additional_activities_list}}</h5>
                         <strong>{{provider.age_range}}</strong>
                     </article>
                 </section>
