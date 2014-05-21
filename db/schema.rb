@@ -175,6 +175,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.boolean  "cloth_nappies"
 
     t.text     "description",             :length => 1000
+    t.boolean  "disability_friendly"
+    t.string   "disabilities_list"
     t.boolean  "disposable_nappies"
 
     t.boolean  "excursions"

@@ -15,14 +15,14 @@ namespace :csv do
     towns = ["Brisbane", "Southport", "Broadbeach", "Mooloombaba", "Indiroopulli"]
     town = towns[rand(5)]
     # force single town for testing
-    town = 'Broadbeach'
+    # town = 'Broadbeach'
   end
 
   def statify
     states = ["QLD", "NSW", "NT", "VIC", "SA", "WA", "TAS"]
     state = states[rand(7)]
-    # seems to work better if forced to one state...?
-    state = 'QLD'
+    # Force to single state for testing
+    # state = 'QLD'
   end
 
 #
@@ -68,6 +68,8 @@ namespace :csv do
         provider.conditions_on_approval   = p_hash['Conditions on Approval']
 
         provider.description              = p_hash['Description']
+        provider.disability_friendly      = p_hash['Disability Friendly'] == ('Y' || 'T')
+        provider.disabilities_list        = p_hash['Disability List']
         provider.disposable_nappies       = p_hash['Disposable Nappies']  == ('Y' || 'T') ? true : false
 
         provider.extended_hours_for_kindys= p_hash['Extended Hours For Kindys'] == ('Y' || 'T') ? true : false
@@ -188,6 +190,8 @@ namespace :csv do
       provider.conditions_on_approval   = 'Conditions on Approval'
       
       provider.description              = 'Description text goes here...'
+      provider.disability_friendly      = rand( 2 )
+      provider.disabilities_list        = 'ADD, Allergies, Diet restrictions'
       provider.disposable_nappies       = rand( 2 )
       
       provider.extended_hours_for_kindys= rand( 2 )

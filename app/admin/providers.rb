@@ -17,6 +17,9 @@ ActiveAdmin.register Provider do
   scope :cloth_nappies do |providers|
     providers.where ({cloth_nappies: true})
   end
+  scope :disability_friendly do |providers|
+    providers.where ({disability_friendly: true})
+  end
   scope :disposable_nappies do |providers|
     providers.where ({disposable_nappies: true})
   end
@@ -80,13 +83,14 @@ ActiveAdmin.register Provider do
   filter :company, :label => AdminConstants::ADMIN_PROVIDER_COMPANY_FILTER
   filter :name
   filter :care_offered, :label => AdminConstants::ADMIN_PROVIDER_CARE_OFFERED_FILTER
-  filter :NQS_rating, :label => AdminConstants::ADMIN_PROVIDER_OVERALLL_RATING_FILTER
-  filter :fee, :label => AdminConstants::ADMIN_PROVIDER_FEE_FILTER
   filter :description
-  filter :url, :label => AdminConstants::ADMIN_PROVIDER_URL_FILTER
+  filter :disabilities_list
+  filter :fee, :label => AdminConstants::ADMIN_PROVIDER_FEE_FILTER
   filter :languages_list, :label => AdminConstants::ADMIN_PROVIDER_LANGUAGES_FILTER
+  filter :NQS_rating, :label => AdminConstants::ADMIN_PROVIDER_OVERALLL_RATING_FILTER
   filter :technology_list, :label => AdminConstants::ADMIN_PROVIDER_TECHNOLOGIES_AVAILABLE_FILTER
   filter :vacancies_list, :label => AdminConstants::ADMIN_PROVIDER_VACANCY_LIST          # Vacancies 0-12mths 13-24mths 25-35 Months 36 Months – Pre-schoolOver Preschool age
+  filter :url, :label => AdminConstants::ADMIN_PROVIDER_URL_FILTER
   filter :waitlist_fee
 
   index do
@@ -149,9 +153,8 @@ ActiveAdmin.register Provider do
               :placeholder  => AdminConstants::ADMIN_PROVIDER_NQS_RATING_PLACEHOLDER
       
       f.input :care_offered,
-              :collection    => care_options,
-              :hint          => AdminConstants::ADMIN_PROVIDER_CARE_HINT,
-              :placeholder   => AdminConstants::ADMIN_PROVIDER_CARE_PLACEHOLDER
+              :collection    => AdminConstants::ADMIN_PROVIDER_CARE_OFFERED_COLLECTION,
+              :hint          => AdminConstants::ADMIN_PROVIDER_CARE_HINT
 
       f.input :age_range,
               :hint          => AdminConstants::ADMIN_PROVIDER_AGE_HINT,
@@ -166,6 +169,10 @@ ActiveAdmin.register Provider do
       f.input :air_conditioning
       f.input :bus_service
       f.input :cloth_nappies
+      f.input :disability_friendly
+      f.input :disabilities_list,
+              :label         => AdminConstants::ADMIN_PROVIDER_DISABILITY_FRIENDLY_LABEL,
+              :hint          => AdminConstants::ADMIN_PROVIDER_DISABILITY_FRIENDLY_HINT
       f.input :disposable_nappies
       f.input :excursions
       f.input :extended_hours_for_kindys
@@ -175,9 +182,9 @@ ActiveAdmin.register Provider do
               :label         => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_LABEL,
               :hint          => AdminConstants::ADMIN_PROVIDER_KINDERGARTEN_HINT
       f.input :languages,
+              :collection    => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LIST_COLLECTION,
               :label         => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LABEL,
-              :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT,
-              :placeholder   => AdminConstants::ADMIN_PROVIDER_LANGUAGE_PLACEHOLDER
+              :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_HINT
       f.input :languages_list,
               :hint          => AdminConstants::ADMIN_PROVIDER_LANGUAGE_LIST_HINT
       f.input :online_enrollment
@@ -283,6 +290,8 @@ ActiveAdmin.register Provider do
       row :created_at
 
       row :description
+      row ( "Disability Friendly") { status_tag (provider.disability_friendly ? "YES" : "No"), (provider.disability_friendly ? :ok : :error) }
+      row :disabilities_list
       row ( "Disposable Nappies" ) { status_tag (provider.disposable_nappies ? "YES" : "No"), (provider.disposable_nappies ? :ok : :error) }
 
       row ( "Excursions" ) { status_tag (provider.excursions ? "YES" : "No"), (provider.excursions ? :ok : :error) }
@@ -388,8 +397,15 @@ ActiveAdmin.register Provider do
     :approved_places, 
 
     :bus_service, 
-    :care_offered, :cloth_nappies, :company_id, 
-    :description, :disposable_nappies,
+
+    :care_offered, 
+    :cloth_nappies, 
+    :company_id,
+
+    :description, 
+    :disposable_nappies,
+    :disability_friendly,
+    :disabilities_list,
 
     :extended_hours_for_kindys, 
     :excursions, 
