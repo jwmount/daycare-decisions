@@ -92,7 +92,7 @@ module AdminConstants
   ADMIN_PROVIDER_NAME_PLACEHOLDER        = "ABC Child Care"
 
   ADMIN_PROVIDER_CARE_HINT               = "Type of care provided."
-  ADMIN_PROVIDER_CARE_OFFERED_COLLECTION = %w[ 'Long Day Care', 'Home Day Care', 'Occaisional Care', 'Kindy Care', 'Before or After School Care' ]
+  ADMIN_PROVIDER_CARE_OFFERED_COLLECTION = [ "Long Day Care", "Home Day Care", "Occaisional Care", "Kindy Care", "Before or After School Care" ]
 
   ADMIN_PROVIDER_COMPANY_HINT            = "Company that owns or operates this facility."
 
@@ -111,9 +111,9 @@ module AdminConstants
   ADMIN_PROVIDER_LANGUAGE_HINT           = "Language options offered.  If checked please list the languages in Languages list."
   ADMIN_PROVIDER_LANGUAGE_LIST_HINT      = "List languages used or for which training is available."
   ADMIN_PROVIDER_LANGUAGE_LIST_COLLECTION= %w[
-      'Arabic', 'Cantonese', 'Czech', 'English', 'French', 'Hebrew', 'Hungarian', 
-      'Italian', 'Japanese', 'German', 'Hindi',
-      'Mandarin', 'Portugese', 'Russian', 'Signed (hearing impaired)', 'Spanish', 'Swedish', 'Thai'
+      Arabic Cantonese Czech English French Hebrew Hungarian 
+      Italian apanese, German, Hindi,
+      Mandarin Portugese, Russian, "Signed (hearing impaired)", Spanish, Swedish, Thai
       ]
   ADMIN_PROVIDER_VACANCIES_LIST_HINT     = "If there are vacancies, list age groups or categories open.  For example, ages 2 - 4, 2 places."
 

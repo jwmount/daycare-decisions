@@ -50,7 +50,8 @@ class Provider < ActiveRecord::Base
   end
 
   def set_address
-    unless self.addresses.nil?
+    self.address = []
+    unless self.addresses.empty?
       self.address[:street] = self.addresses[0].street
       self.address[:locality] = self.addresses[0].locality
       self.address[:post_code] = self.addresses[0].post_code
