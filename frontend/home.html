@@ -153,7 +153,9 @@
                 <section>
                     <article>
                         <h4>{{provider.name}} - {{provider.care_offered}}</h4>
-                        <p>{{provider.address}}</p>
+                        <p>{{provider.address["street"]}}, 
+                           {{provider.address["locality"]}}, 
+                           {{provider.address["state"]}}</p>
                         <p>{{provider.description}}</p>
                         <h5>{{provider.additional_activities_list}}</h5>
                         <strong>{{provider.age_range}}</strong>

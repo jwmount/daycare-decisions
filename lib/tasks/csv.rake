@@ -119,8 +119,12 @@ namespace :csv do
         provider.waitlist_online          = p_hash['Online waitlist']     == ('Y' || 'T') ? true : false
         provider.waitlist_reimbursed      = p_hash['Waitlist refundable'] == ('Y' || 'T') ? true : false
 
-        #provider.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
-
+        # HACK -- Move address into Provider using :address serialized column.
+        provider.address = {}
+        provider.address[:street]         = p_hash['Service Address']
+        provider.address[:locality]       = p_hash['Suburb'].split.map(&:capitalize).*(' ')
+        provider.address[:state]          = p_hash['State']
+        provider.address[:post_code]      = p_hash['Post Code']
 
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
@@ -237,6 +241,13 @@ namespace :csv do
       provider.waitlist_online          = rand( 2 )
       provider.waitlist_reimbursed      = rand( 2 )
       
+      # HACK -- Move address into Provider using :address serialized column.
+      provider.address = {}
+      provider.street         = "#{rand(200).to_s} Iveery St."
+      provider.locality       = townify
+      provider.state          = statify
+      provider.post_code      = '4000'
+
         # Save provider but only create polymorphic dependents if successful.
         if provider.save!
           @count += 1
