@@ -3,7 +3,7 @@ var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomp
 
 
 // Set Config Variables
-// var server = "http://localhost:8080/providers/1";
+// var server = "http://localhost:8082/providers/1";
 app.server = "http://daycare-decisions.herokuapp.com/api";
 app.locations_api_call = app.server + "/locations/";
 app.providers_api_call = app.server + "/providers/";

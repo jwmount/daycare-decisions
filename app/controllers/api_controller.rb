@@ -62,6 +62,7 @@ class ApiController < ApplicationController
   # Return all providers, or if filters are present, filtered ones.
   # <host>/api/providers
   # <host>/api/providers/?locality=Brisbane%2c%20&real_grass=1
+
   def providers
     filter = params.except :utf8, :commit, :action, :controller
     if filter.empty?

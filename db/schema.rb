@@ -233,6 +233,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
     t.datetime "created_at"
     t.datetime "updated_at"
+
+    t.string   "address"
   end
 
   create_table "requirements", force: true do |t|
