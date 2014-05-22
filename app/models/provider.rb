@@ -2,7 +2,6 @@ class Provider < ActiveRecord::Base
 
   belongs_to :company
   after_initialize :set_defaults
-  before_save :reset_address
 
   serialize :address
 
@@ -50,15 +49,6 @@ class Provider < ActiveRecord::Base
     end
   end
 
-  def reset_address
-    self.address["street"] = self.addresses[0].street
-    self.address["locality"] = self.addresses[0].locality
-    self.address["state"] = self.addresses[0].state
-    self.address["post_code"] = self.addresses[0].post_code
-    self.address["country"] = self.addresses[0].country
-    self.address["latitude"] = self.addresses[0].latitude
-    self.address["longitude"] = self.addresses[0].longitude  
-  end
 
 end
 

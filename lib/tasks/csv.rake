@@ -54,6 +54,7 @@ namespace :csv do
         # get provider if one exists (validated to unique so only one can exist) or
         # create new one.
         provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
+        provider.address                    = [p_hash['Service Address'], p_hash['locality'], p_hash['state'], p_hash['state'] ].join(', ')
         provider.age_range                  = p_hash['Age Range']
         provider.additional_activities      = p_hash['Additional Activities'] == ('Y' || 'T')
         provider.additional_activities_list = p_hash['Additional Activities List']
@@ -119,12 +120,6 @@ namespace :csv do
         provider.waitlist_online          = p_hash['Online waitlist']     == ('Y' || 'T') ? true : false
         provider.waitlist_reimbursed      = p_hash['Waitlist refundable'] == ('Y' || 'T') ? true : false
 
-        # HACK -- Move address into Provider using :address serialized column.
-        provider.address = {}
-        provider.address[:street]         = p_hash['Service Address']
-        provider.address[:locality]       = p_hash['Suburb'].split.map(&:capitalize).*(' ')
-        provider.address[:state]          = p_hash['State']
-        provider.address[:post_code]      = p_hash['Post Code']
 
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.

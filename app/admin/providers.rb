@@ -104,6 +104,7 @@ ActiveAdmin.register Provider do
       render provider.services
     end
 
+    column :address
     column :company, :sortable => 'name'
 
     column :description
@@ -224,6 +225,8 @@ ActiveAdmin.register Provider do
               
     end
 
+    f.input :address
+
     f.inputs do
       f.has_many :addresses, :allow_destroy => true, :as => :boolean, :heading => 'Address or Location', :new_record => true do |addr|
           addr.input :street
@@ -232,7 +235,6 @@ ActiveAdmin.register Provider do
           addr.input :post_code
         end
       end
-
 
     f.inputs "Rolodexes" do
       f.has_many :rolodexes, :allow_destroy => true, :as => :boolean, :new_record => true do |r|
@@ -271,7 +273,8 @@ ActiveAdmin.register Provider do
 
   show :title => :name do
     attributes_table do
-      row ( "Address") { render provider.addresses}
+#      row ( "Address") { render provider.addresses}
+      row :address
       row ( "Additional Activities" ) { status_tag (provider.additional_activities ? "YES" : "No"), (provider.additional_activities ? :ok : :error) }
       row :additional_activities_list
       row ( "Age Range") { provider.age_range }
@@ -391,6 +394,7 @@ ActiveAdmin.register Provider do
   permit_params(  :id,
     :additional_activities, 
     :additional_activities_list, 
+    :address,
     :age_range, 
     :air_conditioning, 
     :approval_number,

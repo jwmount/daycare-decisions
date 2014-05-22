@@ -1,7 +1,7 @@
 class Address < ActiveRecord::Base
 
   after_initialize :set_defaults
-
+  
   belongs_to :addressable, polymorphic: true
   
   # add geocodes on insertion, c.f. http://www.rubygeocoder.com/
@@ -31,4 +31,5 @@ class Address < ActiveRecord::Base
     end
   end
  
+
 end
