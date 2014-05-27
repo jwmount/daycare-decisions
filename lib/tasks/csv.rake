@@ -108,12 +108,12 @@ namespace :csv do
         provider.service_approval_number  = p_hash['ServiceApprovalNumber']
         provider.sibling_priority         = p_hash['Sibling Priority']    == ('Y' || 'T') ? true : false
 
-        provider.technology               = p_hash['Technology'] == ('Y' || 'T') ? true : false
-        provider.technology_list          = p_hash['Technologies_list']
+        provider.technology               = p_hash['Technology']          == ('Y' || 'T') ? true : false
+        provider.technologies_list        = p_hash['Technologies_list']
 
         provider.url                      = p_hash['Website'] 
 
-        provider.vacancies                = p_hash['Vacancies'] == ('Y' || 'T') ? true : false     
+        provider.vacancies                = p_hash['Vacancies']           == ('Y' || 'T') ? true : false     
         provider.vacancies_list           = p_hash['Vacancies_list']
         provider.vaccinations_compulsory  = p_hash['Vaccinactions Compulsory'] == ('Y' || 'T') ? true : false
         provider.waitlist_fee             = p_hash['Waitlist Fee']    

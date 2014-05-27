@@ -209,7 +209,7 @@ ActiveAdmin.register Provider do
       f.input :sibling_priority
 
       f.input :technology
-      f.input :technology_list
+      f.input :technologies_list
 
       f.input :url
 

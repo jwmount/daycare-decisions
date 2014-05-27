@@ -172,11 +172,12 @@
                         <h5 ng-show=expand> Vacancies: {{provider.vacancies_list}} </h5>
 
                         <!-- we should be able to iterate Object.keys, 
-                             but this doesn't see to work
+                             but this doesn't seem to work, are these properties
+                             no ennumerable?
                         -->
-                        <div class="provider-properties" ng-repeat="key in Object.keys(provider)">
-                            <h5 ng-show=provider&&expand> {{key}} </h5>
-                        </div>
+                            <div class="provider-properties" ng-repeat="key in Object.keys(provider)">
+                                <h5 ng-show=provider&&expand> {{key}} </h5>
+                            </div>
 
                     </article>
                   </mouseleave>
