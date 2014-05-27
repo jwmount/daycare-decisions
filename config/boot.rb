@@ -3,7 +3,7 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
-ENV['VERSION'] = "v0.1.126. &copy Copyright Daycare Decisions, DBA, 2014."
+ENV['VERSION'] = "v0.1.126a. &copy Copyright Daycare Decisions, DBA, 2014."
 
 # Google Client side Geocoding
 # https://maps.googleapis.com/maps/api/geocode/json?address=5+St+Kilda+Ave.,+Broad+Beach,QLD,Postal_code+4218,Australia,&sensor=false&key=AIzaSyDVUWaiCEzOlXjYsSCJaKlAOwKcnqDA7Cs

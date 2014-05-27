@@ -109,7 +109,7 @@ namespace :csv do
         provider.sibling_priority         = p_hash['Sibling Priority']    == ('Y' || 'T') ? true : false
 
         provider.technology               = p_hash['Technology'] == ('Y' || 'T') ? true : false
-        provider.technology_list          = p_hash['Technology_list']
+        provider.technology_list          = p_hash['Technologies_list']
 
         provider.url                      = p_hash['Website'] 
 
@@ -226,7 +226,7 @@ namespace :csv do
       provider.sibling_priority         = rand( 2 )
       
       provider.technology               = rand( 2 )
-      provider.technology_list          = "iPads"
+      provider.technologies_list        = "iPads"
       
       provider.url                      = 'www.wsj.com'       
       provider.vacancies                = rand( 2 )
