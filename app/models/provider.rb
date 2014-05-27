@@ -3,8 +3,6 @@ class Provider < ActiveRecord::Base
   belongs_to :company
   after_initialize :set_defaults
 
-  serialize :address
-
   #has_many :waitlist_applications
   has_and_belongs_to_many :guardians
 
@@ -45,7 +43,6 @@ class Provider < ActiveRecord::Base
  # Best practice in Rails is set defaults here and not in database
   def set_defaults
     unless persisted?    
-      self.address   ||= {}
     end
   end
 

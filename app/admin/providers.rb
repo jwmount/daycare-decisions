@@ -105,6 +105,7 @@ ActiveAdmin.register Provider do
     end
 
     column :address
+
     column :company, :sortable => 'name'
 
     column :description
@@ -222,10 +223,12 @@ ActiveAdmin.register Provider do
       f.input :waitlist_reimbursed
       f.input ('waitlist_fee') { number_to_currency(provider.waitlist_fee) }
 
+      f.input :address,
+              :hint          => AdminConstants::ADMIN_PROVIDER_ADDRESS_HINT,
+              :placeholder   => AdminConstants::ADMIN_PROVIDER_ADDRESS_PLACEHOLDER
               
     end
 
-    f.input :address
 
     f.inputs do
       f.has_many :addresses, :allow_destroy => true, :as => :boolean, :heading => 'Address or Location', :new_record => true do |addr|
@@ -311,6 +314,7 @@ ActiveAdmin.register Provider do
       row (:kindergarten) { status_tag (provider.kindergarten ? "Yes" : "no"), (provider.kindergarten ? :ok : :error) }
 
       row :languages
+      row :languages_list
       row :legal_name
 
       row :NQS_rating
@@ -338,8 +342,11 @@ ActiveAdmin.register Provider do
       row ( "Sibling Given Priority" ) { status_tag (provider.sibling_priority ? "YES" : "No"), (provider.sibling_priority ? :ok : :error) }
 
       row ( "Technology" ) { status_tag (provider.technology ? "YES" : "No"), (provider.technology ? :ok : :error) }
+      row :technologies_list
+
       row :updated_at
       row ( "Vacancies" ) { status_tag (provider.vacancies ? "YES" : "No"), (provider.vacancies ? :ok : :error) }
+      row :vacancies_list
       row ( "Vaccinations Compulsory" ) { status_tag (provider.vaccinations_compulsory ? "YES" : "No"), (provider.vaccinations_compulsory ? :ok : :error) }
 
       row ( "Wait List Fee" ) {number_to_currency(provider.waitlist_fee)}
@@ -435,15 +442,15 @@ ActiveAdmin.register Provider do
 
     :secure_access, :service_approval_number, :sibling_priority, 
     
-    :technology, :technology_list,
-
     :provider_approval_number, :provider_legal_name,
 
     :quality_area_rating_1, :quality_area_rating_2, :quality_area_rating_3, :quality_area_rating_4,
     :quality_area_rating_5, :quality_area_rating_6, :quality_area_rating_7, 
     
+    :technology, :technologies_list,
+
     :url,
-    :vacancies,  
+    :vacancies, :vacancies_list,
     :vaccinations_compulsory,
 
     :waitlist_fee, 

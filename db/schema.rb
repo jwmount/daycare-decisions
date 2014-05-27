@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 20140210051608) do
 
     t.boolean  "additional_activities"
     t.string   "additional_activities_list" # Drop down menu: Music, Language, sports program, dance program, learning programs 
+    t.string   "address"
     t.string   "age_range"
     t.boolean  "air_conditioning"    
     t.datetime "approval_granted_on"
@@ -218,8 +219,8 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.string   "service_approval_number"
     t.boolean  "sibling_priority",   :default => false
 
-    t.boolean  "technology"  #Technology        Drop down ipad, smart screens (36mths +)
-    t.string   "technology_list"  #Technology        Drop down ipad, smart screens (36mths +)
+    t.boolean  "technology"         
+    t.string   "technologies_list"
 
     t.string   "url"
 
@@ -234,7 +235,6 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "created_at"
     t.datetime "updated_at"
 
-    t.string   "address"
   end
 
   create_table "requirements", force: true do |t|

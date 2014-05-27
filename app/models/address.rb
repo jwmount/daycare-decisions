@@ -19,9 +19,18 @@ class Address < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode
 
-  def full_address
+  def xfull_address
     [street, locality, state, post_code].compact.join(', ')
   end
+
+  def full_address
+    addr = []
+    [street, locality, state, post_code].each do |item|
+      addr << item unless item.nil?
+    end
+    addr.compact.join(', ')
+  end
+
 
 
  # Best practice in Rails is set defaults here and not in database

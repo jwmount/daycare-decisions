@@ -31,8 +31,9 @@
                                 <article class="left-checkboxes-col">
                                     <label>
                                         <input type="checkbox" name="">
-                                        Long Day Care
+                                        Long Day Care 
                                     </label>
+
                                     <label>
                                         <input type="checkbox" name="">
                                         Family Day Care
@@ -60,11 +61,14 @@
                     </article>
                     <article class="right-column preferences">
                         <h3>What special <strong>preferences</strong> do you have?</h3>
-
+                        
                         <section>
                             <article class="left-checkboxes-col">
                                 <label>
-                                    <input type="checkbox" name="additional_activities" ng-change="updateProviders()" ng-model="form.additional_activities">
+                                    <input type="checkbox" 
+                                           name="additional_activities" 
+                                           ng-change="updateProviders()" 
+                                           ng-model="form.additional_activities">
                                     Additional Activities
                                 </label>
                                 <label>
@@ -137,7 +141,7 @@
                                     Waitlist Online
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="waitlist_reimbursed" ng-change="updateProviders()" ng-model="form.waitlist_reimbursed">
+                                    <input type="checkbox" name="waitlist_reimbursed" ng-change="updateProviders()" ng-model="form.waitlist_reimbursed", ng-change="toggle_label">
                                     Waitlist Fee Reimbursed
                                 </label>
 
@@ -148,19 +152,39 @@
                 </section>
             </form>
 
+
             <!-- Provider Results -->
             <div class="providers" ng-repeat="provider in providers">
                 <section>
+                   <mouseover ng-mouseover="expand = 1">
+                   <mouseleave ng-mouseleave="expand = 0">
                     <article>
                         <h4>{{provider.name}} - {{provider.care_offered}}</h4>
-                        <p>{{provider.address}}</p>
-                        <p>{{provider.description}}</p>
-                        <h5>{{provider.additional_activities_list}}</h5>
-                        <strong>{{provider.age_range}}</strong>
+                        <address>{{provider.address}}</address>
+                        <h5>Fee: ${{provider.fee}} </h5>
+                        <h5 ng-show=expand> {{provider.description}}</h5>
+                        <h5 ng-show=expand> Age range: {{provider.age_range}}</h5>
+                        <h5 ng-show=expand> Hours of operation: {{provider.hours}} </h5> 
+                        <h5 ng-show=expand> Additional Activies: {{provider.additional_activities_list}} </h5>
+                        <h5 ng-show=expand> Disabilities: {{provider.disabilities_list}} </h5>
+                        <h5 ng-show=expand> Languages: {{provider.languages_list}} </h5>
+                        <h5 ng-show=expand> Technologies: {{provider.technologies_list}} </h5>
+                        <h5 ng-show=expand> Vacancies: {{provider.vacancies_list}} </h5>
+
+                        <!-- we should be able to iterate Object.keys, 
+                             but this doesn't see to work
+                        -->
+                        <div class="provider-properties" ng-repeat="key in Object.keys(provider)">
+                            <h5 ng-show=provider&&expand> {{key}} </h5>
+                        </div>
+
                     </article>
+                  </mouseleave>
+                  </mouseover>
+
+                
                 </section>
             </div>
-
         </article>
 
         <!-- Sidebar Ads -->

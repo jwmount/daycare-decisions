@@ -74,6 +74,8 @@ module AdminConstants
 # Provider
 #
   ADMIN_PROVIDER_ADDITIONAL_ACTIVITIES_FILTER  = "Additional activities available"
+  ADMIN_PROVIDER_ADDRESS_HINT                  = "Street, Suburb, State, Post Code"
+  ADMIN_PROVIDER_ADDRESS_PLACEHOLDER           = "Street, Suburb, State, Post Code"
   ADMIN_PROVIDER_COMPANY_FILTER                = "Owner or corporate parent"
   ADMIN_PROVIDER_CARE_OFFERED_FILTER           = "Form of Care"
   ADMIN_PROVIDER_OVERALLL_RATING_FILTER        = "Overall Quality Rating"

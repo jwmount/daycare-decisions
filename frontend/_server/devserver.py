@@ -13,5 +13,4 @@ def index():
 def static(filename):
     return static_file(filename, root=app_path)
 
-
 run(host='localhost', port=8082, debug=True, reloader=True)

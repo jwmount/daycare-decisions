@@ -101,7 +101,10 @@ app.controller("HomeController", function($scope, $http, $timeout) {
     }
 });
 
-
+// Helper function (experimental)
+toggle_chosen_attribute = function() {
+  console.log('prop: chosen');
+}
 // Helper function
 remove_false_attributes = function(obj) {
     for (var prop in obj) {
