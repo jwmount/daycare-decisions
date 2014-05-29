@@ -49,6 +49,10 @@ app.controller("HomeController", function($scope, $http, $timeout) {
     // the autocomplete field further filters the list locally -- no
     // need for another API call.
 
+    $scope.iterProvider = function(provider) {
+      $scope.list = Object.keys(provider);
+    }
+
     // Update Locations  # --> https://github.com/JustGoscha/allmighty-autocomplete
     var list_is_current = false;
     $scope.updateLocations = function() {
@@ -102,7 +106,7 @@ app.controller("HomeController", function($scope, $http, $timeout) {
 });
 
 // Helper function (experimental)
-toggle_chosen_attribute = function() {
+toggleChosenAttribute = function(obj) {
   console.log('prop: chosen');
 }
 // Helper function

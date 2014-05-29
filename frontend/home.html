@@ -68,6 +68,7 @@
                                     <input type="checkbox" 
                                            name="additional_activities" 
                                            ng-change="updateProviders()" 
+                                           ng-change="toggleChosenAttribute()"
                                            ng-model="form.additional_activities">
                                     Additional Activities
                                 </label>
@@ -161,7 +162,11 @@
                     <article>
                         <h4>{{provider.name}} - {{provider.care_offered}}</h4>
                         <address>{{provider.address}}</address>
-                        <h5>Fee: ${{provider.fee}} </h5>
+
+                        <h5>Fee: 
+                            <span>{{provider.fee | currency:" AUD$ "}}</span>
+ 
+
                         <h5 ng-show=expand> {{provider.description}}</h5>
                         <h5 ng-show=expand> Age range: {{provider.age_range}}</h5>
                         <h5 ng-show=expand> Hours of operation: {{provider.hours}} </h5> 
@@ -171,13 +176,13 @@
                         <h5 ng-show=expand> Technologies: {{provider.technologies_list}} </h5>
                         <h5 ng-show=expand> Vacancies: {{provider.vacancies_list}} </h5>
 
-                        <!-- we should be able to iterate Object.keys, 
+                        <!-- we should be able to iterate on Object.keys(provider), 
                              but this doesn't seem to work, are these properties
                              no ennumerable?
-                        -->
-                            <div class="provider-properties" ng-repeat="key in Object.keys(provider)">
-                                <h5 ng-show=provider&&expand> {{key}} </h5>
+                            <div class="provider-properties" ng-repeat="attr in provider">
+                                <h5 ng-show=attr&&expand> {{attr}} </h5>
                             </div>
+                        -->
 
                     </article>
                   </mouseleave>

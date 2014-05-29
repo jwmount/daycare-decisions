@@ -70,7 +70,7 @@ namespace :csv do
 
         provider.description              = p_hash['Description']
         provider.disability_friendly      = p_hash['Disability Friendly'] == ('Y' || 'T')
-        provider.disabilities_list        = p_hash['Disability List']
+        provider.disabilities_list        = p_hash['Disabilities List']
         provider.disposable_nappies       = p_hash['Disposable Nappies']  == ('Y' || 'T') ? true : false
 
         provider.extended_hours_for_kindys= p_hash['Extended Hours For Kindys'] == ('Y' || 'T') ? true : false
@@ -79,6 +79,7 @@ namespace :csv do
 
         provider.fee                      = p_hash['Fees']
         provider.food_provided            = p_hash['Food Provided']       == ('Y' || 'T') ? true : false
+
 
         provider.guest_speakers           = p_hash['Guest Speakers']      == ('Y' || 'T') ? true : false
 
@@ -109,12 +110,12 @@ namespace :csv do
         provider.sibling_priority         = p_hash['Sibling Priority']    == ('Y' || 'T') ? true : false
 
         provider.technology               = p_hash['Technology']          == ('Y' || 'T') ? true : false
-        provider.technologies_list        = p_hash['Technologies_list']
+        provider.technologies_list        = p_hash['Technologies List']
 
         provider.url                      = p_hash['Website'] 
 
         provider.vacancies                = p_hash['Vacancies']           == ('Y' || 'T') ? true : false     
-        provider.vacancies_list           = p_hash['Vacancies_list']
+        provider.vacancies_list           = p_hash['Vacancies List']
         provider.vaccinations_compulsory  = p_hash['Vaccinactions Compulsory'] == ('Y' || 'T') ? true : false
         provider.waitlist_fee             = p_hash['Waitlist Fee']    
         provider.waitlist_online          = p_hash['Online waitlist']     == ('Y' || 'T') ? true : false
@@ -159,6 +160,7 @@ namespace :csv do
       puts "\n\n"
       end
     end
+
   	puts "\n--Finished."
     puts "Providers: #{Provider.count}"
     puts "Addresses: #{Address.count}"
@@ -177,7 +179,7 @@ namespace :csv do
       provider = Provider.where(:name => "Service Name-#{rand(3000).to_s}").first_or_create
       provider.age_range                = 'Age Range'
       provider.additional_activities    = rand( 2 )
-      provider.additional_activities_list = "Physikids"
+      provider.additional_activities_list = "Physikids, Wizkids, Justkids"
       provider.air_conditioning         = rand( 2 )
       provider.approval_granted_on      = Date.today
       provider.approved_places          = 40
