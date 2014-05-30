@@ -24,10 +24,50 @@ app.config(function($routeProvider) {
         templateUrl: "home.html",
         controller: "HomeController"
     })
+    .when('/about', {
+        // ABOUT
+        templateUrl: "about.html"
+        // controller: "AboutController"
+    })
+    .when('/contact', {
+        // ABOUT
+        templateUrl: "contact_us.html"
+        // controller: "contact_usController"
+    })
+    .when('/facts', {
+        // FactSheets
+        templateUrl: "fact_sheets.html"
+        // controller: "fact_sheetsController"
+    })
     .when('/faq', {
         // FAQ
         templateUrl: "faq.html"
         // controller: "FaqController"
+    })
+    .when('/newsletter', {
+        // Newsletter
+        templateUrl: "newsletter.html"
+        // controller: "newsletterController"
+    })
+    .when('/privacy', {
+        // Privacy
+        templateUrl: "privacy_policy.html"
+        // controller: "privacyController"
+    })
+    .when('/providers', {
+        // Providers
+        templateUrl: "provider_services.html"
+        // controller: "provider_servicesController"
+    })
+    .when('/research', {
+        // Research
+        templateUrl: "research.html"
+        // controller: "researchController"
+    })
+    .when('/terms_conditions', {
+        // Terms & Conditions
+        templateUrl: "terms_conditions.html"
+        // controller: "terms_conditionsController"
     })
     .otherwise({
         // Anything Else
