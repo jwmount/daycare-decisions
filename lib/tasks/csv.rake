@@ -5,26 +5,6 @@ require 'uri'
 namespace :csv do
   desc "Load provider.csv files"
 
-  def sanitize_utf8(string)
-    return nil if string.nil?
-    return string if string.valid_encoding?
-    string.chars.select { |c| c.valid_encoding? }.join
-  end
-
-  def townify
-    towns = ["Brisbane", "Southport", "Broadbeach", "Mooloombaba", "Indiroopulli"]
-    town = towns[rand(5)]
-    # force single town for testing
-    # town = 'Broadbeach'
-  end
-
-  def statify
-    states = ["QLD", "NSW", "NT", "VIC", "SA", "WA", "TAS"]
-    state = states[rand(7)]
-    # Force to single state for testing
-    # state = 'QLD'
-  end
-
 #
 # LOAD PROVIDERS
 # $ rake csv:load_providers
@@ -54,7 +34,7 @@ namespace :csv do
         # get provider if one exists (validated to unique so only one can exist) or
         # create new one.
         provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
-        provider.address                    = [p_hash['Service Address'], p_hash['locality'], p_hash['state'], p_hash['state'] ].join(', ')
+        provider.address                    = construct_address p_hash
         provider.age_range                  = p_hash['Age Range']
         provider.additional_activities      = p_hash['Additional Activities'] == ('Y' || 'T')
         provider.additional_activities_list = p_hash['Additional Activities List']
@@ -280,6 +260,39 @@ namespace :csv do
     puts "Addresses: #{Address.count}"
     puts "Rolodexes: #{Rolodex.count}"
   end #task
+
+#
+# helper methods
+#
+  def construct_address (p_hash)
+    addr = []
+    addr << p_hash['Service Address'] unless p_hash['Service Address'].nil?
+    addr << p_hash['locality'] unless p_hash['locality'].nil?
+    addr << p_hash['state'] unless p_hash['state'].nil?
+    addr << p_hash['post_code'] unless p_hash['post_code'].nil?
+    return addr.join(', ') unless addr.nil?
+  end
+
+  def sanitize_utf8(string)
+    return nil if string.nil?
+    return string if string.valid_encoding?
+    string.chars.select { |c| c.valid_encoding? }.join
+  end
+
+  def townify
+    towns = ["Brisbane", "Southport", "Broadbeach", "Mooloombaba", "Indiroopulli"]
+    town = towns[rand(5)]
+    # force single town for testing
+    # town = 'Broadbeach'
+  end
+
+  def statify
+    states = ["QLD", "NSW", "NT", "VIC", "SA", "WA", "TAS"]
+    state = states[rand(7)]
+    # Force to single state for testing
+    # state = 'QLD'
+  end
+
 
 end #namespace
 

@@ -80,6 +80,7 @@ ActiveAdmin.register Provider do
 
 
   filter :additional_activities_list, :label => AdminConstants::ADMIN_PROVIDER_ADDITIONAL_ACTIVITIES_FILTER
+  filter :address
   filter :company, :label => AdminConstants::ADMIN_PROVIDER_COMPANY_FILTER
   filter :name
   filter :care_offered, :label => AdminConstants::ADMIN_PROVIDER_CARE_OFFERED_FILTER

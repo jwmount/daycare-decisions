@@ -16,12 +16,10 @@ class Address < ActiveRecord::Base
   # http://stackoverflow.com/questions/12034179/using-after-validation-with-an-if-or-clause
   # after_validation :geocode, if: ->(address){ address.present? and address.address_changed? }
  
-=begin 
-  geocoded_by :full_address
-  after_validation :geocode
-=end
+  #geocoded_by :full_address
+  #after_validation :geocode
 
-  def xfull_address
+  def XXfull_address
     [street, locality, state, post_code].compact.join(', ')
   end
 

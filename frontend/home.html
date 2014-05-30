@@ -162,28 +162,89 @@
                     <article>
                         <h4>{{provider.name}} - {{provider.care_offered}}</h4>
                         <address>{{provider.address}}</address>
+                        <h5 ng-show=provider.description>
+                            {{provider.description}}
+                        </h5>
 
                         <h5>Fee: 
                             <span>{{provider.fee | currency:" AUD$ "}}</span>
- 
 
-                        <h5 ng-show=expand> {{provider.description}}</h5>
+                        <h5 ng-show=provider.vacancies>
+                            Vacancies: {{provider.vacancies_list}}
+                        <h5 ng-show=!provider.vacancies>
+                            Vacancies: None.
+                            
+                    
+ 
                         <h5 ng-show=expand> Age range: {{provider.age_range}}</h5>
                         <h5 ng-show=expand> Hours of operation: {{provider.hours}} </h5> 
-                        <h5 ng-show=expand> Additional Activies: {{provider.additional_activities_list}} </h5>
-                        <h5 ng-show=expand> Disabilities: {{provider.disabilities_list}} </h5>
-                        <h5 ng-show=expand> Languages: {{provider.languages_list}} </h5>
-                        <h5 ng-show=expand> Technologies: {{provider.technologies_list}} </h5>
-                        <h5 ng-show=expand> Vacancies: {{provider.vacancies_list}} </h5>
 
-                        <!-- we should be able to iterate on Object.keys(provider), 
-                             but this doesn't seem to work, are these properties
-                             no ennumerable?
-                            <div class="provider-properties" ng-repeat="attr in provider">
-                                <h5 ng-show=attr&&expand> {{attr}} </h5>
+                        <h5 ng-show=expand && provider.additional_activities>
+                            Additional Activies: {{provider.additional_activities_list}} 
+                            </h5>
+                        <h5 ng-show=expand&&provider.disabilities>
+                            Disabilities: {{provider.disabilities_list}} 
+                            </h5>
+                        <h5 ng-show=expand&&provider.languages> 
+                            Languages: {{provider.languages_list}} 
+                            </h5>
+                        <h5 ng-show=expand&&provider.technologies>
+                            Technologies: {{provider.technologies_list}} 
+                            </h5>
+                        <h5 ng-show=expand&&provider.languages>
+                            Languages: {{provider.languages_list}}
+                            </h5>
+                        <!-- 
+                        We should be able to iterate on Object.keys(provider), 
+                        but this doesn't seem to work, are these properties
+                        no ennumerable?
+                        <div class="provider-properties" ng-repeat="attr in provider">
+                            <h5 ng-show=attr&&expand> {{attr}} </h5>
                             </div>
                         -->
 
+                        <h5 ng-show=expand&&provider.air_conditioning>
+                            Air Conditioning
+                            </h5>
+                        <h5 ng-show=expand&&provider.bus_service>
+                            Bus Service
+                            </h5>
+                        <h5 ng-show=expand&&provider.cloth_nappies>
+                            Cloth Nappies
+                            </h5>
+                        <h5 ng-show=expand&&provider.disposable_nappies>
+                            Disposable Nappies
+                            </h5>
+                        <h5 ng-show=expand&&provider.excursions>
+                            Excursions
+                            </h5>
+                        <h5 ng-show=expand&&provider.extended_hours_for_kindys>
+                            Extended Hours for Kindys                            
+                            </h5>
+                        <h5 ng-show=expand&&provider.food_provided>
+                            Food Provided
+                            </h5>
+                        <h5 ng-show=expand&&provider.guest_speakers>
+                            Guest Speakers
+                            </h5>
+                        <h5 ng-show=expand&&provider.real_grass>
+                            Real Grass
+                            </h5>
+                        <h5 ng-show=expand&&provider.secure_access>
+                            Secure Access
+                            </h5>
+                        <h5 ng-show=expand&&provider.siblings_given_priority>
+                            Siblings Given Priority
+                            </h5>
+                        <h5 ng-show=expand&&provider.vaccinations_compulsory>
+                            Vaccinations Compulsory
+                            </h5>
+                        <h5 ng-show=expand&&provider.waitlist_online>
+                            Waitlist Online
+                            </h5>
+                        <h5 ng-show=expand&&provider.waitlist_fee_reimbursed>
+                            Waitlist Fee Reimbursed
+                            </h5>
                     </article>
                   </mouseleave>
                   </mouseover>
