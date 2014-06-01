@@ -145,6 +145,7 @@ app.controller("HomeController", function($scope, $http, $timeout) {
     }
 });
 
+
 // Helper function (experimental)
 toggleChosenAttribute = function(obj) {
   console.log('prop: chosen');

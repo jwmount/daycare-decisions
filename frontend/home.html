@@ -166,12 +166,18 @@
 
             <!-- Provider Results -->
             <div class="providers" ng-repeat="provider in providers">
-                <section>
+                <section>    
                    <mouseover ng-mouseover="expand = 1">
                    <mouseleave ng-mouseleave="expand = 0">
-                    <article>
+
+                    <section>
+
                         <h4>{{provider.name}} - {{provider.care_offered}}</h4>
-                        <address>{{provider.address}}</address>
+
+                        <label>{{provider.address}}</label>
+                        --
+                        <label>{{provider.address}}</label>
+
                         <h5 ng-show=provider.description>
                             {{provider.description}}
                         </h5>
@@ -201,9 +207,6 @@
                         <h5 ng-show=expand&&provider.technologies>
                             Technologies: {{provider.technologies_list}} 
                             </h5>
-                        <h5 ng-show=expand&&provider.languages>
-                            Languages: {{provider.languages_list}}
-                            </h5>
                         <!-- 
                         We should be able to iterate on Object.keys(provider), 
                         but this doesn't seem to work, are these properties
@@ -213,53 +216,62 @@
                             </div>
                         -->
 
-                        <h5 ng-show=expand&&provider.air_conditioning>
+                      <p><em>Details</em></p>
+                      
+                        <label ng-show=expand&&provider.air_conditioning>
                             Air Conditioning
-                            </h5>
-                        <h5 ng-show=expand&&provider.bus_service>
+                            </label>
+                        <label ng-show=expand&&provider.bus_service>
                             Bus Service
-                            </h5>
-                        <h5 ng-show=expand&&provider.cloth_nappies>
+                            </label>
+                        <label ng-show=expand&&provider.cloth_nappies>
                             Cloth Nappies
-                            </h5>
-                        <h5 ng-show=expand&&provider.disposable_nappies>
+                            </label>
+                        <label ng-show=expand&&provider.disposable_nappies>
                             Disposable Nappies
-                            </h5>
-                        <h5 ng-show=expand&&provider.excursions>
+                            </label>
+                        <label ng-show=expand&&provider.excursions>
                             Excursions
-                            </h5>
-                        <h5 ng-show=expand&&provider.extended_hours_for_kindys>
+                            </label>
+                        <label ng-show=expand&&provider.extended_hours_for_kindys>
                             Extended Hours for Kindys                            
-                            </h5>
-                        <h5 ng-show=expand&&provider.food_provided>
+                            </label>
+                        <label ng-show=expand&&provider.food_provided>
                             Food Provided
-                            </h5>
-                        <h5 ng-show=expand&&provider.guest_speakers>
+                            </label>
+                        <label ng-show=expand&&provider.guest_speakers>
                             Guest Speakers
-                            </h5>
-                        <h5 ng-show=expand&&provider.real_grass>
+                            </label>
+                        <label ng-show=expand&&provider.kindergarten_approved>
+                            Kindergarten Approved (QLD only)
+                            </label>
+                        <label ng-show=expand&&provider.online_enrollment>
+                            Online Enrollment
+                            </label>
+                        <label ng-show=expand&&provider.outdoor_play_area>
+                            Outdoor Play Area
+                            </label>
+                        <label ng-show=expand&&provider.real_grass>
                             Real Grass
-                            </h5>
-                        <h5 ng-show=expand&&provider.secure_access>
+                            </label>
+                        <label ng-show=expand&&provider.secure_access>
                             Secure Access
-                            </h5>
-                        <h5 ng-show=expand&&provider.siblings_given_priority>
+                            </label>
+                        <label ng-show=expand&&provider.siblings_given_priority>
                             Siblings Given Priority
-                            </h5>
-                        <h5 ng-show=expand&&provider.vaccinations_compulsory>
+                            </label>
+                        <label ng-show=expand&&provider.vaccinations_compulsory>
                             Vaccinations Compulsory
-                            </h5>
-                        <h5 ng-show=expand&&provider.waitlist_online>
+                            </label>
+                        <label ng-show=expand&&provider.waitlist_online>
                             Waitlist Online
-                            </h5>
-                        <h5 ng-show=expand&&provider.waitlist_fee_reimbursed>
+                            </label>
+                        <label ng-show=expand&&provider.waitlist_fee_reimbursed>
                             Waitlist Fee Reimbursed
-                            </h5>
-                    </article>
+                            </label>
                   </mouseleave>
                   </mouseover>
 
-                
                 </section>
             </div>
         </article>

@@ -3,6 +3,7 @@
 # http://localhost:3000/api?utf8=%E2%9C%93&locality=burleigh%20wa&post_code=&state=&commit=Find+Address
 # curl -i -H "Accept: application/json" http://localhost:3000/api/locations/Bro
 # curl -i -H "Accept: application/json" http://daycare-decisions.herokuapp.com/api/locations/Bri  
+require 'debugger'
 
 class ApiController < ApplicationController
   include ActionController::MimeResponds
@@ -16,13 +17,15 @@ class ApiController < ApplicationController
   end
   
   #
-  # Get providers by name, e.g. 'Small'
+  # Get providers by name or name part, e.g. 'Small'
+  # Note that get all names is not supported.
   #
   def names
     if params[:name].nil?
       render :json => []
     else
-      render :json => Provider.where("name ~* ?", params[:name]).order("name")      
+      providers = Provider.where("name ~* ?", params[:name]).select("id,name").order("name")      
+      render :json => ph
     end
   end
 
