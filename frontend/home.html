@@ -131,7 +131,7 @@
                                     Secure Access
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="siblings_given_priority" ng-change="updateProviders()" ng-model="form.siblings_given_priority">
+                                    <input type="checkbox" name="siblings_given_priority" ng-change="updateProviders()" ng-model="form.sibling_priority">
                                     Siblings Given Priority
                                 </label>
                                 <label>
@@ -257,7 +257,7 @@
                         <label ng-show=expand&&provider.secure_access>
                             Secure Access.
                             </label>
-                        <label ng-show=expand&&provider.siblings_given_priority>
+                        <label ng-show=expand&&provider.sibling_priority>
                             Siblings Given Priority.
                             </label>
                         <label ng-show=expand&&provider.vaccinations_compulsory>

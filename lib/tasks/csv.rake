@@ -6,7 +6,8 @@ namespace :csv do
   desc "Load provider.csv files"
 
 #
-# LOAD PROVIDERS
+# LOAD PROVIDERS 
+# Default is Australian providers
 # $ rake csv:load_providers
 #
   task load_providers: :environment do
@@ -256,6 +257,84 @@ namespace :csv do
     @finished = Time.now()
     rate = (@finished - @started)/@count
     puts "\n--Finished.  average rate: #{rate}"
+    puts "Providers: #{Provider.count}"
+    puts "Addresses: #{Address.count}"
+    puts "Rolodexes: #{Rolodex.count}"
+  end #task
+
+#
+# LOAD US PROVIDERS 
+# $ rake csv:load_providers
+#
+# "Facility #","Capacity","License Status","Facility Name",
+# "Street Address","City","State","Zipcode","Telephone #",
+# "Contact","District Office","DO Telephone #"
+
+  task load_us_providers: :environment do
+    
+    puts "\n\nLoad US providers.\n"
+
+    Dir.glob("public/data/us/providers/*.csv").each do |filename|
+      puts "\n process file: #{filename}"
+    
+      CSV.parse(File.read(filename), :encoding => "iso-8859-1", :headers => true) do |row|
+
+        # Create new hash for provider by sanitizing each element in row.  See
+        # If row begins with '#' it's a comment.
+        # Gist 'Invalid UTF8 in .csv' for discussion of this.     
+        p_hash = Hash.new(nil)
+        if row.index(/[# ]/, 0) 
+          puts row
+          break
+        else
+          row.each do |k,v|
+            p_hash[k] = sanitize_utf8(v)
+          end
+        end
+
+        # get provider if one exists (validated to unique so only one can exist) or
+        # create new one.
+        provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
+        provider.address                    = construct_address p_hash
+
+        provider.approved_places = p_hash['Capacity']
+        provider.name = [ p_hash['Street Address'],
+                          p_hash['City'],
+                          p_hash['State'],
+                          p_hash['Zipcode']
+                        ].join(", ")
+        provider.description = "Facility #: " + p_hash['Facility #']
+        provider.description = provider.description + "Contact: " + p_hash['Contact']
+        provider.description = provider.description + "License Status: " + p_hash['License Status']
+        provider.description = provider.description + "District Office: " + p_hash['District Office']
+        provider.description = provider.description + "DO Telephone: " + p_hash['DO Telephone']
+
+        # Save provider but only create polymorphic dependents if name given and 
+        # save is successful.
+        if !provider.name.nil? and provider.save! 
+          puts "--#{provider.name} from #{filename} Saved\n\n\n"
+
+          address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
+          address.street         = p_hash['Service Address']
+          address.locality       = p_hash['Capacity'].split.map(&:capitalize).*(' ')
+          address.state          = p_hash['State']
+          address.post_code      = p_hash['Zipcode'] 
+         # address.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
+          address.save
+
+          phone = Rolodex.where(rolodexable_id: provider[:id], kind: 'Office number', rolodexable_type: 'Provider').first_or_create
+          phone.number_or_email = p_hash['Telephone #']
+         # phone.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
+          phone.save        
+        else
+          puts "--Provider could not be saved, Dropped\n"
+        end
+      
+      puts "\n\n"
+      end
+    end
+
+    puts "\n--Finished."
     puts "Providers: #{Provider.count}"
     puts "Addresses: #{Address.count}"
     puts "Rolodexes: #{Rolodex.count}"
