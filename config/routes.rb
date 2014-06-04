@@ -8,6 +8,7 @@ DaycareDecisions::Application.routes.draw do
   namespace :api do  
     get 'names',                          to: :names
     get 'names/:name',                    to: :names
+    get 'rolodex/:id',                    to: :rolodex
     get 'states',                         to: :states
     get 'states/:state',                  to: :states
     # GET /api/locations/<partial string>

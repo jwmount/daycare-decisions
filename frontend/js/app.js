@@ -1,14 +1,19 @@
+
 // Initialize Angular App
 var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomplete']);
 
-
 // Set Config Variables
-// var server = "http://localhost:8082/providers/1";
-app.server = "http://daycare-decisions.herokuapp.com/api";
+// Local testing:
+// use url of localhost:8082  with localhost:3000/api below
+app.server = "http://localhost:3000/api";
+// deployment:
+// use url=  http://localhost:3000/api/locations/san%20raf with prod server below
+//app.server = "http://daycare-decisions.herokuapp.com/api";
 app.locations_api_call = app.server + "/locations/";
 app.providers_api_call = app.server + "/providers/";
+app.rolodex_api_call  = app.server + "/rolodex/";
 
-// Set headers for CORS
+// Set headers for CORS (both dev & prod)
 app.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -117,7 +122,7 @@ app.controller("HomeController", function($scope, $http, $timeout) {
                 // console.log(data)
             });
         }
-    };
+    };  //updateLocations
 
     // Update Providers
     $scope.updateProviders = function(suggestion) {
@@ -142,8 +147,9 @@ app.controller("HomeController", function($scope, $http, $timeout) {
             .error(function (data) {
                 // console.log(data)
             });
-    }
-});
+
+    } //updateProviders
+});  //HomeController
 
 
 // Helper function (experimental)

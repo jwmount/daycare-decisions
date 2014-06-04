@@ -172,11 +172,15 @@
 
                     <section>
 
-                        <h4>{{provider.name}} - {{provider.care_offered}}</h4>
+                        <h4>{{provider.name}}  {{provider.care_offered}}</h4>
 
                         <label>{{provider.address}}</label>
                         --
-                        <label>{{provider.address}}</label>
+                        <label>{{rolodex.number_or_email}}</label>
+
+                        <div ng-controller="PhoneListCtrl">
+                          <label ng-repeat="phone in phones">{{phone.number}}</label>
+                        </div>
 
                         <h5 ng-show=provider.description>
                             {{provider.description}}

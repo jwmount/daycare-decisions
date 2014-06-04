@@ -3,7 +3,8 @@ require 'csv'
 require 'uri'
 
 namespace :csv do
-  desc "Load provider.csv files"
+
+  desc "BEGIN:  Load provider.csv files"
 
 #
 # LOAD PROVIDERS 
@@ -11,14 +12,19 @@ namespace :csv do
 # $ rake csv:load_providers
 #
   task load_providers: :environment do
+    @total_count = 0
+    @file_count = 0
+    @started = Time.now()
     
   	puts "\n\nLoad the provider.csv files found in public/data/providers...."
 
-    Dir.glob("public/data/providers/*.csv").each do |filename|
+    Dir.glob("public/data/au/providers/*.csv").each do |filename|
       puts "\n process file: #{filename}"
     
       CSV.parse(File.read(filename), :encoding => "iso-8859-1", :headers => true) do |row|
 
+        @total_count += 1
+        @file_count += 1
         # Create new hash for provider by sanitizing each element in row.  See
         # If row begins with '#' it's a comment.
         # Gist 'Invalid UTF8 in .csv' for discussion of this.     
@@ -106,7 +112,7 @@ namespace :csv do
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
         if !provider.name.nil? and provider.save! 
-          puts "--#{provider.name} from #{filename} Saved\n\n\n"
+          puts "#{@file_count}--#{provider.name} from #{filename} Saved"
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
           address.street         = p_hash['Service Address']
@@ -135,15 +141,17 @@ namespace :csv do
           email.save
 =end
         else
-          puts "--Provider could not be saved, Dropped\n"
+          puts "--Provider #{@file_count} in #{filename} was not be saved.  Name apparently missing.\n"
+          puts "--Name:  #{provider.name}" unless provider.name.nil?
         end
       
-      puts "\n\n"
       end
+      puts "]\n#{filename}: #{@file_count}.\n\n"
+      @file_count = 0
     end
 
   	puts "\n--Finished."
-    puts "Providers: #{Provider.count}"
+    puts "Providers: processed: #{@total_count}, have: #{Provider.count}"
     puts "Addresses: #{Address.count}"
     puts "Rolodexes: #{Rolodex.count}"
   end #task
@@ -266,12 +274,20 @@ namespace :csv do
 # LOAD US PROVIDERS 
 # $ rake csv:load_providers
 #
+# CA CSS data columns are:
 # "Facility #","Capacity","License Status","Facility Name",
 # "Street Address","City","State","Zipcode","Telephone #",
 # "Contact","District Office","DO Telephone #"
+#
+# For the CA load, aka load_us_providers, :description is used to 
+# display attributes no in Providers as currently modeled. 
+#
 
   task load_us_providers: :environment do
     
+    started_at = Time.now()
+    @count = 0 
+
     puts "\n\nLoad US providers.\n"
 
     Dir.glob("public/data/us/providers/*.csv").each do |filename|
@@ -283,31 +299,36 @@ namespace :csv do
         # If row begins with '#' it's a comment.
         # Gist 'Invalid UTF8 in .csv' for discussion of this.     
         p_hash = Hash.new(nil)
+        @count = @count + 1
         if row.index(/[# ]/, 0) 
           puts row
-          break
+          next
         else
           row.each do |k,v|
             p_hash[k] = sanitize_utf8(v)
           end
         end
 
+        puts @count
+
         # get provider if one exists (validated to unique so only one can exist) or
         # create new one.
-        provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
-        provider.address                    = construct_address p_hash
-
+        provider = Provider.where(:name => p_hash['Facility Name']).first_or_create
+        provider.name ||= p_hash['Facility Name']
         provider.approved_places = p_hash['Capacity']
-        provider.name = [ p_hash['Street Address'],
-                          p_hash['City'],
-                          p_hash['State'],
-                          p_hash['Zipcode']
-                        ].join(", ")
-        provider.description = "Facility #: " + p_hash['Facility #']
-        provider.description = provider.description + "Contact: " + p_hash['Contact']
-        provider.description = provider.description + "License Status: " + p_hash['License Status']
-        provider.description = provider.description + "District Office: " + p_hash['District Office']
-        provider.description = provider.description + "DO Telephone: " + p_hash['DO Telephone']
+        provider.address = [ p_hash['Street Address'],
+                             p_hash['City'],
+                             p_hash['State'],
+                             p_hash['Zipcode']
+                           ].join(", ")
+
+        provider.description = [
+                       ["Facility #:         #{p_hash['Facility #']}"],
+                       ["Contact:            #{p_hash['Contact']}"],
+                       ["License Status:     #{p_hash['License Status']}"],
+                       ["District Office:    #{p_hash['District Office']}"],
+                       ["DO Telephone:       #{p_hash['DO Telephone #']}"]
+                      ].join('; ')
 
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
@@ -315,8 +336,8 @@ namespace :csv do
           puts "--#{provider.name} from #{filename} Saved\n\n\n"
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
-          address.street         = p_hash['Service Address']
-          address.locality       = p_hash['Capacity'].split.map(&:capitalize).*(' ')
+          address.street         = p_hash['Street Address']
+          address.locality       = p_hash['City']
           address.state          = p_hash['State']
           address.post_code      = p_hash['Zipcode'] 
          # address.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
@@ -330,7 +351,6 @@ namespace :csv do
           puts "--Provider could not be saved, Dropped\n"
         end
       
-      puts "\n\n"
       end
     end
 
@@ -338,6 +358,8 @@ namespace :csv do
     puts "Providers: #{Provider.count}"
     puts "Addresses: #{Address.count}"
     puts "Rolodexes: #{Rolodex.count}"
+
+    puts "Elapsed time: #{(Time.now() - started_at)}"
   end #task
 
 #

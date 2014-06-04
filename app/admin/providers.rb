@@ -114,7 +114,10 @@ ActiveAdmin.register Provider do
     column "Care Options", :sortable => 'care_offered' do |provider|
       provider.care_offered
       end 
-    column :NQS_rating, :sortable => 'nqs_rating'
+
+    column "Places" do |provider|
+      provider.approved_places
+    end
 
     column "Ages", :sortable => 'age_range' do |provider| 
       provider.age_range 

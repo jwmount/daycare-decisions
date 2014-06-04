@@ -25,7 +25,19 @@ class ApiController < ApplicationController
       render :json => []
     else
       providers = Provider.where("name ~* ?", params[:name]).select("id,name").order("name")      
-      render :json => ph
+      render :json => providers
+    end
+  end
+
+  #
+  # Rollodex api -- get rollodex for a given provider
+  #
+  def rolodex
+    if params[:id].nil?
+      render json: []
+    else
+      rolo = Rolodex.find params[:id]
+      render json: rolo
     end
   end
 
