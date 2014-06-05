@@ -1,3 +1,4 @@
+// To add API calls follow https://docs.angularjs.org/tutorial/step_08
 
 // Initialize Angular App
 var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomplete']);
