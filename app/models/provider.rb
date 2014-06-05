@@ -22,10 +22,14 @@ class Provider < ActiveRecord::Base
   has_many :services, 
            :as => :serviceable
 
+  has_many :sources, 
+           :as => :sourceable
+
   accepts_nested_attributes_for :addresses, :allow_destroy => true
   accepts_nested_attributes_for :certs, :allow_destroy => true
   accepts_nested_attributes_for :rolodexes, :allow_destroy => true
   accepts_nested_attributes_for :services, :allow_destroy => true
+  accepts_nested_attributes_for :sources, :allow_destroy => true
 
   scope :alphabetically, order("full_name ASC")
 

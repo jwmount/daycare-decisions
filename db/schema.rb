@@ -277,6 +277,15 @@ ActiveRecord::Schema.define(version: 20140210051608) do
     t.datetime "updated_at"
   end
 
+  create_table "sources", force: true do |t|
+    t.integer  "sourceable_id",                      null: false
+    t.string   "sourceable_type",                    null: false
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 create_table "waitlist_applications", force: true do |t|
     t.integer  "guardian_id",                          null: false
     t.integer  "provider_id"

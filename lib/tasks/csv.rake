@@ -16,9 +16,14 @@ namespace :csv do
     @file_count = 0
     @started = Time.now()
     
-  	puts "\n\nLoad the provider.csv files found in public/data/providers...."
     Provider.delete_all
-    puts "\n\nDELETED ALL PROVIDERS\n\n"
+    puts "\n\nDELETED ALL PROVIDERS"
+    Address.delete_all
+    puts "DELETED ALL ADDRESSES"
+    Rolodex.delete_all
+    puts "DELETED ALL ROLODEXES"
+    puts "\n\n"
+    puts "\n\nLoad the provider.csv files found in public/data/providers...."
 
     Dir.glob("public/data/au/providers/*.csv").each do |filename|
       puts "\n process file: #{filename}"
@@ -115,7 +120,12 @@ namespace :csv do
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
         if !provider.name.nil? and provider.save! 
-          puts "#{@file_count}--Create #{provider.name}  #{filename}."
+          puts "#{@total_count}/#{@file_count}--Create #{provider.name}  #{filename}."
+
+          source = Source.where(sourceable_id: provider[:id], sourceable_type: 'Provider').first_or_create
+          source.name = filename
+          source.description = "csv:load_*"
+          source.save
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
           address.street         = p_hash['Service Address']
