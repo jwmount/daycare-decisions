@@ -17,6 +17,8 @@ namespace :csv do
     @started = Time.now()
     
   	puts "\n\nLoad the provider.csv files found in public/data/providers...."
+    Provider.delete_all
+    puts "\n\nDELETED ALL PROVIDERS\n\n"
 
     Dir.glob("public/data/au/providers/*.csv").each do |filename|
       puts "\n process file: #{filename}"
@@ -40,7 +42,8 @@ namespace :csv do
 
         # get provider if one exists (validated to unique so only one can exist) or
         # create new one.
-        provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
+#        provider = Provider.where(:name => p_hash['ServiceName']).first_or_create
+        provider = Provider.new
         provider.address                    = construct_address p_hash
         provider.age_range                  = p_hash['Age Range']
         provider.additional_activities      = p_hash['Additional Activities'] == ('Y' || 'T')
@@ -112,7 +115,7 @@ namespace :csv do
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
         if !provider.name.nil? and provider.save! 
-          puts "#{@file_count}--#{provider.name} from #{filename} Saved"
+          puts "#{@file_count}--Create #{provider.name}  #{filename}."
 
           address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
           address.street         = p_hash['Service Address']
@@ -154,6 +157,9 @@ namespace :csv do
     puts "Providers: processed: #{@total_count}, have: #{Provider.count}"
     puts "Addresses: #{Address.count}"
     puts "Rolodexes: #{Rolodex.count}"
+
+    puts "Elapsed time: #{(Time.now() - @started)}"
+
   end #task
 
 #
@@ -285,7 +291,7 @@ namespace :csv do
 
   task load_us_providers: :environment do
     
-    started_at = Time.now()
+    @started = Time.now()
     @count = 0 
 
     puts "\n\nLoad US providers.\n"
@@ -359,7 +365,7 @@ namespace :csv do
     puts "Addresses: #{Address.count}"
     puts "Rolodexes: #{Rolodex.count}"
 
-    puts "Elapsed time: #{(Time.now() - started_at)}"
+    puts "Elapsed time: #{(Time.now() - @started)}"
   end #task
 
 #
