@@ -5,9 +5,9 @@ var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomp
 
 // Set Config Variables
 // Local testing:
-// use url of localhost:8082  with localhost:3000/api below
+//   url: localhost:8082  with http://localhost:3000/api (below)
 app.server = "http://localhost:3000/api";
-// deployment:
+// Deployment:
 // use url=  http://localhost:3000/api/locations/san%20raf with prod server below
 //app.server = "http://daycare-decisions.herokuapp.com/api";
 app.locations_api_call = app.server + "/locations/";
