@@ -8,13 +8,36 @@
 #
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
-development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: daycare_development
-  pool: 5
-  username: root
-  password: 80mC4hH4
-  socket: /tmp/mysql.sock
+#
+# how to see if PostgreQQL is running:
+# http://stackoverflow.com/questions/19986403/couldnt-create-database-when-migrating-to-postgresql
+# run this:
+# $ pgrep -lf postgres
+# if you get 530 postgres: john john [local] idle, credentials or john, john!  Wow.
+#
+#development:
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: daycare_development
+#  pool: 5
+#  username: root
+#  password: 80mC4hH4
+#  socket: /tmp/mysql.sock
 
+common: &common
+  adapter: postgresql
+  username: john #postgres
+  password: john #postgres
+
+development:
+  <<: *common
+  database: daycare-decisions_development
+
+test:
+  <<: *common
+  database: daycare-decisions_test
+
+production:
+  <<: *common
+  database: daycare-decisions_production
