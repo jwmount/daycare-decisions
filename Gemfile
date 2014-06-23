@@ -17,8 +17,6 @@ gem 'geocoder'
 gem 'carrierwave'
 gem 'devise'
 gem 'cancan'
-#gem 'pg'
-gem 'mysql2'
 # Allows the use of foreign keys used to protect data integrity (per Xavier Shay)
 gem 'foreigner'
 gem 'i18n'
@@ -28,6 +26,7 @@ gem 'uglifier', '>= 1.0.3'
 gem "country_select"
 
 group :development do
+  gem 'mysql2'
   gem 'better_errors' 
   gem 'binding_of_caller'
   gem 'debugger'
@@ -35,10 +34,11 @@ end
 
 group :production do
   # gem 'mysql2'  On AWS using RDS instead
-  # Support for Rails 4 by & for Heroku
-  gem 'rails_12factor'
+  # Support for Rails 4 by & for Heroku, removed for Ninefold
+  # gem 'rails_12factor'
   # needed for asset pipeline cache by Heroku, all 4.0.x releases, is in 4.1.x
   gem 'sprockets_better_errors'
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password

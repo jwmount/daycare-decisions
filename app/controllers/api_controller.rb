@@ -24,7 +24,8 @@ class ApiController < ApplicationController
     if params[:name].nil?
       render :json => []
     else
-      providers = Provider.where("name ~* ?", params[:name]).select("id,name").order("name")      
+      providers = Provider.where("name LIKE ?", "%#{params[:name]}%").select("id,name").order("name")      
+      #pg version: providers = Provider.where("name ~* ?", params[:name]).select("id,name").order("name")      
       render :json => providers
     end
   end
@@ -66,7 +67,8 @@ class ApiController < ApplicationController
   def locations
     city_states = []
     if params.include?(:locality) && !params[:locality].empty?
-      addresses = Address.where( "locality ~* ?", params[:locality]).select("locality, state").distinct
+      addresses = Address.where( "locality LIKE ?", "%#{params[:locality]}%").select("locality, state").distinct
+      #pg version: addresses = Address.where( "locality ~* ?", params[:locality]).select("locality, state").distinct
     end
     addresses.each do |aid| 
       city_states << "#{aid.locality.split.map(&:capitalize).*(' ')}, #{aid.state}"
@@ -95,7 +97,9 @@ class ApiController < ApplicationController
     elements = filter[:locality].split(',')
     city = elements[0]
     state = elements[1].lstrip
-    geo_ids = Address.where("locality ~* ? and state = ?", city, state ).select("addressable_id")
+    geo_ids = Address.where("locality LIKE ? and state = ?", "%#{city}%", state ).select("addressable_id")
+    #pg version: geo_ids = Address.where("locality ~* ? and state = ?", city, state ).select("addressable_id")
+
     # get the services filter set, first remove the location elements
     services = filter.except :locality, :post_code, :state
     return geo_ids, services
