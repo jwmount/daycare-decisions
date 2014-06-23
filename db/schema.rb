@@ -16,8 +16,16 @@
 #
 ActiveRecord::Schema.define(version: 20140210051608) do
 
-  # These are extensions that must be enabled in order to support this database
+  # These are extensions that must be enabled in order to support this database on 
+  # Ninefold (pg)
   enable_extension "plpgsql"
+  enable_extension "hstore"
+  enable_extension "pg_trgm"
+  enable_extension "cube"
+  enable_extension "earthdistance"
+  enable_extension "uuid-ossp"
+  enable_extension "unaccent"
+  enable_extension "fuzzystrmatch" 
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
