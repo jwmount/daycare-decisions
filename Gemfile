@@ -29,16 +29,15 @@ group :development do
   gem 'mysql2'
   gem 'better_errors' 
   gem 'binding_of_caller'
-  gem 'debugger'
 end
 
 group :production do
-  # gem 'mysql2'  On AWS using RDS instead
   # Support for Rails 4 by & for Heroku, removed for Ninefold
   # gem 'rails_12factor'
   # needed for asset pipeline cache by Heroku, all 4.0.x releases, is in 4.1.x
   gem 'sprockets_better_errors'
   gem 'pg'
+  gem 'ninefold'
 end
 
 # To use ActiveModel has_secure_password
