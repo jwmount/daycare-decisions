@@ -1,15 +1,14 @@
                                   Prefix Verb       URI Pattern                                                           Controller#Action
-                               api_index GET        /api(.:format)                                                        api#index
-                                         POST       /api(.:format)                                                        api#create
-                                 new_api GET        /api/new(.:format)                                                    api#new
-                                edit_api GET        /api/:id/edit(.:format)                                               api#edit
-                                     api GET        /api/:id(.:format)                                                    api#show
-                                         PATCH      /api/:id(.:format)                                                    api#update
-                                         PUT        /api/:id(.:format)                                                    api#update
-                                         DELETE     /api/:id(.:format)                                                    api#destroy
-                                         GET        /locations/:locality(.:format)                                        api#locations
-                               providers GET        /providers(.:format)                                                  api#providers
-                                         GET        /provider/:id(.:format)                                               api#provider
+                               api_names GET        /api/names(.:format)                                                  api#names
+                                     api GET        /api/names/:name(.:format)                                            api#names
+                                         GET        /api/rolodex/:id(.:format)                                            api#rolodex
+                              api_states GET        /api/states(.:format)                                                 api#states
+                                         GET        /api/states/:state(.:format)                                          api#states
+                                         GET        /api/locations/:locality(.:format)                                    api#locations
+                           api_providers GET        /api/providers(.:format)                                              api#providers
+                                         GET        /api/provider/:id(.:format)                                           api#provider
+                                         GET        /api/state/:state(.:format)                                           api#state
+                                         GET        /api(.:format)                                                        api#help
                               home_index GET        /home(.:format)                                                       home#index
                                          POST       /home(.:format)                                                       home#create
                                 new_home GET        /home/new(.:format)                                                   home#new
@@ -161,6 +160,14 @@
                                          PATCH      /admin/services/:id(.:format)                                         admin/services#update
                                          PUT        /admin/services/:id(.:format)                                         admin/services#update
                                          DELETE     /admin/services/:id(.:format)                                         admin/services#destroy
+              batch_action_admin_sources POST       /admin/sources/batch_action(.:format)                                 admin/sources#batch_action
+                           admin_sources GET        /admin/sources(.:format)                                              admin/sources#index
+                                         POST       /admin/sources(.:format)                                              admin/sources#create
+                       edit_admin_source GET        /admin/sources/:id/edit(.:format)                                     admin/sources#edit
+                            admin_source GET        /admin/sources/:id(.:format)                                          admin/sources#show
+                                         PATCH      /admin/sources/:id(.:format)                                          admin/sources#update
+                                         PUT        /admin/sources/:id(.:format)                                          admin/sources#update
+                                         DELETE     /admin/sources/:id(.:format)                                          admin/sources#destroy
 batch_action_admin_waitlist_applications POST       /admin/waitlist_applications/batch_action(.:format)                   admin/waitlist_applications#batch_action
              admin_waitlist_applications GET        /admin/waitlist_applications(.:format)                                admin/waitlist_applications#index
                                          POST       /admin/waitlist_applications(.:format)                                admin/waitlist_applications#create
@@ -205,4 +212,12 @@ edit_admin_guardian_waitlist_application GET        /admin/guardian/:guardian_id
                                          PATCH      /admin/guardian/:id(.:format)                                         admin/guardian#update
                                          PUT        /admin/guardian/:id(.:format)                                         admin/guardian#update
                                          DELETE     /admin/guardian/:id(.:format)                                         admin/guardian#destroy
+                           frontend_home POST       /frontend/home(.:format)                                              frontend/frontend/home#create
+                       new_frontend_home GET        /frontend/home/new(.:format)                                          frontend/frontend/home#new
+                      edit_frontend_home GET        /frontend/home/edit(.:format)                                         frontend/frontend/home#edit
+                                         GET        /frontend/home(.:format)                                              frontend/frontend/home#show
+                                         PATCH      /frontend/home(.:format)                                              frontend/frontend/home#update
+                                         PUT        /frontend/home(.:format)                                              frontend/frontend/home#update
+                                         DELETE     /frontend/home(.:format)                                              frontend/frontend/home#destroy
+                           frontend_root GET        /frontend(.:format)                                                   frontend/home#index
                                     root GET        /                                                                     home#index

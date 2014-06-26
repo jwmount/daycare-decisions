@@ -21,10 +21,10 @@ DaycareDecisions::Application.routes.draw do
   
   end #:api namespace
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-
+#
+# Example of named route that can be invoked with purchase_url(id: product.id)
+# get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+#
   resources :home
     # reference as about_path in HomeController views
     get 'about',                to: 'home#about',             as: :about
@@ -53,6 +53,10 @@ DaycareDecisions::Application.routes.draw do
     end
 
   end #:admin namespace
+
+  namespace :frontend do |frontend|
+    root to: "frontend#index"
+  end
 
   root :to => "home#index"
 
