@@ -1,5 +1,6 @@
 DaycareDecisions::Application.routes.draw do
 
+
 # API routes
 
 # <host>/addresses => all of them
@@ -42,6 +43,7 @@ DaycareDecisions::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  # this namespace is probably irrelevent
   namespace :admin do
 
     resources :roles do
@@ -54,11 +56,11 @@ DaycareDecisions::Application.routes.draw do
 
   end #:admin namespace
 
-  namespace :frontend do |frontend|
-    root to: "frontend#index"
-  end
 
-  root :to => "home#index"
+  #root to: "home#index"
+  root to: "frontend#index"
+
+  get '*path', to: 'frontend#index'
 
   # catch-all route for api_controller
   # http://www.tsheffler.com/blog/?p=428 -- note by Forrest Zeisler

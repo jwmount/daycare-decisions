@@ -212,12 +212,4 @@ edit_admin_guardian_waitlist_application GET        /admin/guardian/:guardian_id
                                          PATCH      /admin/guardian/:id(.:format)                                         admin/guardian#update
                                          PUT        /admin/guardian/:id(.:format)                                         admin/guardian#update
                                          DELETE     /admin/guardian/:id(.:format)                                         admin/guardian#destroy
-                           frontend_home POST       /frontend/home(.:format)                                              frontend/frontend/home#create
-                       new_frontend_home GET        /frontend/home/new(.:format)                                          frontend/frontend/home#new
-                      edit_frontend_home GET        /frontend/home/edit(.:format)                                         frontend/frontend/home#edit
-                                         GET        /frontend/home(.:format)                                              frontend/frontend/home#show
-                                         PATCH      /frontend/home(.:format)                                              frontend/frontend/home#update
-                                         PUT        /frontend/home(.:format)                                              frontend/frontend/home#update
-                                         DELETE     /frontend/home(.:format)                                              frontend/frontend/home#destroy
-                           frontend_root GET        /frontend(.:format)                                                   frontend/home#index
-                                    root GET        /                                                                     home#index
+                                    root GET        /                                                                     frontend#index
