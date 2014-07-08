@@ -6,10 +6,10 @@ var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomp
 // Set Config Variables
 // Local testing:
 //   url: localhost:8082  with http://localhost:3000/api (below)
-app.server = "http://localhost:3000/api";
+//   app.server = "http://localhost:3000/api";
 // Deployment:
 // use url=  http://localhost:3000/api/locations/san%20raf with prod server below
-//app.server = "http://daycare-decisions.herokuapp.com/api";
+app.server = "http://daycaredecisionsmaster464c.ninefold-apps.com/api";
 app.locations_api_call = app.server + "/locations/";
 app.providers_api_call = app.server + "/providers/";
 app.rolodex_api_call  = app.server + "/rolodex/";
@@ -24,7 +24,8 @@ app.config(['$httpProvider', function($httpProvider) {
 
 // Routes
 // -------------------------------
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
     $routeProvider.when('/', {
         // Home
         templateUrl: "/",

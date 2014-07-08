@@ -7,13 +7,15 @@ gem 'rake', '>=10.3.2'
 
 # sprockets Environment error, it's ALWAYS sprockets
 # http://stackoverflow.com/questions/22426698/undefined-method-environment-for-nilnilclass-when-importing-bootstrap-into-ra
+gem 'uglifier', '>= 1.0.3'
 gem 'coffee-rails'
 gem "sass-rails", "~> 4.0.2"
+
 gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
 gem "therubyracer"
 gem "less-rails"   # added to move to frontend
-
+gem "angular-rails"
 gem 'haml-rails'
 gem 'geocoder'
 
@@ -25,7 +27,6 @@ gem 'foreigner'
 gem 'i18n'
 gem 'taps'  #needed by Heroku
 
-gem 'uglifier', '>= 1.0.3'
 gem "country_select"
 
 group :development do

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Daycare Decisions</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -8,12 +9,11 @@
 </head>
 <body>
 
-<%= render '/shared/header' %>
-
-<%= yield %>
-
-<%= render( :partial => '/shared/footer')%>
-  
+top
+  <%= render '/shared/header' %>
+  <%= yield %>
+  <%= render '/shared/footer' %>
+bottom
 
 </body>
 </html>
