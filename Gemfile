@@ -11,6 +11,9 @@ gem 'coffee-rails'
 gem "sass-rails", "~> 4.0.2"
 gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
+gem "therubyracer"
+gem "less-rails"   # added to move to frontend
+
 gem 'haml-rails'
 gem 'geocoder'
 
@@ -53,6 +56,10 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+group :assets do
+  gem 'jquery-ui-rails', '~> 4.2.1'
+end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
