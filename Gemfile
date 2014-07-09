@@ -16,6 +16,7 @@ gem "bootstrap-sass"
 gem "therubyracer"
 gem "less-rails"   # added to move to frontend
 gem "angular-rails"
+gem "angular-rails-templates"  # added to move to frontend, http://angular-rails.com/find_and_browse.html
 gem 'haml-rails'
 gem 'geocoder'
 

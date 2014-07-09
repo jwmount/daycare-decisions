@@ -73,6 +73,10 @@ GEM
     angular-rails (0.0.12)
       coffee-script (~> 2.2.0)
       rails
+    angular-rails-templates (0.1.3)
+      railties (>= 3.1)
+      sprockets
+      tilt
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
@@ -262,6 +266,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   angular-rails
+  angular-rails-templates
   better_errors
   binding_of_caller
   bootstrap-sass
