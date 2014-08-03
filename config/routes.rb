@@ -57,8 +57,6 @@ DaycareDecisions::Application.routes.draw do
   end #:admin namespace
 
 
-  root to: "home#index"
-
   #root to: "home#index"
 
   root to: "frontend#feui"
