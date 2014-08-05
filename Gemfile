@@ -60,7 +60,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 group :assets do
-  gem 'jquery-ui-rails', '~> 4.2.1'
+  gem 'jquery-ui-rails'
 end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
