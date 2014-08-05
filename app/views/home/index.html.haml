@@ -1,6 +1,6 @@
 %container
-  %body
 
+  %body
       
     .content  
     = image_tag  "ad.png",   :class => "floatright"
@@ -17,24 +17,6 @@
     = image_tag  "ad_2.png", :class => "floatright"
     = image_tag  "ad_3.gif", :class => "floatright"
       
-    %h1 Finding Childcare Is Hard, We Can Help
-    %h2 What Kind of Daycare Do You Want?
-    
-    <p>
-    <span class="h4">Long Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
-    </p>
-    
-    <p>
-    <span class="h4">Home Day Care</span> -- orem ipsum dolor sit amet, consectetuer...
-    </p>
-    
-    <p>
-    <span class="h4">Kindy Care</span> -- orem ipsum dolor sit amet, consectetuer...
-    </p>
-    
-    <p>
-    <span class="h4">Before or After School Hours Care</span> -- orem ipsum dolor sit amet, consectetuer...
-    </p>
    
       
     %h3 Selected Providers (Your Favorites)
@@ -44,11 +26,6 @@
     =render latest
    
       
-    %h3 Why List Your Center With Us?
-    Lots and lots of nicely worded stuff to explain in as few words as possible why list your child care provider with Daycare Decisions.  Make sure the reader understands they can claim their update rights for themselves and maintain the data if they join.
-
-  %br
-  %br
 
   %div#dialog{ :width => "66%" }
     %h3 See Where Your Child Care Providers Are
@@ -131,6 +108,7 @@
       .btn-lg
         = submit_tag 'Find Providers', class: "form_submit"
 
+  %p
   // Position the results returned below the form
   - if !@provider_ids.empty?
     - l1, l2, providers = provider_list :locality, @provider_ids
