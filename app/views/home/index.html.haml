@@ -17,16 +17,7 @@
     = image_tag  "ad_2.png", :class => "floatright"
     = image_tag  "ad_3.gif", :class => "floatright"
       
-   
-      
-    %h3 Selected Providers (Your Favorites)
-    =render favorites    unless favorites.nil?
-        
-    %h3= 'Recently Updated or Added Providers'  
-    =render latest
-   
-      
-
+         
   %div#dialog{ :width => "66%" }
     %h3 See Where Your Child Care Providers Are
     = form_tag({controller: "home", action: "index"}, method: "get") do
@@ -116,7 +107,18 @@
     %h2= l2
     = render providers
 
- 
+  %br
+  %br
+      
+  <h2>Selected Providers (Your Favorites)</h3>
+  =render favorites    unless favorites.nil?
+
+  %br
+  %br
+        
+  %h2= 'Recently Updated or Added Providers'  
+  =render latest
+   
 
 
 %br
