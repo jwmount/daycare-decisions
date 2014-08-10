@@ -18,7 +18,7 @@
     = image_tag  "ad_3.gif", :class => "floatright"
       
          
-  %div#dialog{ :width => "66%" }
+  %div#dialog
     %h3 See What Child Care Providers Are In Your Town
     = form_tag({controller: "home", action: "index"}, method: "get") do
 
@@ -40,71 +40,92 @@
       /= collection_select(:provider, :address_id, Address.all, :id, :state)
       /%h4 State
 
+      <div>
+      <section>
+      <article class="left-checkboxes-col">
+
       = check_box_tag 'additional_activities', 1, false
-      Additional Activities
-      %p
+      Additional Activities  &nbsp;
+
       = check_box_tag 'air_conditioning', 1, false
-      Air Conditioning  
-      %p
+      Air Conditioning  &nbsp;
+
       = check_box_tag 'bus_service',  1, false
-      Bus Service
-      %p
+      Bus Service  &nbsp;
+
       = check_box_tag 'disposable_nappies',  1, false
-      Disposable Nappies  
-      %p          
+      Disposable Nappies  &nbsp;
+
       = check_box_tag 'cloth_nappies',  1, false
-      Cloth Nappies
-      %p
+      Cloth Nappies &nbsp;
+
       = check_box_tag 'excursions',  1, false
       Excursions 
-      %p          
-      = check_box_tag  'extended_hours_for_kindys',  1, false
-      Extended Hours for Kindys
-      %p
+
+      </article>
+      </section>
+
+      <section>
+      <article>
       
+      = check_box_tag  'extended_hours_for_kindys',  1, false
+      Extended Hours for Kindys &nbsp;
       
       = check_box_tag 'food_provided',  1, false
-      Food Provided
-      %p
+      Food Provided &nbsp;
+      
       = check_box_tag 'guest_speakers',  1, false
-      Guest Speakers
-      %p
+      Guest Speakers &nbsp;
+      
       = check_box_tag 'languages',  1, false
-      Languages
-      %p          
+      Languages &nbsp;
+
       = check_box_tag 'real_grass',  1, false
-      Real Grass
-      %p
+      Real Grass &nbsp;
+      
       = check_box_tag 'secure_access',  1, false
-      Secure Access
-      %p          
-      = check_box_tag 'siblings_given_priority',  1, false
-      Siblings Given Priority
-      %p
+      Secure Access &nbsp;
+      
+      </article>
+      </section>
+
+      <section>
+      <article>
+      
+      = check_box_tag 'sibling_priority',  1, false
+      Siblings Get Priority &nbsp;
+      
       = check_box_tag 'technology',  1, false
-      Technology
-      %p
+      Technology &nbsp;
+      
       = check_box_tag 'vacancies',  1, false
-      Vacancies
-      %p
+      Vacancies &nbsp;
+      
       = check_box_tag 'vaccinations_compulsory',  1, false
-      Vaccinations Compulsory
-      %p
+      Vaccinations Compulsory &nbsp;
+      
       = check_box_tag 'waitlist_online',  1, false
-      Waitlist Online
-      %p
+      Waitlist Online &nbsp;
+      
       = check_box_tag 'waitlist_reimbursed',  1, false
-      Watilist Fee Reimbursed            
-      %p
+      Watilist Fee Reimbursed  &nbsp;
+
+      </article>
+      </section>
+      </div>
+      </article>
+      
+      %br
+
       .btn-lg
         = submit_tag 'Find Providers', class: "form_submit"
-
+      %br
   %p
   // Position the results returned below the form
   - if !@provider_ids.empty?
     - l1, l2, providers = provider_list :locality, @provider_ids
     %h3= l1
-    %h2= l2
+    %h3= l2
     = render providers
 
   %br
