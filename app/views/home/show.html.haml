@@ -15,8 +15,8 @@
 - if @provider.additional_activities
   %p Additional Activities:  #{@provider.additional_activities_list}
 
-- unless @provider.age_range.empty?
-  %p= "Age Range:  #{@provider.age_range.gsub(/"/,'')}"
+- unless @provider.age_range.nil?
+  %p "Age Range:  #{@provider.age_range.gsub(/"/,'')}"
   
 - if @provider.air_conditioning
   %p Air Conditioned 
