@@ -1,3 +1,4 @@
+
 $dd-green:        rgb(  37, 178, 100 ); 
 $dd-black:        rgb(  35,  31,  32 );
 $dd-topbar-black: rgb(  93, 89, 89 ); 
@@ -41,6 +42,7 @@ $dd-navlist-item-font-color:                   #fff;
 $dd-navlist-item-hover-background-color:       pink;
 $dd-navlist-item-hover-font-color:             #fff;
 
+$menu-hover-background:  #80BEEA;
 
 $dd-topbar-color: $dd-topbar-black;                      // topbar-black per John Gandar request
 $dd-right-topbar-color: lighten($dd-topbar-black, 20%);  // topbar-black per John Gandar request
