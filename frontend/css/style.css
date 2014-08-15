@@ -310,7 +310,7 @@ img {
   border-radius: 6px;
 }
 .img-thumbnail {
-  padding: 4px;
+  padding: 0px;
   line-height: 1.42857143;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -3711,6 +3711,7 @@ body .header-bg {
   z-index: 5;
   background: #F7F5E0;
   opacity: 0.8;
+  opacity: 1.0;
 }
 .wrapper {
   max-width: 1000px;
@@ -3757,11 +3758,12 @@ nav ul a:hover {
   color: #7786a5;
 }
 .content {
-  margin-right: auto;
+  /*margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  margin-top: 130px;
+  */
+  margin-top: 230px;
   margin-bottom: 230px;
 }
 @media (min-width: 768px) {
@@ -3800,13 +3802,13 @@ section {
   margin: 0px auto;
 }
 footer {
-  position: absolute;
+  /*position: absolute;*/
   left: 0;
   bottom: 0;
   height: 80px;
-  background: #76BFE8;
+  background: ##F7F5E0;
   width: 100%;
-  text-align: center;
+  text-align: left;
   color: #FFF;
   line-height: 1.8em;
   text-transform: uppercase;
@@ -3825,12 +3827,12 @@ footer ul > li {
   padding-right: 5px;
 }
 footer ul a {
-  color: #fff;
+  color: blue;         /* HACK, this is not the right blue */
 }
 article.main-content {
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
+  padding-left: 0px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
@@ -3954,26 +3956,11 @@ form.provider-search .right-checkboxes-col {
   opacity: 1;
 }
 .providers section {
-  background: #d383b2;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #d383b2 0%, #d46aa8 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d383b2), color-stop(100%, #d46aa8));
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #d383b2 0%, #d46aa8 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #d383b2 0%, #d46aa8 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #d383b2 0%, #d46aa8 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #d383b2 0%, #d46aa8 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d383b2', endColorstr='#d46aa8', GradientType=0);
-  /* IE6-9 */
-  border: 3px solid #fff;
+  background-color: #F7F5E0;
+  border: 1px black solid;
   border-radius: 4px;
   padding: 10px 20px;
-  color: #fff;
+  color: #000;
   margin: 4px 0;
   -webkit-box-shadow: 1px 2px 6px 0px rgba(50, 50, 50, 0.3);
   box-shadow: 1px 2px 6px 0px rgba(50, 50, 50, 0.3);
@@ -4055,7 +4042,7 @@ textarea.autocomplete input {
 }
 
  #menu {
-    width: 100%;
+    width: 90%;
     height: 35px;
     font-size: 16px;
     font-family: Tahoma, Geneva, sans-serif;

@@ -17,6 +17,13 @@
                         <autocomplete ng-model="form.locality" data="locations" on-type="updateLocations" attr-placeholder="City or Town Name..." on-select="updateProviders"></autocomplete>
                         <!-- <a href="" ng-click="updateProviders()">Update Results</a> -->
                     </article>
+
+                    <div ng-if=providers.length>
+                      <article class="left-column"></article>
+                      <article class="right-column form-group">
+                        <h3>There are {{providers.length}} in {{form.locality}}.</h3>
+                      </article>
+                    </div>
                 </section>
 
                 <!-- 2 -->
@@ -30,7 +37,8 @@
                             <section>
                                 <article class="left-checkboxes-col">
                                     <label>
-                                        <input type="checkbox" name="">
+                                        <input type="checkbox" 
+                                        name="" >
                                         Long Day Care 
                                     </label>
 
@@ -166,26 +174,37 @@
 
             <!-- Provider Results -->
             <div class="providers" ng-repeat="provider in providers">
+                <!--
                 <section>    
+                -->
                    <mouseover ng-mouseover="expand = 1">
                    <mouseleave ng-mouseleave="expand = 0">
 
                     <section>
+                    
 
                         <h4>{{provider.name}}  {{provider.care_offered}}</h4>
 
+                        <!--
+                        REMOVED TO SIMPLIFY DISPLAY
+                        Expand on mouseover
+                        Click to pop separate page
+-->
+                      <p ng-show=expand><em>Details</em></p>
+
                         <label>{{provider.address}}</label>
 
-                        <h5 ng-show=provider.description>
+                        <h5 ng-show=expand&&provider.description>
                             {{provider.description}}
                         </h5>
 
-                        <h5>Fee: 
+                        <h5 ng-show=expand&&provider.fee>Fee: 
                             <span>{{provider.fee | currency:" AUD$ "}}</span>
 
-                        <h5 ng-show=provider.vacancies>
+                        <h5 ng-show=expand&&provider.vacancies>
                             Vacancies: {{provider.vacancies_list}}
-                        <h5 ng-show=!provider.vacancies>
+
+                        <h5 ng-show=expand&&!provider.vacancies>
                             Vacancies: None.
                             
                     
@@ -205,6 +224,7 @@
                         <h5 ng-show=expand&&provider.technologies>
                             Technologies: {{provider.technologies_list}} 
                             </h5>
+                        
                         <!-- 
                         We should be able to iterate on Object.keys(provider), 
                         but this doesn't seem to work, are these properties
@@ -214,7 +234,6 @@
                             </div>
                         -->
 
-                      <p><em>Details</em></p>
                       
                         <label ng-show=expand&&provider.air_conditioning>
                             Air Conditioning.
