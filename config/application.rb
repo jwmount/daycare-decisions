@@ -27,5 +27,15 @@ module DaycareDecisions
     # apparently gem rails-api removes middleware Action::Flash needs, or something.
     # Set it to false to avoid this.  Apparently it defaults to true!
     config.api_only = false
+
+    # CORS enable, see https://github.com/cyu/rack-cors
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
   end
 end
+
