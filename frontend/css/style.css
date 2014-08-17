@@ -3702,7 +3702,7 @@ body {
 body header,
 body .header-bg {
   z-index: 10;
-  position: fixed;
+  /*position: fixed;  use this to fix the header location*/
   top: 0;
   width: 100%;
   height: 90px;

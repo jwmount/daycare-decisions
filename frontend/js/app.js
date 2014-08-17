@@ -13,6 +13,7 @@ var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomp
 app.server = "http://daycaredecisionsmaster464c.ninefold-apps.com/api";
 app.locations_api_call = app.server + "/locations/";
 app.providers_api_call = app.server + "/providers/";
+app.provider_api_detail = app.server + "/provider/";
 app.rolodex_api_call  = app.server + "/rolodex/";
 
 // Set headers for CORS (both dev & prod)
@@ -61,10 +62,10 @@ app.config(function($routeProvider) {
         templateUrl: "privacy_policy.html"
         // controller: "privacyController"
     })
-    .when('/providers', {
-        // Providers
-        templateUrl: "provider_services.html"
-        // controller: "provider_servicesController"
+    .when('/providers/:providerID', {
+        // Provider
+        templateUrl: 'partials/provider-detail.html',
+        controller: 'ProviderDetailCtrl'
     })
     .when('/research', {
         // Research
@@ -153,6 +154,18 @@ app.controller("HomeController", function($scope, $http, $timeout) {
     } //updateProviders
 });  //HomeController
 
+
+app.controller('ProviderDetailCtrl', ['$scope', '$routeParams', '$http',
+    function($scope, $routeParams, $http) {
+      $http.get(app.provider_api_detail + $routeParams.providerId + '.json').success(function(data) {
+      $scope.provider = data;
+    });
+  }]);
+
+
+//
+// Helpers
+//
 
 // Helper function (experimental)
 toggleChosenAttribute = function(obj) {

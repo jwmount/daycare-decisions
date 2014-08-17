@@ -1,6 +1,5 @@
 <div class="content">
     <section>
-
         <!-- Main Content -->
         <article class="main-content">
             <h1>Finding childcare is hard. We can help.</h1>
@@ -18,10 +17,11 @@
                         <!-- <a href="" ng-click="updateProviders()">Update Results</a> -->
                     </article>
 
+
                     <div ng-if=providers.length>
                       <article class="left-column"></article>
                       <article class="right-column form-group">
-                        <h3>There are {{providers.length}} in {{form.locality}}.</h3>
+                        <h3>We have {{providers.length}} providers in {{form.locality}}.</h3>
                       </article>
                     </div>
                 </section>
@@ -184,12 +184,11 @@
                     
 
                         <h4>{{provider.name}}  {{provider.care_offered}}</h4>
-
                         <!--
                         REMOVED TO SIMPLIFY DISPLAY
                         Expand on mouseover
                         Click to pop separate page
--->
+                        -->
                       <p ng-show=expand><em>Details</em></p>
 
                         <label>{{provider.address}}</label>
@@ -277,6 +276,9 @@
                         <label ng-show=expand&&provider.sibling_priority>
                             Siblings Given Priority.
                             </label>
+
+                        <label ng-show=expand&&provider.url></label>
+                                
                         <label ng-show=expand&&provider.vaccinations_compulsory>
                             Vaccinations Compulsory.
                             </label>
@@ -286,6 +288,13 @@
                         <label ng-show=expand&&provider.waitlist_fee_reimbursed>
                             Waitlist Fee Reimbursed.
                             </label>
+
+
+                        <label ng-show=expand>
+                          <a href="#/providers/{{provider.id}}" target='_blank'>{{provider.name}}</a>
+                        </label>
+
+
                   </mouseleave>
                   </mouseover>
 
