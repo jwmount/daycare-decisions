@@ -62,14 +62,15 @@ app.config(function($routeProvider) {
         templateUrl: "privacy_policy.html"
         // controller: "privacyController"
     })
-    .when('/providers/:providerID', {
+    .when('/providers/:providerId', {
         // Provider
         templateUrl: 'partials/provider-detail.html',
         controller: 'ProviderDetailCtrl'
     })
     .when('/provider-services', {
         // Provider
-        templateUrl: 'partials/provider-services.html',
+        templateUrl: 'partials/provider-detail.html',
+        controller: 'ProviderDetailCtrl'
     })
     .when('/research', {
         // Research
@@ -161,8 +162,10 @@ app.controller("HomeController", function($scope, $http, $timeout) {
 
 app.controller('ProviderDetailCtrl', ['$scope', '$routeParams', '$http',
     function($scope, $routeParams, $http) {
+      //$scope.providerId = $routeParams.providerId;      // ?need this?  
       $http.get(app.provider_api_detail + $routeParams.providerId + '.json').success(function(data) {
       $scope.provider = data;
+      //provider = data
     });
   }]);
 
