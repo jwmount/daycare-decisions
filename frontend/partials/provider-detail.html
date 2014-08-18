@@ -17,14 +17,21 @@
 
             <p>Address: {{provider[0].address}}
             <p>Age Range: {{provider[0].age_range}}
-            <p>Air Conditioning: {{provider[0].air_conditioning}}
+
+            <p ng-if=air_conditioning>Air Conditioning: &nbsp; YES</p>
+            <p ng-if=!air_conditioning>Air Conditioning: &nbsp; No</p>
+
             <p>Approval Granted: {{provider[0].approval_granted_on}}
             <p>Approval Number: {{provider[0].approval_number}}
             <p>Approved Places: {{provider[0].approved_places}}
 
-            <p>Bus Service: {{provider[0].bus_service}}
+            <p ng-if=bus.service>Bus Service: &nbsp; Yes</p>
+            <p ng-if=!bus.service>Bus Service: &nbsp; No</p>
 
-            <p>Care Offered: {{provider[0].care_offered}}
+            <p ng-show=provider[0].care_offered>
+                Care Offered: {{provider[0].care_offered}}
+            </p>
+
             <p>Conditions On Approval: {{provider[0].conditions_on_approval}}
             <p>Cloth Nappies: {{provider[0].cloth_nappies}}
 
@@ -44,7 +51,7 @@
 
             <p>Kindergarten: {{provider[0].kindergarten}}
 
-            <p>Languages: {{provider[0].languages}}
+            <p ng-if=provider[0].languages>Languages: YES</p>
             <p>Languages List: {{provider[0].languages_list}}
     
             <p>NQS Rating: {{provider[0].NQS_rating}}
