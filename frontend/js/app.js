@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
     })
     .when('/about', {
         // ABOUT
-        templateUrl: "about.html"
+        templateUrl: "partials/about.html"
         // controller: "AboutController"
     })
     .when('/contact', {
@@ -44,7 +44,7 @@ app.config(function($routeProvider) {
     })
     .when('/facts', {
         // FactSheets
-        templateUrl: "fact_sheets.html"
+        templateUrl: "partials/fact_sheets.html"
         // controller: "fact_sheetsController"
     })
     .when('/faq', {
@@ -66,6 +66,10 @@ app.config(function($routeProvider) {
         // Provider
         templateUrl: 'partials/provider-detail.html',
         controller: 'ProviderDetailCtrl'
+    })
+    .when('/provider-services', {
+        // Provider
+        templateUrl: 'partials/provider-services.html',
     })
     .when('/research', {
         // Research
