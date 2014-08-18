@@ -8,7 +8,7 @@
             <h1>{{provider[0].name}}</h1>
             <hr/>
             <h2>Facilities and Services</h2>
-            
+
             <br/>
             <p>{{provider[0].description}}</p>
 
@@ -25,7 +25,7 @@
             <p>Bus Service: {{provider[0].bus_service}}
 
             <p>Care Offered: {{provider[0].care_offered}}
-            <p>Conditions On: Approval: {{provider[0].conditions_on_approval}}
+            <p>Conditions On Approval: {{provider[0].conditions_on_approval}}
             <p>Cloth Nappies: {{provider[0].cloth_nappies}}
 
             <p>Disability Friendly: {{provider[0].disability_friendly}}
@@ -66,7 +66,7 @@
             <p>Technology: {{provider[0].technology}}
             <p>Technologies List: {{provider[0].technologies_list}}
 
-            <p>URL (Web Site): {{provider[0].url}}
+            <p>URL (Web Site): <a href="{{provider[0].url}}", target: '_blank'>{{provider[0].url}}</a>
 
             <p>Vacancies: {{provider[0].vacancies | number}}
             <p>Vacancies List: {{provider[0].vacancies_list}}

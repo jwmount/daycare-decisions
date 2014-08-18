@@ -208,21 +208,9 @@
                             
                     
  
-                        <h5 ng-show=expand> Age range: {{provider.age_range}}</h5>
-                        <h5 ng-show=expand> Hours of operation: {{provider.hours}} </h5> 
+                        <h5 ng-show=expand&&provider.age_range> Age range: {{provider.age_range}}</h5>
+                        <h5 ng-show=expand&&provider.hours> Hours of operation: {{provider.hours}} </h5> 
 
-                        <h5 ng-show=expand && provider.additional_activities>
-                            Additional Activies: {{provider.additional_activities_list}} 
-                            </h5>
-                        <h5 ng-show=expand&&provider.disabilities>
-                            Disabilities: {{provider.disabilities_list}} 
-                            </h5>
-                        <h5 ng-show=expand&&provider.languages> 
-                            Languages: {{provider.languages_list}} 
-                            </h5>
-                        <h5 ng-show=expand&&provider.technologies>
-                            Technologies: {{provider.technologies_list}} 
-                            </h5>
                         
                         <!-- 
                         We should be able to iterate on Object.keys(provider), 
@@ -290,7 +278,7 @@
                             </label>
 
 
-                        <label ng-show=expand>
+                        <label ng-show=expand>More on &nbsp;
                           <a href="#/providers/{{provider.id}}" target='_blank'>{{provider.name}}</a>
                         </label>
 
