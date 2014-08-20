@@ -1,12 +1,12 @@
 
 <div class="content">
-    <section>
 
         <!-- Main Content -->
         <article class="main-content">
 
             <h1>{{provider[0].name}}</h1>
             <hr/>
+            <h3>{{provider[0].address}}</h3>
             <h2>Facilities and Services</h2>
 
             <br/>
@@ -266,8 +266,8 @@
 
                 <tr>
                     <td>Waitlist Re-imbursed</td>
-                    <td ng-show={{provider[0].waitlist_reimbursed}}>YES</td>
-                    <td ng-show=!{{provider[0].waitlist_reimbursed}}>No</td>
+                    <td ng-if = {{provider[0].waitlist_reimbursed}}>YES</td>
+                    <td ng-if = !{{provider[0].waitlist_reimbursed}}>No</td>
                     <td></td>
                 </tr>
 
@@ -296,5 +296,4 @@
             <img src="http://placehold.it/200x100">
         </article>
 
-    </section>
 </div>   

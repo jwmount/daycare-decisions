@@ -108,7 +108,7 @@ app.controller("HomeController", function($scope, $http, $timeout) {
 
     // Update Locations  # --> https://github.com/JustGoscha/allmighty-autocomplete
     var list_is_current = false;
-    var $scope.locations = [];
+    $scope.locations = [];
     $scope.updateLocations = function() {
         console.log('list_is_current: ' + list_is_current);
         // Less than two chars?
