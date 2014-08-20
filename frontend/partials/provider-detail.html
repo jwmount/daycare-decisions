@@ -11,80 +11,279 @@
 
             <br/>
             <p>{{provider[0].description}}</p>
+            <p>{{provider[0].legal_name}}</p>
 
-            <p>Additional Activities: {{provider[0].additional_activities}}
-            <p ng-show=provider[0].additional_activies>{{provider[0].additional_activities_list}}
+            <div>
+              <table class='table'>
+                <title id=''>Table of Services</title>
+                <tr>
+                    <th width=20%>Services</th>
+                    <th width=20%>Availability</th>
+                    <th width=20%>Notes</th>
+                </tr>
+                <tr>
+                    <td>Additional Activities</td>
+                    <td ng_show={{provider[0].additional_activities}}>YES</td>
+                    <td ng_show=!{{provider[0].additional_activities}}>No</td>
+                    <td>{{provider[0].additional_activities_list}}</td>
+                </tr>
 
-            <p>Address: {{provider[0].address}}
-            <p>Age Range: {{provider[0].age_range}}
+                <tr>
+                    <td>Age Range</td>
+                    <td>{{provider[0].age_range}}</td>
+                    <td></td>
+                </tr>
 
-            <p ng-if=air_conditioning>Air Conditioning: &nbsp; YES</p>
-            <p ng-if=!air_conditioning>Air Conditioning: &nbsp; No</p>
+                <tr>
+                    <td>Air Conditioning</td>
+                    <td ng_show={{provider[0].air_conditioning}}>YES</td>
+                    <td ng_show=!{{provider[0].air_conditioning}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Approval Granted: {{provider[0].approval_granted_on}}
-            <p>Approval Number: {{provider[0].approval_number}}
-            <p>Approved Places: {{provider[0].approved_places}}
+                <tr>
+                    <td>Approval Granted</td>
+                    <td>{{provider[0].approval_granted_on | date}}</td>
+                    <td>Date approval to operate was granted.</td>
+                </tr>
 
-            <p ng-if=bus.service>Bus Service: &nbsp; Yes</p>
-            <p ng-if=!bus.service>Bus Service: &nbsp; No</p>
+                <tr>
+                    <td>Approval Number</td>
+                    <td>{{provider[0].approval_number}}</td>
+                    <td></td>
+                </tr>
 
-            <p ng-show=provider[0].care_offered>
-                Care Offered: {{provider[0].care_offered}}
-            </p>
+                <tr>
+                    <td>Approved Places</td>
+                    <td>{{provider[0].approved_places}}</td>
+                    <td>Number of children approved.</td>
+                </tr>
 
-            <p>Conditions On Approval: {{provider[0].conditions_on_approval}}
-            <p>Cloth Nappies: {{provider[0].cloth_nappies}}
+                <tr>
+                    <td>Bus Service</td>
+                    <td ng-show={{provider[0].bus_service}}>YES</td>
+                    <td ng-show=!{{provider[0].bus_service}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Disability Friendly: {{provider[0].disability_friendly}}
-            <p>Disabilities List: {{provider[0].disabilities_list}}
-            <p>Disposable Nappies: {{provider[0].disposable_nappies}}
+                <tr>
+                    <td>Conditions for Approval</td>
+                    <td>{{provider[0].conditions_on_approval}}</td>
+                    <td>Set when approval is granted.</td>
+                </tr>
 
-            <p>Excursions: {{provider[0].excursions}}
-            <p>Extended Hours for Kindys: {{provider[0].extended_hours_for_kindys}}
+                <tr>
+                    <td>Cloth Nappies</td>
+                    <td ng-show={{provider[0].cloth_nappies}}>YES</td>
+                    <td ng-show=!{{provider[0].cloth_nappies}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Fee: {{provider[0].fee}}
-            <p>Food Provided: {{provider[0].food_provided}}
+                <tr ng-show={{provider[0].disability_friendly}}>
+                    <td>Disability Friendly</td>
+                    <td ng-show={{provider[0].disability_friendly}}>YES</td>
+                    <td>{{provider[0].disabilities_list}}</td>
+                </tr>
+                <tr ng-show=!{{provider[0].disability_friendly}}>
+                    <td>Disability Friendly</td>
+                    <td>No</td>
+                    <td/>
+                </tr>
 
-            <p>Guest Speakers: {{provider[0].guest_speakers}}
+                <tr>
+                    <td>Cloth Nappies</td>
+                    <td ng_show={{provider[0].cloth_nappies}}>YES</td>
+                    <td ng_show=!{{provider[0].cloth_nappies}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Hours: {{provider[0].hours}}
+                <tr>
+                    <td>Excursions</td>
+                    <td ng_show={{provider[0].excursions}}>YES</td>
+                    <td ng_show=!{{provider[0].excursions}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Kindergarten: {{provider[0].kindergarten}}
+                <tr>
+                    <td>Extended Hours for Kindys</td>
+                    <td ng_show={{provider[0].extended_hours_for_kindys}}>YES</td>
+                    <td ng_show=!{{provider[0].extended_hours_for_kindys}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p ng-if=provider[0].languages>Languages: YES</p>
-            <p>Languages List: {{provider[0].languages_list}}
-    
-            <p>NQS Rating: {{provider[0].NQS_rating}}
+                <tr>
+                    <td>Fee</td>
+                    <td ng_show={{provider[0].fee}}>YES</td>
+                    <td ng_show=!{{provider[0].fee}}>No</td>
+                    <td>Normally $/hr.</td>
+                </tr>
 
-            <p>Online Enrollment: {{provider[0].online_enrollment}}
-            <p>Outdoor Play Area: {{provider[0].outdoor_play_area}}
+                <tr>
+                    <td>Food Provided</td>
+                    <td ng_show={{provider[0].food_provided}}>YES</td>
+                    <td ng_show=!{{provider[0].food_provided}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Provider Approval Number: {{provider[0].provider_approval_number}}
-            <p>Provider Legal Name: {{provider[0].provider_legal_name}}
+                <tr>
+                    <td>Guest Speakers</td>
+                    <td ng-show={{provider[0].guest_speakers}}>YES</td>
+                    <td ng-show=!{{provider[0].guest_speakers}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Quality Overall Rating: {{provider[0].quality_overall_rating}}
+                <tr>
+                    <td>Hours</td>
+                    <td>{{provider[0].hours}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Kindergarten</td>
+                    <td ng-show={{provider[0].kindergarten}}>YES</td>
+                    <td ng-show=!{{provider[0].kindergarten}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Real Grass: {{provider[0].real_grass}}
+                <tr>
+                    <td>Languages</td>
+                    <td ng-show={{provider[0].languages}}>YES</td>
+                    <td ng-show=!{{provider[0].languages}}>No</td>
+                    <td>{{provider[0].languages_list}}</td>
+                </tr>
 
-            <p>Secure Access: {{provider[0].secure_access}}
-            <p>Service Approval Number: {{provider[0].service_approval_number}}
-            <p>Sibling Priority: {{provider[0].sibling_priority}}
+                <tr>
+                    <td>NQS Rating</td>
+                    <td>{{provider[0].NQS_rating}}</td>
+                    <td></td>
+                </tr>
 
-            <p>Technology: {{provider[0].technology}}
-            <p>Technologies List: {{provider[0].technologies_list}}
+                <tr>
+                    <td>Online Enrollment</td>
+                    <td ng-show={{provider[0].online_enrollment}}>YES</td>
+                    <td ng-show=!{{provider[0].online_enrollment}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>URL (Web Site): <a href="{{provider[0].url}}", target: '_blank'>{{provider[0].url}}</a>
+                <tr>
+                    <td>Outdoor Play Area</td>
+                    <td ng-show={{provider[0].outdoor_play_area}}>YES</td>
+                    <td ng-show=!{{provider[0].outdoor_play_area}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Vacancies: {{provider[0].vacancies | number}}
-            <p>Vacancies List: {{provider[0].vacancies_list}}
-            <p>Vaccintations Compulsory: {{provider[0].vaccinations_compulsory}}
+                <tr>
+                    <td>Provider Approval Number</td>
+                    <td>{{provider[0].provider_approval_number}}</td>
+                    <td></td>
+                </tr>
 
-            <p>Waitlist Fee: {{provider[0].waitlist_fee}}
-            <p>Waitlist Online: {{provider[0].waitlist_online}}
-            <p>Waitlist Reimbursed: {{provider[0].waitlist_reimbursed}}
+                <tr>
+                    <td>Quality Overall Rating</td>
+                    <td ng-show={{provider[0].quality_overall_rating}}>YES</td>
+                    <td ng-show=!{{provider[0].quality_overall_rating}}>No</td>
+                    <td></td>
+                </tr>
 
-            <p>Date Created: {{provider[0].created_at | date}}
-            <p>Date Updated: {{provider[0].updated_at | date}}
+
+                <tr>
+                    <td>Overall Rating</td>
+                    <td>{{provider[0].quality_overall_rating}}</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Real Grass</td>
+                    <td ng-show={{provider[0].real_grass}}>YES</td>
+                    <td ng-show=!{{provider[0].real_grass}}>No</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Secure Access</td>
+                    <td ng-show={{provider[0].secure_access}}>YES</td>
+                    <td ng-show=!{{provider[0].secure_access}}>No</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Service Approval Number</td>
+                    <td>{{provider[0].service_approval_number}}</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Sibling Priority</td>
+                    <td ng-show={{provider[0].sibling_priority}}>YES</td>
+                    <td ng-show=!{{provider[0].sibling_priority}}>No</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Technology</td>
+                    <td ng-show={{provider[0].technology}}>YES</td>
+                    <td ng-show=!{{provider[0].technology}}>No</td>
+                    <td>{{provider[0].technologies_list}}</td>
+                </tr>
+
+                <tr>
+                    <td>Type of Care</td>
+                    <td>{{provider[0].care_offered}}</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>URL (Web Site)</td>
+                    <td>{{provider[0].url}}</td>
+                    <td><a href="{{provider[0].url}}", target: '_blank'>{{provider[0].url}}</a></td>
+                </tr>
+
+                <tr>
+                    <td>Vacancies</td>
+                    <td ng-show={{provider[0].vacancies}}>YES</td>
+                    <td ng-show=!{{provider[0].vacancies}}>No</td>
+                    <td>{{provider[0].vacancies_list}}</td>
+                </tr>
+
+                <tr>
+                    <td>Vaccinations Are Compulsory</td>
+                    <td ng-show={{provider[0].vaccinations_compulsory}}>YES</td>
+                    <td ng-show=!{{provider[0].vaccinations_compulsory}}>No</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Waitlist Fee</td>
+                    <td>{{provider[0].waitlist_fee | currency}}</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Waitlist Online</td>
+                    <td ng-show={{provider[0].waitlist_online}}>YES</td>
+                    <td ng-show=!{{provider[0].waitlist_online}}>No</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Waitlist Re-imbursed</td>
+                    <td ng-show={{provider[0].waitlist_reimbursed}}>YES</td>
+                    <td ng-show=!{{provider[0].waitlist_reimbursed}}>No</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Date Created</td>
+                    <td>{{provider[0].created_at | date}}</td>
+                    <td>Date first appeared in Daycare Decisions.</td>
+                </tr>
+
+                <tr>
+                    <td>Date Updated</td>
+                    <td>{{provider[0].updated_at | date}}</td>
+                    <td>Most recent change date.</td>
+                </tr>
+               </table>
+            </div>
 
               	
         </article>

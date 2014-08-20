@@ -57,10 +57,10 @@ DaycareDecisions::Application.routes.draw do
   end #:admin namespace
 
 
-  #root to: "home#index"
+  root to: "home#index"
 
-  root to: "frontend#feui"
-  get '*path', to: 'frontend#feui'
+  #root to: "frontend#feui"
+  #get '*path', to: 'frontend#feui'
 
   # catch-all route for api_controller
   # http://www.tsheffler.com/blog/?p=428 -- note by Forrest Zeisler

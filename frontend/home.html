@@ -182,16 +182,16 @@
 
                     <section>
                     
-
-                        <h4>{{provider.name}}  {{provider.care_offered}}</h4>
+                        <h4>
+                            <a href="#/providers/{{provider.id}}" target='_blank'>{{provider.name}}</a>
+                        </h4>
                         <!--
                         REMOVED TO SIMPLIFY DISPLAY
                         Expand on mouseover
                         Click to pop separate page
                         -->
-                      <p ng-show=expand><em>Details</em></p>
 
-                        <label>{{provider.address}}</label>
+                        <label ng-show=expand>{{provider.address}}</label>
 
                         <h5 ng-show=expand&&provider.description>
                             {{provider.description}}
@@ -278,8 +278,8 @@
                             </label>
 
 
-                        <label ng-show=expand>More on &nbsp;
-                          <a href="#/providers/{{provider.id}}" target='_blank'>{{provider.name}}</a>
+                        <label ng-show=expand>
+                          <a href="#/providers/{{provider.id}}" target='_blank'>More about {{provider.name}}</a>
                         </label>
 
 
