@@ -108,7 +108,7 @@ app.controller("HomeController", function($scope, $http, $timeout) {
 
     // Update Locations  # --> https://github.com/JustGoscha/allmighty-autocomplete
     var list_is_current = false;
-    $scope.locations = [];
+    $scope.locations = [];           // jwm 08-20-2014
     $scope.updateLocations = function() {
         console.log('list_is_current: ' + list_is_current);
         // Less than two chars?
@@ -163,10 +163,8 @@ app.controller("HomeController", function($scope, $http, $timeout) {
 
 app.controller('ProviderDetailCtrl', ['$scope', '$routeParams', '$http',
     function($scope, $routeParams, $http) {
-      //$scope.providerId = $routeParams.providerId;      // ?need this?  
       $http.get(app.provider_api_detail + $routeParams.providerId + '.json').success(function(data) {
       $scope.provider = data;
-      //provider = data
     });
   }]);
 
