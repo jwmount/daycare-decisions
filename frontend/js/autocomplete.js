@@ -241,6 +241,7 @@ app.directive('autocomplete', function(){
   }
 });
 
+
 app.filter('highlight', function ($sce) {
 
   return function (input, searchParam) {
@@ -260,6 +261,7 @@ app.filter('highlight', function ($sce) {
 
 });
 
+
 app.directive('suggestion', function(){
   return {
     restrict: 'A',
@@ -276,3 +278,5 @@ app.directive('suggestion', function(){
     }
   }
 });
+
+

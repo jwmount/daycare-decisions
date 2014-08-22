@@ -1,4 +1,5 @@
 
+
 <div class="content">
 
         <!-- Main Content -->
@@ -24,7 +25,7 @@
 
                 <tr>
                     <td>Additional Activities</td>
-                    <td>{{provider[0].additional_activities}}</td>
+                    <td>{{provider[0].additional_activities | ngbool }}</td>
                     <td>
                         {{provider[0].additional_activities_list}}
                     </td>
@@ -38,7 +39,7 @@
 
                 <tr>
                     <td>Air Conditioning</td>
-                    <td>{{provider[0].air_conditioning}}</td>
+                    <td>{{provider[0].air_conditioning | ngbool }}</td>
                     <td></td>
                 </tr>
 
@@ -62,7 +63,7 @@
 
                 <tr>
                     <td>Bus Service</td>
-                    <td>provider[0].bus_service</td>
+                    <td>{{provider[0].bus_service | ngbool }}</td>
                     <td></td>
                 </tr>
 
@@ -74,30 +75,28 @@
 
                 <tr>
                     <td>Cloth Nappies</td>
-                    <td>{{provider[0].cloth_nappies}}</td>
+                    <td>{{provider[0].cloth_nappies | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Disability Friendly</td>
-                    <td>{{provider[0].disability_friendly}}</td>
+                    <td>{{provider[0].disability_friendly | ngbool }}</td>
                     <td>{{provider[0].disabilities_list}}</td>
                 </tr>
 
                 <tr>
                     <td>Cloth Nappies</td>
-                    <td>{{provider[0].cloth_nappies}}</td>
+                    <td>{{provider[0].cloth_nappies | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Excursions</td>
-                    <td>{{provider[0].excursions}}</td>
-                    <td></td>
+                    <td>{{provider[0].excursions | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Extended Hours for Kindys</td>
-                    <td>{{provider[0].extended_hours_for_kindys}}</td>
-                    <td></td>
+                    <td>{{provider[0].extended_hours_for_kindys | ngbool }}</td>
                 </tr>
 
                 <tr>
@@ -108,29 +107,26 @@
 
                 <tr>
                     <td>Food Provided</td>
-                    <td{{provider[0].food_provided}}</td>
-                    <td></td>
+                    <td>{{provider[0].food_provided | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Guest Speakers</td>
-                    <td>{{provider[0].guest_speakers}}</td>
-                    <td></td>
+                    <td>{{provider[0].guest_speakers | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Hours</td>
                     <td>{{provider[0].hours}}</td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>Kindergarten</td>
-                    <td>{{provider[0].kindergarten}}</td>
+                    <td>{{provider[0].kindergarten | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Languages</td>
-                    <td>{{provider[0].languages}}</td>
+                    <td>{{provider[0].languages | ngbool }}</td>
                     <td>{{provider[0].languages_list}}</td>
                 </tr>
 
@@ -141,12 +137,12 @@
 
                 <tr>
                     <td>Online Enrollment</td>
-                    <td>{{provider[0].online_enrollment}}</td>
+                    <td>{{provider[0].online_enrollment | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Outdoor Play Area</td>
-                    <td>{{provider[0].outdoor_play_area}}</td>
+                    <td>{{provider[0].outdoor_play_area | ngbool }}</td>
                 </tr>
 
                 <tr>
@@ -167,12 +163,12 @@
 
                 <tr>
                     <td>Real Grass</td>
-                    <td>{{provider[0].real_grass}}</td>
+                    <td>{{provider[0].real_grass | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Secure Access</td>
-                    <td>{{provider[0].secure_access}}</td>
+                    <td>{{provider[0].secure_access | ngbool }}</td>
                 </tr>
 
                 <tr>
@@ -182,35 +178,34 @@
 
                 <tr>
                     <td>Sibling Priority</td>
-                    <td{{provider[0].sibling_priority}}</td>
+                    <td>{{provider[0].sibling_priority | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>Technology</td>
-                    <td>{{provider[0].technology}}</td>
+                    <td>{{provider[0].technology | ngbool }}</td>
                     <td>{{provider[0].technologies_list}}</td>
                 </tr>
 
                 <tr>
                     <td>Type of Care</td>
-                    <td>{{provider[0].care_offered}}</td>
+                    <td>{{provider[0].care_offered | ngbool }}</td>
                 </tr>
 
                 <tr>
                     <td>URL (Web Site)</td>
-                    <td>{{provider[0].url}}</td>
                     <td><a href="{{provider[0].url}}", target: '_blank'>{{provider[0].url}}</a></td>
                 </tr>
 
                 <tr>
                     <td>Vacancies</td>
-                    <td>{{provider[0].vacancies}}</td>
+                    <td>{{provider[0].vacancies | ngbool }}</td>
                     <td>{{provider[0].vacancies_list}}</td>
                 </tr>
 
                 <tr>
                     <td>Vaccinations Are Compulsory</td>
-                    <td>{{provider[0].vaccinations_compulsory}}</td>
+                    <td>{{provider[0].vaccinations_compulsory | ngbool }}</td>
                 </tr>
 
                 <tr>
@@ -221,7 +216,7 @@
 
                 <tr>
                     <td>Waitlist Online</td>
-                    <td>{{provider[0].waitlist_online}}>YES</td>
+                    <td>{{provider[0].waitlist_online | ngbool }}</td>
                 </tr>
 
                 <tr>

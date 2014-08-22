@@ -1,7 +1,12 @@
 // To add API calls follow https://docs.angularjs.org/tutorial/step_08
 
 // Initialize Angular App
-var app = angular.module("app", ['ngRoute', 'ngAnimate', 'ngSanitize', 'autocomplete']);
+var app = angular.module("app", 
+    ['ngRoute', 
+    'ngAnimate', 
+    'ngSanitize', 
+    'appFilters',
+    'autocomplete']);
 
 // Set Config Variables
 // Local testing:
@@ -166,6 +171,7 @@ app.controller('ProviderDetailCtrl', ['$scope', '$routeParams', '$http',
       $http.get(app.provider_api_detail + $routeParams.providerId + '.json').success(function(data) {
       $scope.provider = data;
     });
+      
   }]);
 
 
