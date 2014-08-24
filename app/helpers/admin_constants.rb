@@ -101,6 +101,9 @@ module AdminConstants
   ADMIN_PROVIDER_DISABILITY_FRIENDLY_LABEL = "Disability Friendly or Enabled"
   ADMIN_PROVIDER_DISABILITY_FRIENDLY_HINT  = "Facilities and skills available."
 
+  ADMIN_PROVIDER_FEE_HINT                = "Decimal number, e.g. 25.00.  Do not use a currency sign."
+  ADMIN_PROVIDER_FEE_PLACEHOLDER         = "25.00"
+
   ADMIN_PROVIDER_KINDERGARTEN_LABEL      = "Kindergarten Approved (QLD only)"
   ADMIN_PROVIDER_KINDERGARTEN_HINT       = "The centre offers an approved Kindergarten Program (Kindergarten QLD tick of approval, qualified teachers etc)"
 

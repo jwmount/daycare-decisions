@@ -166,8 +166,9 @@ ActiveAdmin.register Provider do
               :hint          => AdminConstants::ADMIN_PROVIDER_AGE_HINT,
               :placeholder   => AdminConstants::ADMIN_PROVIDER_AGE_PLACEHOLDER
 
-      f.input ('fee') { number_to_currency(provider.fee)}
-
+      f.input :fee,
+              :hint          => AdminConstants::ADMIN_PROVIDER_FEE_HINT,
+              :placeholder   => AdminConstants::ADMIN_PROVIDER_FEE_PLACEHOLDER
       f.input :hours
 
       f.input :additional_activities
