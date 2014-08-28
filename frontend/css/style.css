@@ -4067,7 +4067,7 @@ textarea.autocomplete input {
     padding: 8px 8px 8px 8px;
 
 }#menu a:hover {
-    color: $menu-hover-background;
+    color: #80BEEA; /*$menu-hover-background;*/
 }
 
   #dialog {
