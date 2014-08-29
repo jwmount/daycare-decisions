@@ -181,8 +181,8 @@ namespace :csv do
     @started = Time.now()
     10.times do 
     
-      provider = Provider.where(:name => "Service Name-#{rand(3000).to_s}").first_or_create
-      provider.age_range                = 'Age Range'
+      provider = Provider.where(:name => "ServiceName-#{rand(3000).to_s}").first_or_create
+      provider.age_range                = ageify
       provider.additional_activities    = rand( 2 )
       provider.additional_activities_list = "Physikids, Wizkids, Justkids"
       provider.air_conditioning         = rand( 2 )
@@ -195,7 +195,7 @@ namespace :csv do
       provider.cloth_nappies            = rand( 2 )
       provider.conditions_on_approval   = 'Conditions on Approval'
       
-      provider.description              = 'Description text goes here...'
+      provider.description              = 'DATA about services offered is SIMULATED ...'
       provider.disability_friendly      = rand( 2 )
       provider.disabilities_list        = 'ADD, Allergies, Diet restrictions'
       provider.disposable_nappies       = rand( 2 )
@@ -244,11 +244,7 @@ namespace :csv do
       provider.waitlist_reimbursed      = rand( 2 )
       
       # HACK -- Move address into Provider using :address serialized column.
-      provider.address = {}
-      provider.street         = "#{rand(200).to_s} Iveery St."
-      provider.locality       = townify
-      provider.state          = statify
-      provider.post_code      = '4000'
+      provider.address = "#{rand(200).to_s} Iveery St., " + townify + statify + ' 4000'
 
         # Save provider but only create polymorphic dependents if successful.
         if provider.save!
@@ -396,18 +392,27 @@ namespace :csv do
     string.chars.select { |c| c.valid_encoding? }.join
   end
 
-  def townify
-    towns = ["Brisbane", "Southport", "Broadbeach", "Mooloombaba", "Indiroopulli"]
-    town = towns[rand(5)]
-    # force single town for testing
-    # town = 'Broadbeach'
+  # Create a set of age ranges
+  def ageify
+    ages = ["2 to 12 months", "12 to 24 months", "2 to 4 years"]
+    age = ages[rand(3)]
   end
 
+  # Use three forms of capitalization so we can work on case sensitivity
+  def townify
+    #towns = ["Brisbane", "Southport", "Broadbeach", "Mooloombaba", "Indiroopulli"]
+    #towns = ["Abcville", "abcville"]
+    #town = towns[rand(2)]
+    # force single town for testing
+    town = 'Abcville'
+  end
+
+  # So far we don't know town names outside of QLD, so stay there
   def statify
-    states = ["QLD", "NSW", "NT", "VIC", "SA", "WA", "TAS"]
-    state = states[rand(7)]
+    #states = ["QLD", "NSW", "NT", "VIC", "SA", "WA", "TAS"]
+    #state = states[rand(7)]
     # Force to single state for testing
-    # state = 'QLD'
+    state = 'QLD'
   end
 
 
