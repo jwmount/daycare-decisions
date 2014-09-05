@@ -2,9 +2,16 @@
 require 'csv'
 require 'uri'
 
-namespace :csv do
+namespace :load do
+  desc "Main database load task"
+  task :main => :environment do
+    Rake::Task['load:load_providers'].invoke
+    Rake::Task['load:load_test_providers'].invoke
+  end
 
-  desc "BEGIN:  Load provider.csv files"
+#namespace :csv do
+
+#  desc "BEGIN:  Load provider data."
 
 #
 # LOAD PROVIDERS 
@@ -181,10 +188,10 @@ namespace :csv do
     @started = Time.now()
     10.times do 
     
-      provider = Provider.where(:name => "ServiceName-#{rand(3000).to_s}").first_or_create
+      provider = Provider.where(:name => "Test Provider-#{rand(3000).to_s}").first_or_create
       provider.age_range                = ageify
       provider.additional_activities    = rand( 2 )
-      provider.additional_activities_list = "Physikids, Wizkids, Justkids"
+      provider.additional_activities_list = "Physkids, Wizkids, Bizkids"
       provider.air_conditioning         = rand( 2 )
       provider.approval_granted_on      = Date.today
       provider.approved_places          = 40
@@ -244,7 +251,7 @@ namespace :csv do
       provider.waitlist_reimbursed      = rand( 2 )
       
       # HACK -- Move address into Provider using :address serialized column.
-      provider.address = "#{rand(200).to_s} Iveery St., " + townify + statify + ' 4000'
+      provider.address = "#{rand(200).to_s} Iveery St., " + townify + ", " + statify + ' 4000'
 
         # Save provider but only create polymorphic dependents if successful.
         if provider.save!
@@ -404,7 +411,7 @@ namespace :csv do
     #towns = ["Abcville", "abcville"]
     #town = towns[rand(2)]
     # force single town for testing
-    town = 'Abcville'
+    town = "Abcville"
   end
 
   # So far we don't know town names outside of QLD, so stay there
